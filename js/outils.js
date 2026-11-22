@@ -83,8 +83,8 @@
     var d = decimalesForcees !== undefined ? decimalesForcees : (ind.decimales_affichage !== undefined ? ind.decimales_affichage : 2);
     var unite = ind.unite || "";
     if (unite === "%") return nombre(v, d) + INSECABLE + "%";
-    if (unite === "pt" || unite === "points") return signe(v, d) + INSECABLE + "pt";
-    if (!unite || unite === "indice") return nombre(v, d);
+    if (unite === "pt") return signe(v, d) + INSECABLE + "pt";
+    if (!unite || unite === "indice" || unite === "points") return nombre(v, d);
     return nombre(v, d) + INSECABLE + unite;
   }
 
