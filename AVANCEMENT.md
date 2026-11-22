@@ -3,7 +3,7 @@
 Référence : SPEC_Tableau_de_bord_Marches.md, puis PLAN.md (plan de l'architecte, fait foi pour les choix techniques). Mettre ce fichier à jour à la fin de chaque étape.
 
 ## Étape en cours
-Étape 7 — relecture finale par le relecteur (Fable, xhigh) contre la checklist §12 ; puis corrections et remise (étape 8).
+Étape 8 — projet remis à Georgy le 22/11/2026. Suite possible : surveiller la première exécution planifiée (23/11, 5 h 17 UTC) et les e-mails d'échec éventuels.
 
 ## Fait
 - Étape 0 : CLAUDE.md, AVANCEMENT.md, agents `.claude/agents/`, arborescence, git local (adresse « noreply »). Python 3.12, git, `gh` (connecté, droits `repo` + `workflow`), node 26 installés. Clé FRED dans `.env` (testée).
@@ -14,6 +14,7 @@ Référence : SPEC_Tableau_de_bord_Marches.md, puis PLAN.md (plan de l'architect
 - Étape 3 : interface complète (Accueil, Comparateur, 8 pages thématiques avec blocs du lot 3, Comprendre, État des données) ; dépôt public https://github.com/depgeor75-droid/tableau-marches ; site https://depgeor75-droid.github.io/tableau-marches/ ; secret FRED_API_KEY ; workflow testé (push, exécution manuelle : collecte GitHub identique au local, 158 ok, aucune boucle) ; zéro erreur de console en file:// et en ligne (12 pages × PC/GSM).
 - Étape 4 : 120 fiches (docs/fiches/*.json → js/fiches.js via scripts/fiches_vers_js.py) ; incertitudes des rédacteurs dans docs/fiches/incertitudes.md.
 - Étapes 5-6 : README, mettre_a_jour_local.bat, événement du 5 nov. 2026 ; captures de toutes les pages PC/GSM du site public (docs/captures/), zéro erreur de console en ligne et en file://.
+- Étape 7 : relecture finale (aucun bloquant) ; tous les écarts majeurs et la plupart des mineurs corrigés (axes N*, règle des 3 axes, périodes grisées, histogrammes et jauge visibles, palette sans vert ni rouge, fiches corrigées, fiche E2, CSV, README). Restent acceptés : fiches de 200 à 260 mots (au-dessus des 200 du §7, au niveau du modèle VIX).
 
 ## Décisions
 - Rediffusion (réponses de Georgy, 22/11/2026) : FRED → publier avec toutes les mentions exigées (usage personnel ; au pire, retour à une application locale) ; Yahoo et STOXX → publier avec mention ; FMI, BIS, Michigan, Banque du Japon → publier avec mention.
@@ -22,7 +23,8 @@ Référence : SPEC_Tableau_de_bord_Marches.md, puis PLAN.md (plan de l'architect
 - Voir PLAN.md §0 et §1 pour les autres décisions (Yahoo source unique, devises variante b, fichiers récents de 36 mois, etc.).
 
 ## Reste à faire
-- Étape 7 : relecture finale et corrections ; étape 8 : remise à Georgy.
+- Rien d'obligatoire. Idées : demande d'accord à FRED si Georgy le souhaite ; décider si SPEC_Tableau_de_bord_Marches.md (prénom, profession) doit rester dans le dépôt public.
 
 ## Problèmes ouverts
-- Aucun pour l'instant. (Point d'arrêt passé le 22/11/2026 : Georgy valide le design et le comparateur ; événement du 5 nov. 2026 ajouté.)
+- Point d'arrêt passé le 22/11/2026 : Georgy valide le design et le comparateur ; événement du 5 nov. 2026 ajouté.
+- Dossier `rapport_economique/` (étranger au projet, apparu le 22/11) ignoré par git.
