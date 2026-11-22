@@ -384,10 +384,11 @@
   /** Date de début d'une période comptée depuis une date de fin (ISO). « Max » → null. */
   function debutPeriode(finIso, periode) {
     if (!RECULS[periode]) return null;
-    var d = new Date(versTemps(finIso));
-    d.setUTCFullYear(d.getUTCFullYear() - RECULS[periode][0]);
-    d.setUTCMonth(d.getUTCMonth() - RECULS[periode][1]);
-    return versIso(d.getTime());
+    var a = +finIso.slice(0, 4) - RECULS[periode][0];
+    var m = +finIso.slice(5, 7) - 1 - RECULS[periode][1];
+    var j = +finIso.slice(8, 10) || 1;
+    var dernierJour = new Date(Date.UTC(a, m + 1, 0)).getUTCDate();
+    return versIso(Date.UTC(a, m, Math.min(j, dernierJour)));
   }
 
   /** Nombre de points valides d'une série dans [debut, fin] après rééchantillonnage. */

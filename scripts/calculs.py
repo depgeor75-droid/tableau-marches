@@ -133,8 +133,12 @@ def variations_1m_1a(serie: dict[str, float], type_serie: str, frequence: str) -
         if cle == "1m" and frequence in ("T", "A"):
             sortie[cle] = None
             continue
-        point = valeur_a_date(serie, recul(derniere, mois=mois), tolerance(frequence))
-        sortie[cle] = variation(type_serie, point[1] if point else None, v)
+        if frequence in ("M", "T", "A"):  # appariement exact : jamais à cheval sur un trou
+            avant = serie.get(ajouter_mois(derniere, -mois))
+        else:
+            point = valeur_a_date(serie, recul(derniere, mois=mois), tolerance(frequence))
+            avant = point[1] if point else None
+        sortie[cle] = variation(type_serie, avant, v)
     return sortie
 
 
@@ -142,8 +146,9 @@ def variations_1m_1a(serie: dict[str, float], type_serie: str, frequence: str) -
 LIBELLES_PERCENTILE = [(10, "très bas"), (25, "bas"), (75, "habituel"), (90, "élevé"), (101, "très élevé")]
 
 
-def libelle_percentile(p: float) -> str:
-    for borne, libelle in LIBELLES_PERCENTILE:
+def libelle_percentile(p: float, bornes=(10, 25, 75, 90)) -> str:
+    noms = ["très bas", "bas", "habituel", "élevé", "très élevé"]
+    for borne, libelle in zip(list(bornes) + [101], noms):
         if p < borne:
             return libelle
     return "très élevé"
@@ -159,7 +164,7 @@ def rang_percentile(historique: list[float], valeur: float) -> float:
 
 
 def percentile_carte(mensuel: dict[str, float], type_serie: str, valeur_courante: float | None = None,
-                     annees_max: int = 30, annees_court: int = 10, annees_min: int = 5) -> dict | None:
+                     annees_max: int = 30, annees_court: int = 10, annees_min: int = 5, bornes=(10, 25, 75, 90)) -> dict | None:
     """Position de la valeur de la carte dans l'historique mensuel (mois complets, 30 ans au plus).
     Types T et N* : rang du niveau ; type N : rang de la variation sur 12 mois
     (`valeur_courante` = alors la variation sur 1 an de la carte). Affichage borné à 1-99."""
@@ -179,7 +184,7 @@ def percentile_carte(mensuel: dict[str, float], type_serie: str, valeur_courante
     cible = base[derniere] if valeur_courante is None else valeur_courante
     p = rang_percentile(list(fenetre.values()), cible)
     p_affiche = min(99, max(1, round(p)))
-    return {"valeur": p_affiche, "libelle": libelle_percentile(p), "depuis": premier[:4],
+    return {"valeur": p_affiche, "libelle": libelle_percentile(p_affiche, bornes), "depuis": premier[:4],
             "court": duree_annees < annees_court, "base": base_nom}
 
 

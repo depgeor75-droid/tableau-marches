@@ -185,3 +185,41 @@ def test_direction_trimestrielle_par_date():
     r = resume.C.direction(serie, "T")
     derniere = max(serie)
     assert r["variation"] == serie[derniere] - serie[C.ajouter_mois(derniere, -3)]
+
+
+def test_dette_calculee_ordre_de_grandeur():
+    cfg = configuration.charger()
+    ind = cfg.indicateurs["E4_UK"]
+    # FMI : dette 100 % du PIB, PIB nominal 3 000 milliards de livres (en unités de monnaie)
+    r = C.produit({"2025-01-01": 100.0}, {"2025-01-01": 3.0e12}, ind["facteur"])
+    assert r["2025-01-01"] == pytest.approx(3000.0)  # milliards de livres
+
+
+def test_variations_mensuelles_exactes_meme_avec_un_trou():
+    s = {"2026-08-01": 3.0, "2026-09-01": 3.2, "2026-11-01": 3.5}  # octobre manquant
+    v = C.variations_1m_1a(s, "T", "M")
+    assert v["1m"] is None  # jamais novembre − septembre
+
+
+def test_jauge_actuelle_reculs_ancres_sur_la_derniere_observation():
+    reg = configuration.charger().reglages["jauges"]
+    serie = mois(1990, 430, lambda i: 1.0)  # jusqu'à oct. 2025
+    serie["2025-10-01"] = 1.6
+    base = {"BC_IT_DE": serie, "C5": mois(1990, 430, lambda i: 3.0), "J2": {}, "J5": {}, "J7": {}, "A2": {}}
+    courant = {"BC_IT_DE": {"valeur": 1.6, 1: 1.0, 3: 1.0}, "C5": {"valeur": 3.0, 1: 3.0, 3: 3.6}}
+    c = resume.evaluer_conditions("ZE", base, "2025-11-01", reg, courant)
+    assert c[3]["variation_1m"] == pytest.approx(0.6)
+    assert c[0]["variation_3m"] == pytest.approx(-0.6) and c[0]["ok"] is True
+
+
+def test_secours_prolonge_quotidien_garde_l_historique(tmp_path, monkeypatch):
+    cfg, col, existant = collecte_vide(tmp_path, monkeypatch=monkeypatch)
+    existant["historique"]["I1"] = mois(1999, 300, lambda i: 1.1)
+    native = jours(date(2023, 12, 1), 778, lambda i: 1.2)  # jusqu au 20 nov. 2026
+    col.natives["I1"] = native
+    col.etats["I1"] = {"source": "FRED", "role": "secours", "statut_force": "secours", "date_source": max(native), "message": "prolongée"}
+    ecriture.ecrire(cfg, col, existant, tmp_path, "local", None, set())
+    h = commun.lire_js(tmp_path / "devises_historique.js")["I1"]
+    assert h["dates"][0] == "1999-01-01"
+    etat = commun.lire_js(tmp_path / "etat.js")["series"]["I1"]
+    assert etat["statut"] == "secours" and "prolongée" in etat["message"]

@@ -214,9 +214,11 @@ class Collecte:
         suite = {d: v for d, v in serie.items() if d > coupure}
         if prefixe and suite:
             premier = min(suite)
-            dernier_avant = max(prefixe)
-            ecart = fusion.ecart_raccord(ind["type"], prefixe[dernier_avant], suite[premier])
-            msg = f"raccord à date fixe le {premier} (écart {ecart:.2f} {'%' if ind['type'] == 'N' else 'pt'})"
+            if premier in avant:
+                ecart = fusion.ecart_raccord(ind["type"], avant[premier], suite[premier])
+                msg = f"raccord à date fixe le {premier} (écart {ecart:.2f} {'%' if ind['type'] == 'N' else 'pt'} ce jour-là)"
+            else:
+                msg = f"raccord à date fixe le {premier} (pas de date commune pour mesurer l'écart)"
         else:
             msg = ""
         return dict(sorted({**prefixe, **suite}.items())), msg
@@ -353,7 +355,8 @@ def pourcentage_pib(bilan: dict[str, float], pib: dict[str, float], agregat: str
     fin_trimestre: dict[str, float] = {}
     for d, v in bilan.items():
         cle = f"{d[:4]}-{((int(d[5:7]) - 1) // 3) * 3 + 1:02d}-01"
-        fin_trimestre[cle] = v
+        if int(d[5:7]) % 3 == 0:  # dernier mois du trimestre : sinon le bilan du trimestre n'est pas encore connu
+            fin_trimestre[cle] = v
     sortie = {}
     for q in fin_trimestre:
         trimestres = [C.ajouter_mois(q, -3 * k) for k in range(4)]

@@ -214,3 +214,8 @@ test("fenêtres, décalage maximal et prolongement de grille (C3)", () => {
   assert.deepEqual(S.prolongerGrille(["2026-09-30", "2026-10-31"], "M", 2), ["2026-09-30", "2026-10-31", "2026-11-30", "2026-12-31"]);
   assert.deepEqual(S.prolongerGrille(["2026-11-20"], "J", 1), ["2026-11-20", "2026-11-23"]);
 });
+
+test("début de période borné au dernier jour du mois", () => {
+  assert.equal(S.debutPeriode("2026-03-31", "1M"), "2026-02-28");
+  assert.equal(S.debutPeriode("2024-02-29", "1A"), "2023-02-28");
+});

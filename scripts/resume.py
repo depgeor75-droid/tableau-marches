@@ -79,7 +79,7 @@ def carte(cfg, ident, s: Series, etat: dict) -> dict | None:
     valeur_courante = var["1a"] if type_serie == "N" else native[derniere]
     pct = None
     if type_serie != "N" or valeur_courante is not None:
-        pct = C.percentile_carte(mensuel_complet, type_serie, valeur_courante, reg["annees_max"], reg["annees_court"], reg["annees_min"])
+        pct = C.percentile_carte(mensuel_complet, type_serie, valeur_courante, reg["annees_max"], reg["annees_court"], reg["annees_min"], reg.get("bornes", (10, 25, 75, 90)))
     note = None
     if ind.get("transformation") == "glissement_annuel" and etat.get("date_source") and etat["date_source"] > derniere:
         brut = s.col.natives.get(ident)  # la série brute n'est pas conservée : on se fie à la date de la source
@@ -98,7 +98,7 @@ def bouge(cfg, s: Series, col) -> dict:
     reg = cfg.reglages["mouvement"]
     candidats = []
     dates_j = [max(col.natives[i]) for i, ind in cfg.indicateurs.items()
-               if ind["frequence"] == "J" and col.natives.get(i) and not ind.get("auxiliaire")]
+               if ind["frequence"] == "J" and ind.get("mouvement") and col.natives.get(i) and not ind.get("auxiliaire")]
     donnees_au = max(dates_j) if dates_j else None
     if not donnees_au:
         return {"du": None, "au": None, "calme": True, "liste": []}
@@ -250,12 +250,18 @@ def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, 
 
     def val(ident, mois=t):
         if courant and mois == t and ident in courant:
-            return courant[ident]
+            return courant[ident]["valeur"]
         return series_m.get(ident, {}).get(mois)
+
+    def avant(ident, recul_mois):
+        """Valeur recul_mois plus tôt : ancrée sur la dernière observation pour la jauge actuelle."""
+        if courant and ident in courant:
+            return courant[ident].get(recul_mois)
+        return series_m.get(ident, {}).get(C.ajouter_mois(t, -recul_mois))
 
     # 1. inflation sous 2 % ou en net recul
     ident = ids["inflation"]
-    v, v3 = val(ident), series_m.get(ident, {}).get(C.ajouter_mois(t, -3))
+    v, v3 = val(ident), avant(ident, 3)
     if v is None:
         sortie.append({"n": 1, "ok": None, "id": ident})
     else:
@@ -275,7 +281,7 @@ def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, 
     sortie.sort(key=lambda c: c["n"])
     # 4. tensions sur la dette
     ident = ids["dette"]
-    v, v1 = val(ident), series_m.get(ident, {}).get(C.ajouter_mois(t, -1))
+    v, v1 = val(ident), avant(ident, 1)
     if v is None or v1 is None:
         sortie.insert(3, {"n": 4, "ok": None, "id": ident})
     elif zone == "ZE":
@@ -307,8 +313,18 @@ def jauges(cfg, s: Series) -> dict:
         courant = {}
         for i in ids.values():
             n = s.native(i)
-            if n:
-                courant[i] = n[max(n)]
+            if not n:
+                continue
+            derniere = max(n)
+            freq = cfg.indicateurs[i]["frequence"]
+            entree = {"valeur": n[derniere]}
+            for k in (1, 3):
+                if freq in ("M", "T", "A"):
+                    entree[k] = n.get(C.ajouter_mois(derniere, -k))
+                else:
+                    point = C.valeur_a_date(n, C.recul(derniere, mois=k), 7)
+                    entree[k] = point[1] if point else None
+            courant[i] = entree
         t = max((max(m) for m in series_m.values() if m), default=None)
         if not t:
             sortie[zone] = None

@@ -107,9 +107,17 @@ def ecrire(cfg, col, existant: dict, sortie, declencheur: str, jeux, forcer: set
             nouveau_r = _arrondir_serie(recent_depuis_native(native, freq, aujourd_hui, reg["recent_mois"]), dec)
             if ident in forcer or info.get("remplace"):
                 h, r = nouveau_h, nouveau_r
+            elif info.get("role") == "secours" and freq in ("J", "S"):
+                # Secours « prolonge » : la série du jour ne couvre que la fenêtre récente ;
+                # on garde l'historique et on n'y ajoute que les mois nouvellement clos.
+                dernier_mois = max(ancien_h) if ancien_h else ""
+                h = {**ancien_h, **{d: v for d, v in nouveau_h.items() if d > dernier_mois}}
+                r = nouveau_r
             else:
                 h, anomalie_h = fusion.fusionner(ancien_h, nouveau_h)
-                r, anomalie_r = fusion.fusionner(ancien_r, nouveau_r) if freq in ("J", "S") else ({}, None)
+                # La fenêtre « récente » glisse : on ne compare que la partie commune (pas de test de début).
+                ancien_fenetre = {d: v for d, v in ancien_r.items() if nouveau_r and d >= min(nouveau_r)}
+                r, anomalie_r = fusion.fusionner(ancien_fenetre, nouveau_r) if freq in ("J", "S") else ({}, None)
                 for anomalie in (anomalie_h, anomalie_r):
                     if anomalie:
                         col.anomalies.append(("ATTENTION", f"{ident} : {anomalie}"))
@@ -192,7 +200,7 @@ def ecrire(cfg, col, existant: dict, sortie, declencheur: str, jeux, forcer: set
         etat_jeux = existant["etat"].get("jeux", {})
 
     # ------------------------------------------------------------- CSV
-    if ecrire_csv(cfg, series_hist, sortie / "donnees_mensuelles.csv"):
+    if ecrire_csv(cfg, series_hist, sortie / "donnees_mensuelles.csv", aujourd_hui):
         changes.append("donnees_mensuelles.csv")
 
     # ------------------------------------------------------------- état
@@ -259,7 +267,7 @@ def construire_catalogue(cfg, etats, series_hist, series_rec) -> dict:
     }
 
 
-def ecrire_csv(cfg, series_hist: dict[str, dict], chemin) -> bool:
+def ecrire_csv(cfg, series_hist: dict[str, dict], chemin, aujourd_hui=None) -> bool:
     """Toutes les séries en mensuel (mois complets), séparateur « ; », virgule décimale, utf-8-sig."""
     colonnes = [i for i in cfg.publies() if series_hist.get(i)]
     par_mois: dict[str, dict[str, float]] = {}
@@ -270,6 +278,8 @@ def ecrire_csv(cfg, series_hist: dict[str, dict], chemin) -> bool:
                 d = C.ajouter_mois(d, 2)
             elif freq == "A":
                 d = d[:4] + "-12-01"
+            if aujourd_hui and d[:7] >= aujourd_hui.isoformat()[:7]:
+                continue  # mois non terminé
             par_mois.setdefault(d[:7], {})[ident] = v
     entete = ["Mois"] + [f"{cfg.indicateurs[i]['nom_court']} ({cfg.indicateurs[i].get('unite', '')}) [{i}]" for i in colonnes]
     lignes = [";".join(entete)]
