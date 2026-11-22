@@ -64,7 +64,7 @@ Double-cliquez sur **`mettre_a_jour_local.bat`** : il récupère les dernières 
 
 ## 4. Ce que vous pouvez régler vous-même (dossier `config/`)
 
-Modifiez le fichier sur github.com (crayon ✏️ → **Commit changes**) : le site se met à jour en quelques minutes. Les modifications de données d'actions s'appliquent à la collecte suivante.
+Modifiez le fichier sur github.com (crayon ✏️ → **Commit changes**). Le changement apparaît sur le site à la mise à jour suivante (chaque matin), ou tout de suite si vous lancez **Run workflow** (voir § 2).
 
 - **`config/indicateurs.yaml`**, famille K « Valeurs suivies » : ajoutez une action avec son code Yahoo Finance. Exemple, à ajouter sous la ligne d'Aedifica :
   ```yaml

@@ -1,0 +1,18 @@
+{
+ "E2": {
+  "titre": "Prévisions de croissance du FMI (Fonds monétaire international)",
+  "phrase": "Le FMI (Fonds monétaire international) publie deux fois par an ses prévisions de croissance du PIB (produit intérieur brut) réel pour chaque pays, pour l'année en cours et les années suivantes.",
+  "mesure": "La croissance attendue de la production de biens et de services d'un pays, en volume (hors hausse des prix), en % par rapport à l'année précédente. Le tableau donne l'année en cours (estimation) et les deux années suivantes (prévisions).",
+  "calcul": "Les économistes du FMI partent des comptes nationaux publiés, puis font des hypothèses sur les prix de l'énergie, les taux d'intérêt, le commerce mondial et la politique budgétaire. Les chiffres paraissent dans les « Perspectives de l'économie mondiale » (World Economic Outlook), en avril et en octobre, avec parfois une mise à jour en janvier et en juillet.",
+  "interpreter": "Comparez surtout les pays entre eux et l'évolution d'une édition à l'autre : une révision à la baisse en octobre, après celle d'avril, signale une dégradation. Pour les grandes économies avancées, une croissance de 1 à 2 % par an est courante ; les pays émergents comme la Chine croissent en général plus vite.",
+  "bouger": "Les prévisions réagissent aux chocs (pétrole, guerre, pandémie, crise financière), aux décisions des banques centrales et aux plans budgétaires. Elles influencent les anticipations de taux et le moral des marchés.",
+  "liens": [
+   "E1_ZE",
+   "E1_US",
+   "E3_BE",
+   "D13_US",
+   "D14"
+  ],
+  "piege": "Une prévision n'est pas une donnée : elle est souvent révisée, parfois fortement. La zone euro est un agrégat calculé par le FMI. L'application interroge le FMI une fois par semaine : le tableau change seulement à la parution d'une nouvelle édition."
+ }
+}

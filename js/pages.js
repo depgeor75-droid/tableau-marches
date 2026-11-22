@@ -81,7 +81,7 @@
       blocs: ["probabilites", "recession", "anticipations", "previsionsFmi", "signaux", "courbePetrole"],
     },
     croissance: {
-      titre: "Croissance et dette", intro: "Croissance du PIB, dette publique et déficits des grandes économies.",
+      titre: "Croissance et dette", intro: "Croissance du PIB (produit intérieur brut), dette publique et déficits des grandes économies.",
       sections: [
         { titre: "Croissance", familles: ["E"], filtre: function (id) { return id.indexOf("E1_") === 0; }, coches: ["E1_US", "E1_ZE", "E1_CN"] },
         { titre: "Dette publique et solde budgétaire", familles: ["E"], filtre: function (id) { return id.indexOf("E1_") !== 0; }, coches: ["E3T_BE", "E3T_IT", "E3T_DE"] },

@@ -190,7 +190,7 @@
     var largeur = (canevas.parentElement && canevas.parentElement.clientWidth) || 360;
     var echelle = graduations(min, max, largeur);
     var jeux = series.map(function (s, rang) {
-      var teinte = couleur(s.couleur || "--serie-" + ((rang % 3) + 1));
+      var teinte = couleur(s.couleur || "--fam-" + ((rang % 8) + 1));
       var dernier = -1;
       for (var k = s.points.length - 1; k >= 0; k--) if (s.points[k][1] !== null) { dernier = k; break; }
       var jeu = {
@@ -263,7 +263,7 @@
     return monter(canevas, {
       type: "bar",
       data: { labels: categories, datasets: series.map(function (s, rang) {
-        var teinte = couleur(s.couleur || "--serie-" + (rang + 1));
+        var teinte = couleur(s.couleur || "--fam-" + ((rang % 8) + 1));
         return { label: s.nom, data: s.valeurs, backgroundColor: teinte, maxBarThickness: 26, borderRadius: 4, categoryPercentage: 0.7, barPercentage: 0.9 };
       }) },
       options: {

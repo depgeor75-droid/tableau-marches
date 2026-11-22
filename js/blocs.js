@@ -53,7 +53,7 @@
     var r = D.reglages().jauges || {};
     var cible = O.nombre(r.inflation_cible || 2, 0), recul = O.nombre(Math.abs(r.recul_3m || 0.5), 1);
     if (zone === "ZE") return {
-      1: "Inflation (IPCH) sous " + cible + " % ou en net recul (−" + recul + " point sur 3 mois)",
+      1: "Inflation (IPCH, indice des prix à la consommation harmonisé) sous " + cible + " % ou en net recul (−" + recul + " point sur 3 mois)",
       2: "Peur sur les marchés : VSTOXX au-dessus du " + r.percentile_stress + "ᵉ percentile",
       3: "Stress financier : indicateur CISS de la BCE au-dessus du " + r.percentile_stress + "ᵉ percentile",
       4: "Tensions sur la dette : écart Italie − Allemagne au-dessus du " + r.percentile_ecart + "ᵉ percentile et en hausse de plus de " + O.nombre(r.hausse_ecart_1m, 1) + " point sur 1 mois",
@@ -61,7 +61,7 @@
       6: "Taux de dépôt de la BCE déjà bas (≤ " + O.nombre(r.taux_bas, 0) + " %)",
     };
     return {
-      1: "Inflation (PCE) sous " + cible + " % ou en net recul (−" + recul + " point sur 3 mois)",
+      1: "Inflation (PCE, indice des prix des dépenses de consommation) sous " + cible + " % ou en net recul (−" + recul + " point sur 3 mois)",
       2: "Peur sur les marchés : VIX au-dessus du " + r.percentile_stress + "ᵉ percentile",
       3: "Stress financier : indice de la Fed de Saint-Louis au-dessus du " + r.percentile_stress + "ᵉ percentile",
       4: "Tensions sur la dette : taux américain à 10 ans en hausse de plus de " + O.nombre(r.hausse_us10_1m, 2) + " point sur 1 mois",
@@ -90,7 +90,7 @@
           detail.length ? h("span", { class: "muet" }, " — " + detail.join(", ") + (c.date ? " (" + O.dateSelon(c.date, ind ? ind.frequence : "J") + ")" : "")) : null)));
     });
     var phrase = j.evaluees ?
-      "Score " + j.score + " sur " + j.evaluees + (j.evaluees < 6 ? " conditions évaluées" : "") + " : probabilité d'un nouveau QE " + LECTURES[j.lecture] + "." :
+      "Score " + j.score + " sur " + j.evaluees + (j.evaluees < 6 ? " conditions évaluées" : "") + " : conditions favorables à un nouveau QE — lecture « " + LECTURES[j.lecture] + " »." :
       "Aucune condition évaluable.";
     var b = carte(
       h("h3", { class: "graphique__titre" }, zone === "ZE" ? "Zone euro (BCE)" : "États-Unis (Fed)"),
@@ -143,10 +143,10 @@
   }
 
   function probabilites() {
-    var annee = new Date().getUTCFullYear();
     return section("Probabilités d'inflation selon les prévisionnistes", avecPrevisions(function (p) {
       var blocs = [];
       var bce = p.spf_bce;
+      var annee = bce && bce.enquete ? +bce.enquete.slice(0, 4) : new Date().getUTCFullYear();
       if (bce && bce.horizons) {
         var cartes = h("div", { class: "grille-2" });
         bce.horizons.filter(function (x) { return x.annee === annee + 1 || x.annee === annee + 2; }).forEach(function (x) {
@@ -165,7 +165,7 @@
           cu.append(carte(h("h3", { class: "graphique__titre" }, "États-Unis — inflation sous-jacente en " + x.annee),
             h("p", {}, "Les prévisionnistes américains donnent " + pct(x.sous_2) + " de chances que l'inflation sous-jacente (IPC hors énergie et alimentation, du 4ᵉ trimestre au 4ᵉ trimestre) soit sous 2 % en " + x.annee + "."),
             histogramme(us.classes, x.probabilites),
-            h("p", { class: "rappel" }, "Enquête " + us.enquete.replace("-Q", ", T") + " de la Banque fédérale de réserve de Philadelphie (SPF). Le fichier ne publie que l'inflation sous-jacente.")));
+            h("p", { class: "rappel" }, "Enquête " + us.enquete.replace("-Q", ", T") + " de la Banque fédérale de réserve de Philadelphie (SPF). Le fichier ne publie que l'inflation sous-jacente. ", K.boutonInfo("D6", "enquête SPF américaine"))));
         });
         blocs.push(cu);
       }
@@ -228,7 +228,7 @@
       });
       table.append(corps);
       return h("div", {}, h("div", { class: "tableau-zone carte" }, table),
-        h("p", { class: "rappel" }, "Fonds monétaire international (FMI), Perspectives de l'économie mondiale, édition " + O.moisLong(f.edition + "-01") + ". " + annees[0] + " : année en cours (estimation) ; " + annees[1] + " et " + annees[2] + " : prévisions. Source : FMI. ", K.boutonInfo("D7", "prévisions du FMI")));
+        h("p", { class: "rappel" }, "Fonds monétaire international (FMI), Perspectives de l'économie mondiale, édition " + O.moisLong(f.edition + "-01") + ". " + annees[0] + " : année en cours (estimation) ; " + annees[1] + " et " + annees[2] + " : prévisions. Source : FMI. Inflation ", K.boutonInfo("D7", "prévisions d'inflation du FMI"), " · Croissance ", K.boutonInfo("E2", "prévisions de croissance du FMI")));
     }), "Le FMI publie ses prévisions deux fois par an (avril et octobre).", "fmi");
   }
 
@@ -301,7 +301,7 @@
         { horizontal: true, format: function (v) { return O.nombre(v, 0) + " %"; } });
     });
     return section("Dette publique en % du PIB", h("div", { class: "graphique" }, z.conteneur,
-      h("p", { class: "rappel" }, "Dernière année observée par le FMI (" + p[codes[0]].dette.date.slice(0, 4) + "). Source : FMI, Perspectives de l'économie mondiale.")));
+      h("p", { class: "rappel" }, "Dernière année observée par le FMI pour chaque pays : " + codes.map(function (c) { return PAYS[c] + " " + p[c].dette.date.slice(0, 4); }).join(", ") + ". Source : FMI, Perspectives de l'économie mondiale.")));
   }
 
   // ------------------------------------------------------------ QE / QT
@@ -314,7 +314,7 @@
       var x = q[id];
       return carte(h("h3", { class: "graphique__titre" }, noms[id], K.boutonInfo("t:qeqt", "QE et QT")),
         x && x.statut ? [h("p", {}, h("span", { class: "marque marque--neutre" }, libelles[x.statut])),
-          h("p", { class: "aide" }, "Bilan " + (x.variation_3m > 0 ? "en hausse" : "en baisse") + " de " + O.nombre(Math.abs(x.variation_3m), 1) + " % entre le " + O.date(x.date_reference) + " et le " + O.date(x.date) + ".")] :
+          h("p", { class: "aide" }, "Bilan " + (x.variation_3m > 0 ? "en hausse" : "en baisse") + " de " + O.nombre(Math.abs(x.variation_3m), 1) + " % entre " + O.dateSelon(x.date_reference, D.ind(id).frequence) + " et " + O.dateSelon(x.date, D.ind(id).frequence) + ".")] :
           h("p", { class: "aide" }, "Données insuffisantes."));
     })), "Statut d'après la variation du bilan sur 3 mois : hausse de plus de 1 % → QE ; baisse de plus de 1 % → QT ; sinon stable.", "qeqt");
   }
@@ -369,16 +369,16 @@
       if (!c || !c.points || !c.points.length) return h("p", { class: "aide" }, "Courbe à terme non disponible pour le moment.");
       var z = G.zone("Prix du Brent selon l'échéance de livraison", "graphique__zone--petit");
       attendre(function () {
-        var cats = (c.comptant ? ["Comptant"] : []).concat(c.points.map(function (x) { return O.dateSelon(x.echeance + "-01", "M"); }));
+        var cats = (c.comptant ? ["Contrat le plus proche"] : []).concat(c.points.map(function (x) { return O.dateSelon(x.echeance + "-01", "M"); }));
         var vals = (c.comptant ? [c.comptant.valeur] : []).concat(c.points.map(function (x) { return x.prix; }));
-        G.barres(z.canevas, cats, [{ nom: "Brent (USD/baril)", valeurs: vals, couleur: "--serie-2" }], { format: function (v) { return O.nombre(v, 2) + " $"; } });
+        G.barres(z.canevas, cats, [{ nom: "Brent (USD/baril)", valeurs: vals, couleur: "--fam-3" }], { format: function (v) { return O.nombre(v, 2) + " $"; } });
       });
       var phrases = [];
       if (c.dans_6_mois) phrases.push("dans 6 mois (" + O.moisLong(c.dans_6_mois.echeance + "-01") + ") : " + O.nombre(c.dans_6_mois.prix, 2) + " $");
       if (c.dans_12_mois) phrases.push("dans 12 mois (" + O.moisLong(c.dans_12_mois.echeance + "-01") + ") : " + O.nombre(c.dans_12_mois.prix, 2) + " $");
-      return carte(h("p", {}, "Prix du baril de Brent fixé aujourd'hui pour une livraison future" + (c.comptant ? " (comptant : " + O.nombre(c.comptant.valeur, 2) + " $)" : "") + " — " + phrases.join(" ; ") + "."),
+      return carte(h("p", {}, "Prix du baril de Brent fixé aujourd'hui pour une livraison future" + (c.comptant ? " (contrat le plus proche : " + O.nombre(c.comptant.valeur, 2) + " $)" : "") + " — " + phrases.join(" ; ") + ". ", K.boutonInfo("D15", "courbe à terme du pétrole")),
         z.conteneur,
-        h("p", { class: "rappel" }, "Cours des contrats à terme du " + O.date(c.date) + ". Un prix futur plus bas que le prix actuel indique que le marché s'attend à une détente, sans certitude. Source : Yahoo Finance (contrats Brent, NYMEX). ", K.boutonInfo("t:future", "contrat à terme")));
+        h("p", { class: "rappel" }, "Cours des contrats à terme du " + O.date(c.date) + ". Des échéances lointaines moins chères signalent surtout un marché tendu aujourd'hui (offre rare, stocks bas) ; ce n'est pas une prévision du prix futur. Source : Yahoo Finance (contrats Brent, NYMEX). ", K.boutonInfo("t:future", "contrat à terme")));
     }), null, "petrole");
   }
 

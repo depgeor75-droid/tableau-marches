@@ -1,40 +1,40 @@
 {
  "J1": {
   "titre": "VIX — l'« indice de la peur » du marché américain",
-  "phrase": "Le VIX (Volatility Index, « indice de volatilité ») mesure l'ampleur des mouvements que les investisseurs attendent sur la bourse américaine au cours des 30 prochains jours.",
-  "mesure": "La volatilité attendue, c'est-à-dire l'intensité des variations, à la hausse comme à la baisse, de l'indice S&P 500 (les 500 plus grandes sociétés cotées aux États-Unis). Le VIX ne dit pas si la bourse va monter ou baisser ; il dit si elle risque de beaucoup bouger.",
-  "calcul": "Le Cboe (Chicago Board Options Exchange, la bourse des options de Chicago) le calcule à partir des prix des options sur le S&P 500, des contrats qui servent notamment d'assurance contre une baisse. Plus cette protection coûte cher, plus le VIX monte. Il s'exprime en % sur un an : un VIX de 20 signifie environ 6 % de variation attendue sur un mois (20 ÷ √12).",
-  "interpreter": "Repères d'usage, non officiels : sous 15, calme ; de 15 à 20, normal ; de 20 à 30, nervosité ; au-dessus de 30, peur ; au-dessus de 40, panique. Depuis 1990, la valeur de fin de mois est restée sous 20 dans environ 63 % des mois et n'a dépassé 30 que dans environ 7,5 % des mois. Au jour le jour, il a atteint 82,69 le 16 mars 2020 et 52,33 le 8 avril 2025.",
-  "bouger": "Il monte presque toujours quand la bourse chute (lien inverse avec le S&P 500) et s'envole lors des chocs : faillites bancaires, pandémie, guerre. Un VIX très élevé a souvent coïncidé avec des points bas de la bourse, mais ce n'est pas une règle.",
+  "phrase": "Le VIX (Volatility Index, « indice de volatilité ») mesure les mouvements attendus de la bourse américaine d'ici 30 jours.",
+  "mesure": "L'ampleur attendue des variations du S&P 500 (les 500 plus grandes sociétés américaines cotées), à la hausse comme à la baisse. Il ne dit pas si la bourse va monter ou baisser, mais si elle risque de beaucoup bouger.",
+  "calcul": "Le Cboe (Chicago Board Options Exchange) le déduit du prix des options sur le S&P 500, qui servent d'assurance contre une baisse : plus elle coûte cher, plus le VIX monte. En % sur un an, 20 équivaut à environ 6 % de variation attendue sur un mois.",
+  "interpreter": "Repères non officiels : sous 15, calme ; 15 à 20, normal ; 20 à 30, nervosité ; au-dessus de 30, peur ; au-dessus de 40, panique. Depuis 1990, la valeur de fin de mois est restée sous 20 dans 63 % des mois et au-dessus de 30 dans 7,5 %. Pic quotidien : 82,69 (16 mars 2020).",
+  "bouger": "Il monte quand la bourse chute et s'envole lors des chocs (faillites bancaires, pandémie, guerre). Un VIX très élevé coïncide souvent avec un point bas de la bourse, sans règle.",
   "liens": [
    "G2",
    "J2",
    "J5",
    "t:percentile"
   ],
-  "piege": "Le VIX ne prévoit pas la direction du marché et retombe souvent vite après un choc. Particularité : l'historique vient de FRED (base de données de la Fed, la banque centrale américaine, à Saint-Louis) ; les jours les plus récents viennent de Yahoo Finance et sont provisoires : ils peuvent être légèrement corrigés."
+  "piege": "Le VIX ne prévoit pas la direction du marché et retombe vite après un choc. Historique issu de FRED (base de la Banque fédérale de réserve de Saint-Louis, rattachée à la Fed (Réserve fédérale, la banque centrale américaine)) ; derniers jours issus de Yahoo Finance, provisoires."
  },
  "J2": {
   "titre": "VSTOXX — l'« indice de la peur » du marché européen",
-  "phrase": "Le VSTOXX mesure l'ampleur des mouvements que les investisseurs attendent sur les grandes actions de la zone euro au cours des 30 prochains jours.",
-  "mesure": "La volatilité attendue de l'Euro Stoxx 50, l'indice des 50 plus grandes sociétés de la zone euro. Comme le VIX américain, il ne dit pas si la bourse va monter ou baisser, mais si elle risque de beaucoup bouger.",
-  "calcul": "STOXX, fournisseur d'indices du groupe Deutsche Börse, le calcule à partir des prix des options sur l'Euro Stoxx 50, des contrats qui servent notamment d'assurance contre une baisse. Plus cette protection coûte cher, plus l'indice monte. Il s'exprime en % sur un an : un VSTOXX de 24 signifie environ 7 % de variation attendue sur un mois (24 ÷ √12).",
-  "interpreter": "Pas de seuil officiel : situez-le dans l'historique. Depuis 1999, la médiane des valeurs de fin de mois est de 21. Elle est restée sous 27 dans trois mois sur quatre, sous 33 dans neuf mois sur dix, et n'a dépassé 40 que dans environ 6 % des mois. Les sommets mensuels datent de septembre 2002 et d'octobre 2008 (plus de 60). Il est en général un peu plus élevé que le VIX.",
-  "bouger": "Il grimpe lors des chutes de la bourse européenne et des chocs : crise bancaire, crise des dettes publiques, pandémie, guerre. Il suit souvent le VIX, car les peurs se propagent d'un continent à l'autre.",
+  "phrase": "Le VSTOXX mesure les mouvements que les investisseurs attendent sur les grandes actions de la zone euro d'ici 30 jours.",
+  "mesure": "La volatilité attendue de l'Euro Stoxx 50, l'indice des 50 plus grandes sociétés de la zone euro. Comme le VIX (son équivalent américain), il ne dit pas si la bourse va monter ou baisser, mais si elle risque de beaucoup bouger.",
+  "calcul": "STOXX, fournisseur d'indices du groupe Deutsche Börse, le déduit des prix des options sur l'Euro Stoxx 50, des contrats qui servent d'assurance contre une baisse : plus elle coûte cher, plus l'indice monte. Il s'exprime en % sur un an : 24 correspond à environ 7 % de variation attendue sur un mois.",
+  "interpreter": "Pas de seuil officiel : situez-le dans l'historique. Depuis 1999, la valeur de fin de mois médiane est de 21 ; neuf mois sur dix sont sous 33, et 6 % seulement dépassent 40. Sommets mensuels : septembre 2002 et octobre 2008 (plus de 60). Il est en général plus élevé que le VIX.",
+  "bouger": "Il grimpe lors des chutes de la bourse européenne et des chocs : crise bancaire, crise des dettes publiques, pandémie, guerre. Il suit souvent le VIX : les peurs se propagent d'un continent à l'autre.",
   "liens": [
    "J1",
    "G5",
    "J5",
    "t:correlation"
   ],
-  "piege": "Ne comparez pas VSTOXX et VIX au point près : ils portent sur des indices différents. En quotidien, les clôtures européenne et américaine n'ont pas lieu à la même heure, ce qui affaiblit la corrélation. Historique depuis 1999 ; série reprise du site de STOXX."
+  "piege": "Ne comparez pas VSTOXX et VIX au point près : ils portent sur des indices différents, et les clôtures européenne et américaine n'ont pas lieu à la même heure. Historique depuis 1999, repris du site de STOXX."
  },
  "J3": {
   "titre": "GPR — l'indice de risque géopolitique de Caldara et Iacoviello",
   "phrase": "Le GPR (Geopolitical Risk index) mesure l'importance donnée dans la presse aux guerres, aux attentats et aux tensions entre États.",
-  "mesure": "L'attention des médias aux événements géopolitiques inquiétants : menaces de guerre, tensions militaires, menaces nucléaires, terrorisme, début d'un conflit. Il ne mesure pas directement le risque réel, mais la place que ces sujets occupent dans l'actualité.",
-  "calcul": "Deux économistes, Dario Caldara et Matteo Iacoviello, comptent chaque mois la part des articles de grands quotidiens anglophones qui évoquent ces thèmes. Cette part est mise à l'échelle : 100 correspond à la moyenne de 1985 à 2019. Une version quotidienne existe, avec la même échelle. Elle est plus nerveuse.",
-  "interpreter": "Il n'y a pas de seuil officiel. Depuis 1990, la valeur mensuelle médiane est d'environ 92. Elle est restée sous 117 dans trois mois sur quatre et sous 151 dans neuf mois sur dix. Elle n'a dépassé 200 que dans environ 4 % des mois. Les plus hauts mensuels se situent en septembre-octobre 2001 (près de 500 et plus de 510), puis autour de 340 à 380 en 1991 et en 2003.",
+  "mesure": "L'attention des médias aux événements géopolitiques inquiétants : menaces de guerre, tensions militaires, menaces nucléaires, terrorisme, début d'un conflit. Il ne mesure pas directement le risque réel, mais la place de ces sujets dans l'actualité.",
+  "calcul": "Deux économistes, Dario Caldara et Matteo Iacoviello, comptent chaque mois la part des articles de grands quotidiens anglophones qui évoquent ces thèmes. L'échelle est fixée à 100 pour la moyenne de 1985 à 2019. Une version quotidienne existe : elle est plus nerveuse.",
+  "interpreter": "Pas de seuil officiel. Depuis 1990, la valeur mensuelle médiane est d'environ 92 ; trois mois sur quatre sont sous 117, neuf sur dix sous 151, et 4 % seulement dépassent 200. Records : septembre 2001 (près de 500) et octobre 2001 (plus de 510) ; viennent ensuite 340 à 380 en 1991 et en 2003.",
   "bouger": "Il monte lors de guerres, d'attentats ou de crises diplomatiques majeures, puis redescend souvent assez vite. Il influence surtout l'humeur des marchés : prix du pétrole et de l'or, volatilité des actions.",
   "liens": [
    "J1",
@@ -46,10 +46,10 @@
  },
  "J4": {
   "titre": "Indice de stress financier de la Fed de Saint-Louis (STLFSI)",
-  "phrase": "L'indice de stress financier de la Fed (Réserve fédérale, la banque centrale des États-Unis) de Saint-Louis résume en un seul chiffre les tensions sur les marchés financiers américains.",
+  "phrase": "L'indice de stress financier de la Fed (Réserve fédérale, la banque centrale des États-Unis) de Saint-Louis, dit STLFSI (St. Louis Fed Financial Stress Index), résume en un seul chiffre les tensions sur les marchés financiers américains.",
   "mesure": "Le niveau de tension de la finance américaine : 0 correspond à la situation normale (la moyenne depuis fin 1993). Au-dessus de 0, le stress est plus fort que d'habitude ; en dessous, il est plus faible.",
   "calcul": "La Banque fédérale de réserve de Saint-Louis combine chaque semaine 18 séries de marché : sept taux d'intérêt, six écarts de taux et cinq autres indicateurs, dont des mesures de volatilité. Ces séries tendent à bouger ensemble quand le stress monte. L'indice est publié chaque semaine, au vendredi.",
-  "interpreter": "Il n'existe pas de seuil officiel. Depuis fin 1993, la valeur de fin de mois de l'indice est négative dans environ deux mois sur trois. Il n'a dépassé 1 que dans environ 7 % des mois et 2 que dans environ 3 %. Les plus fortes valeurs de fin de mois datent d'octobre 2008 (près de 8) et de mars 2020 (plus de 5).",
+  "interpreter": "Il n'existe pas de seuil officiel. Depuis fin 1993, la valeur de fin de mois est négative environ deux mois sur trois ; elle n'a dépassé 1 que dans 7 % des mois et 2 que dans 3 %. Plus fortes valeurs de fin de mois : octobre 2008 (près de 8) et mars 2020 (plus de 5).",
   "bouger": "Il grimpe lors des crises bancaires, des krachs boursiers et des paniques sur le crédit. Les valeurs nettement négatives décrivent un marché calme, où le crédit est facile.",
   "liens": [
    "J1",
@@ -57,59 +57,59 @@
    "J6",
    "t:percentile"
   ],
-  "piege": "Un indice très bas (calme) n'est pas une garantie : le calme précède parfois les tempêtes. Attention aussi : cet indice a été révisé plusieurs fois (la version utilisée s'appelle STLFSI4). Son historique démarre fin 1993, soit environ 33 ans."
+  "piege": "Un indice très bas (calme) n'est pas une garantie : le calme précède parfois les tempêtes. Attention aussi : cet indice a été révisé plusieurs fois (la quatrième version, STLFSI4, est utilisée). Son historique démarre fin 1993, soit environ 33 ans."
  },
  "J5": {
   "titre": "CISS — l'indicateur de stress systémique de la BCE",
   "phrase": "Le CISS (Composite Indicator of Systemic Stress, « indicateur composite de stress systémique ») dit, entre 0 et 1, à quel point le système financier de la zone euro est sous tension.",
   "mesure": "Le stress dans l'ensemble de la finance européenne : marché monétaire (prêts à très court terme entre banques), obligations, actions, change et intermédiaires financiers. Il vise le risque que le système tout entier se grippe, pas celui d'une entreprise isolée.",
   "calcul": "La BCE (Banque centrale européenne) part de 15 mesures de stress, réparties en cinq segments de marché. Elle les agrège en tenant compte de leur corrélation : l'indicateur monte davantage quand le stress touche plusieurs segments à la fois. Nous utilisons la nouvelle version (« NEW CISS »), quotidienne.",
-  "interpreter": "Il n'y a pas de seuil officiel. Depuis 1990, la valeur mensuelle médiane est d'environ 0,06. Elle est restée sous 0,18 dans trois mois sur quatre et sous 0,34 dans neuf mois sur dix. Elle n'a dépassé 0,4 que dans environ 7 % des mois. Les plus hauts datent de la crise de 2008-2009 (plus de 0,9 en octobre et novembre 2008).",
-  "bouger": "Il monte lors des crises bancaires, des crises de la dette publique, des chocs boursiers et des paniques sur les devises. Il redescend quand les marchés se calment ou quand la banque centrale intervient.",
+  "interpreter": "Il n'y a pas de seuil officiel. Depuis 1990, la valeur de fin de mois médiane est d'environ 0,06 ; trois mois sur quatre sont sous 0,18, neuf sur dix sous 0,34, et 7 % seulement dépassent 0,4. Les plus hauts datent de la crise de 2008-2009 (plus de 0,9 en octobre et novembre 2008).",
+  "bouger": "Il monte lors des crises bancaires, des crises de la dette publique, des chocs boursiers et des paniques sur les devises, et redescend quand les marchés se calment.",
   "liens": [
    "J1",
    "J2",
    "J7",
    "J4"
   ],
-  "piege": "Les valeurs élevées sont rares : au-delà de 0,34, on est parmi les 10 % des mois les plus tendus. Seule la nouvelle version est utilisée, car l'ancienne est arrêtée depuis mai 2025. Le CISS vise la zone euro : son équivalent américain n'est pas affiché ici."
+  "piege": "Seule la nouvelle version est utilisée, car l'ancienne est arrêtée depuis mai 2025. Le CISS vise la zone euro : son équivalent américain n'est pas affiché ici."
  },
  "J6": {
   "titre": "Écart de crédit des entreprises américaines (GZ) et prime excédentaire (EBP)",
-  "phrase": "Ces deux mesures de la Fed (Réserve fédérale, la banque centrale des États-Unis) disent combien de rendement en plus les entreprises américaines doivent offrir à ceux qui leur prêtent, par rapport à l'État.",
-  "mesure": "L'écart GZ (du nom de ses auteurs, Gilchrist et Zakrajšek) est la différence moyenne entre le taux des obligations d'entreprises et celui des obligations d'État de même durée. L'EBP (Excess Bond Premium, « prime obligataire excédentaire ») en isole la part que le risque de faillite attendu n'explique pas : elle reflète l'appétit pour le risque.",
-  "calcul": "Les chercheurs de la Fed partent des prix de nombreuses obligations d'entreprises non financières américaines, rapprochés de leurs comptes. Ils en tirent l'écart moyen (GZ), puis estiment la part due au risque de défaut ; le reste est l'EBP. Les deux s'expriment en points de pourcentage, chaque mois.",
-  "interpreter": "Pas de seuil officiel. Depuis 1990, l'écart GZ médian est d'environ 1,7 point. Il est resté sous 2,3 points dans trois mois sur quatre et n'a dépassé 4 points que dans environ 3 % des mois (maximum de plus de 7 points fin 2008). L'EBP est en moyenne légèrement négative ; au-dessus de 1 point (environ 7 % des mois), le crédit est très tendu.",
-  "bouger": "L'écart s'élargit quand les investisseurs craignent des faillites ou fuient le risque : récession, crise financière, krach. Il se resserre quand la confiance revient, et annonce parfois un ralentissement.",
+  "phrase": "Ces deux mesures de la Fed (Réserve fédérale, la banque centrale des États-Unis) chiffrent le rendement supplémentaire que les entreprises américaines offrent, face à l'État, à ceux qui leur prêtent.",
+  "mesure": "L'écart GZ (initiales de ses auteurs, Gilchrist et Zakrajšek) est la différence moyenne entre le taux des obligations d'entreprises et celui des obligations d'État de même durée. L'EBP (Excess Bond Premium, « prime obligataire excédentaire ») en isole la part que le risque de faillite n'explique pas : l'appétit pour le risque.",
+  "calcul": "Des chercheurs de la Fed partent des prix de nombreuses obligations d'entreprises américaines non financières. Ils en tirent l'écart moyen (GZ), puis estiment la part due au risque de défaut : le reste est l'EBP. Valeurs mensuelles, en points de pourcentage.",
+  "interpreter": "Pas de seuil officiel. Depuis 1990, l'écart GZ médian est d'environ 1,7 point ; trois mois sur quatre sont sous 2,3 points, et 3 % seulement dépassent 4 points (maximum : plus de 7 fin 2008). L'EBP est proche de zéro en temps normal ; au-dessus de 1 point (7 % des mois), le crédit est très tendu.",
+  "bouger": "L'écart s'élargit quand les investisseurs craignent des faillites ou fuient le risque (récession, crise, krach) et se resserre quand la confiance revient. Il annonce parfois un ralentissement.",
   "liens": [
    "J4",
    "J1",
    "J7",
    "t:spread"
   ],
-  "piege": "Ce sont des produits de recherche du personnel de la Fed, pas des statistiques officielles. Publiés une fois par mois, avec du retard, ils peuvent voir tout leur historique révisé à chaque mise à jour. Le tableau de bord retélécharge donc tout l'historique à chaque mise à jour."
+  "piege": "Recherches du personnel de la Fed, pas statistiques officielles. Publiées chaque mois avec du retard, elles peuvent voir tout leur historique révisé : le tableau de bord le retélécharge donc en entier à chaque mise à jour."
  },
  "J7": {
   "titre": "Tensions obligataires en zone euro (composante du CISS)",
-  "phrase": "Cet indicateur donne la part du stress de la zone euro qui vient du marché obligataire, et sert d'approximation des tensions sur le crédit.",
-  "mesure": "Les tensions sur le marché des obligations de la zone euro : volatilité des taux des États, écarts de swap (taux d'échange entre banques) et écarts de rendement des obligations privées. Ce n'est donc pas un écart de crédit pur des entreprises : aucune série gratuite et publique de ce type n'a été trouvée pour la zone euro.",
-  "calcul": "La BCE (Banque centrale européenne) calcule le CISS (indicateur composite de stress systémique) à partir de cinq segments de marché. Nous affichons la contribution du segment « obligations » : la part du CISS global qui lui revient. Elle est publiée chaque jour.",
-  "interpreter": "Pas de seuil officiel. Depuis 1999, la valeur mensuelle médiane est d'environ 0,09. Elle est restée sous 0,125 dans trois mois sur quatre et sous 0,17 dans neuf mois sur dix. Elle n'a dépassé 0,2 que dans environ 4 % des mois, surtout lors de la crise de 2008-2009.",
-  "bouger": "Elle monte quand les taux des obligations d'État deviennent plus volatils, ou quand les écarts de swap et de crédit s'élargissent. Elle augmente donc lors des crises bancaires et de la dette publique. Elle suit en partie le CISS global.",
+  "phrase": "Cet indicateur mesure ce que le marché obligataire apporte au stress de la zone euro, et sert d'approximation des tensions sur le crédit.",
+  "mesure": "Les tensions sur le marché des obligations de la zone euro : volatilité des taux des États, écarts de swap (taux d'échange entre banques) et écarts de rendement des obligations privées. Ce n'est pas un écart de crédit pur : aucune série gratuite et publique de ce type n'a été trouvée pour la zone euro.",
+  "calcul": "La BCE (Banque centrale européenne) calcule le CISS (indicateur composite de stress systémique, voir J5) à partir de cinq segments de marché. Nous affichons la contribution du segment « obligations » au CISS, publiée chaque jour.",
+  "interpreter": "Pas de seuil officiel. Depuis 1999, la valeur de fin de mois médiane est d'environ 0,09 ; trois mois sur quatre sont sous 0,125, neuf sur dix sous 0,17, et 4 % seulement dépassent 0,2, surtout lors de la crise de 2008-2009.",
+  "bouger": "Elle monte quand les taux des obligations d'État deviennent plus volatils ou que les écarts de swap et de crédit s'élargissent : crises bancaires, crise de la dette publique.",
   "liens": [
    "J5",
    "J6",
    "B4",
    "t:spread"
   ],
-  "piege": "Une contribution n'est pas le sous-indice brut : son niveau est plus bas que celui du CISS. Elle mêle tensions sur les obligations d'État, les swaps et les obligations privées, sans les séparer. Ne la lisez pas comme l'écart de crédit américain (J6), plus précis. Historique depuis 1999."
+  "piege": "Une contribution n'est pas le sous-indice brut. Les contributions des cinq segments, additionnées, dépassent le CISS, qui tient compte des corrélations entre segments (leur tendance à bouger ensemble) : une contribution peut donc être supérieure au CISS lui-même. Elle mêle obligations d'État, swaps et obligations privées. Ne la lisez pas comme l'écart de crédit américain (J6). Historique depuis 1999."
  },
  "t:base100": {
   "titre": "Base 100 — comparer des courbes de niveaux différents",
   "phrase": "La base 100 ramène plusieurs courbes au même point de départ, fixé à 100, pour comparer leur évolution.",
   "mesure": "Elle ne mesure rien de nouveau : elle change l'échelle. On compare l'or, un indice boursier ou un bilan de banque centrale, même si leurs prix n'ont aucun rapport.",
   "calcul": "Chaque valeur est divisée par la première valeur de la période choisie, puis multipliée par 100. Une courbe à 130 a gagné 30 % depuis le départ ; une courbe à 80 a perdu 20 %.",
-  "interpreter": "Le but est de voir qui a le plus progressé, pas qui a le prix le plus haut. Le tableau de bord ne l'applique qu'aux prix et aux montants. Les taux et les indices (comme le VIX) gardent leur unité.",
+  "interpreter": "Le but est de voir qui a le plus progressé, pas qui a le prix le plus haut. Le tableau de bord ne l'applique qu'aux prix et aux montants. Les taux et les indices (comme le VIX, indice de volatilité américain) gardent leur unité.",
   "bouger": "Le point de départ change tout : en changeant la période affichée, on change le 100 et donc l'allure relative des courbes. Elle ne change que l'affichage, pas le calcul des corrélations.",
   "liens": [
    "t:points",
@@ -124,7 +124,7 @@
   "phrase": "Quand une grandeur est déjà un pourcentage (un taux), on mesure sa variation en points de pourcentage, pas en %.",
   "mesure": "La distance entre deux niveaux de taux. Passer de 2 % à 3 % est une hausse de 1 point de pourcentage. C'est aussi une hausse de 50 % en relatif (1 ÷ 2), ce qui n'a pas du tout le même sens.",
   "calcul": "En points : nouveau taux moins ancien taux. En %, pour un prix : (nouveau ÷ ancien) − 1. Exemple : un indice qui passe de 4 000 à 4 200 gagne 5 %, mais on ne dira pas 200 points de pourcentage.",
-  "interpreter": "Le tableau de bord mesure en points les variations des taux, de l'inflation et des indices comme le VIX, et en % celles des prix et des cours. Une hausse de 0,25 d'un taux directeur est donc d'un quart de point.",
+  "interpreter": "Le tableau de bord mesure en points les variations des taux, de l'inflation et des indices comme le VIX (indice de volatilité américain), et en % celles des prix et des cours. Une hausse de 0,25 d'un taux directeur est donc d'un quart de point.",
   "bouger": "Rien ne « bouge » ici : c'est une règle de lecture. Elle influence la façon de comparer : une baisse de 1 point d'un taux de 1 % est énorme, d'un taux de 8 % elle est modeste.",
   "liens": [
    "t:glissement",
@@ -169,7 +169,7 @@
   "phrase": "Deux courbes qui évoluent ensemble ne prouvent pas que l'une provoque l'autre.",
   "mesure": "Un rappel de prudence, pas une mesure. Un coefficient de corrélation élevé dit seulement que deux séries ont évolué de façon semblable dans le passé.",
   "calcul": "Aucun calcul : c'est un raisonnement. Trois explications sont possibles : A cause B ; B cause A ; ou une troisième cause agit sur les deux. Exemple : les glaces et les noyades augmentent l'été, parce que la chaleur agit sur les deux.",
-  "interpreter": "Un lien statistique devient crédible quand il y a une explication économique plausible, quand il résiste à plusieurs périodes et quand l'effet précède la cause supposée. Même alors, il reste une hypothèse.",
+  "interpreter": "Un lien statistique devient crédible quand il y a une explication économique plausible, quand il résiste à plusieurs périodes et quand la cause supposée précède l'effet dans le temps. Même alors, il reste une hypothèse.",
   "bouger": "Les liens changent avec le temps : ce qui valait dans les années 1990 peut ne plus valoir après une crise ou un changement de politique monétaire.",
   "liens": [
    "t:correlation",
@@ -227,9 +227,9 @@
  "t:qeqt": {
   "titre": "QE et QT — quand la banque centrale gonfle ou dégonfle son bilan",
   "phrase": "Le QE (Quantitative Easing, « assouplissement quantitatif ») est l'achat massif de titres par une banque centrale ; le QT (Quantitative Tightening, « resserrement quantitatif ») est le mouvement inverse.",
-  "mesure": "La politique de la banque centrale quand son taux directeur est déjà proche de zéro. Le bilan de la banque (la somme de ce qu'elle détient et de ce qu'elle doit) en est le baromètre.",
+  "mesure": "La politique de la banque centrale quand son taux directeur est déjà proche de zéro. Le bilan de la banque (le total de ce qu'elle détient, son actif) en est le baromètre.",
   "calcul": "En QE, la banque crée de la monnaie pour acheter des obligations d'État et d'autres titres : son bilan grossit. En QT, elle cesse de remplacer les titres arrivés à échéance, ou elle en revend : son bilan diminue.",
-  "interpreter": "Le QE fait baisser les taux longs et soutient les prix des actifs ; le QT agit en sens inverse. Le tableau de bord suit les bilans de la Fed (banque centrale américaine), de la BCE (Banque centrale européenne), de la Banque du Japon et de la Banque d'Angleterre, en montants et en % du PIB.",
+  "interpreter": "Le QE fait baisser les taux longs et soutient les prix des actifs ; le QT agit en sens inverse. Le tableau de bord suit les bilans de la Fed (banque centrale américaine), de la BCE (Banque centrale européenne), de la Banque du Japon et de la Banque d'Angleterre, en montants et en % du PIB (produit intérieur brut).",
   "bouger": "Le bilan bouge avec les décisions d'achat, mais aussi avec les échéances. Les banques centrales lancent un QE lors des crises (2008, 2020) et un QT pour retirer l'excès de monnaie.",
   "liens": [
    "F1",
@@ -275,7 +275,7 @@
  "t:spread": {
   "titre": "Écart de taux (spread) — la différence entre deux taux",
   "phrase": "Un écart de taux, ou « spread », est la différence entre deux taux d'intérêt, qui mesure en général le risque ou la durée supplémentaires que l'on accepte.",
-  "mesure": "Le prix du risque. Exemple aux chiffres inventés : si un pays emprunte à 4,5 % et un autre, plus sûr, à 2,5 %, l'écart est de 2 points de pourcentage : le marché demande 2 points de plus pour prêter au premier.",
+  "mesure": "Le prix du risque. Exemple de calcul : si un pays emprunte à 4,5 % et un autre, plus sûr, à 2,5 %, l'écart est de 2 points de pourcentage : le marché demande 2 points de plus pour prêter au premier.",
   "calcul": "Taux A moins taux B, exprimé en points de pourcentage (ou en « points de base » : 100 points de base valent 1 point). On compare le plus souvent deux pays, deux durées, ou une entreprise et l'État.",
   "interpreter": "Un écart qui s'élargit signale plus de méfiance ; un écart qui se resserre, plus de confiance. L'écart entre pays de la zone euro mesure la prime de risque sur leur dette. L'écart entre entreprises et État mesure le risque de crédit.",
   "bouger": "Il s'élargit lors des crises de confiance (dette publique, banques, récession) et se resserre quand elles s'apaisent. La banque centrale peut le réduire par ses achats de titres.",
@@ -309,7 +309,7 @@
   "phrase": "Un contrat à terme, ou « future », est un accord d'acheter ou de vendre un produit à un prix fixé à l'avance, à une date future.",
   "mesure": "Le prix attendu d'une matière première pour une échéance donnée. Il sert aux producteurs et aux consommateurs à se couvrir contre les variations de prix.",
   "calcul": "Deux parties se mettent d'accord aujourd'hui sur un prix, avec livraison (ou règlement financier) plus tard, à une date d'échéance. Pour obtenir une courbe continue, on enchaîne les contrats : on passe au contrat suivant quand le premier approche de son échéance.",
-  "interpreter": "Les cours du Brent, du WTI, du gaz, de l'or et du cuivre affichés ici sont ceux de contrats à terme proches de leur échéance. Pour le Brent et le WTI, l'historique ancien est le prix « au comptant » publié par l'agence américaine de l'énergie (EIA, via FRED) ; seuls les jours récents sont des contrats à terme, d'où un petit décalage possible au raccord.",
+  "interpreter": "Les cours du Brent (référence européenne du pétrole), du WTI (West Texas Intermediate, référence américaine), du gaz, de l'or et du cuivre affichés ici sont ceux de contrats à terme proches de leur échéance. Pour le Brent et le WTI, l'historique ancien est le prix « au comptant » publié par l'agence américaine de l'énergie (EIA, via FRED) ; seuls les jours récents sont des contrats à terme, d'où un petit décalage possible au raccord.",
   "bouger": "Il suit l'offre et la demande, les stocks, la météo, la géopolitique et les taux d'intérêt. Le prix du contrat peut différer du prix « au comptant » (livraison immédiate).",
   "liens": [
    "H1",
@@ -323,7 +323,7 @@
   "titre": "Prix hors dividendes — ce que montre un cours de clôture",
   "phrase": "Un cours hors dividendes ne compte que le prix de l'action ou du fonds, sans les dividendes versés aux actionnaires.",
   "mesure": "La variation du prix seul. Le rendement total d'un investisseur est plus élevé, car il touche en plus les dividendes, parfois plusieurs % par an.",
-  "calcul": "Le tableau de bord utilise le cours de clôture brut, non ajusté. Quand une société verse un dividende, son cours baisse d'à peu près ce montant le jour du détachement, sans rien changer à la richesse de l'actionnaire.",
+  "calcul": "Le tableau de bord utilise le cours de clôture brut, non ajusté (sauf le DAX allemand, qui réinvestit lui-même les dividendes, et les fonds de capitalisation, qui les réinvestissent). Quand une société verse un dividende, son cours baisse d'à peu près ce montant le jour du détachement, sans rien changer à la richesse de l'actionnaire.",
   "interpreter": "Pour un indice comme le S&P 500 ou le CAC 40, on lit l'évolution des prix. Certains indices, comme le DAX allemand, réinvestissent les dividendes : leur courbe est plus haute qu'un indice de prix équivalent. Les ETF immobiliers, très généreux en dividendes, montent moins vite que leur rendement réel.",
   "bouger": "L'écart entre prix et rendement total grandit avec le temps et avec le taux de dividende. Il pèse davantage sur l'immobilier coté et sur les actions à forts dividendes.",
   "liens": [

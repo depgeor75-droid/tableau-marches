@@ -34,7 +34,7 @@ comparaisons:
   - libelle: "Dette et taux : Italie vs Allemagne"
     reference: B8
     autres: [B4, E3T_IT, E3T_DE]
-    mode: rythmes
+    mode: mouvements
     periode: Max
     affichage: valeurs
     decalages: {}

@@ -124,6 +124,15 @@
         corps.push(h("p", { class: "aide" }, "Fiche introuvable."));
       }
       if (ind) corps.push(piedFiche(ind, id));
+      else {
+        var jeux = D.catalogue.jeux || {};
+        Object.keys(jeux).forEach(function (j) {
+          if (jeux[j].fiche === cle) {
+            var e = (D.etat.jeux || {})[j] || {};
+            corps.push(h("p", { class: "fiche__pied" }, jeux[j].nom + " · " + jeux[j].mention + (e.date ? " · Dernière enquête ou édition : " + O.date(e.date) : "") + "."));
+          }
+        });
+      }
       ouvrirFeuille(fiche ? fiche.titre : (ind ? ind.nom : "Fiche"), corps);
     });
   }
@@ -239,16 +248,18 @@
     var cleMemoire = "famille." + (options.id || ids.join("_"));
     var memoire = O.lire(cleMemoire, {});
     var disponibles = ids.filter(function (id) { return D.ind(id) && D.carte(id); });
-    var coches = new Set(memoire.coches || options.coches || disponibles.slice(0, 4));
+    var coches = new Set((memoire.coches || options.coches || disponibles.slice(0, 4)).filter(function (id) { return disponibles.indexOf(id) >= 0; }));
+    while (coches.size > 1 && nombreAxes(Array.from(coches)) > 3) coches.delete(Array.from(coches).pop());
     var periode = memoire.periode || options.periode || "10A";
     var evenementsVisibles = O.lire("evenements", false);
     var bloc = h("section", { class: "graphique section" });
     var tete = h("div", { class: "graphique__tete" });
     var legende = h("div", { class: "legende-cases" });
+    var avis = h("p", { class: "aide", role: "status" });
     var z = G.zone("Graphique : " + (options.titre || "séries de la famille"), "graphique__zone--grand");
     var pied = h("div", { class: "graphique__options" });
     var sources = h("p", { class: "rappel" });
-    bloc.append(tete, legende, z.conteneur, pied, sources);
+    bloc.append(tete, legende, avis, z.conteneur, pied, sources);
     if (!disponibles.length) {
       tete.append(h("h3", { class: "graphique__titre" }, options.titre || ""));
       G.message(z.conteneur, "Aucune donnée disponible pour ces séries.");
@@ -263,7 +274,12 @@
       disponibles.forEach(function (id, rang) {
         var ind = D.ind(id);
         var caseNode = h("input", { type: "checkbox", checked: coches.has(id), onchange: function (ev) {
-          if (ev.target.checked) coches.add(id); else coches.delete(id);
+          if (ev.target.checked) {
+            var essai = Array.from(coches).concat([id]);
+            if (nombreAxes(essai) > 3) { ev.target.checked = false; avis.textContent = "Trop d'unités différentes (3 axes au plus) : décochez une courbe avant d'en ajouter une autre."; return; }
+            coches.add(id);
+          } else coches.delete(id);
+          avis.textContent = "";
           memoriser(); actualiser();
         } });
         legende.append(h("label", {}, caseNode,
@@ -272,7 +288,11 @@
       });
     }
 
-    function couleurRang(rang) { return ["--serie-1", "--serie-2", "--serie-3", "--reference", "--muet", "--attention"][rang % 6]; }
+    function couleurRang(rang) { return "--fam-" + ((rang % 8) + 1); }  // jamais de vert ni de rouge (réservés aux corrélations)
+
+    /** Clé d'axe : même unité → même axe, sauf les indices centrés (N*), qui ont chacun leur axe. */
+    function cleAxe(id) { var ind = D.ind(id); return ind.type === "N*" ? (ind.unite || "") + " | " + ind.nom_court : (ind.unite || ""); }
+    function nombreAxes(ids) { var s = {}; ids.forEach(function (id) { s[cleAxe(id)] = true; }); return Object.keys(s).length; }
 
     function actualiser() {
       var choisis = disponibles.filter(function (id) { return coches.has(id); });
@@ -293,10 +313,15 @@
           var debut = debutPeriode(p, fin);
           series.forEach(function (x) {
             var ind = D.ind(x.id);
-            var freq = vn ? ind.frequence : (ind.frequence === "T" || ind.frequence === "A" ? ind.frequence : "M");
-            var src = vn === vueNative ? x.s : null;
-            if (!src) return; // la vue n'est pas chargée : on ne grise pas à l'aveugle
-            if (S.pointsDansPeriode(src, freq, debut, fin) < 12) desactivees[p] = "Moins de 12 points pour « " + ind.nom_court + " » sur cette période";
+            var raison = "Moins de 12 points pour « " + ind.nom_court + " » sur cette période";
+            if (ind.frequence === "M" || ind.frequence === "T" || ind.frequence === "A") {
+              // même fichier (historique) dans les deux vues : le compte est toujours possible
+              if (S.pointsDansPeriode(x.s, ind.frequence, debut, fin) < 12) desactivees[p] = raison;
+            } else if (ind.frequence === "S" && p === "1M") {
+              desactivees[p] = raison; // une série hebdomadaire n'a que 4 ou 5 points sur un mois
+            } else if (vn === vueNative && S.pointsDansPeriode(x.s, vn ? ind.frequence : "M", debut, fin) < 12) {
+              desactivees[p] = raison;
+            }
           });
         });
         O.vider(tete);
@@ -323,7 +348,7 @@
       var reglages = D.reglages().graphiques || { trou_max_jours: {} };
       var gs = series.map(function (x) {
         var ind = D.ind(x.id);
-        var unite = ind.unite || "";
+        var unite = cleAxe(x.id);
         if (unites.indexOf(unite) < 0) unites.push(unite);
         var points = [];
         for (var i = 0; i < x.s.dates.length; i++) {
@@ -341,7 +366,7 @@
         };
       });
       var axes = {};
-      unites.slice(0, 3).forEach(function (u, i) { axes[["y", "y1", "y2"][i]] = { titre: u, visible: i < 2 }; });
+      unites.slice(0, 3).forEach(function (u, i) { axes[["y", "y1", "y2"][i]] = { titre: u.split(" | ").pop() }; });
       var evts = evenementsVisibles ? (D.catalogue.evenements || []).map(function (e) { return { t: S.versTemps(e.date), libelle: e.libelle }; }) : [];
       G.courbes(z.canevas, gs, { axes: axes, evenements: evts, min: debut ? S.versTemps(debut) : undefined });
     }

@@ -4,7 +4,7 @@
   "phrase": "L'IPC américain indique, en %, de combien les prix payés par les ménages des États-Unis ont augmenté en un an.",
   "mesure": "Le coût d'un panier type : logement, alimentation, transports, santé, loisirs. À 3 %, le même panier coûte 3 % de plus qu'il y a douze mois.",
   "calcul": "Le BLS (Bureau des statistiques du travail américain) publie un indice mensuel. On le compare à celui du même mois un an plus tôt. Le calcul porte sur l'indice brut, non corrigé des variations saisonnières, comme le chiffre officiel.",
-  "interpreter": "La Fed (banque centrale américaine) vise 2 % par an, sur une autre mesure : le PCE (C3). Depuis 1990, la moitié des mois sont sous 2,6 % et environ un mois sur dix dépasse 4,7 %. Sommet : 9,1 % en juin 2022 ; creux : −2,1 % en juillet 2009.",
+  "interpreter": "La Fed (Réserve fédérale, la banque centrale américaine) vise 2 % par an, sur une autre mesure : le PCE (indice des prix des dépenses de consommation, C3). Depuis 1990, la moitié des mois sont sous 2,6 % et environ un mois sur dix dépasse 4,7 %. Sommet : 9,1 % en juin 2022 ; creux : −2,1 % en juillet 2009.",
   "bouger": "L'énergie et l'alimentation (changeantes), les loyers et les salaires (plus lents). L'IPC oriente les décisions de la Fed, donc les taux d'intérêt.",
   "liens": [
    "C2",
@@ -31,10 +31,10 @@
  },
  "C3": {
   "titre": "Inflation américaine — PCE (indice des dépenses de consommation), la mesure visée par la Fed",
-  "phrase": "Le PCE mesure la hausse des prix des dépenses de consommation américaines ; c'est l'indicateur d'inflation que la Fed regarde en priorité.",
-  "mesure": "La hausse sur un an des prix de tout ce que consomment les ménages, y compris des dépenses réglées en leur nom, comme une partie des soins de santé. Son champ est plus large que celui de l'IPC (C1).",
+  "phrase": "Le PCE mesure la hausse des prix des dépenses de consommation américaines ; c'est l'indicateur d'inflation que la Fed (Réserve fédérale, la banque centrale américaine) regarde en priorité.",
+  "mesure": "La hausse sur un an des prix de tout ce que consomment les ménages, y compris des dépenses réglées en leur nom, comme une partie des soins de santé. Son champ est plus large que celui de l'IPC (indice des prix à la consommation, C1).",
   "calcul": "Le BEA (Bureau d'analyse économique américain) publie un indice mensuel. On le compare à celui du même mois un an plus tôt. Il paraît un peu après l'IPC.",
-  "interpreter": "La Fed (banque centrale américaine) vise 2 % par an sur cette mesure. Depuis 1990, la moitié des mois sont sous 2,2 % (contre 2,6 % pour l'IPC) : le PCE est le plus souvent plus bas que l'IPC. Sommet : 7,2 % en juin 2022 ; creux : −1,5 % en juillet 2009.",
+  "interpreter": "La Fed vise 2 % par an sur cette mesure. Depuis 1990, la moitié des mois sont sous 2,2 % (contre 2,6 % pour l'IPC) : le PCE est le plus souvent plus bas que l'IPC. Sommet : 7,2 % en juin 2022 ; creux : −1,5 % en juillet 2009.",
   "bouger": "Les mêmes forces que l'IPC (énergie, loyers, salaires), avec plus de poids pour la santé. Il guide la politique de la Fed, donc les taux d'intérêt.",
   "liens": [
    "C4",
@@ -46,10 +46,10 @@
  },
  "C4": {
   "titre": "Inflation sous-jacente américaine — PCE hors énergie et alimentation",
-  "phrase": "Le PCE sous-jacent est l'inflation que la Fed surveille de plus près pour juger de la tendance de fond.",
+  "phrase": "Le PCE (indice des prix des dépenses de consommation) sous-jacent est l'inflation que la Fed (Réserve fédérale, la banque centrale américaine) surveille de plus près pour juger de la tendance de fond.",
   "mesure": "La hausse sur un an des prix des dépenses de consommation (PCE, voir C3), une fois retirés l'énergie et l'alimentation, dont les prix sautent d'un mois à l'autre.",
-  "calcul": "Le BEA (Bureau d'analyse économique américain) publie l'indice mensuel. On le compare à celui du même mois un an plus tôt. Il paraît un peu après l'IPC.",
-  "interpreter": "La Fed (banque centrale américaine) vise 2 % par an sur le PCE total. Pour le PCE sous-jacent, la moitié des mois depuis 1990 sont sous 1,9 % ; environ un mois sur dix dépasse 3,5 %. Sommet : 5,6 % en septembre 2022 ; creux : 0,6 % en juillet 2009.",
+  "calcul": "Le BEA (Bureau d'analyse économique américain) publie l'indice mensuel. On le compare à celui du même mois un an plus tôt. Il paraît un peu après l'IPC (indice des prix à la consommation).",
+  "interpreter": "La Fed vise 2 % par an sur le PCE total. Pour le PCE sous-jacent, la moitié des mois depuis 1990 sont sous 1,9 % ; environ un mois sur dix dépasse 3,5 %. Sommet : 5,6 % en septembre 2022 ; creux : 0,6 % en juillet 2009.",
   "bouger": "Les loyers, les salaires et les prix des services, qui évoluent lentement. Il sert de repère aux décisions de la Fed, donc aux taux d'intérêt.",
   "liens": [
    "C3",
@@ -133,7 +133,7 @@
    "C5",
    "E1_UK"
   ],
-  "piege": "Ne pas la comparer à l'IPCH de la zone euro sans précaution : le panier et les pondérations diffèrent. Les données d'autres fournisseurs (OCDE) peuvent s'écarter de l'ONS ; on retient ici l'ONS. La série démarre en 1990."
+  "piege": "Ne pas la comparer à l'IPCH (indice des prix à la consommation harmonisé) de la zone euro sans précaution : le panier et les pondérations diffèrent. Les données d'autres fournisseurs (OCDE) peuvent s'écarter de l'ONS ; on retient ici l'ONS. La série démarre en 1990."
  },
  "C12": {
   "titre": "Inflation au Japon — IPC (indice des prix à la consommation)",
@@ -178,7 +178,7 @@
    "C1",
    "t:point_mort"
   ],
-  "piege": "Ce n'est pas une prévision certaine : il mélange l'inflation attendue, une prime de risque et la liquidité du marché (d'où les valeurs aberrantes de 2008). Série quotidienne depuis 2003 ; les jours fériés restent vides. Les TIPS suivent l'IPC (C1), pas le PCE."
+  "piege": "Ce n'est pas une prévision certaine : il mélange l'inflation attendue, une prime de risque et la liquidité du marché (d'où les valeurs aberrantes de 2008). Série quotidienne depuis 2003 ; les jours fériés restent vides. Les TIPS suivent l'IPC (indice des prix à la consommation, C1), pas le PCE (indice des prix des dépenses de consommation, C3)."
  },
  "D2": {
   "titre": "Inflation anticipée à 10 ans aux États-Unis — « point mort d'inflation »",
@@ -193,7 +193,7 @@
    "B1",
    "C1"
   ],
-  "piege": "Comme D1, c'est un prix de marché, pas un pronostic : prime de risque et liquidité y sont mêlées. La série démarre en 2003 ; les jours fériés restent vides. Les TIPS suivent l'IPC (C1), pas le PCE."
+  "piege": "Comme D1, c'est un prix de marché, pas un pronostic : prime de risque et liquidité y sont mêlées. La série démarre en 2003 ; les jours fériés restent vides. Les TIPS suivent l'IPC (indice des prix à la consommation, C1), pas le PCE (indice des prix des dépenses de consommation, C3)."
  },
  "D3": {
   "titre": "Inflation anticipée « 5 ans dans 5 ans » aux États-Unis",
@@ -215,7 +215,7 @@
   "phrase": "Cette enquête mesure l'inflation que les ménages américains s'attendent à subir dans les 12 prochains mois.",
   "mesure": "On demande chaque mois à un échantillon d'Américains de combien les prix augmenteront selon eux d'ici un an. La série retient la réponse médiane, celle du milieu.",
   "calcul": "Pas de formule de marché : c'est une enquête (Surveys of Consumers, Université du Michigan). La réponse médiane est publiée telle quelle, en % par an.",
-  "interpreter": "Depuis 1990, la moitié des mois sont sous 3,0 % (médiane de l'IPC sur la même période : 2,6 %) ; 80 % se situent entre 2,5 et 4,5 % environ. Le record est de 6,6 % en mai 2025, au-dessus du pic de 2022 (5,4 %).",
+  "interpreter": "Depuis 1990, la moitié des mois sont sous 3,0 % (médiane de l'IPC, indice des prix à la consommation, sur la même période : 2,6 %) ; 80 % se situent entre 2,5 et 4,5 % environ. Le record est de 6,6 % en mai 2025, au-dessus du pic de 2022 (5,4 %).",
   "bouger": "Les prix visibles au quotidien (alimentation, carburant), l'actualité économique et politique. La Fed (banque centrale américaine) les surveille : des anticipations qui s'envolent peuvent entretenir l'inflation.",
   "liens": [
    "C1",
@@ -227,10 +227,10 @@
  },
  "D5": {
   "titre": "Enquête de la BCE auprès des prévisionnistes professionnels (SPF) — probabilités d'inflation et inflation à long terme",
-  "phrase": "Chaque trimestre, la BCE demande à des économistes quelle inflation ils attendent et quelle probabilité ils donnent à chaque scénario.",
-  "mesure": "La BCE (Banque centrale européenne) interroge une cinquantaine de prévisionnistes. Pour l'année en cours, les deux suivantes et le long terme (cinq ans plus tard), chacun répartit 100 % entre des tranches d'inflation de 0,5 point. On affiche la moyenne de ces réponses.",
-  "calcul": "On moyenne les réponses. Les tranches vont de « moins de −0,8 % » à « 4,8 % et plus ». L'inflation attendue est la moyenne des prévisions chiffrées, pour l'IPCH (C5).",
-  "interpreter": "Ce qui compte : où se concentre la probabilité, et quelle part dépasse 2 %, l'objectif de la BCE. Pour le long terme, depuis 1999, la moitié des enquêtes sont sous 1,9 % et presque toutes sous 2,2 %. Creux : 1,65 % (3ᵉ trimestre 2020) ; sommet : 2,18 % (4ᵉ trimestre 2022).",
+  "phrase": "Chaque trimestre, la BCE (Banque centrale européenne) demande à des économistes (enquête SPF, Survey of Professional Forecasters) quelle inflation ils attendent et quelle probabilité ils donnent à chaque scénario.",
+  "mesure": "Elle interroge une cinquantaine de prévisionnistes. Pour l'année en cours, les deux suivantes et le long terme (cinq ans plus tard), chacun répartit 100 % entre des tranches d'inflation de 0,5 point. On affiche la moyenne de ces réponses.",
+  "calcul": "On moyenne les réponses. Les tranches vont de « moins de −0,8 % » à « 4,8 % et plus ». L'inflation attendue est la moyenne des prévisions chiffrées, pour l'IPCH (indice des prix à la consommation harmonisé, C5).",
+  "interpreter": "Ce qui compte : où se concentre la probabilité, et quelle part dépasse 2 %, l'objectif de la BCE. Pour le long terme, depuis 1999, la moitié des enquêtes sont sous 1,9 % et toutes sous 2,2 %. Creux : 1,65 % (3ᵉ trimestre 2020) ; sommet : 2,18 % (4ᵉ trimestre 2022).",
   "bouger": "Le choc d'énergie du moment pèse surtout sur les années proches ; le long terme bouge peu tant que la BCE reste crédible.",
   "liens": [
    "C5",
@@ -242,8 +242,8 @@
  },
  "D6": {
   "titre": "Enquête de la Fed de Philadelphie auprès des prévisionnistes (SPF) — probabilités d'inflation sous-jacente",
-  "phrase": "Cette enquête indique la probabilité que des économistes américains donnent à chaque niveau d'inflation sous-jacente pour l'année en cours et la suivante.",
-  "mesure": "Chaque trimestre, la Fed de Philadelphie (une banque de la Réserve fédérale, la banque centrale américaine) demande aux prévisionnistes de répartir 100 % entre dix tranches d'inflation sous-jacente (IPC hors énergie et alimentation, C2), de « moins de 0 % » à « 4,0 % ou plus ». L'IPC total n'est pas suivi ici.",
+  "phrase": "Cette enquête (SPF, Survey of Professional Forecasters) indique la probabilité que des économistes américains donnent à chaque niveau d'inflation sous-jacente pour l'année en cours et la suivante.",
+  "mesure": "Chaque trimestre, la Fed de Philadelphie (une banque de la Réserve fédérale, la banque centrale américaine) demande aux prévisionnistes de répartir 100 % entre dix tranches d'inflation sous-jacente (IPC, indice des prix à la consommation, hors énergie et alimentation, C2), de « moins de 0 % » à « 4,0 % ou plus ». L'IPC total n'est pas suivi ici.",
   "calcul": "On moyenne les répartitions des répondants. L'inflation est mesurée du quatrième trimestre d'une année au quatrième trimestre suivant. Les tranches font 0,5 point de large.",
   "interpreter": "Regarder où se concentre la probabilité et si elle est étalée : une distribution étroite signale un consensus. « Sous 2 % » additionne les tranches de moins de 2,0 % ; la tranche « 2,0 à 2,4 % » est déjà au-dessus. Pas de repère historique chiffré : la série est courte (depuis 2007).",
   "bouger": "L'inflation observée, le marché du travail et les décisions de la Fed. Les prévisions se révisent beaucoup quand l'inflation surprend.",
@@ -253,12 +253,12 @@
    "D4",
    "D1"
   ],
-  "piege": "Historique court : depuis le 1ᵉʳ trimestre 2007 seulement. L'enquête porte sur l'IPC sous-jacent alors que la Fed vise 2 % sur le PCE : ne pas comparer directement ces probabilités à son objectif."
+  "piege": "Historique court : depuis le 1ᵉʳ trimestre 2007 seulement. L'enquête porte sur l'IPC sous-jacent alors que la Fed vise 2 % sur le PCE (indice des prix des dépenses de consommation) : ne pas comparer directement ces probabilités à son objectif."
  },
  "D7": {
   "titre": "Prévisions d'inflation du FMI — Perspectives de l'économie mondiale",
-  "phrase": "Le FMI publie, pour chaque pays, l'inflation qu'il attend pour l'année en cours et les suivantes.",
-  "mesure": "Le FMI (Fonds monétaire international) prévoit l'évolution moyenne annuelle des prix à la consommation pour les États-Unis, la zone euro, la Belgique, l'Allemagne, la France, l'Italie, le Japon, la Chine et le Royaume-Uni.",
+  "phrase": "Le FMI (Fonds monétaire international) publie, pour chaque pays, l'inflation qu'il attend pour l'année en cours et les suivantes.",
+  "mesure": "Il prévoit l'évolution moyenne annuelle des prix à la consommation pour les États-Unis, la zone euro, la Belgique, l'Allemagne, la France, l'Italie, le Japon, la Chine et le Royaume-Uni.",
   "calcul": "Ses économistes combinent données récentes et hypothèses (prix du pétrole, croissance, politiques économiques). Les chiffres sont publiés deux fois par an (avril et octobre). On affiche la dernière édition.",
   "interpreter": "Comparer la prévision à l'objectif de la banque centrale (souvent 2 %) et à l'inflation récente : si la prévision redescend vers 2 % en deux ou trois ans, le FMI attend un retour à la normale.",
   "bouger": "Le prix du pétrole et de l'énergie, la croissance et les salaires. Les prévisions sont révisées à chaque édition, surtout après un choc.",
@@ -275,7 +275,7 @@
   "phrase": "Cet indicateur mesure de combien ont augmenté en un an les prix auxquels les producteurs américains vendent leurs marchandises.",
   "mesure": "Les prix à la sortie de l'usine ou de la ferme, avant la marge des commerçants. Il porte sur les biens (matières, produits intermédiaires, produits finis), pas sur les services.",
   "calcul": "Le BLS (Bureau des statistiques du travail américain) publie un indice mensuel. On calcule ici la hausse par rapport au même mois un an plus tôt.",
-  "interpreter": "Depuis 1990, la moitié des mois sont sous 2 % environ, un mois sur quatre dépasse 5,4 % et un sur dix dépasse 9,0 %. Extrêmes : 22,7 % en novembre 2021 ; −16,1 % en juillet 2009. Des écarts de cette ampleur ne sont pas rares.",
+  "interpreter": "Depuis 1990, la moitié des mois sont sous 2,2 % environ, un mois sur quatre dépasse 5,4 % et un sur dix dépasse 9,0 %. Extrêmes : 22,7 % en novembre 2021 ; −16,1 % en juillet 2009. Des écarts de cette ampleur ne sont pas rares.",
   "bouger": "Surtout les prix de l'énergie et des matières premières. Il précède souvent l'inflation des consommateurs (C1), mais de façon irrégulière.",
   "liens": [
    "C1",
@@ -283,7 +283,7 @@
    "H1",
    "D10"
   ],
-  "piege": "Il est bien plus volatil que l'IPC et ne se répercute pas toujours sur les prix aux consommateurs : les entreprises absorbent une partie de la hausse dans leur marge."
+  "piege": "Il est bien plus volatil que l'IPC (indice des prix à la consommation) et ne se répercute pas toujours sur les prix aux consommateurs : les entreprises absorbent une partie de la hausse dans leur marge."
  },
  "D9": {
   "titre": "Prix à la production industrielle dans la zone euro, glissement annuel",
@@ -347,7 +347,7 @@
  },
  "D13": {
   "titre": "Indicateurs avancés de l'OCDE (CLI) — États-Unis, Chine, Japon, Royaume-Uni, Allemagne et quatre grandes économies européennes",
-  "phrase": "Le CLI tente de signaler, quelques mois à l'avance, si l'activité économique d'un pays va accélérer ou ralentir.",
+  "phrase": "Le CLI (Composite Leading Indicator, indicateur composite avancé) tente de signaler, quelques mois à l'avance, si l'activité économique d'un pays va accélérer ou ralentir.",
   "mesure": "L'OCDE (Organisation de coopération et de développement économiques) combine des signaux qui précèdent la conjoncture, par exemple commandes, confiance des entreprises et marchés financiers. 100 correspond à la tendance de long terme de l'économie.",
   "calcul": "Chaque pays a son indice, publié chaque mois. Les « 4 grandes économies européennes » forment un agrégat de l'OCDE (Allemagne, France, Italie, Royaume-Uni).",
   "interpreter": "Au-dessus de 100 et en hausse : activité plus rapide que sa tendance. Au-dessous de 100 et en baisse : ralentissement. Selon le pays, la série passe sous 100 entre 37 % et 56 % du temps. Plus bas d'avril 2020 : États-Unis 92,9, Royaume-Uni 87,0, Allemagne 90,8. Japon : creux en mars 2009 (96,3).",
@@ -364,16 +364,16 @@
   "titre": "Probabilité de récession aux États-Unis dans 12 mois — modèle de la Fed de New York",
   "phrase": "Ce chiffre donne la probabilité, selon la courbe des taux, que les États-Unis soient en récession dans un an.",
   "mesure": "La probabilité d'une récession (recul de l'activité) 12 mois après le calcul. Le modèle repose sur un seul signal : l'écart entre le taux à 10 ans et le taux à 3 mois des bons du Trésor américain.",
-  "calcul": "P = Φ(−0,5333 − 0,6330 × écart), où Φ est la loi normale et l'écart, en points, est le taux à 10 ans moins celui à 3 mois. Écart nul : environ 30 % ; +1 point : 12 % ; −1 point (courbe inversée) : 54 %. La valeur est datée du mois de l'écart.",
-  "interpreter": "Depuis 1990, la probabilité médiane est de 7 %, 19,5 % au troisième quartile et environ 31 % au dernier décile. Record : 70,9 % (écart de mai 2023). Dépasser 50 % demande une courbe inversée d'au moins 0,84 point.",
-  "bouger": "Les décisions de la Fed (taux courts) et les attentes de croissance et d'inflation (taux longs). Une courbe inversée précède historiquement les récessions.",
+  "calcul": "P = Φ(−0,5333 − 0,6330 × écart), où Φ désigne la loi normale cumulée (courbe en cloche) et l'écart, en points, est le taux à 10 ans moins celui à 3 mois. Écart nul : environ 30 % ; +1 point : 12 % ; −1 point (courbe inversée) : 54 %.",
+  "interpreter": "Depuis 1990, la probabilité médiane est de 7 % ; elle dépasse 19,6 % un mois sur quatre et 31,6 % un mois sur dix. Record : 70,9 % (écart de mai 2023). Dépasser 50 % demande une courbe inversée d'au moins 0,84 point.",
+  "bouger": "Les décisions de la Fed (Réserve fédérale, banque centrale américaine) sur les taux courts et les attentes de croissance et d'inflation (taux longs). Une courbe inversée précède historiquement les récessions.",
   "liens": [
    "BC_10A3M",
    "B1",
    "B3",
    "A1"
   ],
-  "piege": "Un modèle à une seule variable : une probabilité élevée n'est pas une certitude et ne dit pas quand. Le modèle a affiché plus de 50 % pendant une vingtaine de mois entre janvier 2023 et septembre 2024. Ne pas confondre le mois de l'écart (indiqué ici) et le mois visé (12 mois plus tard)."
+  "piege": "Modèle à une seule variable : une probabilité élevée n'est pas une certitude et ne dit pas quand. Le modèle a affiché plus de 50 % pendant une vingtaine de mois entre janvier 2023 et septembre 2024. Ne pas confondre le mois de l'écart (indiqué ici, datation de la valeur) et le mois visé (12 mois plus tard)."
  },
  "D15": {
   "titre": "Courbe à terme du pétrole Brent — prix attendus dans 6 et 12 mois",
@@ -386,7 +386,7 @@
    "H1",
    "C5",
    "D1",
-   "t:contrat_a_terme"
+   "t:future"
   ],
   "piege": "Ce n'est pas une prévision du prix futur, mais le prix auquel on peut s'engager aujourd'hui. Données Yahoo d'usage personnel : certains mois lointains manquent parfois, et un contrat qui expire le jour même garde son dernier cours. Aucun prix n'est reconstitué."
  },
@@ -395,7 +395,7 @@
   "phrase": "Cet écart montre si les marchés s'attendent à ce que la banque centrale baisse ou relève ses taux dans les deux prochaines années.",
   "mesure": "La différence, en points, entre le taux d'un emprunt d'État à 2 ans et le taux directeur actuel : celui de la Fed (banque centrale américaine) ou le taux de dépôt de la BCE (Banque centrale européenne).",
   "calcul": "Fed : taux des emprunts d'État américains à 2 ans moins taux effectif des fonds fédéraux. BCE : taux à 2 ans des États de la zone euro notés AAA (la meilleure note) moins taux de dépôt de la BCE.",
-  "interpreter": "Sous −0,25 point : le marché anticipe des baisses. Au-dessus de +0,25 : des hausses. Entre les deux : stabilité. Depuis 1990, la Fed a été en « hausses anticipées » 52 % des mois et en « baisses anticipées » 20 % ; pour la BCE, depuis 2004, 38 % et 23 %. Extrêmes mensuels : Fed −1,84 (septembre 1998) et +2,75 (décembre 1994).",
+  "interpreter": "Sous −0,25 point : le marché anticipe des baisses. Au-dessus de +0,25 : des hausses. Entre les deux : stabilité. Dans nos valeurs de fin de mois depuis 1990, la Fed a été en « hausses anticipées » 52 % des mois et en « baisses anticipées » 20 % ; pour la BCE, depuis 2004, 38 % et 23 %. Extrêmes mensuels : Fed −1,84 (septembre 1998) et +2,75 (décembre 1994).",
   "bouger": "Les chiffres d'inflation et d'emploi, et les discours des banquiers centraux. Il précède souvent le changement réel de taux.",
   "liens": [
    "B2",

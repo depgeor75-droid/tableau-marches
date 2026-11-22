@@ -32,7 +32,12 @@
   /** Ajoute des indicateurs depuis une autre page. */
   function ajouter(ids, options) {
     etat = etat || O.lire("comparateur", null) || etatParDefaut();
-    ids.forEach(function (id) { if (etat.ids.indexOf(id) < 0 && etat.ids.length < reglages().max_courbes) etat.ids.push(id); });
+    ids.forEach(function (id) {
+      if (etat.ids.indexOf(id) >= 0) return;
+      if (etat.ids.length >= reglages().max_courbes) { messageEnAttente = "Maximum " + reglages().max_courbes + " courbes : « " + D.ind(id).nom_court + " » n'a pas été ajouté. Retirez d'abord une courbe."; return; }
+      if (unitesSelection(etat.ids.concat([id])).length > 3) { messageEnAttente = MESSAGE_AXES + " (« " + D.ind(id).nom_court + " » n'a pas été ajouté.)"; return; }
+      etat.ids.push(id);
+    });
     if (!etat.ref || etat.ids.indexOf(etat.ref) < 0) etat.ref = etat.ids[0];
     if (options && options.periode) { etat.periode = options.periode; etat.du = etat.au = null; }
     sauver();
@@ -116,6 +121,7 @@
     return e[classe.force] || e.gris;
   }
   function texteR(res) {
+    if ((res.r === null || res.r === undefined) && res.n >= (reglages().points_min || 12)) return "r non calculable : une des séries est constante sur la période (" + res.n + " points)";
     if (res.r === null || res.r === undefined) return "trop peu de données (" + (res.n || 0) + " points communs, 12 au moins)";
     var c = res.classe;
     var txt = "r = " + O.signe(res.r, 2) + " — " + c.libelle;
@@ -124,21 +130,26 @@
   }
 
   // ------------------------------------------------------------------ unités et axes
-  function cleUnite(id) {
+  function cleUnite(id, affichage, mode) {
     var ind = D.ind(id);
-    if (etat.affichage === "base100" && ind.type === "N") return "base 100";
-    if (etat.affichage === "calcul") {
-      if (etat.mode === "mouvements") return ind.type === "N" ? "variation en %" : "variation en points";
-      if (etat.mode === "rythmes" && ind.type === "N") return "% sur 12 mois";
+    affichage = affichage || etat.affichage; mode = mode || etat.mode;
+    if (affichage === "base100" && ind.type === "N") return "base 100";
+    if (affichage === "calcul") {
+      if (mode === "mouvements") return ind.type === "N" ? "variation en %" : "variation en points" + (ind.type === "N*" ? " | " + ind.nom_court : "");
+      if (mode === "rythmes" && ind.type === "N") return "% sur 12 mois";
     }
-    return ind.unite || "";
+    // un indice centré (VIX, CISS…) a toujours son propre axe, même s'il partage l'unité d'une autre série
+    return (ind.unite || "") + (ind.type === "N*" ? " | " + ind.nom_court : "");
   }
 
-  function unitesSelection(ids) {
+  function unitesSelection(ids, affichage, mode) {
     var u = [];
-    ids.forEach(function (id) { var c = cleUnite(id); if (u.indexOf(c) < 0) u.push(c); });
+    ids.forEach(function (id) { var c = cleUnite(id, affichage, mode); if (u.indexOf(c) < 0) u.push(c); });
     return u;
   }
+
+  var MESSAGE_AXES = "Trop d'unités différentes : passez en base 100 ou retirez une courbe.";
+  var messageEnAttente = "";
 
   // ------------------------------------------------------------------ page
   function page(conteneur) {
@@ -261,6 +272,7 @@
   }
 
   function blocReglages(f) {
+    setTimeout(function () { messageEnAttente = ""; }, 0);
     var bloc = h("div", { class: "graphique" });
     var du = h("input", { type: "date", class: "champ", value: etat.du || "", "aria-label": "Date de début" });
     var au = h("input", { type: "date", class: "champ", value: etat.au || "", "aria-label": "Date de fin" });
@@ -274,12 +286,16 @@
       h("div", { class: "reglages__groupe" }, h("span", { class: "reglages__etiquette" }, "Ou dates libres"),
         h("div", { class: "actions" }, du, au, appliquer)),
       h("div", { class: "reglages__groupe" }, h("span", { class: "reglages__etiquette" }, "Mode de calcul"),
-        segments({ mouvements: "Mouvements", rythmes: "Rythmes annuels", niveaux: "Niveaux bruts" }, etat.mode, function (m) { etat.mode = m; sauver(); actualiser(); }, "Mode de calcul")),
+        segments({ mouvements: "Mouvements", rythmes: "Rythmes annuels", niveaux: "Niveaux bruts" }, etat.mode, function (m) {
+          if (unitesSelection(etat.ids, etat.affichage, m).length > 3) { messageEnAttente = MESSAGE_AXES; actualiser(); return; }
+          etat.mode = m; sauver(); actualiser();
+        }, "Mode de calcul")),
       h("div", { class: "reglages__groupe" }, h("span", { class: "reglages__etiquette" }, "Affichage"),
         segments(AFFICHAGES, etat.affichage, function (a) {
-          if (unitesSelection(etat.ids).length > 3 && a !== "base100") return;
+          if (unitesSelection(etat.ids, a, etat.mode).length > 3) { messageEnAttente = MESSAGE_AXES; actualiser(); return; }
           etat.affichage = a; sauver(); actualiser();
         }, "Affichage"))),
+      messageEnAttente ? h("p", { class: "message-comparateur", role: "status" }, messageEnAttente) : "",
       h("label", { class: "case" }, h("input", { type: "checkbox", checked: O.lire("evenements", false), onchange: function (ev) { O.ecrire("evenements", ev.target.checked); actualiser(); } }), "Afficher les grands événements"),
       h("p", { class: "mode-aide" }, h("strong", {}, MODES[etat.mode].nom + " : "), MODES[etat.mode].aide, " ", K.boutonInfo("t:correlation", "corrélation")),
       h("p", { class: "mode-aide" }, "Calcul en données " + ({ J: "quotidiennes", S: "hebdomadaires", M: "mensuelles", T: "trimestrielles", A: "annuelles" })[f] +
@@ -332,7 +348,7 @@
         axe: axesCles[cleUnite(id)], format: formatV, segment: segment, spanMs: false });
     });
     var axes = {};
-    unites.forEach(function (u, i) { axes[["y", "y1", "y2"][Math.min(2, i)]] = { titre: u, visible: i < 2 }; });
+    unites.forEach(function (u, i) { axes[["y", "y1", "y2"][Math.min(2, i)]] = { titre: u.split(" | ").pop() }; });
     var evts = O.lire("evenements", false) ? (D.catalogue.evenements || []).map(function (e) { return { t: S.versTemps(e.date), libelle: e.libelle }; }) : [];
     bloc.append(z.conteneur);
     var graphique = null;
@@ -380,7 +396,7 @@
     // Notes
     var zones = new Set(c.ids.map(function (id) { return D.ind(id).zone_horaire; }).filter(Boolean));
     if (c.f === "J" && zones.size > 1) notes.append(h("p", { class: "mode-aide" }, "Ces marchés ne clôturent pas à la même heure (Asie, Europe, Amérique), ce qui affaiblit les corrélations quotidiennes : préférez la vue 1 A (hebdomadaire)."));
-    if (!c.w) notes.append(h("p", { class: "mode-aide" }, "Vue quotidienne : pas de corrélation glissante (trop peu de points) ; seul le r global de la période est calculé."));
+    if (c.f === "J") notes.append(h("p", { class: "mode-aide" }, "Vue quotidienne : pas de corrélation glissante (trop peu de points) ; seul le r global de la période est calculé."));
     if (c.ids.length >= 3) notes.append(matrice(c));
     notes.append(h("p", { class: "rappel" }, "Corrélation ne veut pas dire causalité. ", K.boutonInfo("t:causalite", "corrélation et causalité")),
       h("p", { class: "rappel" }, "Sources : " + Array.from(new Set(c.ids.map(function (id) { return D.ind(id).mention.replace(/^Source : /, ""); }))).join(" ")));
@@ -418,6 +434,13 @@
         var ctx = canevas.getContext("2d");
         var n = c.i1 - c.i0 + 1;
         var gauche = 0, droite = largeur;
+        if (graphique && graphique.chartArea && graphique.scales && graphique.scales.x) {
+          // calage horizontal sur la zone de tracé : même date au même endroit que sur le graphique
+          var bc = canevas.getBoundingClientRect(), gc = graphique.canvas.getBoundingClientRect();
+          var x0 = graphique.scales.x.getPixelForValue(S.versTemps(c.grille.dates[c.i0])) + gc.left - bc.left;
+          var x1 = graphique.scales.x.getPixelForValue(S.versTemps(c.grille.dates[c.i1])) + gc.left - bc.left;
+          if (x1 > x0) { gauche = Math.max(0, x0); droite = Math.min(largeur, x1); }
+        }
         for (var i = 0; i < n; i++) {
           var x0 = gauche + (i / n) * (droite - gauche), x1 = gauche + ((i + 1) / n) * (droite - gauche);
           var cl = res.glissante ? (res.glissante[i] ? res.glissante[i].classe : null) : res.classe;

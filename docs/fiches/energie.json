@@ -2,10 +2,10 @@
  "H1": {
   "titre": "Pétrole Brent — la référence européenne du prix du pétrole",
   "phrase": "Le Brent est le prix d'un baril de pétrole extrait en mer du Nord, l'une des deux grandes références mondiales du prix du pétrole.",
-  "mesure": "Le prix en dollars d'un baril (159 litres) de pétrole brut livrable tout de suite, dit « au comptant ». Il résume l'équilibre entre l'offre des pays producteurs et la demande mondiale d'énergie.",
-  "calcul": "L'EIA (Agence américaine d'information sur l'énergie) relève ce prix chaque jour ; le tableau de bord le reprend via FRED (base de données de la banque centrale de Saint-Louis), avec environ trois jours ouvrés de retard. Les derniers jours viennent du contrat à terme Yahoo (BZ=F), un achat à prix fixé aujourd'hui pour livraison future. Ils sont marqués « provisoires » et ajoutés seulement si l'écart reste sous 2 %.",
-  "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis 1990, le Brent est resté sous 17 dollars un mois sur dix et au-dessus de 108 dollars un mois sur dix ; médiane : environ 51 dollars. Repères : environ 138 dollars fin juin 2008, puis environ 36 dollars fin décembre 2008.",
-  "bouger": "Il monte quand l'économie tourne à plein ou que l'offre se raréfie : décisions de l'OPEP+ (pays exportateurs de pétrole et partenaires), guerres, tensions. Il baisse en cas de récession. Il pèse à son tour sur l'inflation (carburants, chauffage).",
+  "mesure": "Le prix en dollars d'un baril (159 litres) de pétrole brut livrable tout de suite, dit « au comptant ». Il reflète l'équilibre entre offre et demande mondiales.",
+  "calcul": "L'EIA (Agence américaine d'information sur l'énergie) relève ce prix chaque jour ; le tableau de bord le reprend via FRED (base de données de la Banque fédérale de réserve de Saint-Louis), avec quelques jours de retard. Les derniers jours viennent du contrat à terme Yahoo (BZ=F), un achat à prix fixé aujourd'hui pour livraison future : marqués « provisoires », ils ne sont ajoutés que si l'écart reste sous 2 %.",
+  "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis 1990, le Brent est resté sous 17 dollars un mois sur dix et au-dessus de 108 un mois sur dix ; médiane : environ 51. Repères : environ 138 dollars fin juin 2008, puis environ 36 fin décembre 2008.",
+  "bouger": "Il monte quand l'économie tourne à plein ou que l'offre se raréfie (OPEP+ : pays exportateurs de pétrole et partenaires ; guerres ; tensions) et baisse en récession. Il pèse sur l'inflation (carburants, chauffage).",
   "liens": [
    "H2",
    "H8_BNO",
@@ -13,13 +13,13 @@
    "I6",
    "J3"
   ],
-  "piege": "Prix au comptant et contrat à terme ne sont pas la même chose : ils peuvent différer de plusieurs %. Les jours fériés américains laissent des trous dans la série FRED ; ils restent des trous. Le prix est en dollars : pour un Européen, l'euro compte aussi."
+  "piege": "Prix au comptant et contrat à terme diffèrent parfois de plusieurs %. Les jours fériés américains laissent des trous dans la série FRED, qui restent des trous. Prix en dollars : l'euro compte aussi pour un Européen."
  },
  "H2": {
   "titre": "Pétrole WTI — la référence américaine du prix du pétrole",
   "phrase": "Le WTI (West Texas Intermediate) est le prix d'un baril de pétrole américain, l'autre grande référence mondiale avec le Brent.",
   "mesure": "Le prix en dollars d'un baril de pétrole brut américain livrable tout de suite (« au comptant »). Il évolue presque comme le Brent, mais l'écart entre les deux varie.",
-  "calcul": "Prix relevé par l'EIA (Agence américaine d'information sur l'énergie) et repris via FRED (base de données de la banque centrale de Saint-Louis). Les derniers jours peuvent venir du contrat à terme Yahoo (CL=F, achat à prix fixé aujourd'hui pour livraison future), mais seulement si l'écart avec FRED reste sous 2 % ; sinon la courbe s'arrête à la dernière valeur FRED.",
+  "calcul": "Prix relevé par l'EIA (Agence américaine d'information sur l'énergie) et repris via FRED (base de données de la Banque fédérale de réserve de Saint-Louis). Les derniers jours peuvent venir du contrat à terme Yahoo (CL=F, achat à prix fixé d'avance), mais seulement si l'écart avec FRED reste sous 2 % ; sinon la courbe s'arrête à la dernière valeur FRED.",
   "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis 1990, le WTI est resté sous 19 dollars un mois sur dix et au-dessus de 96 dollars un mois sur dix ; médiane : environ 50 dollars. Il a atteint environ 140 dollars fin juin 2008.",
   "bouger": "Mêmes moteurs que le Brent (croissance mondiale, OPEP+ : pays exportateurs de pétrole et partenaires, tensions géopolitiques), plus la production et les stocks américains.",
   "liens": [
@@ -28,7 +28,7 @@
    "C1",
    "I6"
   ],
-  "piege": "Un prix de pétrole peut être négatif : le 20 avril 2020, le WTI a clôturé à −36,98 dollars (−37,63 pour le contrat à terme), les stockages étant saturés. Cette valeur est conservée ; aucun % de variation n'est calculé pour ce point, car il n'aurait pas de sens."
+  "piege": "Un prix de pétrole peut être négatif : le 20 avril 2020, le WTI a clôturé sous zéro (−36,98 dollars selon l'EIA via FRED), les stockages étant saturés. L'application accepte les valeurs négatives, mais l'historique mensuel ne garde que la valeur de fin de mois (19,23 dollars fin avril 2020), et aucun % de variation n'est calculé sur un prix nul ou négatif."
  },
  "H3": {
   "titre": "Or — la valeur refuge, cours du contrat à terme de New York",
@@ -59,7 +59,7 @@
    "C5",
    "C7"
   ],
-  "piege": "Historique depuis le 23 octobre 2017 seulement : trop court pour dire ce qui est « normal ». Prix de contrat à terme, pas celui payé par un ménage. En euros par MWh : ne pas le comparer au Henry Hub (dollars par mmbtu) sans conversion."
+  "piege": "Historique depuis le 23 octobre 2017 seulement : trop court pour dire ce qui est « normal ». Prix de contrat à terme, pas celui payé par un ménage. En euros par MWh : ne pas le comparer au Henry Hub (dollars par mmbtu, million de British thermal units) sans conversion."
  },
  "H5": {
   "titre": "Gaz naturel américain — le Henry Hub",
@@ -74,7 +74,7 @@
    "H2",
    "C1"
   ],
-  "piege": "Très saisonnier et volatil. Prix de contrat à terme, pas celui payé par un ménage. En dollars par mmbtu : ne pas le comparer au TTF européen (euros par MWh) sans convertir."
+  "piege": "Très saisonnier et volatil. Prix de contrat à terme, pas celui payé par un ménage. En dollars par mmbtu : ne pas le comparer au TTF européen (prix de référence du gaz en Europe) (euros par MWh) sans convertir."
  },
  "H6": {
   "titre": "Cuivre — le « thermomètre » de l'activité industrielle",
@@ -110,7 +110,7 @@
  },
  "H8": {
   "titre": "ETF pétrole — USO (WTI) et BNO (Brent)",
-  "phrase": "USO et BNO sont des ETF (fonds cotés en bourse) qui cherchent à suivre le prix du pétrole : USO celui du WTI américain, BNO celui du Brent.",
+  "phrase": "USO et BNO sont des ETF (fonds cotés en bourse) qui cherchent à suivre le prix du pétrole : USO celui du WTI (West Texas Intermediate, la référence américaine), BNO celui du Brent.",
   "mesure": "La valeur d'une part, en dollars. Ces fonds permettent d'investir dans le pétrole depuis un compte-titres, sans acheter de contrats.",
   "calcul": "Ils ne stockent pas de pétrole : ils détiennent des contrats à terme proches de l'échéance, vendus juste avant pour en acheter de nouveaux (le « renouvellement »). Cours de clôture Yahoo, hors dividendes.",
   "interpreter": "Ne pas lire ce cours comme un prix du pétrole. Quand les contrats lointains sont plus chers que les proches, chaque renouvellement coûte. De fin 2006 à fin 2019, le WTI est resté autour de 61 dollars, mais USO est passé d'environ 413 à 102 dollars (−75 %). Pour BNO, de fin 2010 à fin 2019 : −33 %, contre −27 % pour le Brent.",
@@ -156,7 +156,7 @@
  "H11": {
   "titre": "ETF immobilier coté européen — iShares European Property Yield (IPRP)",
   "phrase": "IPRP est un ETF (fonds coté en bourse) qui regroupe des sociétés immobilières cotées en Europe, choisies pour leurs dividendes.",
-  "mesure": "La valeur d'une part, en euros, cotée à Amsterdam. Le fonds permet d'investir dans l'immobilier européen par la bourse, sans acheter de bien.",
+  "mesure": "La valeur d'une part, en euros, cotée à Amsterdam. L'indice suivi couvre l'immobilier coté européen hors Royaume-Uni, à dividendes élevés. Le fonds permet d'investir dans l'immobilier européen par la bourse, sans acheter de bien.",
   "calcul": "Cours de clôture Yahoo de la cotation d'Amsterdam (IPRP.AS), en euros, hors dividendes. Le fonds les distribue : le cours baisse du montant versé, et la courbe sous-estime donc le rendement. Le même fonds est aussi coté à Londres (en pence) et à Milan, mais ces cotations ne sont pas utilisées.",
   "interpreter": "Pas de seuil. Repères vérifiés (valeurs de fin de mois) : environ 15,2 euros fin mars 2009 ; environ 47,2 euros fin janvier 2020, puis environ 34,4 euros fin mars 2020 (−27 % en deux mois, début de la pandémie) ; de fin décembre 2021 (environ 43,3 euros) à fin décembre 2022 (environ 25,9 euros), −40 % quand les taux ont monté.",
   "bouger": "Les taux d'intérêt, notamment ceux de la BCE (Banque centrale européenne), le coût des emprunts, les loyers, l'occupation des bureaux et des commerces.",
@@ -172,7 +172,7 @@
   "titre": "ETF obligations d'État américaines à plus de 20 ans — TLT",
   "phrase": "TLT est un ETF (fonds coté en bourse) qui détient des obligations de l'État américain à très long terme : son prix baisse quand les taux longs montent.",
   "mesure": "La valeur d'une part, en dollars. Une obligation est un prêt à l'État, qui verse un intérêt (le coupon) ; ici, il reste plus de 20 ans avant le remboursement.",
-  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de plus de 20 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de plus de 20 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés n'étant pas ajoutés, la courbe sous-estime le rendement total de l'ETF.",
   "interpreter": "Quand le taux des emprunts d'État à 10 ans monte, le cours baisse, d'autant plus que la durée est longue. Repères vérifiés : de fin juillet 2020 (environ 171 dollars) à fin décembre 2022 (environ 100 dollars), −42 %, alors que les taux montaient. Sur la même période, IEF (7-10 ans) a perdu environ 22 %.",
   "bouger": "L'inflation attendue, les décisions de la Fed (Réserve fédérale, banque centrale américaine), les déficits publics, et la fuite vers la sécurité en cas de panique, qui fait monter le prix.",
   "liens": [
@@ -188,7 +188,7 @@
   "titre": "ETF obligations d'État américaines à 7-10 ans — IEF",
   "phrase": "IEF est un ETF (fonds coté en bourse) qui détient des obligations de l'État américain à moyen terme (7 à 10 ans) : son prix baisse quand les taux montent.",
   "mesure": "La valeur d'une part, en dollars. Une obligation est un prêt à l'État, qui verse un intérêt (le coupon) ; ici, il reste 7 à 10 ans avant le remboursement.",
-  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de 7 à 10 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de 7 à 10 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés n'étant pas ajoutés, la courbe sous-estime le rendement total de l'ETF.",
   "interpreter": "Plus la durée est courte, moins le prix réagit aux taux. En 2022, de fin décembre 2021 à fin décembre 2022, IEF a perdu environ 17 % (de 115 à 96 dollars environ), contre environ 33 % pour TLT (plus de 20 ans). Le taux à 10 ans américain est le repère le plus proche.",
   "bouger": "L'inflation attendue, les décisions de la Fed (Réserve fédérale, banque centrale américaine) et le besoin de refuge des investisseurs : le prix monte en cas de panique.",
   "liens": [
@@ -213,13 +213,13 @@
    "BC_IT_DE",
    "C5"
   ],
-  "piege": "Historique court, depuis juin 2014. À Amsterdam, cet ETF s'échange très peu : le cours, bien que présent chaque jour de bourse, est moins fiable qu'un ETF très liquide. Cours en euros et hors coupons : ne pas le comparer à TLT ou IEF (monnaie et durées différentes)."
+  "piege": "Historique court, depuis juin 2014. À Amsterdam, l'ETF s'échange peu : son cours de clôture peut s'écarter un peu de la valeur du fonds. Cours en euros et hors coupons : ne pas le comparer aux ETF américains TLT ou IEF (H12, H13 ; monnaie et durées différentes)."
  },
  "H15": {
   "titre": "ETF obligations américaines indexées sur l'inflation — TIP (TIPS)",
   "phrase": "TIP est un ETF (fonds coté en bourse) qui détient des TIPS (Treasury Inflation-Protected Securities), des obligations de l'État américain dont le capital suit l'inflation.",
   "mesure": "La valeur d'une part, en dollars. Le capital de ces obligations est réajusté selon l'inflation américaine : elles protègent en principe contre la hausse des prix, ce que ne font pas les obligations ordinaires.",
-  "calcul": "Cours de clôture Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "calcul": "Cours de clôture Yahoo, hors dividendes : les intérêts versés n'étant pas ajoutés, la courbe sous-estime le rendement total de l'ETF.",
   "interpreter": "Il réagit surtout aux taux d'intérêt réels (taux moins inflation attendue), pas à l'inflation seule. En 2022, malgré une inflation élevée, TIP a perdu environ 18 % de fin décembre 2021 (environ 129 dollars) à fin décembre 2022 (environ 106 dollars), car les taux réels ont fortement monté.",
   "bouger": "Les taux réels, l'inflation attendue par les marchés (le point mort d'inflation), les décisions de la Fed (Réserve fédérale, banque centrale américaine).",
   "liens": [

@@ -4,7 +4,7 @@
   "phrase": "C'est le taux auquel les banques américaines se prêtent de l'argent d'un jour à l'autre, taux que la Fed (Réserve fédérale, la banque centrale des États-Unis) pilote par ses décisions.",
   "mesure": "Le prix de l'argent à très court terme aux États-Unis. La Fed n'impose pas ce taux : elle annonce une fourchette cible (un minimum et un maximum), et le taux observé sur le marché s'y place.",
   "calcul": "Chaque jour, on relève les taux réellement payés pour ces prêts entre banques et on en tire une valeur centrale, en tenant compte des montants échangés.",
-  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a culminé à 9,52 % en octobre 1990. Il est resté sous 0,5 % presque sans interruption de fin 2008 à fin 2016, puis de mars 2020 à avril 2022, avant de remonter à 5,33 % en janvier 2024.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a culminé à 9,52 % fin octobre 1990 (pic de fin de mois : les mois voisins étaient entre 7,6 et 8,1 %). Il est resté sous 0,5 % presque sans interruption de fin 2008 à fin 2016, puis de mars 2020 à avril 2022, avant de remonter à 5,33 % en janvier 2024.",
   "bouger": "La Fed le relève quand l'inflation (la hausse générale des prix) est trop forte, et le baisse quand l'économie faiblit. Il influence les crédits, l'épargne, la bourse et le dollar.",
   "liens": [
    "B2",
@@ -21,7 +21,7 @@
   "mesure": "Le prix de l'argent à très court terme dans la zone euro. Plus ce taux est élevé, plus les banques préfèrent placer leurs fonds à la BCE plutôt que de les prêter à bas prix, ce qui tire les autres taux vers le haut.",
   "calcul": "Il n'est pas calculé : le Conseil des gouverneurs de la BCE le fixe lors de ses réunions. La courbe forme donc un escalier : une valeur identique jusqu'à la décision suivante.",
   "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois, il est resté négatif de juin 2014 à juin 2022, avec un minimum de −0,5 % : les banques payaient pour déposer leur argent. Son maximum est de 4,0 % en septembre 2023.",
-  "bouger": "La BCE le fixe en fonction de l'inflation et de la croissance de la zone euro. Il guide l'Euribor, les crédits à taux variable, l'épargne et le taux des emprunts d'État.",
+  "bouger": "La BCE le fixe en fonction de l'inflation et de la croissance de la zone euro. Il guide l'Euribor (le taux auquel les banques européennes se prêtent entre elles, A3), les crédits à taux variable, l'épargne et le taux des emprunts d'État.",
   "liens": [
    "A3",
    "B5_10A",
@@ -59,7 +59,7 @@
    "A1",
    "A2"
   ],
-  "piege": "Ne le confondez pas avec le taux de votre crédit ou de votre épargne : ceux-ci s'y ajoutent une marge. Ses variations se lisent en points de %. La série est publiée avec un léger retard de quelques jours."
+  "piege": "Ne le confondez pas avec le taux de votre crédit ou de votre épargne : ceux-ci se calculent à partir de lui, avec une marge propre à chaque banque. Ses variations se lisent en points de %. La dernière valeur date en général de la veille ouvrée."
  },
  "A5": {
   "titre": "Taux au jour le jour du Japon — le taux de marché proche de la cible de la Banque du Japon",
@@ -79,7 +79,7 @@
  "A6": {
   "titre": "Taux de référence chinois — le LPR à 1 an et son prédécesseur",
   "phrase": "C'est le taux de référence des crédits aux entreprises en Chine, orienté par la banque centrale chinoise.",
-  "mesure": "Le coût de base du crédit à un an en Chine. La Chine n'a pas de taux directeur unique comme la Fed ou la BCE : ce taux en tient lieu.",
+  "mesure": "Le coût de base du crédit à un an en Chine. La Chine n'a pas de taux directeur unique comme la Fed (Réserve fédérale, la banque centrale américaine) ou la BCE (Banque centrale européenne) : ce taux en tient lieu.",
   "calcul": "La série est composée par la BRI (Banque des règlements internationaux). Jusqu'en août 2019, c'est le taux de prêt de référence à un an ; ensuite, c'est le LPR (Loan Prime Rate, « taux préférentiel de prêt »), établi à partir des taux proposés par de grandes banques. Valeur de fin de mois.",
   "interpreter": "Pas de seuil reconnu : on regarde l'historique. Il est passé de 12,06 % en janvier 1996, premier point de la série, à 3,0 % en mai 2025, son minimum, avec des remontées temporaires, notamment jusqu'à 7,47 % en janvier 2008.",
   "bouger": "Les décisions de la banque centrale, qui cherche à soutenir la croissance sans emballer l'inflation ou l'immobilier. Il influence le crédit, la demande de matières premières et, indirectement, le yuan.",
@@ -174,14 +174,14 @@
   "mesure": "Le coût d'emprunt à long terme de la Belgique. Il reflète la confiance des investisseurs dans les finances belges et le niveau général des taux de la zone euro.",
   "calcul": "Eurostat (l'office statistique de l'Union européenne) publie chaque mois le rendement moyen des emprunts belges à environ 10 ans, indicateur utilisé comme « critère de convergence » pour l'euro. C'est une moyenne mensuelle.",
   "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, il a atteint 10,4 % en février 1990 et −0,39 % en décembre 2020, et il a été négatif à plusieurs reprises entre août 2019 et août 2021. Le meilleur repère est son écart avec l'Allemagne.",
-  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand, la dette et le déficit belges, la note de crédit du pays. Il influence le coût de la dette publique belge.",
+  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand (emprunt de l'État allemand à 10 ans, B4), la dette et le déficit belges, la note de crédit du pays. Il influence le coût de la dette publique belge.",
   "liens": [
    "BC_BE_DE",
    "B4",
    "A2",
    "B7"
   ],
-  "piege": "Seulement mensuel : n'allez pas le comparer au Bund du jour. Ce n'est pas le taux des bons d'État vendus aux particuliers. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE, de même nature."
+  "piege": "Seulement mensuel : n'allez pas le comparer au Bund du jour. Ce n'est pas le taux des bons d'État vendus aux particuliers. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE (Organisation de coopération et de développement économiques), de même nature."
  },
  "B7": {
   "titre": "Taux à 10 ans de la France — l'OAT",
@@ -189,14 +189,14 @@
   "mesure": "Le coût d'emprunt à long terme de la France. Il reflète la confiance des investisseurs dans les finances françaises et le niveau général des taux de la zone euro.",
   "calcul": "Eurostat (l'office statistique de l'Union européenne) publie chaque mois le rendement moyen des emprunts français à environ 10 ans, indicateur utilisé comme « critère de convergence » pour l'euro. C'est une moyenne mensuelle.",
   "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, il a atteint 10,48 % en septembre 1990 et −0,34 % en août 2019, et il a été négatif à plusieurs reprises entre juillet 2019 et août 2021. Le meilleur repère est son écart avec l'Allemagne.",
-  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand, la dette et le déficit français, la politique budgétaire. Il influence le coût de la dette publique et les crédits en euros.",
+  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand (emprunt de l'État allemand à 10 ans, B4), la dette et le déficit français, la politique budgétaire. Il influence le coût de la dette publique et les crédits en euros.",
   "liens": [
    "BC_FR_DE",
    "B4",
    "A2",
    "B6"
   ],
-  "piege": "Seulement mensuel : n'allez pas le comparer au taux du jour. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE, de même nature. Une hausse du taux d'un État n'annonce pas forcément une crise."
+  "piege": "Seulement mensuel : n'allez pas le comparer au taux du jour. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE (Organisation de coopération et de développement économiques), de même nature. Une hausse du taux d'un État n'annonce pas forcément une crise."
  },
  "B8": {
   "titre": "Taux à 10 ans de l'Italie — le BTP",
@@ -226,7 +226,7 @@
    "B1",
    "B4"
   ],
-  "piege": "L'historique commence en novembre 1993. Le rendement « au pair » est une estimation, pas celui d'un titre précis. La donnée arrive avec un retard de quelques jours. En cas de panne de la source, une moyenne mensuelle de l'OCDE la remplace."
+  "piege": "L'historique commence en novembre 1993. Le rendement « au pair » est une estimation, pas celui d'un titre précis. La donnée arrive avec un retard de quelques jours. En cas de panne de la source, une moyenne mensuelle de l'OCDE (Organisation de coopération et de développement économiques) la remplace."
  },
  "B10": {
   "titre": "Taux à 10 ans du Japon — le JGB",
@@ -241,7 +241,7 @@
    "B1",
    "B4"
   ],
-  "piege": "Pas de valeur les jours fériés japonais : le trou reste un trou. Un taux bas ne signifie pas une dette sans risque. En cas de panne de la source, une moyenne mensuelle de l'OCDE remplace la série quotidienne."
+  "piege": "Pas de valeur les jours fériés japonais : le trou reste un trou. Un taux bas ne signifie pas une dette sans risque. En cas de panne de la source, une moyenne mensuelle de l'OCDE (Organisation de coopération et de développement économiques) remplace la série quotidienne."
  },
  "B11": {
   "titre": "Taux à 10 ans de la Chine — série non disponible",
@@ -271,7 +271,7 @@
    "B1",
    "B10"
   ],
-  "piege": "Seulement mensuel. Un taux négatif signifie que l'investisseur paie pour prêter : ce n'est pas une erreur. La série de l'OCDE peut s'arrêter sans préavis."
+  "piege": "Seulement mensuel. Un taux négatif signifie que l'investisseur paie pour prêter : ce n'est pas une erreur. Aucune source de secours n'est prévue : si l'OCDE cesse de publier la série, la courbe s'arrête."
  },
  "BC_10A2A": {
   "titre": "Écart de taux 10 ans − 2 ans aux États-Unis — la pente de la courbe",
@@ -279,7 +279,7 @@
   "mesure": "La pente de la courbe des taux : les investisseurs demandent-ils plus pour prêter longtemps que pour prêter court ? Normalement oui, et l'écart est positif.",
   "calcul": "Taux à 10 ans moins taux à 2 ans du Trésor américain, le même jour. Par exemple, 4,5 % − 4,0 % donne 0,5 point.",
   "interpreter": "Au-dessus de zéro, la courbe est « normale » ; près de zéro, elle est plate ; sous zéro, elle est « inversée ». Dans nos valeurs de fin de mois depuis 1990, il est négatif en 2000, par moments entre fin 2005 et mi-2007, et de juillet 2022 à juillet 2024 (minimum de −1,06 point en juin 2023, maximum de 2,84 en janvier 2011).",
-  "bouger": "Le 2 ans suit les attentes sur la Fed ; le 10 ans, la croissance et l'inflation à long terme. Une inversion signale que le marché attend des baisses de taux, souvent par crainte d'un ralentissement.",
+  "bouger": "Le 2 ans suit les attentes sur la Fed (Réserve fédérale, la banque centrale américaine) ; le 10 ans, la croissance et l'inflation à long terme. Une inversion signale que le marché attend des baisses de taux, souvent par crainte d'un ralentissement.",
   "liens": [
    "B1",
    "B2",
@@ -292,9 +292,9 @@
  "BC_10A3M": {
   "titre": "Écart de taux 10 ans − 3 mois aux États-Unis",
   "phrase": "C'est la différence entre le taux à 10 ans et le taux à 3 mois de l'État américain, exprimée en points de pourcentage.",
-  "mesure": "La pente de la courbe des taux entre le très court et le long terme. Le taux à 3 mois suit de près la Fed ; l'écart compare donc le coût actuel de l'argent à celui des dix prochaines années.",
+  "mesure": "La pente de la courbe des taux entre le très court et le long terme. Le taux à 3 mois suit de près la Fed (Réserve fédérale, la banque centrale américaine) ; l'écart compare donc le coût actuel de l'argent à celui des dix prochaines années.",
   "calcul": "Taux à 10 ans moins taux à 3 mois du Trésor américain, le même jour. Par exemple, 4,5 % − 5,0 % donne −0,5 point.",
-  "interpreter": "Au-dessus de zéro, courbe « normale » ; sous zéro, courbe « inversée ». Dans nos valeurs de fin de mois depuis 1990, il est négatif en 2000, en 2006-2007, en 2019, de façon prolongée d'octobre 2022 à novembre 2024 (minimum de −1,88 point en mai 2023). Son maximum est de 3,82 en avril 1992.",
+  "interpreter": "Au-dessus de zéro, courbe « normale » ; sous zéro, courbe « inversée ». Dans nos valeurs de fin de mois depuis 1990, il est négatif en 2000, en 2006-2007, de mai 2019 à février 2020, de façon prolongée d'octobre 2022 à novembre 2024 (minimum de −1,88 point en mai 2023), puis brièvement en 2025. Son maximum est de 3,82 en avril 1992.",
   "bouger": "Surtout le taux à 3 mois, donc la politique de la Fed : quand elle monte vite ses taux, l'écart se resserre ou s'inverse. Le taux à 10 ans reflète la croissance et l'inflation à long terme.",
   "liens": [
    "B1",
@@ -319,7 +319,7 @@
    "B4",
    "t:spread"
   ],
-  "piege": "Cette fiche couvre trois séries. Elles sont mensuelles et utilisent l'Allemagne d'Eurostat, pas le Bund quotidien de la Bundesbank : ne les comparez pas à l'écart du jour lu dans la presse. Avant 1999, l'écart reflète aussi le risque de change."
+  "piege": "Cette fiche couvre trois séries. Elles sont mensuelles et utilisent l'Allemagne d'Eurostat, pas le Bund (emprunt allemand à 10 ans) quotidien de la Bundesbank : ne les comparez pas à l'écart du jour lu dans la presse. Avant 1999, l'écart reflète aussi le risque de change."
  },
  "B5": {
   "titre": "Taux à 2 ans et à 10 ans de la zone euro — la courbe des États notés AAA de la BCE",
@@ -335,6 +335,6 @@
    "t:courbe",
    "t:spread"
   ],
-  "piege": "Cette fiche couvre deux séries (2 ans et 10 ans). Historique depuis septembre 2004 seulement : ne pas le raccorder au Bund d'avant. Le groupe des États AAA change avec les notes : ce n'est pas un taux moyen de tous les pays de l'euro."
+  "piege": "Cette fiche couvre deux séries (2 ans et 10 ans). Historique depuis septembre 2004 seulement : ne pas le raccorder aux données d'avant, comme celles du Bund (emprunt de l'État allemand à 10 ans, B4). Le groupe des États AAA change avec les notes : ce n'est pas un taux moyen de tous les pays de l'euro."
  }
 }

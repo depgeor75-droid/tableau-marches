@@ -283,7 +283,12 @@ def ecrire_csv(cfg, series_hist: dict[str, dict], chemin, aujourd_hui=None) -> b
             if aujourd_hui and d[:7] >= aujourd_hui.isoformat()[:7]:
                 continue  # mois non terminé
             par_mois.setdefault(d[:7], {})[ident] = v
-    entete = ["Mois"] + [f"{cfg.indicateurs[i]['nom_court']} ({cfg.indicateurs[i].get('unite', '')}) [{i}]" for i in colonnes]
+    def titre(i):
+        ind = cfg.indicateurs[i]
+        unite = ind.get("unite", "")
+        nom = ind["nom_court"]
+        return f"{nom} [{i}]" if not unite or f"({unite})" in nom else f"{nom} ({unite}) [{i}]"
+    entete = ["Mois"] + [titre(i) for i in colonnes]
     lignes = [";".join(entete)]
     for mois in sorted(par_mois):
         valeurs = par_mois[mois]

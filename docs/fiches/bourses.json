@@ -59,7 +59,7 @@
    "J1",
    "B1",
    "A1",
-   "t:prix_hors_dividendes"
+   "t:dividendes"
   ],
   "piege": "Ne le confondez pas avec le Nasdaq-100 (les 100 plus grosses sociétés du Nasdaq), qui est un autre indice. Le Composite est très concentré sur quelques géants. Hors dividendes."
  },
@@ -91,7 +91,7 @@
    "G5",
    "C8",
    "B4",
-   "t:prix_hors_dividendes"
+   "t:dividendes"
   ],
   "piege": "Ne le comparez pas tel quel aux autres indices boursiers du tableau de bord (S&P 500, CAC 40, etc.), qui sont des indices de prix, sans dividendes : le DAX a un avantage mécanique, qui s'accumule année après année."
  },
@@ -161,8 +161,8 @@
  },
  "G11": {
   "titre": "ETF qui suit le CSI 300 — la Chine continentale en fonds coté",
-  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le CSI 300, l'indice des 300 grandes entreprises de Shanghai et de Shenzhen. Ce n'est pas l'indice lui-même.",
-  "mesure": "L'évolution de la valeur des grandes sociétés cotées en Chine continentale (Shanghai et Shenzhen), tous secteurs confondus. CSI signifie China Securities Index.",
+  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le CSI 300 (China Securities Index), l'indice des 300 grandes entreprises de Shanghai et de Shenzhen. Ce n'est pas l'indice lui-même.",
+  "mesure": "L'évolution de la valeur des grandes sociétés cotées en Chine continentale (Shanghai et Shenzhen), tous secteurs confondus.",
   "calcul": "Le fonds achète les actions de l'indice et suit sa performance. Son prix est exprimé en yuans, non en points d'indice : une part vaut quelques yuans (entre 2 et 5 environ depuis 2012). On utilise ce fonds parce que l'indice n'est pas disponible gratuitement de façon fiable. Ici, c'est la clôture quotidienne, hors dividendes.",
   "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de mai 2015 à février 2016, le fonds a perdu environ 41 % ; son plus haut mensuel date de janvier 2021.",
   "bouger": "La croissance chinoise, la politique du gouvernement et de la banque centrale, l'immobilier, le yuan et l'humeur des investisseurs.",
@@ -193,8 +193,8 @@
  },
  "G13": {
   "titre": "MSCI World (via l'ETF iShares) — les grandes bourses du monde développé",
-  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le MSCI World, l'indice des grandes et moyennes entreprises des pays développés ; le cours est en euros.",
-  "mesure": "L'évolution d'ensemble des actions des pays riches (États-Unis, Europe, Japon, etc.). MSCI signifie Morgan Stanley Capital International. Les États-Unis y pèsent de loin le plus lourd.",
+  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le MSCI World (Morgan Stanley Capital International), l'indice des grandes et moyennes entreprises des pays développés ; le cours est en euros.",
+  "mesure": "L'évolution d'ensemble des actions des pays riches (États-Unis, Europe, Japon, etc.). Les États-Unis y pèsent de loin le plus lourd.",
   "calcul": "L'ETF iShares Core MSCI World, coté à Amsterdam, achète les actions de l'indice et suit sa performance. Son cours est en euros, pas en points d'indice. La clôture est non ajustée, mais cet ETF est de capitalisation : les dividendes sont réinvestis dans le fonds et se retrouvent donc dans son cours.",
   "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repère tiré des clôtures mensuelles : de janvier à mars 2020 (pandémie), le fonds a perdu environ 19 %.",
   "bouger": "Surtout Wall Street, puis l'Europe et le Japon ; et le taux de change euro-dollar : si l'euro monte face au dollar, la valeur en euros des actions américaines baisse.",
@@ -203,7 +203,7 @@
    "I1",
    "J1",
    "t:etf",
-   "t:prix_hors_dividendes"
+   "t:dividendes"
   ],
   "piege": "Historique court : depuis septembre 2009, donc la crise de 2008 n'apparaît pas. Ce n'est pas l'indice lui-même. Si la source tombait en panne, un autre fonds, coté en dollars, remplacerait la série entière sans jamais lui être raccordé."
  },
@@ -219,7 +219,7 @@
    "A2",
    "H11",
    "G1",
-   "t:prix_hors_dividendes"
+   "t:dividendes"
   ],
   "piege": "Hors dividendes : le rendement réel est supérieur à ce que montre la courbe, d'autant que ce type de société distribue une grande partie de son résultat. Une seule action est bien plus risquée qu'un indice."
  }

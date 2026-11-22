@@ -242,7 +242,8 @@ def _percentile_fenetre(mensuel: dict[str, float], t: str, valeur: float, annees
     return C.rang_percentile(fenetre, valeur), min(dates)[:4]
 
 
-def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, courant: dict | None = None) -> list[dict]:
+def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, courant: dict | None = None,
+                       annees_max: int = 30) -> list[dict]:
     """Évalue les 6 conditions au mois t avec les seules données connues à t (pas de connaissance du futur).
     `courant` : valeurs du jour (pour la jauge actuelle) qui remplacent la valeur du mois t."""
     ids = CONDITIONS[zone]
@@ -275,7 +276,7 @@ def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, 
         if v is None:
             sortie.append({"n": n, "ok": None, "id": ident})
             continue
-        p, depuis = _percentile_fenetre(series_m.get(ident, {}), t, v, 30, reg["annees_min"])
+        p, depuis = _percentile_fenetre(series_m.get(ident, {}), t, v, annees_max, reg["annees_min"])
         sortie.append({"n": n, "ok": None if p is None else p > reg["percentile_stress"], "id": ident,
                        "valeur": _r(v, 3), "percentile": None if p is None else round(p), "depuis": depuis})
     sortie.sort(key=lambda c: c["n"])
@@ -285,7 +286,7 @@ def evaluer_conditions(zone: str, series_m: dict[str, dict], t: str, reg: dict, 
     if v is None or v1 is None:
         sortie.insert(3, {"n": 4, "ok": None, "id": ident})
     elif zone == "ZE":
-        p, depuis = _percentile_fenetre(series_m.get(ident, {}), t, v, 30, reg["annees_min"])
+        p, depuis = _percentile_fenetre(series_m.get(ident, {}), t, v, annees_max, reg["annees_min"])
         ok = None if p is None else (p > reg["percentile_ecart"] and v - v1 > reg["hausse_ecart_1m"])
         sortie.insert(3, {"n": 4, "ok": ok, "id": ident, "valeur": _r(v, 2), "variation_1m": _r(v - v1, 2),
                           "percentile": None if p is None else round(p), "depuis": depuis})
@@ -329,7 +330,8 @@ def jauges(cfg, s: Series) -> dict:
         if not t:
             sortie[zone] = None
             continue
-        conditions = evaluer_conditions(zone, series_m, t, reg, courant)
+        annees_max = cfg.reglages["percentile"]["annees_max"]
+        conditions = evaluer_conditions(zone, series_m, t, reg, courant, annees_max)
         for c in conditions:
             n = s.native(c["id"])
             c["date"] = max(n) if n else None
@@ -341,7 +343,7 @@ def jauges(cfg, s: Series) -> dict:
         for mois in tous:
             if mois >= C.cle_mois(t):
                 break
-            cs = evaluer_conditions(zone, series_m, mois, reg)
+            cs = evaluer_conditions(zone, series_m, mois, reg, None, annees_max)
             ev = sum(1 for c in cs if c["ok"] is not None)
             if ev < reg["conditions_min_historique"]:
                 if debut is None:

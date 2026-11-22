@@ -7,7 +7,7 @@ Référence : SPEC_Tableau_de_bord_Marches.md, puis PLAN.md (plan de l'architect
 
 ## Fait
 - Étape 0 : CLAUDE.md, AVANCEMENT.md, agents `.claude/agents/`, arborescence, git local (adresse « noreply »). Python 3.12, git, `gh` (connecté, droits `repo` + `workflow`), node 26 installés. Clé FRED dans `.env` (testée).
-- Design : application Aedifica lue sans modification (dossier « Aedifica interface web » sur le Bureau ; dépôt `tableau-bord-actions`). Palette, cartes, boutons de période et style des graphiques repris dans `css/style.css`.
+- Design : application Aedifica lue sans modification (dépôt `tableau-bord-actions`). Palette, cartes, boutons de période et style des graphiques repris dans `css/style.css`.
 - Étape 1 : sources testées (`docs/sources/`, 10 fichiers) ; PLAN.md rédigé par l'architecte (Fable, xhigh).
 - Déjà écrit : `js/stats.js` + tests node ; `scripts/commun.py`, `fusion.py`, `calculs.py`, `sources/fred.py`, `sources/sdmx.py` + tests pytest ; `css/style.css`, `js/outils.js` (regroupe format + dom + chargement), `index.html`, `config/evenements.yaml`, `lib/chart.umd.min.js` (4.5.0).
 - Étape 2 : collecte complète (scripts/collect.py, ecriture, resume, previsions, verifier, 13 modules de sources), 158 séries ok + 2 non disponibles justifiées (B11, D13_ZE) ; 94 tests pytest, 16 tests node ; revue des calculs par le relecteur (13 écarts, tous corrigés).

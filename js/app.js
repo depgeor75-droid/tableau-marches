@@ -74,7 +74,7 @@
     document.getElementById("pastille-texte").textContent = textes[niveau];
     pastille.setAttribute("aria-label", "État des données : " + textes[niveau] + ". Ouvrir la page État des données.");
     pastille.onclick = function () { location.hash = "#/etat"; };
-    document.getElementById("pied-detail").textContent = "Sources : FRED®, BCE, Eurostat, BRI, OCDE, FMI, Banque d'Angleterre, Bundesbank, ONS, Fed de New York, Yahoo Finance, STOXX… (détail dans « Comprendre »). This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.";
+    document.getElementById("pied-detail").textContent = "Sources : FRED®, BCE (Banque centrale européenne), Eurostat, BRI (Banque des règlements internationaux), OCDE (Organisation de coopération et de développement économiques), FMI (Fonds monétaire international), Banque d'Angleterre, Bundesbank, ONS (statistiques britanniques), Fed de New York, Yahoo Finance, STOXX… (détail dans « Comprendre »). This product uses the FRED® API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.";
   }
 
   var tour = 0;

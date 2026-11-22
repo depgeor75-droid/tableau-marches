@@ -47,6 +47,15 @@
   --lien-moins-pale: #f0a582;
   --lien-gris: #a8a69d;
   --reference: #17325c;
+  /* Séries des graphiques de famille : SANS vert ni rouge (couleurs réservées aux corrélations) */
+  --fam-1: #2a78d6;
+  --fam-2: #7b4fbf;
+  --fam-3: #b07a00;
+  --fam-4: #17325c;
+  --fam-5: #8a8780;
+  --fam-6: #5fa8d3;
+  --fam-7: #8a5a2b;
+  --fam-8: #c06bb0;
   --rayon: 12px;
   --barre-bas: 60px;
 }
@@ -84,6 +93,8 @@
     --lien-moins-pale: #8a4426;
     --lien-gris: #6f6d66;
     --reference: #9cc3f5;
+    --fam-1: #3987e5; --fam-2: #a07ae0; --fam-3: #d9a425; --fam-4: #9cc3f5;
+    --fam-5: #8f8d85; --fam-6: #7cc0e8; --fam-7: #c08a55; --fam-8: #d98fcc;
   }
 }
 :root[data-theme="dark"] {
@@ -118,6 +129,8 @@
   --lien-moins-pale: #8a4426;
   --lien-gris: #6f6d66;
   --reference: #9cc3f5;
+  --fam-1: #3987e5; --fam-2: #a07ae0; --fam-3: #d9a425; --fam-4: #9cc3f5;
+  --fam-5: #8f8d85; --fam-6: #7cc0e8; --fam-7: #c08a55; --fam-8: #d98fcc;
 }
 
 /* ------------------------------------------------------------------ base */
@@ -185,9 +198,9 @@ button { cursor: pointer; }
 }
 .etat:hover { background: var(--surface-2); }
 .etat__point { width: 12px; height: 12px; border-radius: 50%; background: var(--muet); box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 0%, transparent); }
-.etat--vert .etat__point { background: var(--etat-vert); }
+.etat--vert .etat__point { background: var(--accent); }
 .etat--orange .etat__point { background: var(--etat-orange); }
-.etat--rouge .etat__point { background: var(--etat-rouge); }
+.etat--rouge .etat__point { background: var(--attention); box-shadow: 0 0 0 3px var(--attention-fond); }
 .etat__texte { display: none; }
 
 .progression { max-width: 1120px; margin: 8px auto 2px; }
@@ -360,7 +373,7 @@ button { cursor: pointer; }
 .bandeau-etat a { font-weight: 600; }
 .pastille { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 600; border-radius: 6px; padding: 1px 7px;
   background: var(--attention-fond); color: var(--attention); white-space: nowrap; }
-.pastille--erreur { background: var(--defavorable-fond); color: var(--defavorable); }
+.pastille--erreur { background: var(--attention-fond); color: var(--attention); font-weight: 700; }
 .pastille--neutre { background: var(--surface-2); color: var(--encre-2); }
 .pastille--info { background: var(--lavis); color: var(--lien); }
 
@@ -425,7 +438,7 @@ button { cursor: pointer; }
 .legende-r__decalage input[type="range"] { flex: 1; min-width: 120px; accent-color: var(--accent); }
 .etiquette-ref { font-size: 0.6875rem; font-weight: 700; color: var(--reference); border: 1px solid currentColor; border-radius: 5px; padding: 0 5px; }
 .bande { margin-top: 10px; }
-.bande__ligne { display: grid; grid-template-columns: minmax(80px, 140px) 1fr; gap: 8px; align-items: center; font-size: 0.75rem; color: var(--encre-2); margin-top: 3px; }
+.bande__ligne { display: grid; grid-template-columns: 1fr; gap: 2px; font-size: 0.75rem; color: var(--encre-2); margin-top: 6px; }
 .bande__ligne canvas { width: 100%; height: 14px; border-radius: 4px; background: var(--surface-2); }
 .bande__echelle { display: flex; justify-content: space-between; gap: 8px; font-size: 0.6875rem; color: var(--muet); margin-top: 4px; }
 .rappel { font-size: 0.75rem; color: var(--muet); margin-top: 8px; font-style: italic; }
@@ -467,8 +480,9 @@ button { cursor: pointer; }
 .histogramme { display: grid; gap: 3px; }
 .barre-h { display: grid; grid-template-columns: 92px 1fr 46px; gap: 8px; align-items: center; font-size: 0.75rem; }
 .barre-h__piste { height: 12px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
-.barre-h__rempli { height: 100%; background: var(--serie-1); border-radius: 4px; }
-.barre-h--cible .barre-h__rempli { background: var(--serie-2); }
+.barre-h__rempli { display: block; height: 100%; background: var(--fam-1); border-radius: 4px; }
+.barre-h--cible .barre-h__rempli { background: var(--fam-3); }
+.barre-h__piste { display: block; }
 
 /* -------------------------------------------------------------- fiches */
 .fiche h3 { font-size: 0.875rem; font-weight: 700; margin-top: 12px; }
@@ -529,3 +543,12 @@ button { cursor: pointer; }
   .entete, .onglets--bas, .pied, .bouton { display: none !important; }
   body { background: #fff; padding: 0; }
 }
+
+/* ------------------------------------------- compléments (relecture finale) */
+.metre { display: block; height: 10px; border-radius: 5px; background: var(--serie-1-piste); margin: 10px 0; overflow: hidden; }
+.metre__rempli { display: block; height: 100%; border-radius: 5px; background: var(--fam-1); }
+.marque { display: inline-block; font-size: 0.8125rem; font-weight: 700; border-radius: 6px; padding: 2px 8px; vertical-align: middle; }
+.marque--neutre { background: var(--lavis); color: var(--lien); }
+.explication { font-size: 0.9375rem; color: var(--encre-2); border-left: 3px solid var(--axe); padding: 4px 0 4px 12px; }
+.explication strong { color: var(--encre); }
+.message-comparateur { margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; background: var(--attention-fond); color: var(--attention); font-size: 0.875rem; font-weight: 600; }
