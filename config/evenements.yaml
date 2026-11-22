@@ -57,6 +57,10 @@ evenements:
     libelle: Droits de douane américains
     detail: Annonce de droits de douane généralisés par les États-Unis ; pic de la peur le 8 avril.
     categorie: marches
+  - date: 2026-11-05
+    libelle: Chute des valeurs « IA »
+    detail: Forte chute des valeurs liées à l'intelligence artificielle ; S&P 500 −3,7 %, VIX de 16,6 à 28,2 en un jour.
+    categorie: marches
 
   # --- Banques centrales : lancements des grands programmes de QE (assouplissement quantitatif)
   - date: 2008-11-25
