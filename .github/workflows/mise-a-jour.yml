@@ -65,7 +65,7 @@ jobs:
             echo "Aucun changement dans data/"
           else
             git commit -m "Mise à jour des données — $(TZ=Europe/Brussels date +%d/%m/%Y)"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main   # en cas de conflit sur data/, les données du robot (plus récentes) l emportent
             git push origin HEAD:main
           fi
 
