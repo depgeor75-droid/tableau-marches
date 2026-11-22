@@ -280,6 +280,7 @@
           if (unitesSelection(etat.ids).length > 3 && a !== "base100") return;
           etat.affichage = a; sauver(); actualiser();
         }, "Affichage"))),
+      h("label", { class: "case" }, h("input", { type: "checkbox", checked: O.lire("evenements", false), onchange: function (ev) { O.ecrire("evenements", ev.target.checked); actualiser(); } }), "Afficher les grands événements"),
       h("p", { class: "mode-aide" }, h("strong", {}, MODES[etat.mode].nom + " : "), MODES[etat.mode].aide, " ", K.boutonInfo("t:correlation", "corrélation")),
       h("p", { class: "mode-aide" }, "Calcul en données " + ({ J: "quotidiennes", S: "hebdomadaires", M: "mensuelles", T: "trimestrielles", A: "annuelles" })[f] +
         (etat.du && etat.au ? " du " + O.date(etat.du) + " au " + O.date(etat.au) : "") + "."));

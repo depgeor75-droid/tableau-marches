@@ -68,7 +68,7 @@ Modifiez le fichier sur github.com (crayon ✏️ → **Commit changes**) : le s
 
 - **`config/indicateurs.yaml`**, famille K « Valeurs suivies » : ajoutez une action avec son code Yahoo Finance. Exemple, à ajouter sous la ligne d'Aedifica :
   ```yaml
-  - {id: K2, nom: "Cofinimmo (action, Euronext Bruxelles)", nom_court: "Cofinimmo", famille: K, code: "COFB.BR"}
+  - {id: K2, nom: "UCB (action, Euronext Bruxelles)", nom_court: "UCB", famille: K, code: "UCB.BR"}
   ```
 - **`config/evenements.yaml`** : les grands événements affichés sur les graphiques (option « Afficher les grands événements »). Ajoutez une ligne avec la date, un libellé court et un détail.
 - **`config/reglages.yaml`** : tous les seuils (fraîcheur des données, seuils des jauges, fenêtres de corrélation…).
