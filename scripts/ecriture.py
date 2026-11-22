@@ -52,6 +52,8 @@ def recent_depuis_native(native: dict[str, float], frequence: str, aujourd_hui: 
 
 def mention(cfg, ind: dict, etat: dict | None = None) -> str:
     role = (etat or {}).get("role")
+    if ind.get("mention") and role != "secours":
+        return ind["mention"]
     source = ind.get("mention_source") or ind["source"]
     organisme = ind.get("organisme", "")
     if role == "secours" and ind.get("secours"):

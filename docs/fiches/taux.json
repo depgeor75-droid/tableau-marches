@@ -1,0 +1,340 @@
+{
+ "A1": {
+  "titre": "Taux de la Fed — le taux effectif des fonds fédéraux",
+  "phrase": "C'est le taux auquel les banques américaines se prêtent de l'argent d'un jour à l'autre, taux que la Fed (Réserve fédérale, la banque centrale des États-Unis) pilote par ses décisions.",
+  "mesure": "Le prix de l'argent à très court terme aux États-Unis. La Fed n'impose pas ce taux : elle annonce une fourchette cible (un minimum et un maximum), et le taux observé sur le marché s'y place.",
+  "calcul": "Chaque jour, on relève les taux réellement payés pour ces prêts entre banques et on en tire une valeur centrale, en tenant compte des montants échangés.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a culminé à 9,52 % en octobre 1990. Il est resté sous 0,5 % presque sans interruption de fin 2008 à fin 2016, puis de mars 2020 à avril 2022, avant de remonter à 5,33 % en janvier 2024.",
+  "bouger": "La Fed le relève quand l'inflation (la hausse générale des prix) est trop forte, et le baisse quand l'économie faiblit. Il influence les crédits, l'épargne, la bourse et le dollar.",
+  "liens": [
+   "B2",
+   "B3",
+   "BC_10A3M",
+   "A2",
+   "t:points"
+  ],
+  "piege": "Ce n'est pas la cible officielle, mais le taux effectif : il peut s'en écarter légèrement. La série s'affiche tous les jours, week-ends compris : la valeur est simplement reportée. Ses variations se mesurent en points de %."
+ },
+ "A2": {
+  "titre": "Taux de dépôt de la BCE — le taux directeur de la zone euro",
+  "phrase": "C'est l'intérêt que la BCE (Banque centrale européenne) verse aux banques qui lui confient leur argent pour une nuit.",
+  "mesure": "Le prix de l'argent à très court terme dans la zone euro. Plus ce taux est élevé, plus les banques préfèrent placer leurs fonds à la BCE plutôt que de les prêter à bas prix, ce qui tire les autres taux vers le haut.",
+  "calcul": "Il n'est pas calculé : le Conseil des gouverneurs de la BCE le fixe lors de ses réunions. La courbe forme donc un escalier : une valeur identique jusqu'à la décision suivante.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois, il est resté négatif de juin 2014 à juin 2022, avec un minimum de −0,5 % : les banques payaient pour déposer leur argent. Son maximum est de 4,0 % en septembre 2023.",
+  "bouger": "La BCE le fixe en fonction de l'inflation et de la croissance de la zone euro. Il guide l'Euribor, les crédits à taux variable, l'épargne et le taux des emprunts d'État.",
+  "liens": [
+   "A3",
+   "B5_10A",
+   "C5",
+   "B4",
+   "A1"
+  ],
+  "piege": "L'historique commence en 1999, avec la création de l'euro : il n'existe pas de taux de dépôt avant. Ce n'est pas le seul taux de la BCE. Un taux négatif n'est pas une erreur de la série : c'est réellement arrivé."
+ },
+ "A3": {
+  "titre": "Euribor 3 mois — le taux entre banques de la zone euro",
+  "phrase": "L'Euribor 3 mois est le taux auquel des banques européennes se prêtent de l'argent pour trois mois.",
+  "mesure": "Le coût de l'argent à trois mois entre banques. Il reflète ce que le marché attend des décisions de la BCE (Banque centrale européenne) dans les mois à venir, plus une petite marge de prudence. De nombreux crédits à taux variable y sont adossés.",
+  "calcul": "L'EMMI (European Money Markets Institute), l'organisme qui gère cet indice, le calcule chaque jour à partir de données de banques. Notre série reprend la moyenne de chaque mois, publiée par la BCE.",
+  "interpreter": "Il colle au taux de dépôt de la BCE, avec un peu d'avance. Dans nos données depuis 1994, son maximum est de 7,58 % en mars 1995. Il est resté négatif de mai 2015 à juin 2022, avec un minimum de −0,582 % en décembre 2021.",
+  "bouger": "Les anticipations sur la BCE, et la confiance entre banques : en période de tension, il s'écarte du taux de dépôt. Il influence les crédits à taux variable et certains placements.",
+  "liens": [
+   "A2",
+   "B5_10A",
+   "C5",
+   "B4"
+  ],
+  "piege": "C'est une moyenne mensuelle, pas le taux du jour. L'historique commence en janvier 1994 : l'Euribor n'existe que depuis 1999, la série reconstitue donc un taux comparable avant cette date. Il existe aussi des Euribor à d'autres durées, que ce tableau ne suit pas."
+ },
+ "A4": {
+  "titre": "Bank Rate — le taux directeur de la Banque d'Angleterre",
+  "phrase": "Le Bank Rate est le taux de référence fixé par la Banque d'Angleterre, la banque centrale du Royaume-Uni.",
+  "mesure": "Le coût de base de l'argent au Royaume-Uni. C'est le taux que la banque centrale verse aux banques sur l'argent déposé chez elle : il se répercute sur les crédits et l'épargne britanniques.",
+  "calcul": "Il n'est pas calculé : le comité de politique monétaire de la Banque d'Angleterre le fixe lors de ses réunions. La série est quotidienne, mais seulement les jours ouvrés, et sa courbe forme un escalier.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles, il valait 14,875 % en janvier 1990, début de la série. Il est tombé à 0,1 % en mars 2020. Il est resté à 0,5 % ou moins de mars 2009 à juillet 2018, puis de mars 2020 à février 2022.",
+  "bouger": "La banque centrale le modifie selon l'inflation britannique et l'activité. Il influence la livre sterling, les crédits immobiliers, l'épargne et le taux des emprunts d'État britanniques.",
+  "liens": [
+   "B9",
+   "C11",
+   "A1",
+   "A2"
+  ],
+  "piege": "Ne le confondez pas avec le taux de votre crédit ou de votre épargne : ceux-ci s'y ajoutent une marge. Ses variations se lisent en points de %. La série est publiée avec un léger retard de quelques jours."
+ },
+ "A5": {
+  "titre": "Taux au jour le jour du Japon — le taux de marché proche de la cible de la Banque du Japon",
+  "phrase": "C'est le taux auquel les banques japonaises se prêtent de l'argent d'un jour à l'autre, sans garantie, taux que la Banque du Japon guide vers sa cible.",
+  "mesure": "Le prix de l'argent à très court terme au Japon. La banque centrale vise un niveau, mais on observe un taux de marché : proche de la cible, jamais exactement égal.",
+  "calcul": "La série vient de l'OCDE (Organisation de coopération et de développement économiques), via FRED (la base de données de la banque fédérale de réserve de Saint-Louis) : c'est la moyenne mensuelle des taux constatés sur le marché.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données depuis 1990, son maximum est de 8,2781 % en mars 1991. Il est resté sous 0,5 % pendant presque toute la période depuis 1995, et légèrement négatif de mars 2016 à février 2024 (minimum de −0,071 % en juin 2018).",
+  "bouger": "Les décisions de la Banque du Japon, qui réagit à l'inflation japonaise et à la croissance. Il influence le yen, les crédits et le taux des emprunts d'État japonais.",
+  "liens": [
+   "B10",
+   "C12",
+   "A1",
+   "A2"
+  ],
+  "piege": "Ce n'est pas la cible, et la série est mensuelle. Si la série de l'OCDE prend du retard, le tableau la prolonge avec le taux quotidien publié par la Banque du Japon."
+ },
+ "A6": {
+  "titre": "Taux de référence chinois — le LPR à 1 an et son prédécesseur",
+  "phrase": "C'est le taux de référence des crédits aux entreprises en Chine, orienté par la banque centrale chinoise.",
+  "mesure": "Le coût de base du crédit à un an en Chine. La Chine n'a pas de taux directeur unique comme la Fed ou la BCE : ce taux en tient lieu.",
+  "calcul": "La série est composée par la BRI (Banque des règlements internationaux). Jusqu'en août 2019, c'est le taux de prêt de référence à un an ; ensuite, c'est le LPR (Loan Prime Rate, « taux préférentiel de prêt »), établi à partir des taux proposés par de grandes banques. Valeur de fin de mois.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Il est passé de 12,06 % en janvier 1996, premier point de la série, à 3,0 % en mai 2025, son minimum, avec des remontées temporaires, notamment jusqu'à 7,47 % en janvier 2008.",
+  "bouger": "Les décisions de la banque centrale, qui cherche à soutenir la croissance sans emballer l'inflation ou l'immobilier. Il influence le crédit, la demande de matières premières et, indirectement, le yuan.",
+  "liens": [
+   "C13",
+   "A1",
+   "A2",
+   "B11"
+  ],
+  "piege": "Deux taux de nature différente sont enchaînés : le passage de 4,35 % à 4,25 % en août 2019 vient en partie du changement de définition. Taux très stable, qui ne bouge que de loin en loin. Historique depuis 1996 seulement, rien avant."
+ },
+ "A7": {
+  "titre": "Taux de la BNS — le taux directeur de la Suisse",
+  "phrase": "C'est le taux de référence de la BNS (Banque nationale suisse), qui guide le prix de l'argent en Suisse.",
+  "mesure": "Le coût de l'argent à très court terme en Suisse, pays à la monnaie très recherchée en temps de crise. La BNS s'en sert aussi pour limiter la hausse du franc suisse.",
+  "calcul": "La série est composée par la BRI (Banque des règlements internationaux). De 1990 à 1999, c'est le taux d'escompte ; de 2000 à juin 2019, le milieu de la fourchette cible du Libor 3 mois (un taux interbancaire de Londres) ; depuis le 13 juin 2019, le taux directeur proprement dit.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles, son maximum est de 7,0 % en août 1991. Il est resté négatif de décembre 2014 à août 2022, avec un minimum de −0,75 % : parmi les sept taux directeurs suivis ici, c'est le seul à avoir été aussi bas.",
+  "bouger": "Les décisions de la BNS, selon l'inflation suisse et la force du franc. Il influence le franc, les crédits et les taux suisses.",
+  "liens": [
+   "B12",
+   "A2",
+   "A1",
+   "B4"
+  ],
+  "piege": "Trois définitions successives sont mises bout à bout : les sauts d'un régime à l'autre ne sont pas tous des décisions de politique monétaire. La série est mensuelle et vient de la BRI, pas directement de la BNS."
+ },
+ "B1": {
+  "titre": "Taux à 10 ans des États-Unis — le grand taux de référence mondial",
+  "phrase": "C'est le rendement annuel que demandent les investisseurs pour prêter à l'État américain pendant dix ans.",
+  "mesure": "Le coût d'emprunt à long terme de la première économie mondiale. Il sert de repère à presque tous les taux longs : crédits immobiliers américains, obligations d'entreprises, valorisation des actions.",
+  "calcul": "Chaque jour, le Trésor américain déduit des prix de marché de ses obligations le rendement d'un emprunt « à échéance constante » de dix ans. Quand le prix d'une obligation baisse, son rendement monte : les deux vont en sens inverse.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a atteint 9,04 % en avril 1990 et 0,55 % en juillet 2020. Comparé au taux à 2 ans ou à 3 mois, il dit si la courbe des taux est pentue ou inversée.",
+  "bouger": "Les attentes d'inflation, la croissance, la politique de la Fed (la banque centrale américaine), l'ampleur de la dette publique, et la ruée vers les placements sûrs en cas de crise (qui le fait baisser). Il influence la bourse, le dollar et l'immobilier.",
+  "liens": [
+   "B2",
+   "B3",
+   "A1",
+   "BC_10A2A",
+   "B4"
+  ],
+  "piege": "Quand le taux monte, le prix des obligations déjà émises baisse. Un rendement n'est pas l'inflation. Les jours fériés américains, il n'y a pas de valeur : le trou reste un trou. Ses variations se lisent en points de %."
+ },
+ "B2": {
+  "titre": "Taux à 2 ans des États-Unis — le miroir des attentes sur la Fed",
+  "phrase": "C'est le rendement annuel que demandent les investisseurs pour prêter à l'État américain pendant deux ans.",
+  "mesure": "Un taux à court et moyen terme, très sensible à ce que le marché attend des décisions de la Fed (Réserve fédérale, la banque centrale américaine) pour les deux années à venir.",
+  "calcul": "Comme pour le taux à 10 ans, le Trésor américain déduit chaque jour des prix de ses obligations le rendement d'un emprunt à deux ans « à échéance constante ». Prix et rendement vont en sens inverse.",
+  "interpreter": "Pas de seuil reconnu. Comparé au taux de la Fed : au-dessus, le marché parie plutôt sur des hausses ; en dessous, sur des baisses. Dans nos valeurs de fin de mois depuis 1990, il a atteint 8,96 % en avril 1990 et 0,11 % en juillet 2020.",
+  "bouger": "Les propos des dirigeants de la Fed, les chiffres de l'emploi et de l'inflation. Il influence le taux des crédits à court terme, les actions sensibles aux taux et le dollar.",
+  "liens": [
+   "A1",
+   "B1",
+   "B3",
+   "BC_10A2A"
+  ],
+  "piege": "Il bouge plus vite que le taux à 10 ans, et un recul brutal signale souvent une crise ou l'attente de baisses de taux, pas une bonne nouvelle. Pas de valeur les jours fériés américains : le trou reste un trou."
+ },
+ "B3": {
+  "titre": "Taux à 3 mois des États-Unis — le placement sans risque à très court terme",
+  "phrase": "C'est le rendement des bons du Trésor américain à trois mois, un placement réputé très sûr.",
+  "mesure": "Ce que rapporte un prêt de trois mois à l'État américain. Ce taux colle de près au taux de la Fed (la banque centrale américaine) et aux décisions attendues dans les trois mois.",
+  "calcul": "Les bons du Trésor sont vendus moins cher que leur valeur finale ; la différence fait l'intérêt. Le Trésor déduit chaque jour de leurs prix le rendement à trois mois « à échéance constante ».",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a atteint 8,07 % en mars 1990, et 0,0 % en septembre 2015, son minimum. Il est resté sous 0,5 % à plusieurs reprises entre 2008 et 2022.",
+  "bouger": "Presque uniquement les décisions de la Fed, attendues ou réalisées, et parfois une ruée vers les placements très sûrs. Il sert de base à l'écart avec le taux à 10 ans.",
+  "liens": [
+   "A1",
+   "B1",
+   "BC_10A3M",
+   "B2"
+  ],
+  "piege": "Il ne dit presque rien sur la croissance à long terme : c'est la comparaison avec le taux à 10 ans qui informe. Pas de valeur les jours fériés américains."
+ },
+ "B4": {
+  "titre": "Bund à 10 ans — le taux de référence de la zone euro",
+  "phrase": "Le Bund (emprunt de l'État allemand) à 10 ans est le taux que paie l'Allemagne pour emprunter, repère de toute la zone euro.",
+  "mesure": "Le coût d'emprunt à long terme de l'Allemagne, pays jugé très sûr. Les taux des autres États de la zone euro se lisent par rapport à lui.",
+  "calcul": "La Bundesbank (la banque centrale allemande) estime chaque jour ce rendement en ajustant une courbe lisse (méthode de Svensson) sur les prix des titres fédéraux cotés : ce n'est donc pas le rendement d'un seul titre.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, son maximum est de 9,23 % en septembre 1990, son minimum de −0,71 % en août 2019. Il est resté négatif de mai 2019 à janvier 2022 : l'investisseur payait pour prêter.",
+  "bouger": "La politique de la BCE (Banque centrale européenne), l'inflation, la croissance, et la fuite vers les valeurs sûres en cas de crise (qui le fait baisser). Il influence le taux des autres États et des crédits en euros.",
+  "liens": [
+   "BC_IT_DE",
+   "B5_10A",
+   "A2",
+   "B1",
+   "B6"
+  ],
+  "piege": "La série est quotidienne depuis août 1997 seulement. Avant, il n'y a qu'une valeur par mois (fin de mois) : le raccord n'est pas strictement comparable. Un taux négatif n'est pas une erreur de la série."
+ },
+ "B6": {
+  "titre": "Taux à 10 ans de la Belgique — l'OLO",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à l'État belge, via les OLO (obligations linéaires, ses emprunts à long terme).",
+  "mesure": "Le coût d'emprunt à long terme de la Belgique. Il reflète la confiance des investisseurs dans les finances belges et le niveau général des taux de la zone euro.",
+  "calcul": "Eurostat (l'office statistique de l'Union européenne) publie chaque mois le rendement moyen des emprunts belges à environ 10 ans, indicateur utilisé comme « critère de convergence » pour l'euro. C'est une moyenne mensuelle.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, il a atteint 10,4 % en février 1990 et −0,39 % en décembre 2020, et il a été négatif à plusieurs reprises entre août 2019 et août 2021. Le meilleur repère est son écart avec l'Allemagne.",
+  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand, la dette et le déficit belges, la note de crédit du pays. Il influence le coût de la dette publique belge.",
+  "liens": [
+   "BC_BE_DE",
+   "B4",
+   "A2",
+   "B7"
+  ],
+  "piege": "Seulement mensuel : n'allez pas le comparer au Bund du jour. Ce n'est pas le taux des bons d'État vendus aux particuliers. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE, de même nature."
+ },
+ "B7": {
+  "titre": "Taux à 10 ans de la France — l'OAT",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à l'État français, via les OAT (obligations assimilables du Trésor).",
+  "mesure": "Le coût d'emprunt à long terme de la France. Il reflète la confiance des investisseurs dans les finances françaises et le niveau général des taux de la zone euro.",
+  "calcul": "Eurostat (l'office statistique de l'Union européenne) publie chaque mois le rendement moyen des emprunts français à environ 10 ans, indicateur utilisé comme « critère de convergence » pour l'euro. C'est une moyenne mensuelle.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, il a atteint 10,48 % en septembre 1990 et −0,34 % en août 2019, et il a été négatif à plusieurs reprises entre juillet 2019 et août 2021. Le meilleur repère est son écart avec l'Allemagne.",
+  "bouger": "La politique de la BCE (Banque centrale européenne), le Bund allemand, la dette et le déficit français, la politique budgétaire. Il influence le coût de la dette publique et les crédits en euros.",
+  "liens": [
+   "BC_FR_DE",
+   "B4",
+   "A2",
+   "B6"
+  ],
+  "piege": "Seulement mensuel : n'allez pas le comparer au taux du jour. Si Eurostat est indisponible, le tableau complète avec la série de l'OCDE, de même nature. Une hausse du taux d'un État n'annonce pas forcément une crise."
+ },
+ "B8": {
+  "titre": "Taux à 10 ans de l'Italie — le BTP",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à l'État italien, via les BTP (Buoni del Tesoro Poliennali, ses emprunts à long terme).",
+  "mesure": "Le coût d'emprunt à long terme de l'Italie, grande économie très endettée. C'est le thermomètre habituel des tensions sur les dettes de la zone euro.",
+  "calcul": "Eurostat (l'office statistique de l'Union européenne) publie chaque mois le rendement moyen des emprunts italiens à environ 10 ans, indicateur utilisé comme « critère de convergence » pour l'euro. C'est une moyenne mensuelle.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos moyennes mensuelles depuis 1990, il a atteint 14,42 % en octobre 1992 et 0,58 % en décembre 2020, sans jamais devenir négatif. Il se lit surtout par son écart avec l'Allemagne, qui a dépassé 3 points d'août 2011 à fin 2012.",
+  "bouger": "Les décisions de la BCE (Banque centrale européenne), la dette publique italienne, la croissance, la politique budgétaire du gouvernement. Il influence le coût de la dette italienne et le moral des marchés européens.",
+  "liens": [
+   "BC_IT_DE",
+   "B4",
+   "A2",
+   "B6"
+  ],
+  "piege": "Avant l'euro (1999), le taux incluait le risque de baisse de la monnaie italienne : les niveaux d'avant ne sont pas comparables. Seulement mensuel. Un taux élevé n'annonce pas à lui seul un défaut de paiement."
+ },
+ "B9": {
+  "titre": "Taux à 10 ans du Royaume-Uni — le Gilt",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à l'État britannique, via les Gilts (ses emprunts d'État).",
+  "mesure": "Le coût d'emprunt à long terme du Royaume-Uni. Il reflète l'inflation attendue, la politique de la Banque d'Angleterre et la confiance dans les finances publiques britanniques.",
+  "calcul": "La Banque d'Angleterre publie chaque jour le rendement « au pair nominal » à 10 ans : celui d'un emprunt fictif de dix ans émis à sa valeur nominale, estimé à partir des prix du marché.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis novembre 1993, il a atteint 8,89 % en septembre 1994 et 0,17 % en juillet 2020. Il est resté sous 1 % de mai 2019 à août 2021.",
+  "bouger": "Le Bank Rate (A4), l'inflation britannique, les besoins d'emprunt de l'État, les flux de capitaux. Il influence la livre sterling, les crédits immobiliers et la bourse de Londres.",
+  "liens": [
+   "A4",
+   "C11",
+   "B1",
+   "B4"
+  ],
+  "piege": "L'historique commence en novembre 1993. Le rendement « au pair » est une estimation, pas celui d'un titre précis. La donnée arrive avec un retard de quelques jours. En cas de panne de la source, une moyenne mensuelle de l'OCDE la remplace."
+ },
+ "B10": {
+  "titre": "Taux à 10 ans du Japon — le JGB",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à l'État japonais, via les JGB (Japanese Government Bonds, ses emprunts d'État).",
+  "mesure": "Le coût d'emprunt à long terme du Japon, pays le plus endetté des grandes économies, avec une inflation longtemps absente. Il sert de repère aux placements en yens.",
+  "calcul": "Le ministère des Finances japonais publie chaque jour ouvré le rendement à 10 ans, déduit des prix de marché de ses obligations.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos valeurs de fin de mois depuis 1990, il a atteint 8,105 % en septembre 1990 et −0,275 % en août 2019. Il est resté sous 0,5 % de façon quasi continue d'octobre 2014 à fin 2022.",
+  "bouger": "Les décisions de la Banque du Japon, qui a longtemps cherché à le tenir bas, l'inflation japonaise et les flux de capitaux. Il influence le yen et les placements des investisseurs japonais à l'étranger.",
+  "liens": [
+   "A5",
+   "C12",
+   "B1",
+   "B4"
+  ],
+  "piege": "Pas de valeur les jours fériés japonais : le trou reste un trou. Un taux bas ne signifie pas une dette sans risque. En cas de panne de la source, une moyenne mensuelle de l'OCDE remplace la série quotidienne."
+ },
+ "B11": {
+  "titre": "Taux à 10 ans de la Chine — série non disponible",
+  "phrase": "Cet indicateur mesurerait le rendement que demandent les investisseurs pour prêter dix ans à l'État chinois ; il n'est pas disponible ici.",
+  "mesure": "Il refléterait le coût d'emprunt à long terme de la deuxième économie mondiale, donc ses attentes de croissance et d'inflation.",
+  "calcul": "Ce serait un rendement déduit des prix des obligations d'État chinoises, comme pour les autres pays de cette famille.",
+  "interpreter": "Aucun repère, faute de données. Pour suivre le crédit en Chine, voyez le taux de référence chinois (A6) et l'inflation chinoise (C13).",
+  "bouger": "Il dépendrait de la banque centrale chinoise, de la croissance, de l'inflation et de la demande des investisseurs.",
+  "liens": [
+   "A6",
+   "C13",
+   "B1",
+   "t:courbe"
+  ],
+  "piege": "Aucune source gratuite, fiable et dotée d'un long historique n'a été trouvée en novembre 2026 : FRED (la base de la banque fédérale de réserve de Saint-Louis), le FMI (Fonds monétaire international), Yahoo Finance et ChinaBond ont été testés. Plutôt qu'un chiffre douteux, le tableau écrit « non disponible »."
+ },
+ "B12": {
+  "titre": "Taux à 10 ans de la Suisse",
+  "phrase": "C'est le rendement que demandent les investisseurs pour prêter dix ans à la Confédération suisse.",
+  "mesure": "Le coût d'emprunt à long terme de la Suisse, valeur refuge. Il reflète la confiance des investisseurs, très forte, et le niveau des taux de la BNS (Banque nationale suisse).",
+  "calcul": "La série vient de l'OCDE (Organisation de coopération et de développement économiques), via FRED (la base de la banque fédérale de réserve de Saint-Louis) : c'est la moyenne mensuelle des rendements des emprunts fédéraux à environ 10 ans.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Dans nos données mensuelles depuis 1990, il a atteint 6,924 % en juin 1992 et −0,975 % en août 2019. Il a été négatif presque sans interruption de janvier 2015 à décembre 2021.",
+  "bouger": "La politique de la BNS, la ruée vers les valeurs refuges en temps de crise (qui le fait baisser), et les taux mondiaux. Il influence le franc suisse et les crédits en Suisse.",
+  "liens": [
+   "A7",
+   "B4",
+   "B1",
+   "B10"
+  ],
+  "piege": "Seulement mensuel. Un taux négatif signifie que l'investisseur paie pour prêter : ce n'est pas une erreur. La série de l'OCDE peut s'arrêter sans préavis."
+ },
+ "BC_10A2A": {
+  "titre": "Écart de taux 10 ans − 2 ans aux États-Unis — la pente de la courbe",
+  "phrase": "C'est la différence entre le taux à 10 ans et le taux à 2 ans de l'État américain, exprimée en points de pourcentage.",
+  "mesure": "La pente de la courbe des taux : les investisseurs demandent-ils plus pour prêter longtemps que pour prêter court ? Normalement oui, et l'écart est positif.",
+  "calcul": "Taux à 10 ans moins taux à 2 ans du Trésor américain, le même jour. Par exemple, 4,5 % − 4,0 % donne 0,5 point.",
+  "interpreter": "Au-dessus de zéro, la courbe est « normale » ; près de zéro, elle est plate ; sous zéro, elle est « inversée ». Dans nos valeurs de fin de mois depuis 1990, il est négatif en 2000, par moments entre fin 2005 et mi-2007, et de juillet 2022 à juillet 2024 (minimum de −1,06 point en juin 2023, maximum de 2,84 en janvier 2011).",
+  "bouger": "Le 2 ans suit les attentes sur la Fed ; le 10 ans, la croissance et l'inflation à long terme. Une inversion signale que le marché attend des baisses de taux, souvent par crainte d'un ralentissement.",
+  "liens": [
+   "B1",
+   "B2",
+   "BC_10A3M",
+   "t:courbe",
+   "t:spread"
+  ],
+  "piege": "Signal avancé imparfait : les inversions ont souvent précédé les récessions américaines, avec un délai variable de plusieurs mois à plus d'un an, mais ce n'est pas une règle. L'écart redevient souvent positif avant que le ralentissement ne se voie."
+ },
+ "BC_10A3M": {
+  "titre": "Écart de taux 10 ans − 3 mois aux États-Unis",
+  "phrase": "C'est la différence entre le taux à 10 ans et le taux à 3 mois de l'État américain, exprimée en points de pourcentage.",
+  "mesure": "La pente de la courbe des taux entre le très court et le long terme. Le taux à 3 mois suit de près la Fed ; l'écart compare donc le coût actuel de l'argent à celui des dix prochaines années.",
+  "calcul": "Taux à 10 ans moins taux à 3 mois du Trésor américain, le même jour. Par exemple, 4,5 % − 5,0 % donne −0,5 point.",
+  "interpreter": "Au-dessus de zéro, courbe « normale » ; sous zéro, courbe « inversée ». Dans nos valeurs de fin de mois depuis 1990, il est négatif en 2000, en 2006-2007, en 2019, de façon prolongée d'octobre 2022 à novembre 2024 (minimum de −1,88 point en mai 2023). Son maximum est de 3,82 en avril 1992.",
+  "bouger": "Surtout le taux à 3 mois, donc la politique de la Fed : quand elle monte vite ses taux, l'écart se resserre ou s'inverse. Le taux à 10 ans reflète la croissance et l'inflation à long terme.",
+  "liens": [
+   "B1",
+   "B3",
+   "BC_10A2A",
+   "t:courbe",
+   "A1"
+  ],
+  "piege": "Signal avancé imparfait : une inversion a souvent précédé un ralentissement américain, avec un délai variable, mais ce n'est pas une règle. Les écarts avec le 2 ans et avec le 3 mois ne s'inversent pas toujours en même temps."
+ },
+ "BC_EU": {
+  "titre": "Écarts de taux à 10 ans — Italie, France et Belgique face à l'Allemagne",
+  "phrase": "Ces écarts mesurent combien de points de % plus cher que l'Allemagne l'Italie, la France et la Belgique empruntent à 10 ans.",
+  "mesure": "Le supplément de rendement exigé pour prêter à ces pays plutôt qu'à l'Allemagne, jugée la plus sûre. Plus l'écart est grand, plus le marché craint pour la dette du pays. Un point de % égale 100 points de base.",
+  "calcul": "Taux à 10 ans du pays (Eurostat, moyenne mensuelle) moins taux à 10 ans de l'Allemagne (Eurostat, moyenne mensuelle), pour le même mois.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique. Pendant la crise de la dette de la zone euro, l'écart de l'Italie a dépassé 3 points d'août 2011 à fin 2012 (5,19 en novembre 2011), celui de la Belgique a atteint 2,97 et celui de la France 1,54 à ce même mois.",
+  "bouger": "La dette et le déficit de chaque pays, la croissance, la confiance dans l'euro et les décisions de la BCE (Banque centrale européenne). Ils se creusent lors des crises.",
+  "liens": [
+   "BC_IT_DE",
+   "BC_FR_DE",
+   "BC_BE_DE",
+   "B4",
+   "t:spread"
+  ],
+  "piege": "Cette fiche couvre trois séries. Elles sont mensuelles et utilisent l'Allemagne d'Eurostat, pas le Bund quotidien de la Bundesbank : ne les comparez pas à l'écart du jour lu dans la presse. Avant 1999, l'écart reflète aussi le risque de change."
+ },
+ "B5": {
+  "titre": "Taux à 2 ans et à 10 ans de la zone euro — la courbe des États notés AAA de la BCE",
+  "phrase": "Ce sont les rendements à 2 ans et à 10 ans des États de la zone euro les mieux notés, calculés par la BCE (Banque centrale européenne).",
+  "mesure": "Ce que rapporte un prêt, à 2 ans et à 10 ans, aux États de la zone euro notés AAA (la meilleure note de solvabilité des agences de notation). C'est le taux « sans risque » de la zone euro.",
+  "calcul": "Chaque jour, la BCE ajuste une courbe lisse (méthode de Svensson) sur les prix des obligations de ces États et en lit les taux à 2 ans et à 10 ans.",
+  "interpreter": "Pas de seuil reconnu : on regarde l'historique depuis 2004. Dans nos valeurs de fin de mois, le 10 ans a atteint 4,73 % en juin 2008 et −0,65 % en août 2019 ; le 2 ans, 4,62 % et −0,93 %.",
+  "bouger": "Le 2 ans suit les attentes sur la BCE ; le 10 ans reflète aussi la croissance et l'inflation attendues à long terme. Ils influencent les crédits et la bourse européenne.",
+  "liens": [
+   "B4",
+   "A2",
+   "A3",
+   "t:courbe",
+   "t:spread"
+  ],
+  "piege": "Cette fiche couvre deux séries (2 ans et 10 ans). Historique depuis septembre 2004 seulement : ne pas le raccorder au Bund d'avant. Le groupe des États AAA change avec les notes : ce n'est pas un taux moyen de tous les pays de l'euro."
+ }
+}

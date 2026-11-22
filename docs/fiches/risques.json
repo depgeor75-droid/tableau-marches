@@ -1,0 +1,352 @@
+{
+ "J1": {
+  "titre": "VIX — l'« indice de la peur » du marché américain",
+  "phrase": "Le VIX (Volatility Index, « indice de volatilité ») mesure l'ampleur des mouvements que les investisseurs attendent sur la bourse américaine au cours des 30 prochains jours.",
+  "mesure": "La volatilité attendue, c'est-à-dire l'intensité des variations, à la hausse comme à la baisse, de l'indice S&P 500 (les 500 plus grandes sociétés cotées aux États-Unis). Le VIX ne dit pas si la bourse va monter ou baisser ; il dit si elle risque de beaucoup bouger.",
+  "calcul": "Le Cboe (Chicago Board Options Exchange, la bourse des options de Chicago) le calcule à partir des prix des options sur le S&P 500, des contrats qui servent notamment d'assurance contre une baisse. Plus cette protection coûte cher, plus le VIX monte. Il s'exprime en % sur un an : un VIX de 20 signifie environ 6 % de variation attendue sur un mois (20 ÷ √12).",
+  "interpreter": "Repères d'usage, non officiels : sous 15, calme ; de 15 à 20, normal ; de 20 à 30, nervosité ; au-dessus de 30, peur ; au-dessus de 40, panique. Depuis 1990, la valeur de fin de mois est restée sous 20 dans environ 63 % des mois et n'a dépassé 30 que dans environ 7,5 % des mois. Au jour le jour, il a atteint 82,69 le 16 mars 2020 et 52,33 le 8 avril 2025.",
+  "bouger": "Il monte presque toujours quand la bourse chute (lien inverse avec le S&P 500) et s'envole lors des chocs : faillites bancaires, pandémie, guerre. Un VIX très élevé a souvent coïncidé avec des points bas de la bourse, mais ce n'est pas une règle.",
+  "liens": [
+   "G2",
+   "J2",
+   "J5",
+   "t:percentile"
+  ],
+  "piege": "Le VIX ne prévoit pas la direction du marché et retombe souvent vite après un choc. Particularité : l'historique vient de FRED (base de données de la Fed, la banque centrale américaine, à Saint-Louis) ; les jours les plus récents viennent de Yahoo Finance et sont provisoires : ils peuvent être légèrement corrigés."
+ },
+ "J2": {
+  "titre": "VSTOXX — l'« indice de la peur » du marché européen",
+  "phrase": "Le VSTOXX mesure l'ampleur des mouvements que les investisseurs attendent sur les grandes actions de la zone euro au cours des 30 prochains jours.",
+  "mesure": "La volatilité attendue de l'Euro Stoxx 50, l'indice des 50 plus grandes sociétés de la zone euro. Comme le VIX américain, il ne dit pas si la bourse va monter ou baisser, mais si elle risque de beaucoup bouger.",
+  "calcul": "STOXX, fournisseur d'indices du groupe Deutsche Börse, le calcule à partir des prix des options sur l'Euro Stoxx 50, des contrats qui servent notamment d'assurance contre une baisse. Plus cette protection coûte cher, plus l'indice monte. Il s'exprime en % sur un an : un VSTOXX de 24 signifie environ 7 % de variation attendue sur un mois (24 ÷ √12).",
+  "interpreter": "Pas de seuil officiel : situez-le dans l'historique. Depuis 1999, la médiane des valeurs de fin de mois est de 21. Elle est restée sous 27 dans trois mois sur quatre, sous 33 dans neuf mois sur dix, et n'a dépassé 40 que dans environ 6 % des mois. Les sommets mensuels datent de septembre 2002 et d'octobre 2008 (plus de 60). Il est en général un peu plus élevé que le VIX.",
+  "bouger": "Il grimpe lors des chutes de la bourse européenne et des chocs : crise bancaire, crise des dettes publiques, pandémie, guerre. Il suit souvent le VIX, car les peurs se propagent d'un continent à l'autre.",
+  "liens": [
+   "J1",
+   "G5",
+   "J5",
+   "t:correlation"
+  ],
+  "piege": "Ne comparez pas VSTOXX et VIX au point près : ils portent sur des indices différents. En quotidien, les clôtures européenne et américaine n'ont pas lieu à la même heure, ce qui affaiblit la corrélation. Historique depuis 1999 ; série reprise du site de STOXX."
+ },
+ "J3": {
+  "titre": "GPR — l'indice de risque géopolitique de Caldara et Iacoviello",
+  "phrase": "Le GPR (Geopolitical Risk index) mesure l'importance donnée dans la presse aux guerres, aux attentats et aux tensions entre États.",
+  "mesure": "L'attention des médias aux événements géopolitiques inquiétants : menaces de guerre, tensions militaires, menaces nucléaires, terrorisme, début d'un conflit. Il ne mesure pas directement le risque réel, mais la place que ces sujets occupent dans l'actualité.",
+  "calcul": "Deux économistes, Dario Caldara et Matteo Iacoviello, comptent chaque mois la part des articles de grands quotidiens anglophones qui évoquent ces thèmes. Cette part est mise à l'échelle : 100 correspond à la moyenne de 1985 à 2019. Une version quotidienne existe, avec la même échelle. Elle est plus nerveuse.",
+  "interpreter": "Il n'y a pas de seuil officiel. Depuis 1990, la valeur mensuelle médiane est d'environ 92. Elle est restée sous 117 dans trois mois sur quatre et sous 151 dans neuf mois sur dix. Elle n'a dépassé 200 que dans environ 4 % des mois. Les plus hauts mensuels se situent en septembre-octobre 2001 (près de 500 et plus de 510), puis autour de 340 à 380 en 1991 et en 2003.",
+  "bouger": "Il monte lors de guerres, d'attentats ou de crises diplomatiques majeures, puis redescend souvent assez vite. Il influence surtout l'humeur des marchés : prix du pétrole et de l'or, volatilité des actions.",
+  "liens": [
+   "J1",
+   "H1",
+   "H3",
+   "J4"
+  ],
+  "piege": "Un pic de l'indice signale une forte couverture médiatique, pas forcément un danger accru pour l'économie. La version quotidienne est mise à jour le lundi, avec jusqu'à une semaine de retard. La version mensuelle l'est début de mois. Les valeurs récentes peuvent être légèrement révisées."
+ },
+ "J4": {
+  "titre": "Indice de stress financier de la Fed de Saint-Louis (STLFSI)",
+  "phrase": "L'indice de stress financier de la Fed (Réserve fédérale, la banque centrale des États-Unis) de Saint-Louis résume en un seul chiffre les tensions sur les marchés financiers américains.",
+  "mesure": "Le niveau de tension de la finance américaine : 0 correspond à la situation normale (la moyenne depuis fin 1993). Au-dessus de 0, le stress est plus fort que d'habitude ; en dessous, il est plus faible.",
+  "calcul": "La Banque fédérale de réserve de Saint-Louis combine chaque semaine 18 séries de marché : sept taux d'intérêt, six écarts de taux et cinq autres indicateurs, dont des mesures de volatilité. Ces séries tendent à bouger ensemble quand le stress monte. L'indice est publié chaque semaine, au vendredi.",
+  "interpreter": "Il n'existe pas de seuil officiel. Depuis fin 1993, la valeur de fin de mois de l'indice est négative dans environ deux mois sur trois. Il n'a dépassé 1 que dans environ 7 % des mois et 2 que dans environ 3 %. Les plus fortes valeurs de fin de mois datent d'octobre 2008 (près de 8) et de mars 2020 (plus de 5).",
+  "bouger": "Il grimpe lors des crises bancaires, des krachs boursiers et des paniques sur le crédit. Les valeurs nettement négatives décrivent un marché calme, où le crédit est facile.",
+  "liens": [
+   "J1",
+   "J5",
+   "J6",
+   "t:percentile"
+  ],
+  "piege": "Un indice très bas (calme) n'est pas une garantie : le calme précède parfois les tempêtes. Attention aussi : cet indice a été révisé plusieurs fois (la version utilisée s'appelle STLFSI4). Son historique démarre fin 1993, soit environ 33 ans."
+ },
+ "J5": {
+  "titre": "CISS — l'indicateur de stress systémique de la BCE",
+  "phrase": "Le CISS (Composite Indicator of Systemic Stress, « indicateur composite de stress systémique ») dit, entre 0 et 1, à quel point le système financier de la zone euro est sous tension.",
+  "mesure": "Le stress dans l'ensemble de la finance européenne : marché monétaire (prêts à très court terme entre banques), obligations, actions, change et intermédiaires financiers. Il vise le risque que le système tout entier se grippe, pas celui d'une entreprise isolée.",
+  "calcul": "La BCE (Banque centrale européenne) part de 15 mesures de stress, réparties en cinq segments de marché. Elle les agrège en tenant compte de leur corrélation : l'indicateur monte davantage quand le stress touche plusieurs segments à la fois. Nous utilisons la nouvelle version (« NEW CISS »), quotidienne.",
+  "interpreter": "Il n'y a pas de seuil officiel. Depuis 1990, la valeur mensuelle médiane est d'environ 0,06. Elle est restée sous 0,18 dans trois mois sur quatre et sous 0,34 dans neuf mois sur dix. Elle n'a dépassé 0,4 que dans environ 7 % des mois. Les plus hauts datent de la crise de 2008-2009 (plus de 0,9 en octobre et novembre 2008).",
+  "bouger": "Il monte lors des crises bancaires, des crises de la dette publique, des chocs boursiers et des paniques sur les devises. Il redescend quand les marchés se calment ou quand la banque centrale intervient.",
+  "liens": [
+   "J1",
+   "J2",
+   "J7",
+   "J4"
+  ],
+  "piege": "Les valeurs élevées sont rares : au-delà de 0,34, on est parmi les 10 % des mois les plus tendus. Seule la nouvelle version est utilisée, car l'ancienne est arrêtée depuis mai 2025. Le CISS vise la zone euro : son équivalent américain n'est pas affiché ici."
+ },
+ "J6": {
+  "titre": "Écart de crédit des entreprises américaines (GZ) et prime excédentaire (EBP)",
+  "phrase": "Ces deux mesures de la Fed (Réserve fédérale, la banque centrale des États-Unis) disent combien de rendement en plus les entreprises américaines doivent offrir à ceux qui leur prêtent, par rapport à l'État.",
+  "mesure": "L'écart GZ (du nom de ses auteurs, Gilchrist et Zakrajšek) est la différence moyenne entre le taux des obligations d'entreprises et celui des obligations d'État de même durée. L'EBP (Excess Bond Premium, « prime obligataire excédentaire ») en isole la part que le risque de faillite attendu n'explique pas : elle reflète l'appétit pour le risque.",
+  "calcul": "Les chercheurs de la Fed partent des prix de nombreuses obligations d'entreprises non financières américaines, rapprochés de leurs comptes. Ils en tirent l'écart moyen (GZ), puis estiment la part due au risque de défaut ; le reste est l'EBP. Les deux s'expriment en points de pourcentage, chaque mois.",
+  "interpreter": "Pas de seuil officiel. Depuis 1990, l'écart GZ médian est d'environ 1,7 point. Il est resté sous 2,3 points dans trois mois sur quatre et n'a dépassé 4 points que dans environ 3 % des mois (maximum de plus de 7 points fin 2008). L'EBP est en moyenne légèrement négative ; au-dessus de 1 point (environ 7 % des mois), le crédit est très tendu.",
+  "bouger": "L'écart s'élargit quand les investisseurs craignent des faillites ou fuient le risque : récession, crise financière, krach. Il se resserre quand la confiance revient, et annonce parfois un ralentissement.",
+  "liens": [
+   "J4",
+   "J1",
+   "J7",
+   "t:spread"
+  ],
+  "piege": "Ce sont des produits de recherche du personnel de la Fed, pas des statistiques officielles. Publiés une fois par mois, avec du retard, ils peuvent voir tout leur historique révisé à chaque mise à jour. Le tableau de bord retélécharge donc tout l'historique à chaque mise à jour."
+ },
+ "J7": {
+  "titre": "Tensions obligataires en zone euro (composante du CISS)",
+  "phrase": "Cet indicateur donne la part du stress de la zone euro qui vient du marché obligataire, et sert d'approximation des tensions sur le crédit.",
+  "mesure": "Les tensions sur le marché des obligations de la zone euro : volatilité des taux des États, écarts de swap (taux d'échange entre banques) et écarts de rendement des obligations privées. Ce n'est donc pas un écart de crédit pur des entreprises : aucune série gratuite et publique de ce type n'a été trouvée pour la zone euro.",
+  "calcul": "La BCE (Banque centrale européenne) calcule le CISS (indicateur composite de stress systémique) à partir de cinq segments de marché. Nous affichons la contribution du segment « obligations » : la part du CISS global qui lui revient. Elle est publiée chaque jour.",
+  "interpreter": "Pas de seuil officiel. Depuis 1999, la valeur mensuelle médiane est d'environ 0,09. Elle est restée sous 0,125 dans trois mois sur quatre et sous 0,17 dans neuf mois sur dix. Elle n'a dépassé 0,2 que dans environ 4 % des mois, surtout lors de la crise de 2008-2009.",
+  "bouger": "Elle monte quand les taux des obligations d'État deviennent plus volatils, ou quand les écarts de swap et de crédit s'élargissent. Elle augmente donc lors des crises bancaires et de la dette publique. Elle suit en partie le CISS global.",
+  "liens": [
+   "J5",
+   "J6",
+   "B4",
+   "t:spread"
+  ],
+  "piege": "Une contribution n'est pas le sous-indice brut : son niveau est plus bas que celui du CISS. Elle mêle tensions sur les obligations d'État, les swaps et les obligations privées, sans les séparer. Ne la lisez pas comme l'écart de crédit américain (J6), plus précis. Historique depuis 1999."
+ },
+ "t:base100": {
+  "titre": "Base 100 — comparer des courbes de niveaux différents",
+  "phrase": "La base 100 ramène plusieurs courbes au même point de départ, fixé à 100, pour comparer leur évolution.",
+  "mesure": "Elle ne mesure rien de nouveau : elle change l'échelle. On compare l'or, un indice boursier ou un bilan de banque centrale, même si leurs prix n'ont aucun rapport.",
+  "calcul": "Chaque valeur est divisée par la première valeur de la période choisie, puis multipliée par 100. Une courbe à 130 a gagné 30 % depuis le départ ; une courbe à 80 a perdu 20 %.",
+  "interpreter": "Le but est de voir qui a le plus progressé, pas qui a le prix le plus haut. Le tableau de bord ne l'applique qu'aux prix et aux montants. Les taux et les indices (comme le VIX) gardent leur unité.",
+  "bouger": "Le point de départ change tout : en changeant la période affichée, on change le 100 et donc l'allure relative des courbes. Elle ne change que l'affichage, pas le calcul des corrélations.",
+  "liens": [
+   "t:points",
+   "t:correlation",
+   "G2",
+   "H3"
+  ],
+  "piege": "Un choix de départ flatteur peut faire croire à un grand écart : une courbe partie d'un sommet paraît perdante. Regardez toujours plusieurs périodes. Et la base 100 n'efface pas la tendance de fond."
+ },
+ "t:points": {
+  "titre": "Points de pourcentage ou pourcentage ?",
+  "phrase": "Quand une grandeur est déjà un pourcentage (un taux), on mesure sa variation en points de pourcentage, pas en %.",
+  "mesure": "La distance entre deux niveaux de taux. Passer de 2 % à 3 % est une hausse de 1 point de pourcentage. C'est aussi une hausse de 50 % en relatif (1 ÷ 2), ce qui n'a pas du tout le même sens.",
+  "calcul": "En points : nouveau taux moins ancien taux. En %, pour un prix : (nouveau ÷ ancien) − 1. Exemple : un indice qui passe de 4 000 à 4 200 gagne 5 %, mais on ne dira pas 200 points de pourcentage.",
+  "interpreter": "Le tableau de bord mesure en points les variations des taux, de l'inflation et des indices comme le VIX, et en % celles des prix et des cours. Une hausse de 0,25 d'un taux directeur est donc d'un quart de point.",
+  "bouger": "Rien ne « bouge » ici : c'est une règle de lecture. Elle influence la façon de comparer : une baisse de 1 point d'un taux de 1 % est énorme, d'un taux de 8 % elle est modeste.",
+  "liens": [
+   "t:glissement",
+   "t:base100",
+   "A2",
+   "C5"
+  ],
+  "piege": "Les titres de presse mélangent souvent les deux. « Le taux a augmenté de 25 % » peut vouloir dire de 4 % à 5 %, soit 1 point. Vérifiez toujours l'unité."
+ },
+ "t:glissement": {
+  "titre": "Glissement annuel — l'évolution sur douze mois",
+  "phrase": "Le glissement annuel compare une valeur à celle du même mois un an plus tôt, pour mesurer une évolution sans effet de saison.",
+  "mesure": "La variation sur douze mois d'une grandeur. C'est la façon usuelle d'exprimer l'inflation : « les prix ont augmenté de 2 % en un an ».",
+  "calcul": "Valeur du mois ÷ valeur du même mois un an plus tôt, moins 1. Exemple : un indice des prix qui passe de 100 à 102 donne un glissement annuel de +2 %. Le tableau de bord apparie les mois par date : si l'une des deux valeurs manque, le point reste vide.",
+  "interpreter": "Il lisse les variations saisonnières (soldes, vacances, chauffage), car on compare deux mois identiques. Une inflation de 2 % signifie que le panier coûte 2 % de plus qu'il y a un an.",
+  "bouger": "Il dépend du mois actuel et du mois d'il y a un an. Si les prix ont fortement monté il y a un an, ce mois sort du calcul et le glissement peut chuter. On parle d'« effet de base ».",
+  "liens": [
+   "C5",
+   "C1",
+   "t:points",
+   "t:correlation"
+  ],
+  "piege": "Un glissement annuel qui baisse ne veut pas dire que les prix baissent : ils montent simplement moins vite. De plus, il réagit tard : il décrit les douze derniers mois, pas la tendance du dernier mois."
+ },
+ "t:correlation": {
+  "titre": "Corrélation — mesurer si deux courbes bougent ensemble",
+  "phrase": "La corrélation chiffre, entre −1 et +1, la tendance de deux séries à évoluer ensemble ou en sens inverse.",
+  "mesure": "Le coefficient de corrélation de Pearson, noté r. +1 : les deux courbes montent et descendent toujours ensemble. −1 : l'une monte quand l'autre descend. 0 : aucun lien visible.",
+  "calcul": "Le calcul compare, aux dates communes, les écarts de chaque série par rapport à sa moyenne. Il faut au moins 12 points communs. Trois modes : « Mouvements » (variations d'une période à l'autre, par défaut) ; « Rythmes annuels » (variations sur 12 mois pour les prix, niveaux pour les taux ; ces variations se recouvrent et gonflent r) ; « Niveaux bruts » (valeurs telles quelles, trompeuses si deux séries ont une tendance).",
+  "interpreter": "Un |r| (valeur sans signe) inférieur à 0,2 signifie aucun lien ; de 0,2 à 0,4, un lien faible ; de 0,4 à 0,7, modéré ; à partir de 0,7, fort. Le signe + veut dire « bougent ensemble », le signe − « bougent en sens inverse ». Le seuil de fiabilité s'applique en plus.",
+  "bouger": "Le résultat dépend de la période, de la fréquence et du mode choisis. Une crise isolée peut le fausser à elle seule.",
+  "liens": [
+   "t:causalite",
+   "t:fiabilite",
+   "t:glissante",
+   "t:decalage"
+  ],
+  "piege": "Deux séries qui montent toutes les deux depuis trente ans paraissent liées sans l'être. La corrélation mesure une coïncidence, pas une cause."
+ },
+ "t:causalite": {
+  "titre": "Corrélation n'est pas causalité",
+  "phrase": "Deux courbes qui évoluent ensemble ne prouvent pas que l'une provoque l'autre.",
+  "mesure": "Un rappel de prudence, pas une mesure. Un coefficient de corrélation élevé dit seulement que deux séries ont évolué de façon semblable dans le passé.",
+  "calcul": "Aucun calcul : c'est un raisonnement. Trois explications sont possibles : A cause B ; B cause A ; ou une troisième cause agit sur les deux. Exemple : les glaces et les noyades augmentent l'été, parce que la chaleur agit sur les deux.",
+  "interpreter": "Un lien statistique devient crédible quand il y a une explication économique plausible, quand il résiste à plusieurs périodes et quand l'effet précède la cause supposée. Même alors, il reste une hypothèse.",
+  "bouger": "Les liens changent avec le temps : ce qui valait dans les années 1990 peut ne plus valoir après une crise ou un changement de politique monétaire.",
+  "liens": [
+   "t:correlation",
+   "t:decalage",
+   "t:fiabilite",
+   "H1"
+  ],
+  "piege": "En testant des dizaines de combinaisons ou de décalages, on trouve toujours une corrélation flatteuse, due au hasard. Méfiez-vous des liens trouvés en cherchant, sans raison de fond."
+ },
+ "t:glissante": {
+  "titre": "Corrélation glissante — un lien qui change avec le temps",
+  "phrase": "La corrélation glissante recalcule la corrélation sur une fenêtre mobile, pour voir si le lien entre deux courbes se renforce, s'efface ou s'inverse.",
+  "mesure": "La stabilité d'un lien. Deux séries peuvent être très liées pendant une crise et indépendantes le reste du temps : un seul r global les cacherait.",
+  "calcul": "On calcule r sur les derniers points seulement, puis on fait avancer la fenêtre d'un point à la fois. La fenêtre compte 26 points en hebdomadaire (vue 1 an), 24 en mensuel (5 ans), 36 en mensuel (10 ans et plus). Chaque segment de courbe prend la couleur de r.",
+  "interpreter": "Vert : les deux courbes bougent ensemble ; rouge : en sens inverse ; gris : lien non fiable. L'épaisseur du trait traduit la force. En pointillé gris, la fenêtre n'est pas encore complète. Le seuil de fiabilité s'applique à chaque fenêtre.",
+  "bouger": "Elle change d'une fenêtre à l'autre selon les événements : crise, changement de politique monétaire. Il n'y en a pas en vue 1 mois, trop courte pour être fiable.",
+  "liens": [
+   "t:correlation",
+   "t:fiabilite",
+   "t:causalite",
+   "J1"
+  ],
+  "piege": "Une fenêtre courte réagit au hasard : les couleurs peuvent alors changer sans raison économique. Ne tirez pas de conclusion d'un seul virage de couleur."
+ },
+ "t:decalage": {
+  "titre": "Décalage dans le temps — un indicateur qui en précède un autre",
+  "phrase": "Le décalage décale une courbe dans le temps pour voir si elle annonce l'autre.",
+  "mesure": "Le délai avec lequel un indicateur semble précéder une référence. Le pétrole, par exemple, peut agir sur l'inflation avec plusieurs mois de retard.",
+  "calcul": "Un décalage de +k signifie que l'indicateur précède la référence de k périodes : la valeur de l'indicateur à la date t est comparée à la référence à la date t + k. Le curseur va de −24 à +24 mois, dans la limite d'un tiers de la période affichée. Le bouton « Trouver le meilleur décalage » teste tous les décalages.",
+  "interpreter": "Un décalage n'est annoncé que si le résultat dépasse le seuil de fiabilité et gagne au moins 0,10 sur le r sans décalage. Sinon : « Aucun décalage ne ressort nettement ». Le petit graphique montre si le pic est net ou plat. Le bouton n'est pas disponible en « Niveaux bruts ».",
+  "bouger": "Le délai varie selon les périodes et les politiques monétaires. Une relation vraie à une époque peut disparaître ensuite.",
+  "liens": [
+   "t:correlation",
+   "t:causalite",
+   "t:fiabilite",
+   "H1"
+  ],
+  "piege": "À force d'essayer des décalages, on en trouve toujours un flatteur. La formule « semble précéder » reste prudente : un indicateur qui précède statistiquement n'en est pas forcément la cause."
+ },
+ "t:percentile": {
+  "titre": "Percentile — où se situe une valeur dans l'histoire",
+  "phrase": "Le percentile indique la part des observations passées qui sont inférieures à la valeur d'aujourd'hui.",
+  "mesure": "Une position dans l'historique. Le 85e percentile signifie que la valeur dépasse 85 % de toutes les valeurs passées (et que 15 % étaient plus hautes).",
+  "calcul": "On classe l'historique mensuel disponible (30 ans au plus) et on retrouve le rang de la dernière valeur. Pour les prix et les cours, on classe la variation sur 12 mois et non le niveau, car un indice boursier suit une tendance de fond et serait presque toujours « au plus haut ».",
+  "interpreter": "Moins de 10 : très bas ; 10 à 25 : bas ; 25 à 75 : habituel ; 75 à 90 : élevé ; plus de 90 : très élevé. La période réellement utilisée est toujours indiquée (« depuis 1999 »). Moins de 10 ans d'historique : mention « historique court » ; moins de 5 ans : pas de percentile.",
+  "bouger": "Il change avec la valeur, mais aussi avec l'historique : une série qui commence en 2010 n'a pas connu la crise de 2008.",
+  "liens": [
+   "J1",
+   "J2",
+   "J4",
+   "t:fiabilite"
+  ],
+  "piege": "Un percentile élevé dit que la valeur est rare, pas qu'elle est mauvaise ni qu'elle va baisser. La période de comparaison compte beaucoup : comparez ce qui est comparable."
+ },
+ "t:qeqt": {
+  "titre": "QE et QT — quand la banque centrale gonfle ou dégonfle son bilan",
+  "phrase": "Le QE (Quantitative Easing, « assouplissement quantitatif ») est l'achat massif de titres par une banque centrale ; le QT (Quantitative Tightening, « resserrement quantitatif ») est le mouvement inverse.",
+  "mesure": "La politique de la banque centrale quand son taux directeur est déjà proche de zéro. Le bilan de la banque (la somme de ce qu'elle détient et de ce qu'elle doit) en est le baromètre.",
+  "calcul": "En QE, la banque crée de la monnaie pour acheter des obligations d'État et d'autres titres : son bilan grossit. En QT, elle cesse de remplacer les titres arrivés à échéance, ou elle en revend : son bilan diminue.",
+  "interpreter": "Le QE fait baisser les taux longs et soutient les prix des actifs ; le QT agit en sens inverse. Le tableau de bord suit les bilans de la Fed (banque centrale américaine), de la BCE (Banque centrale européenne), de la Banque du Japon et de la Banque d'Angleterre, en montants et en % du PIB.",
+  "bouger": "Le bilan bouge avec les décisions d'achat, mais aussi avec les échéances. Les banques centrales lancent un QE lors des crises (2008, 2020) et un QT pour retirer l'excès de monnaie.",
+  "liens": [
+   "F1",
+   "F2",
+   "A1",
+   "t:courbe",
+   "B1"
+  ],
+  "piege": "Le bilan n'est pas le taux directeur : une banque peut relever ses taux et gonfler son bilan en même temps. Un bilan qui baisse peut simplement refléter des titres arrivés à échéance, pas des ventes."
+ },
+ "t:point_mort": {
+  "titre": "Point mort d'inflation — l'inflation que les marchés anticipent",
+  "phrase": "Le point mort d'inflation est l'inflation moyenne que le marché obligataire semble attendre sur une durée donnée.",
+  "mesure": "Une anticipation d'inflation tirée des prix de marché, et non d'une enquête. Elle s'appelle « point mort » parce qu'elle égalise le rendement de deux obligations.",
+  "calcul": "On retranche le rendement d'une obligation indexée sur l'inflation (qui protège le capital) du rendement d'une obligation ordinaire de même durée. La différence est l'inflation pour laquelle les deux placements rapportent autant. « 5 ans dans 5 ans » désigne l'inflation moyenne attendue de la sixième à la dixième année.",
+  "interpreter": "Un point mort de 2 % signifie que le marché table sur environ 2 % d'inflation par an. Les banques centrales surveillent surtout l'horizon lointain, car il montre si les attentes restent ancrées sur leur objectif.",
+  "bouger": "Il monte avec les craintes d'inflation (pétrole cher, salaires) et baisse avec les craintes de récession. Il influence les taux longs et les décisions des banques centrales.",
+  "liens": [
+   "D1",
+   "D2",
+   "D3",
+   "H15",
+   "t:glissement"
+  ],
+  "piege": "Il mêle l'inflation attendue et des primes (liquidité, incertitude). Ce n'est donc pas une prévision pure. Et il porte sur les États-Unis : il ne dit rien de l'inflation en Belgique."
+ },
+ "t:courbe": {
+  "titre": "Courbe des taux — le prix de l'argent selon la durée",
+  "phrase": "La courbe des taux relie les taux d'emprunt de l'État pour des durées de plus en plus longues (3 mois, 2 ans, 10 ans...).",
+  "mesure": "L'attitude du marché face au temps. En temps normal, prêter plus longtemps rapporte plus : la courbe monte. Quand elle est plate ou inversée, les taux courts sont égaux ou supérieurs aux taux longs.",
+  "calcul": "On met en regard le taux d'une obligation à chaque échéance. Le tableau de bord résume la pente par deux écarts : 10 ans moins 2 ans, et 10 ans moins 3 mois (aux États-Unis). Un écart négatif signifie une courbe inversée.",
+  "interpreter": "Une courbe fortement pentue indique des attentes de croissance et d'inflation plus élevées. Une inversion signale que le marché attend des baisses de taux, souvent à cause d'un ralentissement. Elle a souvent précédé les récessions américaines, avec un délai variable.",
+  "bouger": "Les taux courts suivent le taux directeur de la banque centrale ; les taux longs suivent les anticipations de croissance et d'inflation, et l'offre de dette publique.",
+  "liens": [
+   "BC_10A2A",
+   "BC_10A3M",
+   "B1",
+   "B2",
+   "t:spread"
+  ],
+  "piege": "Une inversion n'est pas une alarme automatique : elle peut durer des mois ou des années avant tout ralentissement, et elle n'a pas toujours été suivie d'une récession."
+ },
+ "t:spread": {
+  "titre": "Écart de taux (spread) — la différence entre deux taux",
+  "phrase": "Un écart de taux, ou « spread », est la différence entre deux taux d'intérêt, qui mesure en général le risque ou la durée supplémentaires que l'on accepte.",
+  "mesure": "Le prix du risque. Exemple aux chiffres inventés : si un pays emprunte à 4,5 % et un autre, plus sûr, à 2,5 %, l'écart est de 2 points de pourcentage : le marché demande 2 points de plus pour prêter au premier.",
+  "calcul": "Taux A moins taux B, exprimé en points de pourcentage (ou en « points de base » : 100 points de base valent 1 point). On compare le plus souvent deux pays, deux durées, ou une entreprise et l'État.",
+  "interpreter": "Un écart qui s'élargit signale plus de méfiance ; un écart qui se resserre, plus de confiance. L'écart entre pays de la zone euro mesure la prime de risque sur leur dette. L'écart entre entreprises et État mesure le risque de crédit.",
+  "bouger": "Il s'élargit lors des crises de confiance (dette publique, banques, récession) et se resserre quand elles s'apaisent. La banque centrale peut le réduire par ses achats de titres.",
+  "liens": [
+   "BC_IT_DE",
+   "BC_FR_DE",
+   "BC_10A2A",
+   "J6",
+   "t:courbe"
+  ],
+  "piege": "Un écart peut se resserrer parce que le taux du pays risqué baisse, mais aussi parce que celui du pays sûr monte. Regardez les deux taux. Et la valeur doit toujours être lue avec son unité (points ou points de base)."
+ },
+ "t:etf": {
+  "titre": "ETF — un fonds indiciel coté en bourse",
+  "phrase": "Un ETF (Exchange Traded Fund, « fonds négocié en bourse ») est un fonds qui reproduit un indice et s'achète comme une action.",
+  "mesure": "Un moyen simple d'investir dans un panier de titres : actions, obligations, or, immobilier coté, pétrole. Le cours de l'ETF suit, avec de petits écarts, l'indice qu'il copie.",
+  "calcul": "Le gestionnaire achète les titres de l'indice (ou des contrats qui le reproduisent) et émet des parts cotées. Le cours de bourse reflète la valeur des titres détenus, moins des frais annuels, souvent faibles. Le tableau de bord suit leur cours de clôture.",
+  "interpreter": "Le cours d'un ETF sert ici de repère pour un marché entier : or (ETF or), immobilier coté, obligations, matières premières. Une même catégorie peut compter plusieurs ETF qui ne se comportent pas pareil.",
+  "bouger": "Il suit son indice. Pour le pétrole ou les matières premières, il suit des contrats à terme, ce qui peut créer un écart durable avec le prix réel du produit.",
+  "liens": [
+   "H9",
+   "H11",
+   "H12",
+   "t:future",
+   "t:dividendes"
+  ],
+  "piege": "Un ETF n'est pas l'indice : frais, écarts de suivi et devise de cotation (dollar ou euro) comptent. De plus, les cours affichés ici ne tiennent pas compte des dividendes distribués."
+ },
+ "t:future": {
+  "titre": "Contrat à terme (« future ») — un prix fixé aujourd'hui pour demain",
+  "phrase": "Un contrat à terme, ou « future », est un accord d'acheter ou de vendre un produit à un prix fixé à l'avance, à une date future.",
+  "mesure": "Le prix attendu d'une matière première pour une échéance donnée. Il sert aux producteurs et aux consommateurs à se couvrir contre les variations de prix.",
+  "calcul": "Deux parties se mettent d'accord aujourd'hui sur un prix, avec livraison (ou règlement financier) plus tard, à une date d'échéance. Pour obtenir une courbe continue, on enchaîne les contrats : on passe au contrat suivant quand le premier approche de son échéance.",
+  "interpreter": "Les cours du Brent, du WTI, du gaz, de l'or et du cuivre affichés ici sont ceux de contrats à terme proches de leur échéance. Pour le Brent et le WTI, l'historique ancien est le prix « au comptant » publié par l'agence américaine de l'énergie (EIA, via FRED) ; seuls les jours récents sont des contrats à terme, d'où un petit décalage possible au raccord.",
+  "bouger": "Il suit l'offre et la demande, les stocks, la météo, la géopolitique et les taux d'intérêt. Le prix du contrat peut différer du prix « au comptant » (livraison immédiate).",
+  "liens": [
+   "H1",
+   "H3",
+   "H4",
+   "t:etf"
+  ],
+  "piege": "Au moment de passer d'un contrat au suivant, la courbe peut présenter un petit saut qui n'est pas un vrai mouvement de prix. Le prix du contrat n'est pas non plus le prix « à la pompe » ou chez le fournisseur."
+ },
+ "t:dividendes": {
+  "titre": "Prix hors dividendes — ce que montre un cours de clôture",
+  "phrase": "Un cours hors dividendes ne compte que le prix de l'action ou du fonds, sans les dividendes versés aux actionnaires.",
+  "mesure": "La variation du prix seul. Le rendement total d'un investisseur est plus élevé, car il touche en plus les dividendes, parfois plusieurs % par an.",
+  "calcul": "Le tableau de bord utilise le cours de clôture brut, non ajusté. Quand une société verse un dividende, son cours baisse d'à peu près ce montant le jour du détachement, sans rien changer à la richesse de l'actionnaire.",
+  "interpreter": "Pour un indice comme le S&P 500 ou le CAC 40, on lit l'évolution des prix. Certains indices, comme le DAX allemand, réinvestissent les dividendes : leur courbe est plus haute qu'un indice de prix équivalent. Les ETF immobiliers, très généreux en dividendes, montent moins vite que leur rendement réel.",
+  "bouger": "L'écart entre prix et rendement total grandit avec le temps et avec le taux de dividende. Il pèse davantage sur l'immobilier coté et sur les actions à forts dividendes.",
+  "liens": [
+   "K1",
+   "G6",
+   "H10",
+   "t:etf"
+  ],
+  "piege": "Comparer un indice de prix à un indice dividendes réinvestis (ou un ETF qui distribue à un ETF qui capitalise) fausse la lecture. Pour des valeurs comme Aedifica, très axées sur le dividende, l'écart est important."
+ },
+ "t:fiabilite": {
+  "titre": "Seuil de fiabilité — quand une corrélation est-elle crédible ?",
+  "phrase": "Le seuil de fiabilité écarte les corrélations qui peuvent s'expliquer par le seul hasard, quand les points disponibles sont trop peu nombreux.",
+  "mesure": "Le plus petit |r| (valeur du coefficient de corrélation, sans signe) à partir duquel un lien est jugé fiable. Avec peu de points, un r flatteur arrive facilement par hasard.",
+  "calcul": "Règle unique, partout dans le tableau de bord : le lien est classé « pas de lien fiable » (gris) si |r| est inférieur au plus grand des deux nombres 0,2 et 2 ÷ √n, où n est le nombre de points utilisés.",
+  "interpreter": "Repères : n = 12 points → 0,58 ; n = 26 → 0,39 ; n = 36 → 0,33 ; n = 60 → 0,26 ; n = 100 ou plus → 0,2. Avec 12 points mensuels, il faut donc un r de plus de 0,58 pour qu'on retienne un lien.",
+  "bouger": "Il baisse quand n augmente : sur une longue période, un petit r devient crédible. Il s'applique aussi à chaque fenêtre de la corrélation glissante.",
+  "liens": [
+   "t:correlation",
+   "t:glissante",
+   "t:causalite",
+   "t:decalage"
+  ],
+  "piege": "Dépasser le seuil ne prouve pas une cause : cela dit seulement que le hasard seul l'explique mal. Et un grand nombre de points rapprochés (variations sur 12 mois qui se recouvrent) donne une fausse impression de précision."
+ }
+}

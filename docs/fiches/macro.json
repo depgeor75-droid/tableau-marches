@@ -1,0 +1,306 @@
+{
+ "E1": {
+  "titre": "PIB réel — la croissance de l'économie (glissement annuel)",
+  "phrase": "Cette série indique de combien l'économie d'un pays a grandi, en volume, par rapport au même trimestre un an plus tôt.",
+  "mesure": "Le PIB (produit intérieur brut) est la valeur de ce qu'un pays produit en un trimestre ; « réel » veut dire corrigé de l'inflation. Le tableau suit les États-Unis, la zone euro, le Japon, le Royaume-Uni et la Chine.",
+  "calcul": "Chaque trimestre est comparé au même trimestre de l'année précédente : c'est le « glissement annuel ». Pour les États-Unis et le Royaume-Uni, l'application le calcule à partir du niveau du PIB ; pour la zone euro, le Japon et la Chine, elle reprend le taux publié par Eurostat (l'office statistique européen) ou par l'OCDE (Organisation de coopération et de développement économiques).",
+  "interpreter": "Pas de seuil officiel : on se repère dans l'historique. Depuis 1990, la croissance américaine dépasse environ 2,6 % une fois sur deux ; celle de la zone euro (depuis 1996), 1,8 % ; celle du Japon, 1,1 % ; celle de la Chine (depuis 1993), 8 %. Un chiffre négatif veut dire que l'économie produit moins qu'un an plus tôt : 10 trimestres sur 147 aux États-Unis, 31 sur 147 au Japon.",
+  "bouger": "La consommation, les investissements, les dépenses publiques et les exportations. Des taux élevés freinent l'activité ; la croissance soutient les bénéfices des entreprises, donc les bourses, et guide les banques centrales.",
+  "liens": [
+   "D13_US",
+   "E5_US",
+   "E3_US",
+   "A1",
+   "G2"
+  ],
+  "piege": "L'effet de base : après le creux de 2020 (zone euro −13,8 % au 2e trimestre), le +15,3 % du 2e trimestre 2021 compare simplement à un point très bas. Le dernier chiffre est souvent provisoire ; les trimestres sont datés par leur premier jour."
+ },
+ "E3": {
+  "titre": "Dette publique en % du PIB — comparaison entre pays (FMI)",
+  "phrase": "Cette série compare ce que les administrations publiques d'un pays doivent encore rembourser à la richesse que ce pays produit en un an.",
+  "mesure": "La dette brute de l'ensemble des administrations publiques (État, collectivités locales, sécurité sociale), rapportée au PIB (produit intérieur brut, la production annuelle). Le FMI (Fonds monétaire international) applique la même définition à tous les pays, ce qui rend la comparaison possible.",
+  "calcul": "Le FMI rassemble les chiffres officiels dans sa base « Perspectives de l'économie mondiale » : une valeur par an et par pays. L'application garde les années considérées comme observées ; les projections du FMI sont présentées à part.",
+  "interpreter": "Le traité européen (protocole n° 12) fixe 60 % du PIB comme valeur de référence pour les pays de l'Union. Repères tirés des données : la France est passée de 37 % en 1990 à plus de 100 % ; l'Italie n'est jamais descendue sous 100 % ; la Belgique a culminé à 139 % en 1993 ; le Japon dépasse 200 % depuis 2018.",
+  "bouger": "Les déficits l'alourdissent ; la croissance et l'inflation l'allègent en proportion du PIB. Les crises la font bondir : zone euro, de 65,8 % en 2007 à 95,9 % en 2020. Une dette jugée trop lourde peut faire monter les taux longs d'un pays.",
+  "liens": [
+   "E3T_FR",
+   "E4_US",
+   "E5_FR",
+   "B7",
+   "BC_FR_DE"
+  ],
+  "piege": "Ne pas la confondre avec la dette trimestrielle d'Eurostat (E3T), ni avec la dette fédérale américaine, qui exclut les États fédérés et les communes. Séries annuelles aux débuts inégaux : 1990 pour la plupart, 1991 pour l'Allemagne, 1995 pour la zone euro et la Chine, 2001 pour les États-Unis. Pour le Japon, la dernière année « observée » peut être plus ancienne que pour les autres."
+ },
+ "E3T": {
+  "titre": "Dette publique trimestrielle en % du PIB (Eurostat) et dette fédérale américaine",
+  "phrase": "Cette série suit, trimestre après trimestre, la dette des pays de la zone euro rapportée à leur PIB ; pour les États-Unis, elle ne montre que la dette de l'État fédéral.",
+  "mesure": "Pour la Belgique, l'Allemagne, la France, l'Italie et la zone euro : la dette brute de toutes les administrations publiques, en % du PIB (produit intérieur brut, la production annuelle). Pour les États-Unis : l'État fédéral seulement, sans les États fédérés ni les communes.",
+  "calcul": "Eurostat (l'office statistique de l'Union européenne) publie la dette à la fin de chaque trimestre. Les chiffres américains viennent du Trésor américain, via la base FRED de la Réserve fédérale de Saint-Louis.",
+  "interpreter": "Le repère légal de 60 % (traité européen, protocole n° 12) vise la dette annuelle. Repères tirés des données : l'Allemagne oscille entre 57,6 % (2001) et 81,0 % (2010) ; l'Italie, entre 103,5 % (fin 2007) et 158,2 % (début 2021) ; la Belgique est passée d'environ 135 % en 1996 à 87,5 % fin 2007 ; la dette fédérale américaine, de 52 % en 1990 à 132,7 % au 2e trimestre 2020.",
+  "bouger": "Les mêmes forces que pour la dette annuelle : déficits, croissance, inflation, taux d'intérêt. Les chocs de 2008-2009 et de 2020 se lisent nettement.",
+  "liens": [
+   "E3_FR",
+   "E4_FR",
+   "E5_FR",
+   "B6",
+   "BC_IT_DE"
+  ],
+  "piege": "La courbe américaine n'est pas comparable à celle du FMI (E3), qui couvre toutes les administrations publiques : ne pas les mélanger. Délai de publication d'environ un trimestre et demi. Débuts : 1990 pour les États-Unis (dans l'application), fin 1995 pour la Belgique, 2000 pour les autres."
+ },
+ "E4": {
+  "titre": "Dette publique en montant — milliards de monnaie nationale et d'euros",
+  "phrase": "Cette série donne le montant total de la dette publique, en milliards, et non plus en proportion du PIB.",
+  "mesure": "La dette publique brute en milliards de la monnaie du pays, avec un équivalent en euros pour comparer. Pour les États-Unis, c'est la dette de l'État fédéral seulement.",
+  "calcul": "Belgique, Allemagne, France, Italie, zone euro : montants trimestriels d'Eurostat (office statistique européen). États-Unis : dette fédérale trimestrielle (base FRED). Japon, Royaume-Uni, Chine : calcul annuel, dette en % du PIB × PIB nominal, tous deux du FMI (Fonds monétaire international). L'équivalent en euros utilise le dernier cours de change de la période (fin de trimestre ou 31 décembre).",
+  "interpreter": "Un montant brut grimpe presque toujours, car croissance et inflation gonflent aussi les chiffres : mieux vaut le comparer au PIB (E3, E3T). Repères tirés des données : la dette de la zone euro est environ trois fois plus élevée qu'en 2000 ; la dette fédérale américaine, plus de douze fois plus qu'en 1990.",
+  "bouger": "Les déficits l'augmentent, les remboursements la réduisent. En euros, le cours de change joue aussi.",
+  "liens": [
+   "E3_US",
+   "E3T_US",
+   "E5_US",
+   "I1",
+   "IC_EURJPY"
+  ],
+  "piege": "En euros, la dette américaine, japonaise, britannique ou chinoise varie avec le change même si le montant en monnaie nationale ne bouge pas. Les séries calculées (Japon, Royaume-Uni, Chine) sont annuelles et approximatives, car révisables. La dette américaine est fédérale seulement."
+ },
+ "E5": {
+  "titre": "Solde budgétaire en % du PIB (FMI)",
+  "phrase": "Cette série indique si les administrations publiques d'un pays dépensent plus qu'elles ne reçoivent, en proportion de la richesse produite.",
+  "mesure": "Les recettes moins les dépenses de l'ensemble des administrations publiques, rapportées au PIB (produit intérieur brut, la production annuelle). Un chiffre négatif est un déficit : le pays emprunte pour combler l'écart. Un chiffre positif est un excédent.",
+  "calcul": "Le FMI (Fonds monétaire international) rassemble les chiffres officiels dans sa base « Perspectives de l'économie mondiale » : une valeur par an et par pays. L'application garde les années considérées comme observées ; les projections sont présentées à part.",
+  "interpreter": "Le traité européen (protocole n° 12) retient 3 % du PIB comme déficit de référence. Repères tirés des données : la zone euro oscille entre −7,3 % (1995) et −0,4 % (2018) ; la France n'a connu aucun excédent depuis 1990 ; l'Allemagne a atteint +1,9 % en 2018 ; les États-Unis, −14,1 % en 2020.",
+  "bouger": "En récession, les recettes baissent et les dépenses montent : le déficit se creuse, comme en 2009 et en 2020. Plans de relance, baisses d'impôts et vieillissement jouent aussi. Les déficits alimentent la dette (E3).",
+  "liens": [
+   "E3_FR",
+   "E3T_FR",
+   "E1_ZE",
+   "B1",
+   "B7"
+  ],
+  "piege": "Un déficit n'est pas la dette : c'est un flux annuel, alors que la dette est le total accumulé. Séries annuelles aux débuts inégaux : 1990 pour la plupart, 1991 pour l'Allemagne et la zone euro, 2001 pour les États-Unis. Les années les plus récentes sont des estimations, révisables."
+ },
+ "F1": {
+  "titre": "Bilan de la Fed — l'actif de la banque centrale américaine",
+  "phrase": "Cette série mesure la taille du bilan de la Fed, c'est-à-dire tout ce que la banque centrale américaine détient, surtout des obligations.",
+  "mesure": "La Fed (Réserve fédérale des États-Unis) achète des titres, surtout des bons du Trésor américain et des obligations adossées à des prêts hypothécaires. Le total de ces actifs, en milliards de dollars, est son bilan.",
+  "calcul": "La Fed publie son bilan chaque semaine ; l'application le reprend via la base FRED de la Réserve fédérale de Saint-Louis. Le graphique d'historique est mensuel.",
+  "interpreter": "Pas de seuil : c'est la tendance qui compte. Un bilan qui gonfle correspond à un QE (quantitative easing, assouplissement quantitatif) : la banque achète des titres, injecte de la monnaie et tire les taux longs vers le bas. Un bilan qui se réduit, à un QT (quantitative tightening, resserrement quantitatif). Dans les données : environ 730 milliards de dollars fin 2002, sommet d'environ 8 900 milliards au printemps 2022, puis recul.",
+  "bouger": "Les décisions de la Fed face aux crises : bond après 2008, puis de nouveau en 2020. Il influence les taux longs (B1) et, indirectement, les bourses (G2).",
+  "liens": [
+   "F5_FED",
+   "F6",
+   "A1",
+   "B1",
+   "t:qeqt"
+  ],
+  "piege": "Le montant est en dollars courants : pour comparer avec d'autres banques ou d'autres époques, on le rapporte au PIB (F5). La série n'existe que depuis décembre 2002. Un bilan qui se réduit n'est pas une hausse des taux : ce sont deux outils distincts."
+ },
+ "F2": {
+  "titre": "Bilan de la BCE — l'actif de l'Eurosystème",
+  "phrase": "Cette série mesure la taille du bilan de la BCE, c'est-à-dire tout ce que détient l'Eurosystème.",
+  "mesure": "La BCE (Banque centrale européenne) et les banques centrales nationales de la zone euro forment l'Eurosystème. Son bilan regroupe les titres qu'il a achetés et ses prêts aux banques, en milliards d'euros.",
+  "calcul": "La BCE publie ce bilan chaque semaine ; l'application le reprend tel quel, en milliards d'euros. Le graphique d'historique est mensuel.",
+  "interpreter": "Pas de seuil : on regarde la tendance. Un bilan qui gonfle correspond à un QE (quantitative easing, assouplissement quantitatif), un bilan qui se réduit à un QT (quantitative tightening, resserrement quantitatif). Dans les données : environ 700 milliards d'euros en 1999, sommet d'environ 8 800 milliards en 2022, puis recul.",
+  "bouger": "Les décisions de la BCE face aux crises : crise de la dette de la zone euro, puis pandémie de 2020. Il influence les taux longs de la zone euro (B5) et la liquidité des banques.",
+  "liens": [
+   "F5_BCE",
+   "F7",
+   "A2",
+   "B5_10A",
+   "t:qeqt"
+  ],
+  "piege": "Le périmètre change quand de nouveaux pays entrent dans la zone euro : un petit saut peut venir d'un élargissement, pas d'une décision. Le montant est en euros courants : pour comparer, on le rapporte au PIB (F5). La série part de janvier 1999."
+ },
+ "F3": {
+  "titre": "Bilan de la Banque du Japon — son actif total",
+  "phrase": "Cette série mesure la taille du bilan de la Banque du Japon, c'est-à-dire tout ce qu'elle détient, surtout des obligations de l'État japonais.",
+  "mesure": "La Banque du Japon (BoJ, pour Bank of Japan) achète des titres pour soutenir l'économie. Le total de son actif, ici en milliards de yens, est la taille de son bilan.",
+  "calcul": "Chiffre de fin de mois publié par la Banque du Japon, repris via la base FRED de la Réserve fédérale de Saint-Louis. La source compte en unités de 100 millions de yens : l'application convertit en milliards de yens, d'où des montants en centaines de milliers.",
+  "interpreter": "Pas de seuil : on regarde la tendance. Hausse = QE (quantitative easing, assouplissement quantitatif) ; baisse = QT (quantitative tightening, resserrement quantitatif). Dans les données : environ 80 000 milliards de yens en 1998, sommet d'environ 765 000 en 2024. Rapporté au PIB (F5), ce bilan dépasse largement ceux des autres grandes banques centrales, jusqu'à 129 %.",
+  "bouger": "Les choix de la banque pour soutenir la croissance, relancer l'inflation et contenir les taux longs japonais (B10). Une dette publique très élevée (E3) en est l'arrière-plan.",
+  "liens": [
+   "F5_BOJ",
+   "A5",
+   "B10",
+   "E3_JP",
+   "t:qeqt"
+  ],
+  "piege": "Comparer des yens à des dollars n'a pas de sens : on passe par le % du PIB (F5). La valeur de chaque mois est celle de la fin du mois, même si la date affichée est le 1er."
+ },
+ "F4": {
+  "titre": "Bilan de la Banque d'Angleterre — son actif total (source BRI)",
+  "phrase": "Cette série mesure la taille du bilan de la banque centrale du Royaume-Uni, avec environ quatre mois de retard.",
+  "mesure": "La Banque d'Angleterre (BoE, pour Bank of England) détient surtout des obligations de l'État britannique. Le total de son actif, en milliards de livres, est la taille de son bilan.",
+  "calcul": "Les chiffres viennent de la BRI (Banque des règlements internationaux, la banque des banques centrales), qui les assemble à partir de plusieurs publications de la Banque d'Angleterre : une valeur par mois, en milliards de livres.",
+  "interpreter": "Pas de seuil : on regarde la tendance. Hausse = QE (quantitative easing, assouplissement quantitatif) ; baisse = QT (quantitative tightening, resserrement quantitatif). Dans les données : le bilan reste sous 100 milliards de livres jusqu'en 2008, puis atteint un sommet d'environ 1 120 milliards fin 2021, avant de reculer.",
+  "bouger": "Les décisions de la Banque d'Angleterre pendant la crise de 2008 et en 2020. Il influence les taux des emprunts d'État britanniques (B9) et, indirectement, la livre (I4).",
+  "liens": [
+   "F5_BOE",
+   "A4",
+   "B9",
+   "I4",
+   "t:qeqt"
+  ],
+  "piege": "Le dernier point date d'environ quatre mois : il ne dit rien des mois récents. L'application remonte à 1990, la BRI bien plus loin. Pour comparer avec d'autres pays, on passe par le % du PIB (F5)."
+ },
+ "F5": {
+  "titre": "Bilans des banques centrales en % du PIB (Fed, BCE, Banque du Japon, Banque d'Angleterre)",
+  "phrase": "Cette série compare la taille du bilan de chaque banque centrale à la richesse produite par son économie en un an.",
+  "mesure": "Le bilan d'une banque centrale divisé par le PIB (produit intérieur brut) de sa zone. Cela rend comparables la Fed (États-Unis), la BCE (Banque centrale européenne), la Banque du Japon et la Banque d'Angleterre, malgré des monnaies différentes.",
+  "calcul": "Pour chaque trimestre : bilan de fin de trimestre ÷ PIB nominal (en prix courants) des quatre derniers trimestres. Aux États-Unis et au Japon, le PIB publié est annualisé : on prend la moyenne des quatre trimestres ; en zone euro et au Royaume-Uni, il est trimestriel : on les additionne.",
+  "interpreter": "Pas de seuil : on compare à l'historique. Sommets : fin 2021 pour la Fed (36,9 %), la BCE (67,4 %) et la Banque d'Angleterre (48,0 %), début 2021 pour la Banque du Japon (128,9 %). Creux : 6,1 % pour la Fed (2008), 10,2 % pour la BCE (2002), 12,8 % pour la Banque du Japon (1999), 2,1 % pour la Banque d'Angleterre (1998).",
+  "bouger": "Le QE (quantitative easing, assouplissement quantitatif) fait monter le ratio, le QT (quantitative tightening, resserrement quantitatif) le fait baisser. Une forte croissance du PIB le fait aussi baisser, même sans vente de titres.",
+  "liens": [
+   "F1",
+   "F2",
+   "F3",
+   "F4",
+   "t:qeqt"
+  ],
+  "piege": "Le ratio attend la publication du PIB : son dernier point peut être plus ancien que celui des bilans (F1 à F4). Les périmètres des bilans ne sont pas strictement identiques : lire les écarts entre pays comme des ordres de grandeur. Débuts : 1999 (BCE), 1998 (Banque du Japon), fin 2002 (Fed), fin 1990 (Banque d'Angleterre)."
+ },
+ "F6": {
+  "titre": "M2 américaine — la masse monétaire (niveau et croissance annuelle)",
+  "phrase": "M2 mesure la quantité d'argent disponible dans l'économie américaine ; sa croissance annuelle dit à quelle vitesse elle augmente.",
+  "mesure": "M2 additionne les billets, les dépôts à vue, les comptes d'épargne, les petits dépôts à terme et les fonds monétaires des particuliers : l'argent que l'on peut dépenser ou mobiliser vite. Le montant est en milliards de dollars.",
+  "calcul": "La Fed (Réserve fédérale des États-Unis) publie M2 chaque mois, corrigée des variations saisonnières ; l'application la reprend via la base FRED. La croissance annuelle compare le mois au même mois un an plus tôt.",
+  "interpreter": "Pas de seuil officiel. Depuis 1990, la croissance annuelle médiane est d'environ 5,6 % ; 10 % des mois sont sous 1,4 %, 10 % au-dessus de 9,3 %. Extrêmes : +26,8 % en février 2021, puis un recul de décembre 2022 à février 2024 (minimum −4,7 % en avril 2023), seule contraction de la série depuis 1990.",
+  "bouger": "Les prêts des banques, les décisions de la Fed (voir F1) et les dépenses publiques : l'envolée de 2020-2021 suit les plans de soutien. Certains économistes y voient un signal avancé de l'inflation (C1), d'autres le contestent.",
+  "liens": [
+   "F7",
+   "F1",
+   "C1",
+   "A1",
+   "t:glissement"
+  ],
+  "piege": "Le niveau de M2 monte presque toujours : seule la croissance annuelle est parlante. La publication a environ un mois de retard et les derniers chiffres sont révisables. M2 américaine et M3 de la zone euro (F7) ne sont pas des mesures identiques."
+ },
+ "F7": {
+  "titre": "M3 de la zone euro — croissance annuelle de la masse monétaire",
+  "phrase": "Cette série indique de combien la quantité d'argent en circulation dans la zone euro a augmenté en un an.",
+  "mesure": "M3 est la définition large de la monnaie selon la BCE (Banque centrale européenne) : billets, dépôts à vue et d'épargne, dépôts à terme de moins de deux ans et placements très liquides comme les parts de fonds monétaires. Elle suit la création de monnaie et de crédit.",
+  "calcul": "La BCE publie chaque mois ce taux de croissance : M3 du mois comparée à celle du même mois un an plus tôt (« glissement annuel »). L'application reprend le taux publié.",
+  "interpreter": "Pas de seuil : on compare à l'historique depuis 1990. Croissance médiane d'environ 5,1 % ; 10 % des mois sont sous 1,6 %, 10 % au-dessus de 8,8 %. Pic de 12,6 % fin 2007 ; croissance négative en 2009-2010 (brièvement) et en 2023, avec un minimum de −1,3 % en août 2023.",
+  "bouger": "Les prêts des banques aux ménages et aux entreprises, la politique de la BCE (voir F2) et l'attrait de l'épargne. Un crédit qui se tarit fait ralentir M3 ; certains économistes y voient un signal avancé de l'activité et de l'inflation (C5).",
+  "liens": [
+   "F6",
+   "F2",
+   "C5",
+   "A2",
+   "t:glissement"
+  ],
+  "piege": "Le périmètre de la zone euro change quand de nouveaux pays entrent : la série n'est pas parfaitement homogène sur 35 ans. Le dernier point est provisoire et révisable. M3 euro et M2 américaine (F6) ne sont pas équivalentes."
+ },
+ "I1": {
+  "titre": "EUR/USD — le cours de l'euro en dollars",
+  "phrase": "L'EUR/USD indique combien de dollars on obtient pour 1 euro.",
+  "mesure": "Si l'EUR/USD vaut 1,10, alors 1 € = 1,10 $. Quand il monte, l'euro s'apprécie face au dollar (il faut plus de dollars pour acheter 1 euro) ; quand il baisse, l'euro s'affaiblit. C'est la paire de devises la plus échangée au monde.",
+  "calcul": "Taux de référence publié chaque jour ouvré par la BCE (Banque centrale européenne), fixé vers 14 h 15, heure de Francfort. La série démarre le 4 janvier 1999, premier jour de cotation de l'euro.",
+  "interpreter": "Pas de seuil : on se repère dans l'historique mensuel. Depuis 1999, médiane d'environ 1,17 $ ; 10 % des mois sont sous 0,99 et 10 % au-dessus de 1,38. L'euro est passé sous la parité (1 € < 1 $) de 2000 à 2002, puis en septembre et octobre 2022. Extrêmes : environ 0,84 $ en octobre 2000 et 1,58 $ en mars 2008.",
+  "bouger": "L'écart de taux entre la Fed et la BCE, les écarts de croissance et d'inflation, l'appétit pour le risque (en crise, le dollar est souvent recherché). Pour un Belge, un euro fort allège les importations payées en dollars (le pétrole, par exemple : voir H1) mais rogne la valeur en euros des placements en dollars.",
+  "liens": [
+   "I6",
+   "A1",
+   "A2",
+   "G2",
+   "H1"
+  ],
+  "piege": "Ne pas inverser le sens : EUR/USD en hausse = euro plus fort. L'historique affiché est mensuel ; les cours quotidiens sont des cours de référence, pas un prix en direct ni celui d'un bureau de change."
+ },
+ "IC": {
+  "titre": "Euro contre livre, franc suisse, yen et yuan",
+  "phrase": "Ces séries indiquent combien de livres, de francs suisses, de yens ou de yuans on obtient pour 1 euro.",
+  "mesure": "EUR/GBP (livre sterling), EUR/CHF (franc suisse), EUR/JPY (yen), EUR/CNY (yuan chinois). Si l'EUR/CHF vaut 0,95, alors 1 € = 0,95 franc suisse. Quand le chiffre monte, l'euro s'apprécie face à cette monnaie ; quand il baisse, l'euro s'affaiblit.",
+  "calcul": "Taux de référence quotidiens de la BCE (Banque centrale européenne), fixés vers 14 h 15, heure de Francfort, repris sans calcul. L'historique commence en janvier 1999 (janvier 2000 pour le yuan).",
+  "interpreter": "Pas de seuil : on compare à l'historique mensuel. EUR/GBP : de 0,58 (avril 2000) à 0,95 (décembre 2008). EUR/CHF : de 1,68 (octobre 2007) à moins de 1 depuis mi-2022 ; chute de 1,20 à 1,05 entre décembre 2014 et janvier 2015. EUR/JPY : de 92 (octobre 2000) à plus de 180 en 2026. EUR/CNY : de 6,67 (mars 2015) à 11,27 (décembre 2004).",
+  "bouger": "Les écarts de taux avec la BCE (A2, A4, A5, A6, A7), la croissance et l'inflation relatives, et la recherche de valeurs refuges en période de tension. Ces cours servent à convertir en euros des placements en livres, en francs suisses, en yens ou en yuans.",
+  "liens": [
+   "I1",
+   "I2",
+   "I4",
+   "I5",
+   "I3"
+  ],
+  "piege": "Le sens dépend de la paire : dans EUR/GBP, la hausse signifie un euro plus fort, alors que dans GBP/USD (I4) elle signifie une livre plus forte. Le yuan est un cas à part : les autorités chinoises encadrent son cours, qui bouge peu au jour le jour."
+ },
+ "I2": {
+  "titre": "USD/JPY — le cours du dollar en yens",
+  "phrase": "L'USD/JPY indique combien de yens on obtient pour 1 dollar.",
+  "mesure": "Si l'USD/JPY vaut 150, alors 1 $ = 150 ¥. Quand il monte, le dollar s'apprécie et le yen s'affaiblit ; quand il baisse, le yen se renforce.",
+  "calcul": "Calculé à partir des taux de la BCE (Banque centrale européenne) : yens pour 1 euro ÷ dollars pour 1 euro, depuis janvier 1999. Avant, les données viennent de la Réserve fédérale américaine (base FRED). Le raccord se fait à date fixe, avec un petit écart d'environ 1 % le jour de la jonction.",
+  "interpreter": "Pas de seuil : on compare à l'historique mensuel depuis 1990. Médiane d'environ 112 ¥ ; 10 % des mois sont sous 92 et 10 % au-dessus de 144. Extrêmes : environ 76 ¥ en janvier 2012 ; plus de 160 ¥ en juin 2024 et en juin 2026.",
+  "bouger": "L'écart de taux entre les États-Unis et le Japon (A1, A5) : des taux américains bien plus élevés attirent vers le dollar. L'appétit pour le risque joue aussi, le yen étant traditionnellement recherché en période de tension.",
+  "liens": [
+   "IC_EURJPY",
+   "I1",
+   "A5",
+   "B10",
+   "F3"
+  ],
+  "piege": "Le sens surprend : USD/JPY en hausse = yen plus faible. Pour un investisseur en euros, c'est l'EUR/JPY (voir IC) qui compte. Avant 1999, cours de midi à New York ; ensuite, cours de 14 h 15 à Francfort : ne pas lire une différence de quelques dixièmes de pour cent comme un vrai mouvement."
+ },
+ "I3": {
+  "titre": "USD/CNY — le cours du dollar en yuans",
+  "phrase": "L'USD/CNY indique combien de yuans chinois on obtient pour 1 dollar.",
+  "mesure": "Si l'USD/CNY vaut 7, alors 1 $ = 7 yuans. Quand il monte, le dollar s'apprécie et le yuan s'affaiblit ; quand il baisse, le yuan se renforce.",
+  "calcul": "Calculé à partir des taux de la BCE (Banque centrale européenne) : yuans pour 1 euro ÷ dollars pour 1 euro, depuis le 13 janvier 2000, début du yuan dans les données de la BCE. Avant, les données viennent de la Réserve fédérale américaine (base FRED).",
+  "interpreter": "Pas de seuil : on compare à l'historique. Dans les données, le dollar passe de 4,7 yuans en 1990 à 8,7 en 1994, reste quasi figé à environ 8,28 de 1999 à 2004, puis recule progressivement. Médiane d'environ 6,9 yuans pour 1 $.",
+  "bouger": "Surtout la politique de la banque centrale chinoise, qui encadre le cours (A6), l'écart de taux avec les États-Unis (A1), le commerce extérieur et les flux de capitaux.",
+  "liens": [
+   "IC_EURCNY",
+   "I1",
+   "A6",
+   "B11",
+   "E1_CN"
+  ],
+  "piege": "Le yuan ne flotte pas librement : son cours reflète des décisions des autorités autant que le marché. Le sens surprend : USD/CNY en hausse = yuan plus faible. Avant 2000, cours de midi à New York ; ensuite, cours de 14 h 15 à Francfort."
+ },
+ "I4": {
+  "titre": "GBP/USD — le cours de la livre sterling en dollars",
+  "phrase": "Le GBP/USD indique combien de dollars on obtient pour 1 livre sterling.",
+  "mesure": "Si le GBP/USD vaut 1,30, alors 1 £ = 1,30 $. Quand il monte, la livre (GBP, monnaie du Royaume-Uni) s'apprécie face au dollar ; quand il baisse, elle s'affaiblit.",
+  "calcul": "Calculé à partir des taux de la BCE (Banque centrale européenne) : dollars pour 1 euro ÷ livres pour 1 euro, depuis janvier 1999. Avant, les données viennent de la Réserve fédérale américaine (base FRED).",
+  "interpreter": "Pas de seuil : on compare à l'historique mensuel depuis 1990. Médiane d'environ 1,56 $ ; 10 % des mois sont sous 1,27 et 10 % au-dessus de 1,84. Extrêmes : environ 2,07 $ en octobre 2007 et 1,10 $ en septembre 2022. Décrochage visible : de 1,46 $ en mai 2016 à 1,34 $ en juin 2016, mois du référendum sur le Brexit.",
+  "bouger": "L'écart de taux entre la Banque d'Angleterre et la Fed (A4, A1), l'inflation et la croissance britanniques, l'actualité politique et l'appétit pour le risque.",
+  "liens": [
+   "IC_EURGBP",
+   "I1",
+   "A4",
+   "B9",
+   "F4"
+  ],
+  "piege": "Ne pas confondre avec EUR/GBP (voir IC), dont le sens est inversé : quand le GBP/USD monte, la livre se renforce, alors qu'une hausse de l'EUR/GBP signale une livre plus faible face à l'euro. Avant 1999, cours de midi à New York ; ensuite, cours de 14 h 15 à Francfort."
+ },
+ "I5": {
+  "titre": "USD/CHF — le cours du dollar en francs suisses",
+  "phrase": "L'USD/CHF indique combien de francs suisses on obtient pour 1 dollar.",
+  "mesure": "Si l'USD/CHF vaut 0,90, alors 1 $ = 0,90 franc suisse (CHF). Quand il monte, le dollar s'apprécie et le franc s'affaiblit ; quand il baisse, le franc se renforce.",
+  "calcul": "Calculé à partir des taux de la BCE (Banque centrale européenne) : francs pour 1 euro ÷ dollars pour 1 euro, depuis janvier 1999. Avant, les données viennent de la Réserve fédérale américaine (base FRED).",
+  "interpreter": "Pas de seuil : on compare à l'historique mensuel depuis 1990. Médiane d'environ 1,12 CHF ; 10 % des mois sont sous 0,90 et 10 % au-dessus de 1,51. Extrêmes : environ 1,81 CHF en octobre 2000 et 0,77 en janvier 2026. Depuis septembre 2010, le dollar a presque toujours valu moins d'un franc (182 mois sur 194).",
+  "bouger": "L'écart de taux entre les États-Unis et la Suisse (A1, A7), les décisions de la BNS (Banque nationale suisse) et la demande de valeurs refuges : le franc est souvent recherché en période de tension.",
+  "liens": [
+   "IC_EURCHF",
+   "I1",
+   "A7",
+   "B12",
+   "I6"
+  ],
+  "piege": "Le sens surprend : USD/CHF en hausse = franc plus faible. Pour un investisseur en euros, c'est l'EUR/CHF (voir IC) qui compte. Attention aux mouvements brusques : en janvier 2015, l'EUR/CHF est passé de 1,20 à environ 1,05 en un mois. Avant 1999, cours de midi à New York ; ensuite, cours de 14 h 15 à Francfort."
+ },
+ "I6": {
+  "titre": "Indice du dollar (DXY) — le dollar face à six devises",
+  "phrase": "Le DXY indique si le dollar américain s'apprécie ou s'affaiblit en moyenne face à un panier de six autres monnaies.",
+  "mesure": "Le DXY (indice du dollar américain) compare le dollar à l'euro, au yen, à la livre sterling, au dollar canadien, à la couronne suédoise et au franc suisse. Quand l'indice monte, le dollar s'apprécie en moyenne ; quand il baisse, il s'affaiblit.",
+  "calcul": "ICE (Intercontinental Exchange, une bourse américaine) calcule l'indice en pondérant les cours de ces six devises. L'application reprend la clôture quotidienne fournie par Yahoo Finance.",
+  "interpreter": "Pas de seuil officiel : on se repère dans l'historique mensuel depuis 1990. Médiane d'environ 93 points ; 10 % des mois sont sous 80 et 10 % au-dessus de 106. Extrêmes : environ 120 en janvier 2002 et 72 en mars 2008.",
+  "bouger": "Les écarts de taux entre les États-Unis et les autres zones (A1), la solidité de l'économie américaine et la demande de dollars en période de crise. Un dollar fort pèse souvent sur les matières premières cotées en dollars (H1, H3).",
+  "liens": [
+   "I1",
+   "I2",
+   "I4",
+   "I5",
+   "H3"
+  ],
+  "piege": "Le panier se limite à six monnaies : ni yuan, ni peso mexicain. L'euro y pèse très lourd : un DXY en baisse reflète souvent un euro plus fort (I1). La source (Yahoo Finance) n'est pas officielle ; en cas de panne, elle serait remplacée par l'indice large du dollar de la Fed, un autre indice, jamais raccordé à celui-ci."
+ }
+}

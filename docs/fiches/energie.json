@@ -1,0 +1,234 @@
+{
+ "H1": {
+  "titre": "Pétrole Brent — la référence européenne du prix du pétrole",
+  "phrase": "Le Brent est le prix d'un baril de pétrole extrait en mer du Nord, l'une des deux grandes références mondiales du prix du pétrole.",
+  "mesure": "Le prix en dollars d'un baril (159 litres) de pétrole brut livrable tout de suite, dit « au comptant ». Il résume l'équilibre entre l'offre des pays producteurs et la demande mondiale d'énergie.",
+  "calcul": "L'EIA (Agence américaine d'information sur l'énergie) relève ce prix chaque jour ; le tableau de bord le reprend via FRED (base de données de la banque centrale de Saint-Louis), avec environ trois jours ouvrés de retard. Les derniers jours viennent du contrat à terme Yahoo (BZ=F), un achat à prix fixé aujourd'hui pour livraison future. Ils sont marqués « provisoires » et ajoutés seulement si l'écart reste sous 2 %.",
+  "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis 1990, le Brent est resté sous 17 dollars un mois sur dix et au-dessus de 108 dollars un mois sur dix ; médiane : environ 51 dollars. Repères : environ 138 dollars fin juin 2008, puis environ 36 dollars fin décembre 2008.",
+  "bouger": "Il monte quand l'économie tourne à plein ou que l'offre se raréfie : décisions de l'OPEP+ (pays exportateurs de pétrole et partenaires), guerres, tensions. Il baisse en cas de récession. Il pèse à son tour sur l'inflation (carburants, chauffage).",
+  "liens": [
+   "H2",
+   "H8_BNO",
+   "C1",
+   "I6",
+   "J3"
+  ],
+  "piege": "Prix au comptant et contrat à terme ne sont pas la même chose : ils peuvent différer de plusieurs %. Les jours fériés américains laissent des trous dans la série FRED ; ils restent des trous. Le prix est en dollars : pour un Européen, l'euro compte aussi."
+ },
+ "H2": {
+  "titre": "Pétrole WTI — la référence américaine du prix du pétrole",
+  "phrase": "Le WTI (West Texas Intermediate) est le prix d'un baril de pétrole américain, l'autre grande référence mondiale avec le Brent.",
+  "mesure": "Le prix en dollars d'un baril de pétrole brut américain livrable tout de suite (« au comptant »). Il évolue presque comme le Brent, mais l'écart entre les deux varie.",
+  "calcul": "Prix relevé par l'EIA (Agence américaine d'information sur l'énergie) et repris via FRED (base de données de la banque centrale de Saint-Louis). Les derniers jours peuvent venir du contrat à terme Yahoo (CL=F, achat à prix fixé aujourd'hui pour livraison future), mais seulement si l'écart avec FRED reste sous 2 % ; sinon la courbe s'arrête à la dernière valeur FRED.",
+  "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis 1990, le WTI est resté sous 19 dollars un mois sur dix et au-dessus de 96 dollars un mois sur dix ; médiane : environ 50 dollars. Il a atteint environ 140 dollars fin juin 2008.",
+  "bouger": "Mêmes moteurs que le Brent (croissance mondiale, OPEP+ : pays exportateurs de pétrole et partenaires, tensions géopolitiques), plus la production et les stocks américains.",
+  "liens": [
+   "H1",
+   "H8_USO",
+   "C1",
+   "I6"
+  ],
+  "piege": "Un prix de pétrole peut être négatif : le 20 avril 2020, le WTI a clôturé à −36,98 dollars (−37,63 pour le contrat à terme), les stockages étant saturés. Cette valeur est conservée ; aucun % de variation n'est calculé pour ce point, car il n'aurait pas de sens."
+ },
+ "H3": {
+  "titre": "Or — la valeur refuge, cours du contrat à terme de New York",
+  "phrase": "L'or est un métal précieux que les investisseurs achètent souvent pour se protéger des crises, de l'inflation ou d'un affaiblissement du dollar.",
+  "mesure": "Le prix en dollars d'une once troy (environ 31,1 grammes) d'or. L'or ne verse ni dividende ni intérêt : seul son prix compte.",
+  "calcul": "Cours de clôture du contrat à terme sur l'or le plus proche, coté à New York (Yahoo GC=F) : un engagement d'acheter ou de vendre plus tard à un prix fixé aujourd'hui. Il suit de près le prix « au comptant », sans être identique.",
+  "interpreter": "Pas de seuil. Repères vérifiés (fin de mois) : environ 884 dollars fin décembre 2008, 1 829 fin août 2011, puis 1 060 fin décembre 2015 : plus de 40 % de perte en un peu plus de quatre ans.",
+  "bouger": "Il monte souvent quand les taux réels (taux moins inflation) baissent, quand le dollar faiblit, en période d'incertitude ou quand les banques centrales achètent. Il souffre quand les taux montent : l'or ne rapporte rien.",
+  "liens": [
+   "H9",
+   "I6",
+   "B1",
+   "C1",
+   "J3"
+  ],
+  "piege": "Un refuge n'est pas une garantie : l'or peut baisser longtemps. Série depuis août 2000, contrat à terme (pas le comptant), en dollars : pour un Belge, l'euro joue aussi."
+ },
+ "H4": {
+  "titre": "Gaz naturel européen — le TTF, référence du prix du gaz en Europe",
+  "phrase": "Le TTF (Title Transfer Facility) est le prix de référence du gaz naturel en Europe, coté sur un marché virtuel basé aux Pays-Bas.",
+  "mesure": "Le prix du gaz livré prochainement, en euros par MWh (mégawattheure, mille kilowattheures). Il influence les factures de gaz, d'électricité et le coût de l'industrie européenne.",
+  "calcul": "Cours de clôture du contrat à terme le plus proche (code Yahoo TTF=F), c'est-à-dire un achat à prix fixé aujourd'hui pour une livraison dans les semaines qui viennent.",
+  "interpreter": "Pas de seuil officiel, historique court. Sur les valeurs de fin de mois depuis octobre 2017, la moitié des mois sont restés sous environ 32 euros, neuf sur dix sous environ 98. Extrêmes : environ 4 euros fin mai 2020 (confinements), environ 240 fin août 2022 (crise énergétique, guerre en Ukraine).",
+  "bouger": "Le froid, le niveau des stocks européens, les livraisons par gazoduc (Norvège, Russie) et par bateaux de gaz naturel liquéfié (GNL), le prix du pétrole. Il pèse sur l'inflation de l'énergie.",
+  "liens": [
+   "H5",
+   "H1",
+   "C5",
+   "C7"
+  ],
+  "piege": "Historique depuis le 23 octobre 2017 seulement : trop court pour dire ce qui est « normal ». Prix de contrat à terme, pas celui payé par un ménage. En euros par MWh : ne pas le comparer au Henry Hub (dollars par mmbtu) sans conversion."
+ },
+ "H5": {
+  "titre": "Gaz naturel américain — le Henry Hub",
+  "phrase": "Le Henry Hub est le prix de référence du gaz naturel aux États-Unis.",
+  "mesure": "Le prix du gaz livré prochainement à Henry Hub, nœud de gazoducs de Louisiane, en dollars par mmbtu (million de British thermal units, unité d'énergie ; 1 MWh vaut environ 3,4 mmbtu). Le gaz voyage mal : ce prix reste très américain.",
+  "calcul": "Cours de clôture du contrat à terme le plus proche (code Yahoo NG=F), coté à New York : un achat à prix fixé aujourd'hui pour livraison dans les semaines qui viennent.",
+  "interpreter": "Pas de seuil officiel. Sur les valeurs de fin de mois depuis août 2000, la moitié des mois sont restés sous environ 3,7 dollars, un mois sur dix sous 2,3 et un sur dix au-dessus de 7,5. Extrêmes : environ 13,9 fin septembre 2005 et 1,6 fin mars 2020.",
+  "bouger": "La météo (froid : chauffage ; canicule : climatisation), la production américaine, les stocks et les exportations de gaz naturel liquéfié (GNL).",
+  "liens": [
+   "H4",
+   "H1",
+   "H2",
+   "C1"
+  ],
+  "piege": "Très saisonnier et volatil. Prix de contrat à terme, pas celui payé par un ménage. En dollars par mmbtu : ne pas le comparer au TTF européen (euros par MWh) sans convertir."
+ },
+ "H6": {
+  "titre": "Cuivre — le « thermomètre » de l'activité industrielle",
+  "phrase": "Le cuivre entre dans presque tout (bâtiment, câbles, voitures, appareils) : son prix est suivi comme un indice de la santé de l'industrie mondiale.",
+  "mesure": "Le prix en dollars d'une livre (environ 454 grammes) de cuivre. Quand l'activité est forte, les industriels en achètent beaucoup et le prix monte ; quand elle faiblit, il recule.",
+  "calcul": "Cours de clôture du contrat à terme sur le cuivre le plus proche, coté à New York (code Yahoo HG=F) : un achat à prix fixé aujourd'hui pour une livraison future.",
+  "interpreter": "Pas de seuil officiel. Une hausse durable suggère une demande industrielle solide ; une chute brutale traduit souvent une inquiétude sur la croissance. Repère vérifié : de fin avril 2008 (environ 3,93 dollars) à fin décembre 2008 (environ 1,40 dollar), il a perdu environ 65 % pendant la crise financière.",
+  "bouger": "La croissance de la Chine et du reste du monde, la construction, la transition énergétique (voitures électriques, réseaux), les stocks des entreprises et le dollar.",
+  "liens": [
+   "E1_CN",
+   "E1_US",
+   "D13_CN",
+   "H1",
+   "I6"
+  ],
+  "piege": "Un thermomètre imparfait : grèves, problèmes de mines, droits de douane ou spéculation peuvent déplacer le prix sans lien avec l'activité. La série commence en août 2000 et reflète un contrat à terme new-yorkais, en dollars par livre ; d'autres sources cotent en dollars par tonne."
+ },
+ "ETF_H": {
+  "titre": "ETF matières premières diversifiées — DBC",
+  "phrase": "DBC est un ETF (Exchange-Traded Fund, fonds coté en bourse) qui permet de suivre un panier de matières premières.",
+  "mesure": "La valeur d'une part du fonds, en dollars. Le panier mêle énergie, métaux et produits agricoles : c'est un baromètre des prix des matières premières dans leur ensemble.",
+  "calcul": "Le fonds (Invesco DB Commodity Index Tracking Fund) achète des contrats à terme sur ces matières et les renouvelle régulièrement. Le tableau de bord reprend le cours de clôture Yahoo, hors dividendes : d'éventuelles distributions ne sont pas ajoutées.",
+  "interpreter": "Pas de seuil. Repères vérifiés (valeurs de fin de mois) : environ 44,8 dollars fin juin 2008 (comme le Brent, au plus haut), environ 21,2 dollars fin décembre 2008 (−53 %), puis environ 10,9 dollars fin avril 2020, soit environ 76 % sous le sommet de 2008.",
+  "bouger": "La croissance mondiale, l'inflation, le dollar et surtout le pétrole. Le fonds suit en effet les contrats à terme, dont le renouvellement peut coûter ou rapporter de l'argent.",
+  "liens": [
+   "H1",
+   "H3",
+   "H6",
+   "I6",
+   "C1"
+  ],
+  "piege": "Un ETF n'est pas la matière première elle-même : il peut s'écarter des prix au comptant à cause du renouvellement des contrats. Le cours est en dollars et hors dividendes, donc inférieur au rendement réel. Historique depuis février 2006."
+ },
+ "H8": {
+  "titre": "ETF pétrole — USO (WTI) et BNO (Brent)",
+  "phrase": "USO et BNO sont des ETF (fonds cotés en bourse) qui cherchent à suivre le prix du pétrole : USO celui du WTI américain, BNO celui du Brent.",
+  "mesure": "La valeur d'une part, en dollars. Ces fonds permettent d'investir dans le pétrole depuis un compte-titres, sans acheter de contrats.",
+  "calcul": "Ils ne stockent pas de pétrole : ils détiennent des contrats à terme proches de l'échéance, vendus juste avant pour en acheter de nouveaux (le « renouvellement »). Cours de clôture Yahoo, hors dividendes.",
+  "interpreter": "Ne pas lire ce cours comme un prix du pétrole. Quand les contrats lointains sont plus chers que les proches, chaque renouvellement coûte. De fin 2006 à fin 2019, le WTI est resté autour de 61 dollars, mais USO est passé d'environ 413 à 102 dollars (−75 %). Pour BNO, de fin 2010 à fin 2019 : −33 %, contre −27 % pour le Brent.",
+  "bouger": "Le prix du pétrole, mais aussi la forme de la courbe des prix à terme et le dollar.",
+  "liens": [
+   "H2",
+   "H1",
+   "H7",
+   "I6"
+  ],
+  "piege": "Les écarts avec le pétrole s'accumulent sur des années. L'historique d'USO a été recalculé pour tenir compte d'un regroupement d'actions en 2020 : les anciens cours semblent très élevés (plus de 900 dollars fin juin 2008) ; comparez des variations, pas des niveaux. Les deux séries sont tracées séparément ; BNO commence en juin 2010."
+ },
+ "H9": {
+  "titre": "ETF or — GLD (SPDR Gold Shares)",
+  "phrase": "GLD est un ETF (Exchange-Traded Fund, fonds coté en bourse) dont chaque part correspond à une petite quantité d'or.",
+  "mesure": "Le prix d'une part de GLD, en dollars. Le fonds détient de l'or physique ; sa valeur suit donc celle de l'or, diminuée de frais.",
+  "calcul": "Cours de clôture Yahoo, hors dividendes. L'or ne rapportant ni intérêt ni dividende, ce choix ne change presque rien ici.",
+  "interpreter": "À l'origine, une part valait environ un dixième d'once. Rapport vérifié entre le cours de GLD et celui de l'or (contrat à terme) : environ 0,100 fin 2004, environ 0,098 fin 2008, environ 0,091 fin 2025. La baisse lente vient des frais de gestion, prélevés sur l'or du fonds. Sur de longues périodes, GLD fait un peu moins bien que l'or.",
+  "bouger": "Les mêmes facteurs que l'or : taux d'intérêt réels, dollar, incertitude, achats des banques centrales. L'afflux ou la sortie d'investisseurs joue aussi.",
+  "liens": [
+   "H3",
+   "I6",
+   "B1",
+   "C1"
+  ],
+  "piege": "Un ETF n'est pas l'or lui-même : frais de gestion, cotation en dollars, cours hors dividendes. L'historique commence en novembre 2004, quatre ans après celui de l'or du tableau de bord (août 2000)."
+ },
+ "H10": {
+  "titre": "ETF immobilier coté américain — VNQ (Vanguard Real Estate)",
+  "phrase": "VNQ est un ETF (fonds coté en bourse) qui regroupe des sociétés immobilières cotées aux États-Unis.",
+  "mesure": "La valeur d'une part, en dollars. Le fonds détient surtout des REIT (Real Estate Investment Trusts, sociétés qui possèdent et louent des immeubles : bureaux, entrepôts, centres commerciaux, logements). C'est une exposition à l'immobilier par la bourse, sans acheter de bien.",
+  "calcul": "Cours de clôture Yahoo, hors dividendes. Or les REIT distribuent l'essentiel de leurs bénéfices : le rendement réel est donc nettement supérieur à ce que montre la courbe.",
+  "interpreter": "Pas de seuil. Repères vérifiés (valeurs de fin de mois) : de fin décembre 2007 (environ 61 dollars) à fin février 2009 (environ 24 dollars), −61 % pendant la crise des crédits immobiliers ; de fin décembre 2021 (environ 116 dollars) à fin décembre 2022 (environ 82 dollars), −29 % quand les taux d'intérêt ont fortement monté.",
+  "bouger": "Les taux d'intérêt (des taux élevés renchérissent les emprunts et concurrencent les loyers), la santé de l'économie, les loyers et l'occupation des immeubles.",
+  "liens": [
+   "H11",
+   "B1",
+   "G2",
+   "A1"
+  ],
+  "piege": "Ce n'est pas le prix des maisons : il se comporte plutôt comme une action. Cours en dollars et hors dividendes. Il représente l'immobilier américain, pas belge."
+ },
+ "H11": {
+  "titre": "ETF immobilier coté européen — iShares European Property Yield (IPRP)",
+  "phrase": "IPRP est un ETF (fonds coté en bourse) qui regroupe des sociétés immobilières cotées en Europe, choisies pour leurs dividendes.",
+  "mesure": "La valeur d'une part, en euros, cotée à Amsterdam. Le fonds permet d'investir dans l'immobilier européen par la bourse, sans acheter de bien.",
+  "calcul": "Cours de clôture Yahoo de la cotation d'Amsterdam (IPRP.AS), en euros, hors dividendes. Le fonds les distribue : le cours baisse du montant versé, et la courbe sous-estime donc le rendement. Le même fonds est aussi coté à Londres (en pence) et à Milan, mais ces cotations ne sont pas utilisées.",
+  "interpreter": "Pas de seuil. Repères vérifiés (valeurs de fin de mois) : environ 15,2 euros fin mars 2009 ; environ 47,2 euros fin janvier 2020, puis environ 34,4 euros fin mars 2020 (−27 % en deux mois, début de la pandémie) ; de fin décembre 2021 (environ 43,3 euros) à fin décembre 2022 (environ 25,9 euros), −40 % quand les taux ont monté.",
+  "bouger": "Les taux d'intérêt, notamment ceux de la BCE (Banque centrale européenne), le coût des emprunts, les loyers, l'occupation des bureaux et des commerces.",
+  "liens": [
+   "H10",
+   "A2",
+   "B4",
+   "G5"
+  ],
+  "piege": "Historique depuis janvier 2008 seulement. Le panier est restreint : l'ETF peut très bien s'éloigner de l'immobilier belge. Cours hors dividendes, comparable à un indice de prix mais pas à un rendement."
+ },
+ "H12": {
+  "titre": "ETF obligations d'État américaines à plus de 20 ans — TLT",
+  "phrase": "TLT est un ETF (fonds coté en bourse) qui détient des obligations de l'État américain à très long terme : son prix baisse quand les taux longs montent.",
+  "mesure": "La valeur d'une part, en dollars. Une obligation est un prêt à l'État, qui verse un intérêt (le coupon) ; ici, il reste plus de 20 ans avant le remboursement.",
+  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de plus de 20 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "interpreter": "Quand le taux des emprunts d'État à 10 ans monte, le cours baisse, d'autant plus que la durée est longue. Repères vérifiés : de fin juillet 2020 (environ 171 dollars) à fin décembre 2022 (environ 100 dollars), −42 %, alors que les taux montaient. Sur la même période, IEF (7-10 ans) a perdu environ 22 %.",
+  "bouger": "L'inflation attendue, les décisions de la Fed (Réserve fédérale, banque centrale américaine), les déficits publics, et la fuite vers la sécurité en cas de panique, qui fait monter le prix.",
+  "liens": [
+   "B1",
+   "H13",
+   "A1",
+   "D1",
+   "G2"
+  ],
+  "piege": "Croire qu'une obligation d'État est sans risque : le risque de défaut est faible, mais le prix peut chuter. Cours en dollars et hors coupons."
+ },
+ "H13": {
+  "titre": "ETF obligations d'État américaines à 7-10 ans — IEF",
+  "phrase": "IEF est un ETF (fonds coté en bourse) qui détient des obligations de l'État américain à moyen terme (7 à 10 ans) : son prix baisse quand les taux montent.",
+  "mesure": "La valeur d'une part, en dollars. Une obligation est un prêt à l'État, qui verse un intérêt (le coupon) ; ici, il reste 7 à 10 ans avant le remboursement.",
+  "calcul": "Le fonds (iShares) détient des bons du Trésor américain de 7 à 10 ans. Le cours est celui de clôture de Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "interpreter": "Plus la durée est courte, moins le prix réagit aux taux. En 2022, de fin décembre 2021 à fin décembre 2022, IEF a perdu environ 17 % (de 115 à 96 dollars environ), contre environ 33 % pour TLT (plus de 20 ans). Le taux à 10 ans américain est le repère le plus proche.",
+  "bouger": "L'inflation attendue, les décisions de la Fed (Réserve fédérale, banque centrale américaine) et le besoin de refuge des investisseurs : le prix monte en cas de panique.",
+  "liens": [
+   "B1",
+   "H12",
+   "A1",
+   "B2"
+  ],
+  "piege": "Un fonds d'obligations n'a pas d'échéance fixe : contrairement à une obligation gardée jusqu'au bout, son prix ne revient pas forcément à son niveau de départ. Cours en dollars et hors coupons."
+ },
+ "H14": {
+  "titre": "ETF obligations d'État de la zone euro — IEGA (iShares Core Euro Government Bond)",
+  "phrase": "IEGA est un ETF (fonds coté en bourse) qui détient des obligations d'États de la zone euro, de durées variées : son prix baisse quand les taux montent.",
+  "mesure": "La valeur d'une part, en euros, cotée à Amsterdam. Une obligation est un prêt à un État, qui verse un intérêt (le coupon).",
+  "calcul": "Cours de clôture Yahoo de la cotation d'Amsterdam (IEGA.AS), en euros, hors dividendes. Le fonds distribue ses revenus : le cours baisse du montant versé, et la courbe sous-estime donc le rendement. Le même fonds coté à Londres (en livres) n'est pas utilisé.",
+  "interpreter": "Quand les taux montent, le cours baisse. Repère vérifié : de fin décembre 2021 (environ 131 euros) à fin décembre 2022 (environ 106 euros), −19 %, quand les taux de la zone euro ont fortement augmenté.",
+  "bouger": "Les décisions de la BCE (Banque centrale européenne), l'inflation de la zone euro et les écarts de taux entre États (Italie ou France comparées à l'Allemagne).",
+  "liens": [
+   "B4",
+   "B5_10A",
+   "A2",
+   "BC_IT_DE",
+   "C5"
+  ],
+  "piege": "Historique court, depuis juin 2014. À Amsterdam, cet ETF s'échange très peu : le cours, bien que présent chaque jour de bourse, est moins fiable qu'un ETF très liquide. Cours en euros et hors coupons : ne pas le comparer à TLT ou IEF (monnaie et durées différentes)."
+ },
+ "H15": {
+  "titre": "ETF obligations américaines indexées sur l'inflation — TIP (TIPS)",
+  "phrase": "TIP est un ETF (fonds coté en bourse) qui détient des TIPS (Treasury Inflation-Protected Securities), des obligations de l'État américain dont le capital suit l'inflation.",
+  "mesure": "La valeur d'une part, en dollars. Le capital de ces obligations est réajusté selon l'inflation américaine : elles protègent en principe contre la hausse des prix, ce que ne font pas les obligations ordinaires.",
+  "calcul": "Cours de clôture Yahoo, hors dividendes : les intérêts versés ne sont pas ajoutés, d'où une dérive baissière sur le long terme.",
+  "interpreter": "Il réagit surtout aux taux d'intérêt réels (taux moins inflation attendue), pas à l'inflation seule. En 2022, malgré une inflation élevée, TIP a perdu environ 18 % de fin décembre 2021 (environ 129 dollars) à fin décembre 2022 (environ 106 dollars), car les taux réels ont fortement monté.",
+  "bouger": "Les taux réels, l'inflation attendue par les marchés (le point mort d'inflation), les décisions de la Fed (Réserve fédérale, banque centrale américaine).",
+  "liens": [
+   "D1",
+   "B1",
+   "C1",
+   "H13",
+   "A1"
+  ],
+  "piege": "Se protéger de l'inflation ne signifie pas ne pas perdre : le prix peut chuter si les taux montent. La protection ne vaut que pour l'inflation américaine, en dollars. Cours hors coupons."
+ }
+}

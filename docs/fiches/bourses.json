@@ -1,0 +1,226 @@
+{
+ "G1": {
+  "titre": "BEL 20 — le thermomètre de la Bourse de Bruxelles",
+  "phrase": "Le BEL 20 suit le cours des 20 principales entreprises cotées à Bruxelles : c'est le repère habituel de la Bourse belge.",
+  "mesure": "L'évolution d'ensemble du prix des actions des grandes sociétés cotées sur Euronext Bruxelles (la Bourse de Bruxelles). Plusieurs de ces groupes vendent surtout à l'étranger : l'indice reflète donc autant l'économie mondiale que l'économie belge.",
+  "calcul": "Chaque société pèse selon la valeur en bourse des actions réellement disponibles au public (capitalisation flottante), avec un plafond pour qu'une seule ne domine pas. Il s'exprime en points. Ici, c'est la clôture quotidienne, dividendes non ajoutés (« hors dividendes »).",
+  "interpreter": "Il n'existe pas de « bon » niveau. Regardez la variation sur 12 mois et sa position dans l'historique (percentile : au 90e percentile, 10 % des périodes passées ont fait mieux). Repères tirés des clôtures mensuelles : de mai 2007 à février 2009, l'indice a perdu environ 64 % ; il n'a retrouvé son niveau de mai 2007 qu'en août 2025.",
+  "bouger": "Les résultats des grandes entreprises, les taux de la BCE (Banque centrale européenne), l'humeur des bourses mondiales (Wall Street donne souvent le ton) et les crises financières.",
+  "liens": [
+   "G2",
+   "G5",
+   "G7",
+   "A2",
+   "J2"
+  ],
+  "piege": "Peu de valeurs : quelques sociétés suffisent à le faire bouger. Il est hors dividendes, donc il sous-estime ce que gagne un investisseur qui les encaisse. Historique depuis avril 1991 seulement (rien avant)."
+ },
+ "G2": {
+  "titre": "S&P 500 — les 500 grandes entreprises américaines",
+  "phrase": "Le S&P 500 suit le cours de 500 grandes entreprises cotées aux États-Unis ; c'est le principal repère de la bourse américaine, et même mondiale.",
+  "mesure": "L'évolution d'ensemble de la valeur en bourse des grands groupes américains, de la technologie à la santé, la banque ou l'énergie. Comme ces sociétés vendent dans le monde entier, il reflète aussi la santé de l'économie mondiale.",
+  "calcul": "Standard & Poor's (S&P) le calcule en pondérant chaque entreprise selon sa taille boursière : les plus grosses pèsent beaucoup plus que les petites. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes (non ajustée des dividendes versés).",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : d'octobre 2007 à février 2009, il a perdu un peu plus de la moitié de sa valeur (environ 53 %) et n'a retrouvé son niveau qu'en mars 2013.",
+  "bouger": "Les bénéfices des entreprises, les taux de la Fed (Réserve fédérale, la banque centrale américaine), l'inflation et la peur des investisseurs, que mesure le VIX (indice de la peur). Il influence presque toutes les autres bourses.",
+  "liens": [
+   "J1",
+   "G4",
+   "G3",
+   "A1",
+   "B1"
+  ],
+  "piege": "Hors dividendes : il ne mesure pas le rendement complet d'un investisseur. Les très grandes sociétés pèsent lourd : il peut monter alors que la plupart des actions stagnent. Il est en dollars : le change compte pour un Belge."
+ },
+ "G3": {
+  "titre": "Dow Jones Industrial Average — 30 géants américains",
+  "phrase": "Le Dow Jones suit le cours de 30 très grandes entreprises américaines ; c'est l'un des plus anciens et des plus cités des indices de Wall Street.",
+  "mesure": "L'évolution du prix des actions de 30 sociétés américaines de premier plan, choisies par un comité. C'est un échantillon très étroit, comparé aux 500 sociétés du S&P 500 (indice américain élargi).",
+  "calcul": "Particularité : il est pondéré par le prix des actions, pas par la taille des entreprises. Une société dont l'action vaut 400 $ pèse quatre fois plus qu'une autre dont l'action vaut 100 $, même si elle est plus petite. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : d'octobre 2007 à février 2009, il a perdu environ 49 % ; il n'a retrouvé son niveau qu'en février 2013.",
+  "bouger": "Les bénéfices des entreprises, les taux de la Fed (Réserve fédérale, la banque centrale américaine), l'inflation et le climat économique mondial. Il suit en général la même direction que le S&P 500, avec des écarts.",
+  "liens": [
+   "G2",
+   "G4",
+   "J1",
+   "A1",
+   "B1"
+  ],
+  "piege": "Son mode de calcul est ancien : le poids d'une société dépend du prix de son action, ce qui est un peu arbitraire. Hors dividendes. Historique depuis janvier 1992 seulement (pas 1990)."
+ },
+ "G4": {
+  "titre": "Nasdaq Composite — la bourse américaine de la technologie",
+  "phrase": "Le Nasdaq Composite suit l'ensemble des actions cotées sur le Nasdaq, la bourse électronique américaine, très orientée vers la technologie.",
+  "mesure": "L'évolution d'ensemble de plusieurs milliers d'actions, dont de nombreux groupes du numérique, des logiciels, des puces électroniques et de la biotechnologie. Il est plus sensible aux paris sur la croissance future que le S&P 500 (500 grandes sociétés américaines, tous secteurs).",
+  "calcul": "Le Nasdaq (National Association of Securities Dealers Automated Quotations) le calcule en pondérant chaque société selon sa valeur en bourse : les plus grosses dominent. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repère tiré des clôtures mensuelles : de février 2000 à septembre 2002 (éclatement de la bulle internet), il a perdu environ 75 % ; il n'a retrouvé son niveau de février 2000 qu'en novembre 2014.",
+  "bouger": "Les anticipations de bénéfices des entreprises technologiques et surtout les taux d'intérêt : quand ils montent, les actions « de croissance » perdent plus que les autres. Il bouge généralement davantage que le S&P 500, à la hausse comme à la baisse.",
+  "liens": [
+   "G2",
+   "J1",
+   "B1",
+   "A1",
+   "t:prix_hors_dividendes"
+  ],
+  "piege": "Ne le confondez pas avec le Nasdaq-100 (les 100 plus grosses sociétés du Nasdaq), qui est un autre indice. Le Composite est très concentré sur quelques géants. Hors dividendes."
+ },
+ "G5": {
+  "titre": "Euro Stoxx 50 — les 50 grands groupes de la zone euro",
+  "phrase": "L'Euro Stoxx 50 suit le cours de 50 grandes entreprises des pays qui partagent l'euro ; c'est le repère de la bourse de la zone euro.",
+  "mesure": "L'évolution d'ensemble de la valeur en bourse de grands groupes de la zone euro (industrie, luxe, énergie, banque, technologie), choisis dans plusieurs pays. Il ne contient ni société britannique ni société suisse.",
+  "calcul": "Stoxx, société spécialisée dans les indices, pondère chaque entreprise selon sa valeur en bourse (avec un plafond par société). Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de mai 2007 à février 2009, il a perdu environ 56 % ; il n'a retrouvé son niveau de mai 2007 qu'en décembre 2023, soit plus de seize ans plus tard.",
+  "bouger": "Les bénéfices des grands groupes, les décisions de la BCE (Banque centrale européenne), les crises de la dette ou de l'énergie en Europe, et l'humeur de Wall Street.",
+  "liens": [
+   "G1",
+   "G6",
+   "G7",
+   "A2",
+   "J2"
+  ],
+  "piege": "Historique court : la série ne commence qu'en mars 2007, sans les décennies précédentes ; les comparaisons avec le passé portent donc sur moins de vingt ans. Hors dividendes."
+ },
+ "G6": {
+  "titre": "DAX — les 40 grandes entreprises allemandes",
+  "phrase": "Le DAX suit les 40 plus grandes entreprises cotées à Francfort, avec une particularité : les dividendes y sont réinvestis.",
+  "mesure": "L'évolution d'ensemble de la valeur des grands groupes allemands (automobile, industrie, chimie, assurance, logiciels). Beaucoup exportent : il dépend donc de la conjoncture mondiale.",
+  "calcul": "DAX signifie Deutscher Aktienindex (indice allemand des actions). Chaque société pèse selon sa valeur en bourse. Particularité : c'est un indice de performance. Les dividendes versés sont supposés réinvestis dans l'indice, qui monte donc un peu plus que les cours seuls.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de février 2000 à mars 2003, il a perdu environ 68 % ; il a retrouvé son niveau de 2000 dès mai 2007, alors que le CAC 40 (indice français) n'est revenu au sien qu'en 2021, en partie parce que le DAX compte les dividendes.",
+  "bouger": "Les exportations allemandes, le prix de l'énergie, la croissance en Chine et aux États-Unis, les taux de la BCE (Banque centrale européenne) et la politique économique de Berlin.",
+  "liens": [
+   "G7",
+   "G5",
+   "C8",
+   "B4",
+   "t:prix_hors_dividendes"
+  ],
+  "piege": "Ne le comparez pas tel quel aux autres indices boursiers du tableau de bord (S&P 500, CAC 40, etc.), qui sont des indices de prix, sans dividendes : le DAX a un avantage mécanique, qui s'accumule année après année."
+ },
+ "G7": {
+  "titre": "CAC 40 — les 40 grandes entreprises françaises",
+  "phrase": "Le CAC 40 suit le cours de 40 grandes sociétés cotées à Paris ; c'est le repère habituel de la Bourse française.",
+  "mesure": "L'évolution d'ensemble de la valeur des grands groupes français : luxe, énergie, banque, aéronautique, grande consommation. Ils réalisent la majeure partie de leur activité hors de France : il reflète donc l'économie mondiale autant que l'économie française.",
+  "calcul": "CAC signifie Cotation assistée en continu. Chaque société pèse selon la valeur en bourse des actions disponibles au public. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes. Il existe une version avec dividendes réinvestis, non utilisée ici.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : d'août 2000 à mars 2003, il a perdu environ 60 % ; il n'a retrouvé son niveau d'août 2000 qu'en août 2021, plus de vingt ans plus tard.",
+  "bouger": "Les ventes de luxe et d'énergie, les banques, les taux de la BCE (Banque centrale européenne), la politique française et l'humeur de Wall Street.",
+  "liens": [
+   "G6",
+   "G5",
+   "G1",
+   "A2",
+   "J2"
+  ],
+  "piege": "Hors dividendes : à long terme, l'écart avec un indice qui les réinvestit (comme le DAX, l'indice allemand) devient considérable. Historique depuis mars 1990 (il manque janvier et février 1990)."
+ },
+ "G8": {
+  "titre": "FTSE 100 — les 100 grandes entreprises de Londres",
+  "phrase": "Le FTSE 100, surnommé « Footsie », suit le cours des 100 plus grosses sociétés cotées à la Bourse de Londres.",
+  "mesure": "L'évolution d'ensemble de la valeur des grands groupes britanniques : pétrole et gaz, mines, banques, pharmacie, grande consommation. Une grande partie de leurs ventes se fait à l'étranger, en dollars ou en euros.",
+  "calcul": "FTSE vient de Financial Times Stock Exchange. Chaque société pèse selon la valeur en bourse des actions disponibles au public. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de décembre 1999 à janvier 2003, il a perdu environ 48 % ; il n'a retrouvé son niveau de fin 1999 qu'en février 2015.",
+  "bouger": "Le prix du pétrole et des métaux, les banques, les décisions de la Banque d'Angleterre et la livre sterling : quand la livre baisse, les ventes réalisées à l'étranger valent plus de livres, ce qui soutient souvent l'indice.",
+  "liens": [
+   "A4",
+   "I4",
+   "H1",
+   "G7",
+   "J2"
+  ],
+  "piege": "Hors dividendes : les grandes sociétés britanniques en versent beaucoup, donc l'écart avec le rendement réel est notable. L'indice dit peu de l'économie du Royaume-Uni elle-même, tant il est dominé par des groupes mondiaux."
+ },
+ "G9": {
+  "titre": "Nikkei 225 — les 225 grandes entreprises japonaises",
+  "phrase": "Le Nikkei 225 suit le cours de 225 grandes sociétés cotées à la Bourse de Tokyo ; c'est le repère habituel du Japon.",
+  "mesure": "L'évolution du prix des actions de grands groupes japonais (automobile, électronique, machines, commerce). Beaucoup exportent : l'indice dépend de la demande mondiale et du yen.",
+  "calcul": "Il porte le nom du journal économique japonais qui l'a créé (Nikkei). Comme le Dow Jones, il est pondéré par le prix des actions, pas par la taille des sociétés. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de janvier 1990 (juste après la bulle japonaise) à février 2009, il a perdu environ 80 % ; il n'est repassé au-dessus de son niveau de janvier 1990 qu'en février 2024.",
+  "bouger": "Le yen (quand il baisse, les exportateurs gagnent plus de yens), la politique de la Banque du Japon, la demande mondiale et Wall Street.",
+  "liens": [
+   "I2",
+   "A5",
+   "B10",
+   "G2",
+   "G10"
+  ],
+  "piege": "L'historique de la base commence en janvier 1990, près du sommet de la bulle : ne le lisez pas comme une évolution « normale ». En mai 2019, la bourse est restée fermée une dizaine de jours (jours fériés exceptionnels liés à l'avènement du nouvel empereur) : ce trou est réel."
+ },
+ "G10": {
+  "titre": "Shanghai Composite — la Bourse de Shanghai",
+  "phrase": "Le Shanghai Composite suit l'ensemble des actions cotées à la Bourse de Shanghai, l'une des deux grandes places de Chine continentale.",
+  "mesure": "L'évolution d'ensemble de la valeur des sociétés chinoises cotées à Shanghai : banques, énergie, industrie, souvent contrôlées par l'État. L'accès des investisseurs étrangers y est limité et les petits porteurs locaux y jouent un grand rôle.",
+  "calcul": "Chaque société pèse selon sa valeur en bourse. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : sommet en octobre 2007, puis chute d'environ 71 % en un an (octobre 2008). Depuis, aucune clôture mensuelle de la base n'a dépassé ce sommet.",
+  "bouger": "La politique du gouvernement chinois et de la banque centrale, la croissance de l'économie chinoise, l'immobilier, les tensions avec les États-Unis et l'humeur des petits investisseurs.",
+  "liens": [
+   "G11",
+   "G12",
+   "A6",
+   "I3",
+   "G9"
+  ],
+  "piege": "Historique depuis juillet 1997 seulement (pas 1990). Les fêtes chinoises (Nouvel An lunaire, fête nationale en octobre, etc.) entraînent des fermetures de 11 à 20 jours : ces trous sont réels et ne sont jamais comblés. Hors dividendes."
+ },
+ "G11": {
+  "titre": "ETF qui suit le CSI 300 — la Chine continentale en fonds coté",
+  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le CSI 300, l'indice des 300 grandes entreprises de Shanghai et de Shenzhen. Ce n'est pas l'indice lui-même.",
+  "mesure": "L'évolution de la valeur des grandes sociétés cotées en Chine continentale (Shanghai et Shenzhen), tous secteurs confondus. CSI signifie China Securities Index.",
+  "calcul": "Le fonds achète les actions de l'indice et suit sa performance. Son prix est exprimé en yuans, non en points d'indice : une part vaut quelques yuans (entre 2 et 5 environ depuis 2012). On utilise ce fonds parce que l'indice n'est pas disponible gratuitement de façon fiable. Ici, c'est la clôture quotidienne, hors dividendes.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : de mai 2015 à février 2016, le fonds a perdu environ 41 % ; son plus haut mensuel date de janvier 2021.",
+  "bouger": "La croissance chinoise, la politique du gouvernement et de la banque centrale, l'immobilier, le yuan et l'humeur des investisseurs.",
+  "liens": [
+   "G10",
+   "G12",
+   "I3",
+   "A6",
+   "t:etf"
+  ],
+  "piege": "Ce n'est pas l'indice : de petits écarts avec le CSI 300 existent. Historique court : depuis mai 2012 seulement. Le cours est en yuans : pour un Belge, le taux de change yuan-euro joue aussi. Hors dividendes."
+ },
+ "G12": {
+  "titre": "Hang Seng — la Bourse de Hong Kong",
+  "phrase": "Le Hang Seng suit le cours des principales entreprises cotées à Hong Kong ; c'est le repère de la finance asiatique et de la Chine ouverte au monde.",
+  "mesure": "L'évolution d'ensemble de la valeur de grands groupes cotés à Hong Kong : banques, assurance, immobilier, et surtout de grandes sociétés chinoises (technologie, internet). Il reflète donc largement la confiance envers l'économie chinoise.",
+  "calcul": "Chaque société pèse selon la valeur en bourse des actions disponibles au public. Il s'exprime en points. Ici, c'est la clôture quotidienne, hors dividendes. Le dollar de Hong Kong est arrimé au dollar américain.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles : d'octobre 2007 à février 2009, il a perdu environ 59 % ; sa clôture mensuelle la plus haute de la base date de janvier 2018 et n'a pas été dépassée depuis.",
+  "bouger": "La politique de Pékin, l'économie chinoise, les taux de la Fed (Réserve fédérale, la banque centrale américaine) — Hong Kong suit en pratique les taux américains grâce à son arrimage — et les tensions géopolitiques.",
+  "liens": [
+   "G10",
+   "G11",
+   "A1",
+   "I3",
+   "J1"
+  ],
+  "piege": "Le Hang Seng n'est pas le miroir de l'économie de Hong Kong, mais surtout celui de grands groupes chinois et de banques. Hors dividendes : il sous-estime donc le rendement, les banques en versant beaucoup."
+ },
+ "G13": {
+  "titre": "MSCI World (via l'ETF iShares) — les grandes bourses du monde développé",
+  "phrase": "Cette série est le cours d'un ETF (Exchange Traded Fund, fonds indiciel coté en bourse) qui copie le MSCI World, l'indice des grandes et moyennes entreprises des pays développés ; le cours est en euros.",
+  "mesure": "L'évolution d'ensemble des actions des pays riches (États-Unis, Europe, Japon, etc.). MSCI signifie Morgan Stanley Capital International. Les États-Unis y pèsent de loin le plus lourd.",
+  "calcul": "L'ETF iShares Core MSCI World, coté à Amsterdam, achète les actions de l'indice et suit sa performance. Son cours est en euros, pas en points d'indice. La clôture est non ajustée, mais cet ETF est de capitalisation : les dividendes sont réinvestis dans le fonds et se retrouvent donc dans son cours.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repère tiré des clôtures mensuelles : de janvier à mars 2020 (pandémie), le fonds a perdu environ 19 %.",
+  "bouger": "Surtout Wall Street, puis l'Europe et le Japon ; et le taux de change euro-dollar : si l'euro monte face au dollar, la valeur en euros des actions américaines baisse.",
+  "liens": [
+   "G2",
+   "I1",
+   "J1",
+   "t:etf",
+   "t:prix_hors_dividendes"
+  ],
+  "piege": "Historique court : depuis septembre 2009, donc la crise de 2008 n'apparaît pas. Ce n'est pas l'indice lui-même. Si la source tombait en panne, un autre fonds, coté en dollars, remplacerait la série entière sans jamais lui être raccordé."
+ },
+ "K": {
+  "titre": "Valeurs suivies — des actions choisies (par défaut Aedifica)",
+  "phrase": "Cette page suit le cours d'actions individuelles choisies pour vous ; par défaut, Aedifica, une société immobilière belge cotée à Bruxelles.",
+  "mesure": "Le prix d'une seule action, qui reflète l'avis du marché sur une entreprise. Aedifica est une société immobilière réglementée (SIR) belge, cotée sur Euronext Bruxelles et investie surtout dans l'immobilier de santé (maisons de repos et de soins).",
+  "calcul": "C'est la clôture quotidienne en euros, non ajustée des dividendes (« hors dividendes ») : le cours baisse mécaniquement du montant du dividende le jour où il est détaché. D'autres actions peuvent être ajoutées dans les réglages de l'outil.",
+  "interpreter": "Pas de seuil reconnu : regardez la variation sur 12 mois et sa position dans l'historique (percentile). Repères tirés des clôtures mensuelles d'Aedifica : plus bas en octobre 2008, plus haut en août 2021, puis baisse d'environ 58 % jusqu'en octobre 2023, période de remontée des taux d'intérêt.",
+  "bouger": "Pour une société immobilière : les taux d'intérêt (un taux élevé renchérit sa dette et rend ses loyers moins attractifs), la valeur des immeubles, les loyers, les résultats et les augmentations de capital.",
+  "liens": [
+   "B6",
+   "A2",
+   "H11",
+   "G1",
+   "t:prix_hors_dividendes"
+  ],
+  "piege": "Hors dividendes : le rendement réel est supérieur à ce que montre la courbe, d'autant que ce type de société distribue une grande partie de son résultat. Une seule action est bien plus risquée qu'un indice."
+ }
+}

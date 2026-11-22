@@ -24,6 +24,21 @@ def main() -> int:
             if manquants:
                 print(f"Attention : {cle} sans {', '.join(manquants)}")
             fiches[cle] = {c: fiche.get(c) for c in CHAMPS}
+    # Liens : alias vers les clés réelles ; liens inconnus retirés (signalés)
+    import sys as _s
+    _s.path.insert(0, str(RACINE / "scripts"))
+    import commun
+    catalogue = commun.lire_js(RACINE / "data" / "catalogue.js") or {"indicateurs": {}}
+    alias = {"t:prix_hors_dividendes": "t:dividendes", "t:contrat_a_terme": "t:future", "B5": "B5_10A"}
+    for cle, fiche in fiches.items():
+        liens = []
+        for l in fiche.get("liens") or []:
+            l = alias.get(l, l)
+            if (l in catalogue["indicateurs"] or l in fiches) and l not in liens and l != cle:
+                liens.append(l)
+            elif l not in liens:
+                print(f"Lien retiré dans {cle} : {l}")
+        fiche["liens"] = liens
     js = (RACINE / "js" / "fiches.js").read_text(encoding="utf-8")
     debut = js.index("window.FICHES = ")
     fin = js.index("\nwindow.Fiches = ")
