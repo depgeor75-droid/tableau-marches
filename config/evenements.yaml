@@ -1,0 +1,85 @@
+# Grands événements affichés sur les graphiques (option « Afficher les grands événements »).
+# Vous pouvez ajouter, modifier ou retirer des lignes : date au format AAAA-MM-JJ,
+# libellé court (affiché sur le graphique), détail (affiché au survol), catégorie
+# « marches » ou « banques_centrales ». Les dates ont été vérifiées en novembre 2026
+# (docs/sources/J_risques.md).
+
+evenements:
+  - date: 1997-07-02
+    libelle: Crise asiatique
+    detail: Flottement du baht thaïlandais, début de la crise financière asiatique.
+    categorie: marches
+  - date: 1998-08-17
+    libelle: Crise russe / LTCM
+    detail: Défaut et dévaluation de la Russie ; le fonds LTCM est secouru le 23 septembre 1998.
+    categorie: marches
+  - date: 2000-03-10
+    libelle: Sommet de la bulle Internet
+    detail: Clôture record du Nasdaq Composite avant l'éclatement de la bulle.
+    categorie: marches
+  - date: 2001-09-11
+    libelle: 11 septembre
+    detail: Attentats aux États-Unis ; la bourse de New York reste fermée jusqu'au 17 septembre.
+    categorie: marches
+  - date: 2008-09-15
+    libelle: Faillite de Lehman Brothers
+    detail: Faillite de la banque d'affaires américaine, sommet de la crise financière de 2008.
+    categorie: marches
+  - date: 2010-05-02
+    libelle: Crise de la dette en zone euro
+    detail: Premier plan d'aide à la Grèce ; la BCE lance son programme d'achats de titres (SMP) le 10 mai.
+    categorie: marches
+  - date: 2012-07-26
+    libelle: « Whatever it takes »
+    detail: Mario Draghi (président de la BCE) promet de tout faire pour sauver l'euro.
+    categorie: banques_centrales
+  - date: 2016-06-23
+    libelle: Référendum du Brexit
+    detail: Le Royaume-Uni vote pour quitter l'Union européenne.
+    categorie: marches
+  - date: 2020-03-16
+    libelle: Krach du Covid
+    detail: Pic de la panique sur les marchés (VIX à 82,69) ; pandémie déclarée par l'OMS le 11 mars.
+    categorie: marches
+  - date: 2022-02-24
+    libelle: Invasion de l'Ukraine
+    detail: La Russie envahit l'Ukraine ; envolée des prix de l'énergie.
+    categorie: marches
+  - date: 2023-03-10
+    libelle: Faillite de la SVB
+    detail: Faillite de la Silicon Valley Bank, crise des banques régionales américaines.
+    categorie: marches
+  - date: 2024-08-05
+    libelle: Débouclage du yen
+    detail: Chute brutale des bourses lors du débouclage des emprunts en yens (« carry trade »).
+    categorie: marches
+  - date: 2025-04-02
+    libelle: Droits de douane américains
+    detail: Annonce de droits de douane généralisés par les États-Unis ; pic de la peur le 8 avril.
+    categorie: marches
+
+  # --- Banques centrales : lancements des grands programmes de QE (assouplissement quantitatif)
+  - date: 2008-11-25
+    libelle: QE1 (Fed)
+    detail: La Fed annonce des achats massifs de titres hypothécaires (premier QE).
+    categorie: banques_centrales
+  - date: 2010-11-03
+    libelle: QE2 (Fed)
+    detail: La Fed annonce 600 milliards de dollars d'achats d'obligations d'État.
+    categorie: banques_centrales
+  - date: 2012-09-13
+    libelle: QE3 (Fed)
+    detail: La Fed lance des achats mensuels de titres hypothécaires, sans date de fin.
+    categorie: banques_centrales
+  - date: 2020-03-15
+    libelle: QE Covid (Fed)
+    detail: La Fed ramène son taux à zéro et relance des achats massifs de titres.
+    categorie: banques_centrales
+  - date: 2015-01-22
+    libelle: QE de la BCE
+    detail: La BCE étend ses achats aux obligations d'État (programme APP), à partir de mars 2015.
+    categorie: banques_centrales
+  - date: 2020-03-18
+    libelle: PEPP (BCE)
+    detail: La BCE lance son programme d'achats d'urgence face à la pandémie (750 milliards d'euros).
+    categorie: banques_centrales
