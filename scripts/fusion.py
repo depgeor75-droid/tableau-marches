@@ -44,7 +44,8 @@ def ecart_raccord(type_serie: str, a: float, b: float) -> float:
     return abs(b - a)
 
 
-def raccorder(type_serie: str, principale: dict[str, float], rapide: dict[str, float]):
+def raccorder(type_serie: str, principale: dict[str, float], rapide: dict[str, float],
+              seuil_n: float = 2.0, seuil_t: float = 0.10):
     """Prolonge la série principale par les jours récents de la source rapide.
 
     Raccord à la dernière date commune ; les jours postérieurs viennent de la source rapide et
@@ -60,20 +61,23 @@ def raccorder(type_serie: str, principale: dict[str, float], rapide: dict[str, f
         return dict(principale), [], {"date": None, "ecart": None, "alerte": "aucune date commune entre les deux sources"}
     jonction = communes[-1]
     ecart = ecart_raccord(type_serie, principale[jonction], rapide[jonction])
-    seuil = 2.0 if type_serie == "N" else 0.10
+    seuil = seuil_n if type_serie == "N" else seuil_t
     serie = dict(principale)
     provisoires = sorted(d for d in rapide if d > jonction)
     for d in provisoires:
         serie[d] = rapide[d]
     info = {"date": jonction, "ecart": round(ecart, 4), "alerte": None}
     if ecart >= seuil:
+        # Raccord REFUSÉ : un saut entre deux sources serait un faux mouvement (PLAN §7.4).
         unite = "%" if type_serie == "N" else "point"
-        info["alerte"] = f"écart de {ecart:.2f} {unite} au point de raccord du {jonction} (seuil {seuil:g})"
+        info["alerte"] = (f"raccord refusé : écart de {ecart:.2f} {unite} au {jonction} "
+                          f"(seuil {seuil:g}) ; source principale seule")
+        return dict(principale), [], info
     return dict(sorted(serie.items())), provisoires, info
 
 
 # --------------------------------------------------------------- fraîcheur
-SEUILS_DEFAUT = {"J": 5, "S": 14, "M": 75, "T": 120, "A": 450}  # voir config/reglages.yaml
+SEUILS_DEFAUT = {"J": 5, "S": 14, "M": 75, "T": 125, "A": 450}  # voir config/reglages.yaml
 
 
 def jours_ouvrables_entre(debut: date, fin: date) -> int:

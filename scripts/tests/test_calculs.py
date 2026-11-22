@@ -110,8 +110,8 @@ def test_controle_des_raccords():
     assert provisoires == ["2026-11-17", "2026-11-18"]
     assert serie["2026-11-14"] == 1.11  # la source principale prime à la jonction
     assert info["date"] == "2026-11-14" and info["alerte"] is None
-    _, _, info = f.raccorder("N", {"2026-11-14": 100.0}, {"2026-11-14": 103.0})
-    assert info["alerte"]  # 3 % > 2 %
+    serie, provisoires, info = f.raccorder("N", {"2026-11-14": 100.0}, {"2026-11-14": 103.0, "2026-11-17": 104.0})
+    assert info["alerte"] and provisoires == [] and serie == {"2026-11-14": 100.0}  # 3 % > 2 % : refusé
     _, _, info = f.raccorder("T", {"2026-11-14": 4.00}, {"2026-11-14": 4.12})
     assert info["alerte"]  # 0,12 point > 0,10
 
@@ -124,6 +124,7 @@ def test_detection_des_retards():
     assert f.est_en_retard("2026-09-01", "M", aujourd_hui)[0] is False   # fin sept. + 52 j
     assert f.est_en_retard("2026-08-01", "M", aujourd_hui)[0] is True    # fin août + 83 j
     assert f.est_en_retard("2026-07-01", "T", aujourd_hui)[0] is False   # T3 : fin sept. + 52 j
+    assert f.est_en_retard("2026-04-01", "T", date(2026, 10, 30))[0] is False  # 122 j < 125 (C5)
     assert f.est_en_retard("2026-01-01", "T", aujourd_hui)[0] is True
     assert f.est_en_retard("2025-01-01", "A", aujourd_hui)[0] is False   # fin 2025 + 11 mois
     assert f.est_en_retard("2024-01-01", "A", aujourd_hui)[0] is True

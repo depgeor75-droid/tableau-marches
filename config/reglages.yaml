@@ -1,0 +1,35 @@
+# Tous les seuils de l'application (PLAN §8.6). Modifiables sans toucher au code.
+
+recent_mois: 36                 # profondeur des fichiers « récent » (données quotidiennes)
+fraicheur: {J: 5, S: 14, M: 75, T: 125, A: 450}   # J en jours ouvrables ; autres en jours après la fin de la période
+garde_fou: {perte_max: 0.05, debut_plus_tard_jours: 45}
+raccord: {N_pourcent: 2.0, T_points: 0.10}
+secours: {remplace_apres_echecs: 5}
+alerte: {echecs_planifies: 3}
+percentile: {annees_max: 30, annees_court: 10, annees_min: 5, bornes: [10, 25, 75, 90]}
+mouvement: {jours: 7, annees: 5, seuil: 1.5, nombre: 5}
+direction: {mois: 3, part_ecart_type: 0.5}
+anticipations: {seuil_points: 0.25}
+qe_qt: {mois: 3, seuil_pourcent: 1.0}
+jauges:
+  inflation_cible: 2.0          # condition 1 : inflation sous 2 %…
+  recul_3m: -0.5                # … ou en recul de plus de 0,5 point sur 3 mois
+  percentile_stress: 90         # conditions 2, 3 et 5
+  percentile_ecart: 75          # condition 4 (zone euro) : écart Italie − Allemagne
+  hausse_ecart_1m: 0.5
+  hausse_us10_1m: 0.75          # condition 4 (États-Unis)
+  taux_bas: 1.0                 # condition 6
+  annees_min: 10
+  conditions_min_historique: 4
+saut_anormal: {ecarts_types: 10}
+comparateur:
+  max_courbes: 6
+  points_min: 12
+  seuils_force: [0.2, 0.4, 0.7]
+  fiabilite_plancher: 0.2
+  ecart_meilleur_decalage: 0.10
+  couverture_min: 0.8
+  fenetres: {S: 26, M_5A: 24, M_long: 36, T: 12}
+  decalage_max_mois: 24
+  epaisseurs: {gris: 1.5, faible: 2, modere: 3, fort: 4.5}
+graphiques: {trou_max_jours: {J: 12, S: 15, M: 45, T: 135, A: 550}}

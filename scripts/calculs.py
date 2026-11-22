@@ -158,32 +158,29 @@ def rang_percentile(historique: list[float], valeur: float) -> float:
     return (inf + 0.5 * egal) / len(historique) * 100
 
 
-def percentile_carte(mensuel: dict[str, float], type_serie: str, annees_max: int = 30,
-                     annees_court: int = 10, annees_min: int = 5) -> dict | None:
-    """Position de la dernière valeur dans l'historique mensuel (30 ans au plus).
-    Types T et N* : rang du niveau ; type N : rang de la variation sur 12 mois."""
+def percentile_carte(mensuel: dict[str, float], type_serie: str, valeur_courante: float | None = None,
+                     annees_max: int = 30, annees_court: int = 10, annees_min: int = 5) -> dict | None:
+    """Position de la valeur de la carte dans l'historique mensuel (mois complets, 30 ans au plus).
+    Types T et N* : rang du niveau ; type N : rang de la variation sur 12 mois
+    (`valeur_courante` = alors la variation sur 1 an de la carte). Affichage borné à 1-99."""
     if not mensuel:
         return None
+    base_nom = "variation_12m" if type_serie == "N" else "niveau"
     base = mensuel if type_serie != "N" else glissement_annuel(mensuel)
     if not base:
-        return None
+        return {"valeur": None, "raison": "historique_court", "base": base_nom}
     derniere = max(base)
     debut_max = f"{int(derniere[:4]) - annees_max}{derniere[4:]}"
     fenetre = {d: v for d, v in base.items() if d > debut_max}
     premier = min(fenetre)
-    duree_annees = (date.fromisoformat(derniere) - date.fromisoformat(premier)).days / 365.25
+    duree_annees = (date.fromisoformat(derniere) - date.fromisoformat(premier)).days / 365.25 + 1 / 12
     if duree_annees < annees_min:
-        return {"valeur": None, "depuis": premier[:4], "raison": "historique de moins de 5 ans : pas de percentile",
-                "base": "variation_12m" if type_serie == "N" else "niveau"}
-    p = rang_percentile(list(fenetre.values()), base[derniere])
-    return {
-        "valeur": round(p),
-        "libelle": libelle_percentile(p),
-        "depuis": premier[:4],
-        "date": derniere,
-        "court": duree_annees < annees_court,
-        "base": "variation_12m" if type_serie == "N" else "niveau",
-    }
+        return {"valeur": None, "raison": "historique_court", "depuis": premier[:4], "base": base_nom}
+    cible = base[derniere] if valeur_courante is None else valeur_courante
+    p = rang_percentile(list(fenetre.values()), cible)
+    p_affiche = min(99, max(1, round(p)))
+    return {"valeur": p_affiche, "libelle": libelle_percentile(p), "depuis": premier[:4],
+            "court": duree_annees < annees_court, "base": base_nom}
 
 
 def percentile_valeur(mensuel: dict[str, float], valeur: float, annees_max: int = 30) -> tuple[float, str] | None:
@@ -197,48 +194,54 @@ def percentile_valeur(mensuel: dict[str, float], valeur: float, annees_max: int 
 
 
 # ------------------------------------------------------- « ce qui a bougé »
-def score_mouvement(serie_quotidienne: dict[str, float], type_serie: str, annees: int = 5, pas: int = 5) -> dict | None:
-    """Variation sur 5 jours ouvrables ÷ écart-type des variations sur 5 jours des 5 dernières années."""
-    dates = list(serie_quotidienne)
-    if len(dates) < 300:
+def score_mouvement(serie_quotidienne: dict[str, float], type_serie: str, annees: int = 5,
+                    jours: int = 7) -> dict | None:
+    """Variation sur 7 jours calendaires (≈ 5 jours ouvrables) ÷ écart-type des variations sur
+    7 jours des 5 dernières années. La valeur « 7 jours plus tôt » est la dernière observation
+    à cette date ou juste avant (tolérance 4 jours) : juste pour les séries 7 jours sur 7 et à trous."""
+    if len(serie_quotidienne) < 300:
         return None
+    dates = list(serie_quotidienne)
     derniere = dates[-1]
     limite = recul(derniere, mois=12 * annees)
-    sous = [(d, serie_quotidienne[d]) for d in dates if d >= limite]
+    sous = {d: serie_quotidienne[d] for d in dates if d >= recul(limite, jours=jours + 4)}
     variations = []
-    for i in range(pas, len(sous)):
-        v = variation(type_serie, sous[i - pas][1], sous[i][1])
-        if v is not None:
-            variations.append(v)
+    for d in sous:
+        if d < limite:
+            continue
+        point = valeur_a_date(sous, recul(d, jours=jours), 4)
+        if point:
+            v = variation(type_serie, point[1], sous[d])
+            if v is not None:
+                variations.append(v)
     if len(variations) < 200:
         return None
     ecart_type = pstdev(variations)
-    actuelle = variation(type_serie, sous[-1 - pas][1], sous[-1][1])
-    if not ecart_type or actuelle is None:
+    point = valeur_a_date(serie_quotidienne, recul(derniere, jours=jours), 4)
+    if not point or not ecart_type:
         return None
-    return {"variation": actuelle, "rapport": actuelle / ecart_type, "depuis": sous[-1 - pas][0], "jusqua": derniere}
+    actuelle = variation(type_serie, point[1], serie_quotidienne[derniere])
+    if actuelle is None:
+        return None
+    return {"variation": actuelle, "rapport": actuelle / ecart_type, "depuis": point[0], "jusqua": derniere}
 
 
 # --------------------------------------------------------------- direction
-def direction(mensuel: dict[str, float], type_serie: str, demi_ecart: float = 0.5) -> dict | None:
+def direction(serie: dict[str, float], type_serie: str, demi_ecart: float = 0.5, mois: int = 3) -> dict | None:
     """▲ ▼ ▶ : variation sur 3 mois comparée à la moitié de l'écart-type historique des
-    variations sur 3 mois. Pour N, variations en % ; pour T et N*, en points."""
-    dates = list(mensuel)
-    if len(dates) < 40:
-        return None
+    variations sur 3 mois. Valeur « 3 mois plus tôt » cherchée PAR DATE (mensuel ou trimestriel).
+    Pour N, variations en % ; pour T et N*, en points."""
     variations = []
-    for i in range(3, len(dates)):
-        if ajouter_mois(dates[i - 3], 3) != dates[i]:
-            continue
-        v = variation(type_serie, mensuel[dates[i - 3]], mensuel[dates[i]])
-        if v is not None:
-            variations.append(v)
+    for d, v in serie.items():
+        avant = serie.get(ajouter_mois(d, -mois))
+        var = variation(type_serie, avant, v)
+        if var is not None:
+            variations.append(var)
     if len(variations) < 24:
         return None
     seuil = demi_ecart * pstdev(variations)
-    derniere = dates[-1]
-    avant = mensuel.get(ajouter_mois(derniere, -3))
-    v = variation(type_serie, avant, mensuel[derniere])
+    derniere = max(serie)
+    v = variation(type_serie, serie.get(ajouter_mois(derniere, -mois)), serie[derniere])
     if v is None:
         return None
     fleche = "▲" if v > seuil else "▼" if v < -seuil else "▶"

@@ -1,0 +1,358 @@
+# ==========================================================================
+# SOURCE UNIQUE DE VÉRITÉ : toutes les séries du tableau de bord (PLAN §4).
+# Champs : voir PLAN §3. Résumé :
+#   type T (taux, %) | N (niveau, prix) | N* (indice centré) ;
+#   frequence J | S | M | T | A ; priorite E (essentielle) | S (secondaire) ;
+#   source + code (+ options) ; facteur (multiplicateur d'unité) ;
+#   avant   : préfixe historique d'une autre source, coupé à date fixe (jusqua) ;
+#   rapide  : jours récents provisoires d'une source rapide (raccord contrôlé) ;
+#   secours : source de secours, mode prolonge (même nature) ou remplace (nature différente) ;
+#   transformation : aucune | glissement_annuel | ecart | croise | pourcentage_pib | produit | en_euros ;
+#   entrees : séries utilisées par une transformation calculée ;
+#   auxiliaire : série de calcul, jamais publiée ;
+#   raison : texte affiché quand la série est non disponible.
+# Famille K : ajoutez une ligne « - {id: K2, nom: Nom de l'action, code: CODE.YAHOO} ».
+# ==========================================================================
+
+defauts: {debut: "1990-01-01", decimales: 2, decimales_stockage: 4, priorite: S, transformation: aucune, mouvement: non}
+
+familles:
+  A: {nom: "Taux directeurs", page: taux, fichier: taux}
+  B: {nom: "Taux longs et écarts", page: taux, fichier: taux}
+  C: {nom: "Inflation", page: inflation, fichier: inflation}
+  D: {nom: "Anticipations et signaux avancés", page: inflation, fichier: inflation}
+  E: {nom: "Croissance et dette", page: croissance, fichier: croissance}
+  F: {nom: "Banques centrales et masse monétaire", page: banques, fichier: banques}
+  G: {nom: "Indices boursiers", page: bourses, fichier: bourses}
+  H: {nom: "Énergie, matières premières et ETF", page: energie, fichier: energie}
+  I: {nom: "Devises", page: devises, fichier: devises}
+  J: {nom: "Risques, stress et géopolitique", page: risques, fichier: risques}
+  K: {nom: "Valeurs suivies", page: bourses, fichier: bourses,
+      defauts: {source: yahoo, type: N, priorite: S, frequence: J, fiche: K, decimales: 2, unite: "EUR", zone_horaire: EU, mouvement: oui}}
+
+# Les 12 cartes de l'Accueil (§8.3)
+accueil: [A1, A2, B1, B4, C5, C1, H1, H4, J1, I1, G2, G1]
+
+indicateurs:
+  # ------------------------------------------------------------ A — Taux directeurs
+  - {id: A1, nom: "Taux directeur de la Fed (taux effectif des fonds fédéraux)", nom_court: "Taux de la Fed", famille: A, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: DFF, organisme: "Réserve fédérale américaine", priorite: E}
+  - {id: A2, nom: "Taux de dépôt de la Banque centrale européenne (BCE)", nom_court: "Taux de dépôt BCE", famille: A, type: T, unite: "%", pays: ZE, frequence: J,
+     source: bce, code: "FM/B.U2.EUR.4F.KR.DFR.LEV", options: {escalier: true}, priorite: E,
+     secours: {source: fred, code: ECBDFR, mode: prolonge, organisme: "BCE"}}
+  - {id: A3, nom: "Euribor 3 mois (taux interbancaire de la zone euro)", nom_court: "Euribor 3 mois", famille: A, type: T, unite: "%", pays: ZE, frequence: M,
+     source: bce, code: "FM/M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA", mention_extra: "Données EMMI (European Money Markets Institute) publiées par la BCE ; moyenne mensuelle."}
+  - {id: A4, nom: "Taux directeur de la Banque d'Angleterre (Bank Rate)", nom_court: "Taux de la Banque d'Angleterre", famille: A, type: T, unite: "%", pays: UK, frequence: J,
+     source: boe, code: IUDBEDR, priorite: E,
+     secours: {source: bis, code: "WS_CBPOL/D.GB", mode: prolonge}}
+  - {id: A5, nom: "Taux au jour le jour de la Banque du Japon (taux d'appel non garanti)", nom_court: "Taux au jour le jour, Japon", famille: A, type: T, unite: "%", pays: JP, frequence: M,
+     source: fred, code: IRSTCI01JPM156N, organisme: "OCDE", priorite: E,
+     secours: {source: boj, code: "FM01/STRDCLUCON", mode: prolonge}}
+  - {id: A6, nom: "Taux de référence chinois (LPR 1 an ; avant août 2019 : taux de prêt de référence à 1 an)", nom_court: "Taux chinois (LPR 1 an)", famille: A, type: T, unite: "%", pays: CN, frequence: M,
+     source: bis, code: "WS_CBPOL/M.CN", priorite: E, retard_max_jours: 100}
+  - {id: A7, nom: "Taux directeur de la Banque nationale suisse (BNS)", nom_court: "Taux de la BNS", famille: A, type: T, unite: "%", pays: CH, frequence: M,
+     source: bis, code: "WS_CBPOL/M.CH", retard_max_jours: 100}
+
+  # ------------------------------------------------------------ B — Taux longs
+  - {id: B1, nom: "Taux des emprunts d'État américains à 10 ans", nom_court: "US 10 ans", famille: B, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: DGS10, organisme: "Trésor américain", priorite: E, zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: B2, nom: "Taux des emprunts d'État américains à 2 ans", nom_court: "US 2 ans", famille: B, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: DGS2, organisme: "Trésor américain", priorite: E, zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: B3, nom: "Taux des bons du Trésor américain à 3 mois", nom_court: "US 3 mois", famille: B, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: DGS3MO, organisme: "Trésor américain", zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: B4, nom: "Taux des emprunts d'État allemands à 10 ans (Bund)", nom_court: "Bund 10 ans", famille: B, type: T, unite: "%", pays: DE, frequence: J,
+     source: bundesbank, code: "BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A", priorite: E, zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe,
+     avant_mensuel: {source: bundesbank, code: "BBSIS/M.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A", jusqua: "1997-07-31"},
+     secours: {source: fred, code: IRLTLT01DEM156N, mode: remplace, frequence: M, organisme: "OCDE", note: "moyenne mensuelle (OCDE)"}}
+  - {id: B5_2A, nom: "Taux à 2 ans des États de la zone euro notés AAA (courbe BCE)", nom_court: "Zone euro 2 ans (AAA)", famille: B, type: T, unite: "%", pays: ZE, frequence: J,
+     source: bce, code: "YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_2Y", priorite: E, fiche: B5, zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe}
+  - {id: B5_10A, nom: "Taux à 10 ans des États de la zone euro notés AAA (courbe BCE)", nom_court: "Zone euro 10 ans (AAA)", famille: B, type: T, unite: "%", pays: ZE, frequence: J,
+     source: bce, code: "YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y", priorite: E, fiche: B5, zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe}
+  - {id: B6, nom: "Taux des emprunts d'État belges à 10 ans (OLO)", nom_court: "Belgique 10 ans (OLO)", famille: B, type: T, unite: "%", pays: BE, frequence: M,
+     source: eurostat, code: irt_lt_mcby_m, options: {filtres: {geo: BE}}, priorite: E,
+     secours: {source: fred, code: IRLTLT01BEM156N, mode: prolonge, organisme: "OCDE"}}
+  - {id: B7, nom: "Taux des emprunts d'État français à 10 ans (OAT)", nom_court: "France 10 ans (OAT)", famille: B, type: T, unite: "%", pays: FR, frequence: M,
+     source: eurostat, code: irt_lt_mcby_m, options: {filtres: {geo: FR}},
+     secours: {source: fred, code: IRLTLT01FRM156N, mode: prolonge, organisme: "OCDE"}}
+  - {id: B8, nom: "Taux des emprunts d'État italiens à 10 ans (BTP)", nom_court: "Italie 10 ans (BTP)", famille: B, type: T, unite: "%", pays: IT, frequence: M,
+     source: eurostat, code: irt_lt_mcby_m, options: {filtres: {geo: IT}}, priorite: E,
+     secours: {source: fred, code: IRLTLT01ITM156N, mode: prolonge, organisme: "OCDE"}}
+  - {id: B9, nom: "Taux des emprunts d'État britanniques à 10 ans (Gilt)", nom_court: "Royaume-Uni 10 ans (Gilt)", famille: B, type: T, unite: "%", pays: UK, frequence: J,
+     source: boe, code: IUDMNPY, priorite: E, zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe,
+     secours: {source: fred, code: IRLTLT01GBM156N, mode: remplace, frequence: M, organisme: "OCDE", note: "moyenne mensuelle (OCDE)"}}
+  - {id: B10, nom: "Taux des emprunts d'État japonais à 10 ans (JGB)", nom_court: "Japon 10 ans (JGB)", famille: B, type: T, unite: "%", pays: JP, frequence: J,
+     source: mof_japon, code: "10Y", priorite: E, retard_max_jours: 10, zone_horaire: AS, mouvement: oui,
+     secours: {source: fred, code: IRLTLT01JPM156N, mode: remplace, frequence: M, organisme: "OCDE", note: "moyenne mensuelle (OCDE)"}}
+  - {id: B11, nom: "Taux des emprunts d'État chinois à 10 ans", nom_court: "Chine 10 ans", famille: B, type: T, unite: "%", pays: CN, frequence: J, priorite: E,
+     source: aucune, raison: "Aucune source gratuite et fiable avec historique (FRED, FMI, Yahoo et ChinaBond testés en novembre 2026)."}
+  - {id: B12, nom: "Taux des emprunts d'État suisses à 10 ans", nom_court: "Suisse 10 ans", famille: B, type: T, unite: "%", pays: CH, frequence: M,
+     source: fred, code: IRLTLT01CHM156N, organisme: "OCDE"}
+  - {id: X_DE10A_M, nom: "Allemagne 10 ans, moyenne mensuelle (auxiliaire des écarts)", nom_court: "Allemagne 10 ans (mensuel)", famille: B, type: T, unite: "%", pays: DE, frequence: M, auxiliaire: true,
+     source: eurostat, code: irt_lt_mcby_m, options: {filtres: {geo: DE}},
+     secours: {source: fred, code: IRLTLT01DEM156N, mode: prolonge, organisme: "OCDE"}}
+  - {id: BC_10A2A, nom: "Écart de taux américain 10 ans − 2 ans (pente de la courbe)", nom_court: "Écart US 10 ans − 2 ans", famille: B, type: T, unite: "pt", pays: US, frequence: J,
+     source: fred, code: T10Y2Y, organisme: "Trésor américain", fiche: BC_10A2A, zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: BC_10A3M, nom: "Écart de taux américain 10 ans − 3 mois", nom_court: "Écart US 10 ans − 3 mois", famille: B, type: T, unite: "pt", pays: US, frequence: J,
+     source: fred, code: T10Y3M, organisme: "Trésor américain", zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: BC_IT_DE, nom: "Écart de taux à 10 ans Italie − Allemagne", nom_court: "Écart Italie − Allemagne", famille: B, type: T, unite: "pt", pays: IT, frequence: M,
+     source: calcul, transformation: ecart, entrees: [B8, X_DE10A_M], fiche: BC_EU}
+  - {id: BC_FR_DE, nom: "Écart de taux à 10 ans France − Allemagne", nom_court: "Écart France − Allemagne", famille: B, type: T, unite: "pt", pays: FR, frequence: M,
+     source: calcul, transformation: ecart, entrees: [B7, X_DE10A_M], fiche: BC_EU}
+  - {id: BC_BE_DE, nom: "Écart de taux à 10 ans Belgique − Allemagne", nom_court: "Écart Belgique − Allemagne", famille: B, type: T, unite: "pt", pays: BE, frequence: M,
+     source: calcul, transformation: ecart, entrees: [B6, X_DE10A_M], fiche: BC_EU}
+
+  # ------------------------------------------------------------ C — Inflation
+  - {id: C1, nom: "Inflation aux États-Unis — indice des prix à la consommation (IPC), glissement annuel", nom_court: "Inflation US (IPC)", famille: C, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: CPIAUCNS, organisme: "Bureau des statistiques du travail américain (BLS)", transformation: glissement_annuel, debut: "1989-01-01", priorite: E, decimales: 1}
+  - {id: C2, nom: "Inflation sous-jacente aux États-Unis — IPC hors énergie et alimentation", nom_court: "Inflation US sous-jacente (IPC)", famille: C, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: CPILFENS, organisme: "Bureau des statistiques du travail américain (BLS)", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1}
+  - {id: C3, nom: "Inflation aux États-Unis — indice des dépenses de consommation (PCE), mesure visée par la Fed", nom_court: "Inflation US (PCE)", famille: C, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: PCEPI, organisme: "Bureau d'analyse économique américain (BEA)", transformation: glissement_annuel, debut: "1989-01-01", priorite: E, decimales: 1}
+  - {id: C4, nom: "Inflation sous-jacente aux États-Unis — PCE hors énergie et alimentation", nom_court: "Inflation US sous-jacente (PCE)", famille: C, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: PCEPILFE, organisme: "Bureau d'analyse économique américain (BEA)", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1}
+  - {id: C5, nom: "Inflation dans la zone euro — indice des prix à la consommation harmonisé (IPCH)", nom_court: "Inflation zone euro", famille: C, type: T, unite: "%", pays: ZE, frequence: M,
+     source: bce, code: "HICP/M.U2.N.000000.4D0.ANR", priorite: E, decimales: 1,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: EA, coicop18: TOTAL, unit: RCH_A}}, mode: prolonge}}
+  - {id: C6, nom: "Inflation sous-jacente dans la zone euro — IPCH hors énergie, alimentation, alcool et tabac", nom_court: "Inflation sous-jacente zone euro", famille: C, type: T, unite: "%", pays: ZE, frequence: M,
+     source: bce, code: "HICP/M.U2.N.XEF000.4D0.ANR", priorite: E, decimales: 1,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: EA, coicop18: TOT_X_NRG_FOOD, unit: RCH_A}}, mode: prolonge}}
+  - {id: C7, nom: "Inflation en Belgique — IPCH", nom_court: "Inflation Belgique", famille: C, type: T, unite: "%", pays: BE, frequence: M,
+     source: bce, code: "HICP/M.BE.N.000000.4D0.ANR", priorite: E, decimales: 1,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: BE, coicop18: TOTAL, unit: RCH_A}}, mode: prolonge}}
+  - {id: C8, nom: "Inflation en Allemagne — IPCH", nom_court: "Inflation Allemagne", famille: C, type: T, unite: "%", pays: DE, frequence: M,
+     source: bce, code: "HICP/M.DE.N.000000.4D0.ANR", decimales: 1, fiche: C8,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: DE, coicop18: TOTAL, unit: RCH_A}}, mode: prolonge}}
+  - {id: C9, nom: "Inflation en France — IPCH", nom_court: "Inflation France", famille: C, type: T, unite: "%", pays: FR, frequence: M,
+     source: bce, code: "HICP/M.FR.N.000000.4D0.ANR", decimales: 1, fiche: C8,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: FR, coicop18: TOTAL, unit: RCH_A}}, mode: prolonge}}
+  - {id: C10, nom: "Inflation en Italie — IPCH", nom_court: "Inflation Italie", famille: C, type: T, unite: "%", pays: IT, frequence: M,
+     source: bce, code: "HICP/M.IT.N.000000.4D0.ANR", decimales: 1, fiche: C8,
+     secours: {source: eurostat, code: prc_hicp_minr, options: {filtres: {geo: IT, coicop18: TOTAL, unit: RCH_A}}, mode: prolonge}}
+  - {id: C11, nom: "Inflation au Royaume-Uni — IPC", nom_court: "Inflation Royaume-Uni", famille: C, type: T, unite: "%", pays: UK, frequence: M,
+     source: ons, code: "d7g7/mm23", priorite: E, decimales: 1,
+     secours: {source: fmi, code: "CPI/GBR.CPI._T.YOY_PCH_PA_PT.M", mode: prolonge}}
+  - {id: C12, nom: "Inflation au Japon — IPC", nom_court: "Inflation Japon", famille: C, type: T, unite: "%", pays: JP, frequence: M,
+     source: fmi, code: "CPI/JPN.CPI._T.YOY_PCH_PA_PT.M", priorite: E, decimales: 1, retard_max_jours: 110}
+  - {id: C13, nom: "Inflation en Chine — IPC", nom_court: "Inflation Chine", famille: C, type: T, unite: "%", pays: CN, frequence: M,
+     source: ocde, code: "OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0/CHN.M.N.CPI.PA._T.N.GY", priorite: E, decimales: 1, retard_max_jours: 90,
+     secours: {source: fmi, code: "CPI/CHN.CPI._T.YOY_PCH_PA_PT.M", mode: prolonge}}
+
+  # ------------------------------------------------------------ D — Anticipations
+  - {id: D1, nom: "Inflation anticipée à 5 ans par les marchés aux États-Unis (point mort d'inflation)", nom_court: "Inflation anticipée US 5 ans", famille: D, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: T5YIE, organisme: "Réserve fédérale américaine", priorite: E, zone_horaire: AM, mouvement: oui, groupe_mouvement: inflation_us}
+  - {id: D2, nom: "Inflation anticipée à 10 ans par les marchés aux États-Unis", nom_court: "Inflation anticipée US 10 ans", famille: D, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: T10YIE, organisme: "Réserve fédérale américaine", zone_horaire: AM, mouvement: oui, groupe_mouvement: inflation_us}
+  - {id: D3, nom: "Inflation anticipée « 5 ans dans 5 ans » aux États-Unis", nom_court: "Inflation anticipée US 5 ans dans 5 ans", famille: D, type: T, unite: "%", pays: US, frequence: J,
+     source: fred, code: T5YIFR, organisme: "Réserve fédérale américaine", zone_horaire: AM, mouvement: oui, groupe_mouvement: inflation_us}
+  - {id: D4, nom: "Inflation attendue par les ménages américains (Université du Michigan)", nom_court: "Inflation attendue par les ménages US", famille: D, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: MICH, organisme: "Université du Michigan, Surveys of Consumers", decimales: 1}
+  - {id: D5_LT, nom: "Inflation attendue à long terme dans la zone euro (enquête de la BCE auprès des prévisionnistes, SPF)", nom_court: "Inflation attendue long terme zone euro (SPF)", famille: D, type: T, unite: "%", pays: ZE, frequence: T,
+     source: bce, code: "SPF/Q.U2.HICP.POINT.LT.Q.AVG", retard_max_jours: 135, fiche: D5}
+  - {id: D8, nom: "Prix à la production aux États-Unis, glissement annuel", nom_court: "Prix à la production US", famille: D, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: PPIACO, organisme: "Bureau des statistiques du travail américain (BLS)", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1}
+  - {id: D9, nom: "Prix à la production industrielle dans la zone euro, glissement annuel", nom_court: "Prix à la production zone euro", famille: D, type: T, unite: "%", pays: ZE, frequence: M,
+     source: eurostat, code: sts_inppd_m, options: {cle: "M.PRC_PRR_DOM.B-E36.NSA.PCH_SM.EA20"}, decimales: 1, retard_max_jours: 90}
+  - {id: D10, nom: "Indice des tensions sur les chaînes d'approvisionnement mondiales (GSCPI, Fed de New York)", nom_court: "Tensions d'approvisionnement (GSCPI)", famille: D, type: "N*", unite: "écarts-types", pays: MONDE, frequence: M,
+     source: fichiers, code: gscpi, organisme: "Banque fédérale de réserve de New York", priorite: E}
+  - {id: D11, nom: "Salaire horaire moyen aux États-Unis, glissement annuel", nom_court: "Salaire horaire US", famille: D, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: CES0500000003, organisme: "Bureau des statistiques du travail américain (BLS)", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1}
+  - {id: D12, nom: "Salaires négociés dans la zone euro, glissement annuel", nom_court: "Salaires négociés zone euro", famille: D, type: T, unite: "%", pays: ZE, frequence: T,
+     source: bce, code: "INW/Q.U2.N.INWR.000000.4F0.GY.IX", decimales: 1, retard_max_jours: 160}
+  - {id: D13_US, nom: "Indicateur avancé de l'OCDE (CLI) — États-Unis", nom_court: "Indicateur avancé OCDE — US", famille: D, type: "N*", unite: "indice", pays: US, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/USA.M.LI...AA...H", fiche: D13,
+     secours: {source: fred, code: USALOLITOAASTSAM, mode: prolonge, organisme: "OCDE"}}
+  - {id: D13_CN, nom: "Indicateur avancé de l'OCDE (CLI) — Chine", nom_court: "Indicateur avancé OCDE — Chine", famille: D, type: "N*", unite: "indice", pays: CN, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/CHN.M.LI...AA...H", fiche: D13,
+     secours: {source: fred, code: CHNLOLITOAASTSAM, mode: prolonge, organisme: "OCDE"}}
+  - {id: D13_JP, nom: "Indicateur avancé de l'OCDE (CLI) — Japon", nom_court: "Indicateur avancé OCDE — Japon", famille: D, type: "N*", unite: "indice", pays: JP, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/JPN.M.LI...AA...H", fiche: D13}
+  - {id: D13_UK, nom: "Indicateur avancé de l'OCDE (CLI) — Royaume-Uni", nom_court: "Indicateur avancé OCDE — R.-U.", famille: D, type: "N*", unite: "indice", pays: UK, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/GBR.M.LI...AA...H", fiche: D13}
+  - {id: D13_DE, nom: "Indicateur avancé de l'OCDE (CLI) — Allemagne", nom_court: "Indicateur avancé OCDE — Allemagne", famille: D, type: "N*", unite: "indice", pays: DE, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/DEU.M.LI...AA...H", fiche: D13}
+  - {id: D13_G4E, nom: "Indicateur avancé de l'OCDE (CLI) — 4 grandes économies européennes", nom_court: "Indicateur avancé OCDE — 4 grands européens", famille: D, type: "N*", unite: "indice", pays: EU4, frequence: M,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/G4E.M.LI...AA...H", fiche: D13}
+  - {id: D13_ZE, nom: "Indicateur avancé de l'OCDE (CLI) — zone euro", nom_court: "Indicateur avancé OCDE — zone euro", famille: D, type: "N*", unite: "indice", pays: ZE, frequence: M,
+     source: aucune, fiche: D13, raison: "L'OCDE ne publie plus cet indicateur pour la zone euro ; voir l'Allemagne et les 4 grandes économies européennes."}
+  - {id: D14, nom: "Probabilité de récession aux États-Unis dans 12 mois (modèle de la Fed de New York)", nom_court: "Probabilité de récession US", famille: D, type: T, unite: "%", pays: US, frequence: M,
+     source: fichiers, code: nyfed_recession, organisme: "Banque fédérale de réserve de New York", priorite: E, decimales: 1}
+  - {id: DC_FED, nom: "Anticipation des taux de la Fed : taux à 2 ans − taux de la Fed", nom_court: "Anticipation des taux de la Fed", famille: D, type: T, unite: "pt", pays: US, frequence: J,
+     source: calcul, transformation: ecart, entrees: [B2, A1], zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us, fiche: DC}
+  - {id: DC_BCE, nom: "Anticipation des taux de la BCE : taux AAA à 2 ans − taux de dépôt", nom_court: "Anticipation des taux de la BCE", famille: D, type: T, unite: "pt", pays: ZE, frequence: J,
+     source: calcul, transformation: ecart, entrees: [B5_2A, A2], zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe, fiche: DC}
+
+  # ------------------------------------------------------------ E — Croissance et dette
+  - {id: E1_US, nom: "Croissance du PIB réel des États-Unis, glissement annuel", nom_court: "Croissance US", famille: E, type: T, unite: "%", pays: US, frequence: T,
+     source: fred, code: GDPC1, organisme: "Bureau d'analyse économique américain (BEA)", transformation: glissement_annuel, debut: "1989-01-01", priorite: E, decimales: 1, retard_max_jours: 135, fiche: E1}
+  - {id: E1_ZE, nom: "Croissance du PIB réel de la zone euro, glissement annuel", nom_court: "Croissance zone euro", famille: E, type: T, unite: "%", pays: ZE, frequence: T,
+     source: eurostat, code: namq_10_gdp, options: {filtres: {geo: EA21, unit: CLV_PCH_SM, s_adj: SCA, na_item: B1GQ}}, priorite: E, decimales: 1, retard_max_jours: 135, fiche: E1}
+  - {id: E1_JP, nom: "Croissance du PIB réel du Japon, glissement annuel", nom_court: "Croissance Japon", famille: E, type: T, unite: "%", pays: JP, frequence: T,
+     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q..JPN.S1..B1GQ._Z...PC.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
+  - {id: E1_UK, nom: "Croissance du PIB réel du Royaume-Uni, glissement annuel", nom_court: "Croissance Royaume-Uni", famille: E, type: T, unite: "%", pays: UK, frequence: T,
+     source: ons, code: "abmi/pn2", transformation: glissement_annuel, debut: "1989-01-01", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
+  - {id: E1_CN, nom: "Croissance du PIB réel de la Chine, glissement annuel", nom_court: "Croissance Chine", famille: E, type: T, unite: "%", pays: CN, frequence: T,
+     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q..CHN.S1..B1GQ._Z...PC.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
+  # Dette publique (FMI, toutes administrations publiques), annuelle
+  - {id: E3_US, nom: "Dette publique des États-Unis, % du PIB (FMI)", nom_court: "Dette US (% PIB)", famille: E, type: T, unite: "% du PIB", pays: US, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: USA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_ZE, nom: "Dette publique de la zone euro, % du PIB (FMI)", nom_court: "Dette zone euro (% PIB)", famille: E, type: T, unite: "% du PIB", pays: ZE, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: G163}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_DE, nom: "Dette publique de l'Allemagne, % du PIB (FMI)", nom_court: "Dette Allemagne (% PIB)", famille: E, type: T, unite: "% du PIB", pays: DE, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: DEU}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_FR, nom: "Dette publique de la France, % du PIB (FMI)", nom_court: "Dette France (% PIB)", famille: E, type: T, unite: "% du PIB", pays: FR, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: FRA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_IT, nom: "Dette publique de l'Italie, % du PIB (FMI)", nom_court: "Dette Italie (% PIB)", famille: E, type: T, unite: "% du PIB", pays: IT, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: ITA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_BE, nom: "Dette publique de la Belgique, % du PIB (FMI)", nom_court: "Dette Belgique (% PIB)", famille: E, type: T, unite: "% du PIB", pays: BE, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: BEL}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_JP, nom: "Dette publique du Japon, % du PIB (FMI)", nom_court: "Dette Japon (% PIB)", famille: E, type: T, unite: "% du PIB", pays: JP, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: JPN}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_CN, nom: "Dette publique de la Chine, % du PIB (FMI)", nom_court: "Dette Chine (% PIB)", famille: E, type: T, unite: "% du PIB", pays: CN, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: CHN}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  - {id: E3_UK, nom: "Dette publique du Royaume-Uni, % du PIB (FMI)", nom_court: "Dette Royaume-Uni (% PIB)", famille: E, type: T, unite: "% du PIB", pays: UK, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: GBR}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
+  # Dette trimestrielle (Eurostat, FRED)
+  - {id: E3T_BE, nom: "Dette publique trimestrielle de la Belgique, % du PIB", nom_court: "Dette trimestrielle Belgique", famille: E, type: T, unite: "% du PIB", pays: BE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: BE, unit: PC_GDP, sector: S13, na_item: GD}}, decimales: 1, retard_max_jours: 230, fiche: E3T}
+  - {id: E3T_DE, nom: "Dette publique trimestrielle de l'Allemagne, % du PIB", nom_court: "Dette trimestrielle Allemagne", famille: E, type: T, unite: "% du PIB", pays: DE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: DE, unit: PC_GDP, sector: S13, na_item: GD}}, decimales: 1, retard_max_jours: 230, fiche: E3T}
+  - {id: E3T_FR, nom: "Dette publique trimestrielle de la France, % du PIB", nom_court: "Dette trimestrielle France", famille: E, type: T, unite: "% du PIB", pays: FR, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: FR, unit: PC_GDP, sector: S13, na_item: GD}}, decimales: 1, retard_max_jours: 230, fiche: E3T}
+  - {id: E3T_IT, nom: "Dette publique trimestrielle de l'Italie, % du PIB", nom_court: "Dette trimestrielle Italie", famille: E, type: T, unite: "% du PIB", pays: IT, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: IT, unit: PC_GDP, sector: S13, na_item: GD}}, decimales: 1, retard_max_jours: 230, fiche: E3T}
+  - {id: E3T_ZE, nom: "Dette publique trimestrielle de la zone euro, % du PIB", nom_court: "Dette trimestrielle zone euro", famille: E, type: T, unite: "% du PIB", pays: ZE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: EA21, unit: PC_GDP, sector: S13, na_item: GD}}, decimales: 1, retard_max_jours: 230, fiche: E3T}
+  - {id: E3T_US, nom: "Dette fédérale des États-Unis, % du PIB (État fédéral seulement)", nom_court: "Dette fédérale US (% PIB)", famille: E, type: T, unite: "% du PIB", pays: US, frequence: T, source: fred, code: GFDEGDQ188S, organisme: "Trésor américain et Réserve fédérale de Saint-Louis", decimales: 1, retard_max_jours: 200, fiche: E3T}
+  # Dette en montant
+  - {id: E4_ZE, nom: "Dette publique de la zone euro (montant)", nom_court: "Dette zone euro (Md €)", famille: E, type: N, unite: "Md €", pays: ZE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: EA21, unit: MIO_EUR, sector: S13, na_item: GD}}, facteur: 0.001, decimales: 0, retard_max_jours: 230, fiche: E4}
+  - {id: E4_DE, nom: "Dette publique de l'Allemagne (montant)", nom_court: "Dette Allemagne (Md €)", famille: E, type: N, unite: "Md €", pays: DE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: DE, unit: MIO_EUR, sector: S13, na_item: GD}}, facteur: 0.001, decimales: 0, retard_max_jours: 230, fiche: E4}
+  - {id: E4_FR, nom: "Dette publique de la France (montant)", nom_court: "Dette France (Md €)", famille: E, type: N, unite: "Md €", pays: FR, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: FR, unit: MIO_EUR, sector: S13, na_item: GD}}, facteur: 0.001, decimales: 0, retard_max_jours: 230, fiche: E4}
+  - {id: E4_IT, nom: "Dette publique de l'Italie (montant)", nom_court: "Dette Italie (Md €)", famille: E, type: N, unite: "Md €", pays: IT, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: IT, unit: MIO_EUR, sector: S13, na_item: GD}}, facteur: 0.001, decimales: 0, retard_max_jours: 230, fiche: E4}
+  - {id: E4_BE, nom: "Dette publique de la Belgique (montant)", nom_court: "Dette Belgique (Md €)", famille: E, type: N, unite: "Md €", pays: BE, frequence: T, source: eurostat, code: gov_10q_ggdebt, options: {filtres: {geo: BE, unit: MIO_EUR, sector: S13, na_item: GD}}, facteur: 0.001, decimales: 0, retard_max_jours: 230, fiche: E4}
+  - {id: E4_US, nom: "Dette fédérale des États-Unis (montant)", nom_court: "Dette fédérale US (Md $)", famille: E, type: N, unite: "Md $", pays: US, frequence: T, source: fred, code: GFDEBTN, organisme: "Trésor américain", facteur: 0.001, decimales: 0, retard_max_jours: 200, fiche: E4}
+  - {id: E4_JP, nom: "Dette publique du Japon (montant, calculé)", nom_court: "Dette Japon (Md ¥)", famille: E, type: N, unite: "Md ¥", pays: JP, frequence: A, source: calcul, transformation: produit, entrees: [E3_JP, X_NGDP_JP], facteur: 0.01, decimales: 0, retard_max_jours: 600, fiche: E4}
+  - {id: E4_CN, nom: "Dette publique de la Chine (montant, calculé)", nom_court: "Dette Chine (Md yuans)", famille: E, type: N, unite: "Md yuans", pays: CN, frequence: A, source: calcul, transformation: produit, entrees: [E3_CN, X_NGDP_CN], facteur: 0.01, decimales: 0, retard_max_jours: 600, fiche: E4}
+  - {id: E4_UK, nom: "Dette publique du Royaume-Uni (montant, calculé)", nom_court: "Dette Royaume-Uni (Md £)", famille: E, type: N, unite: "Md £", pays: UK, frequence: A, source: calcul, transformation: produit, entrees: [E3_UK, X_NGDP_UK], facteur: 0.01, decimales: 0, retard_max_jours: 600, fiche: E4}
+  - {id: E4_US_EUR, nom: "Dette fédérale des États-Unis, en euros", nom_court: "Dette fédérale US (Md €)", famille: E, type: N, unite: "Md €", pays: US, frequence: T, source: calcul, transformation: en_euros, entrees: [E4_US, I1], decimales: 0, retard_max_jours: 200, fiche: E4}
+  - {id: E4_JP_EUR, nom: "Dette publique du Japon, en euros", nom_court: "Dette Japon (Md €)", famille: E, type: N, unite: "Md €", pays: JP, frequence: A, source: calcul, transformation: en_euros, entrees: [E4_JP, IC_EURJPY], decimales: 0, retard_max_jours: 600, fiche: E4}
+  - {id: E4_CN_EUR, nom: "Dette publique de la Chine, en euros", nom_court: "Dette Chine (Md €)", famille: E, type: N, unite: "Md €", pays: CN, frequence: A, source: calcul, transformation: en_euros, entrees: [E4_CN, IC_EURCNY], decimales: 0, retard_max_jours: 600, fiche: E4}
+  - {id: E4_UK_EUR, nom: "Dette publique du Royaume-Uni, en euros", nom_court: "Dette Royaume-Uni (Md €)", famille: E, type: N, unite: "Md €", pays: UK, frequence: A, source: calcul, transformation: en_euros, entrees: [E4_UK, IC_EURGBP], decimales: 0, retard_max_jours: 600, fiche: E4}
+  # Solde budgétaire (FMI)
+  - {id: E5_US, nom: "Solde budgétaire des États-Unis, % du PIB (FMI)", nom_court: "Solde budgétaire US", famille: E, type: T, unite: "% du PIB", pays: US, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: USA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_ZE, nom: "Solde budgétaire de la zone euro, % du PIB (FMI)", nom_court: "Solde budgétaire zone euro", famille: E, type: T, unite: "% du PIB", pays: ZE, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: G163}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_DE, nom: "Solde budgétaire de l'Allemagne, % du PIB (FMI)", nom_court: "Solde budgétaire Allemagne", famille: E, type: T, unite: "% du PIB", pays: DE, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: DEU}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_FR, nom: "Solde budgétaire de la France, % du PIB (FMI)", nom_court: "Solde budgétaire France", famille: E, type: T, unite: "% du PIB", pays: FR, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: FRA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_IT, nom: "Solde budgétaire de l'Italie, % du PIB (FMI)", nom_court: "Solde budgétaire Italie", famille: E, type: T, unite: "% du PIB", pays: IT, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: ITA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_BE, nom: "Solde budgétaire de la Belgique, % du PIB (FMI)", nom_court: "Solde budgétaire Belgique", famille: E, type: T, unite: "% du PIB", pays: BE, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: BEL}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_JP, nom: "Solde budgétaire du Japon, % du PIB (FMI)", nom_court: "Solde budgétaire Japon", famille: E, type: T, unite: "% du PIB", pays: JP, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: JPN}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_CN, nom: "Solde budgétaire de la Chine, % du PIB (FMI)", nom_court: "Solde budgétaire Chine", famille: E, type: T, unite: "% du PIB", pays: CN, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: CHN}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  - {id: E5_UK, nom: "Solde budgétaire du Royaume-Uni, % du PIB (FMI)", nom_court: "Solde budgétaire Royaume-Uni", famille: E, type: T, unite: "% du PIB", pays: UK, frequence: A, source: fmi, code: "WEO/GGXCNL_NGDP", options: {pays: GBR}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E5}
+  # Auxiliaires : PIB nominal
+  - {id: PIBN_US, nom: "PIB nominal US (annualisé)", nom_court: "PIB nominal US", famille: E, type: N, unite: "Md $", pays: US, frequence: T, auxiliaire: true, source: fred, code: GDP, organisme: "BEA", agregat_4t: moyenne}
+  - {id: PIBN_ZE, nom: "PIB nominal zone euro (trimestriel)", nom_court: "PIB nominal zone euro", famille: E, type: N, unite: "Md €", pays: ZE, frequence: T, auxiliaire: true, source: eurostat, code: namq_10_gdp, options: {filtres: {geo: EA21, unit: CP_MEUR, s_adj: SCA, na_item: B1GQ}}, facteur: 0.001, agregat_4t: somme}
+  - {id: PIBN_JP, nom: "PIB nominal Japon (annualisé)", nom_court: "PIB nominal Japon", famille: E, type: N, unite: "Md ¥", pays: JP, frequence: T, auxiliaire: true, source: fred, code: JPNNGDP, organisme: "Cabinet Office du Japon", agregat_4t: moyenne}
+  - {id: PIBN_UK, nom: "PIB nominal Royaume-Uni (trimestriel)", nom_court: "PIB nominal R.-U.", famille: E, type: N, unite: "Md £", pays: UK, frequence: T, auxiliaire: true, source: ons, code: "ybha/pn2", facteur: 0.001, agregat_4t: somme}
+  - {id: X_NGDP_JP, nom: "PIB nominal annuel Japon (FMI)", nom_court: "PIB nominal annuel Japon", famille: E, type: N, unite: "Md ¥", pays: JP, frequence: A, auxiliaire: true, source: fmi, code: "WEO/NGDP", options: {pays: JPN}}
+  - {id: X_NGDP_CN, nom: "PIB nominal annuel Chine (FMI)", nom_court: "PIB nominal annuel Chine", famille: E, type: N, unite: "Md yuans", pays: CN, frequence: A, auxiliaire: true, source: fmi, code: "WEO/NGDP", options: {pays: CHN}}
+  - {id: X_NGDP_UK, nom: "PIB nominal annuel Royaume-Uni (FMI)", nom_court: "PIB nominal annuel R.-U.", famille: E, type: N, unite: "Md £", pays: UK, frequence: A, auxiliaire: true, source: fmi, code: "WEO/NGDP", options: {pays: GBR}}
+
+  # ------------------------------------------------------------ F — Banques centrales
+  - {id: F1, nom: "Bilan de la Réserve fédérale américaine (total de l'actif)", nom_court: "Bilan de la Fed", famille: F, type: N, unite: "Md $", pays: US, frequence: S,
+     source: fred, code: WALCL, organisme: "Réserve fédérale américaine", facteur: 0.001, priorite: E, decimales: 0}
+  - {id: F2, nom: "Bilan de la BCE (Eurosystème, total de l'actif)", nom_court: "Bilan de la BCE", famille: F, type: N, unite: "Md €", pays: ZE, frequence: S,
+     source: bce, code: "ILM/W.U2.C.T000000.Z5.Z01", facteur: 0.001, priorite: E, decimales: 0, retard_max_jours: 21,
+     secours: {source: fred, code: ECBASSETSW, mode: prolonge, organisme: "BCE", facteur: 0.001}}
+  - {id: F3, nom: "Bilan de la Banque du Japon (total de l'actif)", nom_court: "Bilan de la Banque du Japon", famille: F, type: N, unite: "Md ¥", pays: JP, frequence: M,
+     source: fred, code: JPNASSETS, organisme: "Banque du Japon", facteur: 0.1, priorite: E, decimales: 0}
+  - {id: F4, nom: "Bilan de la Banque d'Angleterre (total de l'actif)", nom_court: "Bilan de la Banque d'Angleterre", famille: F, type: N, unite: "Md £", pays: UK, frequence: M,
+     source: bis, code: "WS_CBTA/M.GB.B.XDC", decimales: 0, retard_max_jours: 170}
+  - {id: F5_FED, nom: "Bilan de la Fed en % du PIB", nom_court: "Bilan de la Fed (% PIB)", famille: F, type: T, unite: "% du PIB", pays: US, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F1, PIBN_US], priorite: E, decimales: 1, fiche: F5, retard_max_jours: 200}
+  - {id: F5_BCE, nom: "Bilan de la BCE en % du PIB", nom_court: "Bilan de la BCE (% PIB)", famille: F, type: T, unite: "% du PIB", pays: ZE, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F2, PIBN_ZE], priorite: E, decimales: 1, fiche: F5, retard_max_jours: 230}
+  - {id: F5_BOJ, nom: "Bilan de la Banque du Japon en % du PIB", nom_court: "Bilan de la BoJ (% PIB)", famille: F, type: T, unite: "% du PIB", pays: JP, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F3, PIBN_JP], decimales: 1, fiche: F5, retard_max_jours: 230}
+  - {id: F5_BOE, nom: "Bilan de la Banque d'Angleterre en % du PIB", nom_court: "Bilan de la BoE (% PIB)", famille: F, type: T, unite: "% du PIB", pays: UK, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F4, PIBN_UK], decimales: 1, fiche: F5, retard_max_jours: 260}
+  - {id: F6, nom: "Masse monétaire M2 des États-Unis", nom_court: "Masse monétaire M2 US", famille: F, type: N, unite: "Md $", pays: US, frequence: M,
+     source: fred, code: M2SL, organisme: "Réserve fédérale américaine", decimales: 0}
+  - {id: F6_GA, nom: "Croissance annuelle de la masse monétaire M2 des États-Unis", nom_court: "Croissance de M2 US", famille: F, type: T, unite: "%", pays: US, frequence: M,
+     source: fred, code: M2SL, organisme: "Réserve fédérale américaine", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1, fiche: F6}
+  - {id: F7, nom: "Croissance annuelle de la masse monétaire M3 de la zone euro", nom_court: "Croissance de M3 zone euro", famille: F, type: T, unite: "%", pays: ZE, frequence: M,
+     source: bce, code: "BSI/M.U2.Y.V.M30.X.I.U2.2300.Z01.A", decimales: 1}
+
+  # ------------------------------------------------------------ G — Bourses (Yahoo)
+  - {id: G1, nom: "BEL 20 (Bourse de Bruxelles)", nom_court: "BEL 20", famille: G, type: N, unite: "points", pays: BE, frequence: J, source: yahoo, code: "^BFX", priorite: E, decimales: 0, zone_horaire: EU, mouvement: oui, groupe_mouvement: actions_europe}
+  - {id: G2, nom: "S&P 500 (États-Unis)", nom_court: "S&P 500", famille: G, type: N, unite: "points", pays: US, frequence: J, source: yahoo, code: "^GSPC", priorite: E, decimales: 0, zone_horaire: AM, mouvement: oui, groupe_mouvement: actions_us}
+  - {id: G3, nom: "Dow Jones Industrial Average (États-Unis)", nom_court: "Dow Jones", famille: G, type: N, unite: "points", pays: US, frequence: J, source: yahoo, code: "^DJI", decimales: 0, zone_horaire: AM, mouvement: oui, groupe_mouvement: actions_us}
+  - {id: G4, nom: "Nasdaq Composite (États-Unis)", nom_court: "Nasdaq", famille: G, type: N, unite: "points", pays: US, frequence: J, source: yahoo, code: "^IXIC", priorite: E, decimales: 0, zone_horaire: AM, mouvement: oui, groupe_mouvement: actions_us}
+  - {id: G5, nom: "Euro Stoxx 50 (zone euro)", nom_court: "Euro Stoxx 50", famille: G, type: N, unite: "points", pays: ZE, frequence: J, source: yahoo, code: "^STOXX50E", priorite: E, decimales: 0, zone_horaire: EU, mouvement: oui, groupe_mouvement: actions_europe}
+  - {id: G6, nom: "DAX (Allemagne)", nom_court: "DAX", famille: G, type: N, unite: "points", pays: DE, frequence: J, source: yahoo, code: "^GDAXI", decimales: 0, zone_horaire: EU, mouvement: oui, groupe_mouvement: actions_europe}
+  - {id: G7, nom: "CAC 40 (France)", nom_court: "CAC 40", famille: G, type: N, unite: "points", pays: FR, frequence: J, source: yahoo, code: "^FCHI", decimales: 0, zone_horaire: EU, mouvement: oui, groupe_mouvement: actions_europe}
+  - {id: G8, nom: "FTSE 100 (Londres)", nom_court: "FTSE 100", famille: G, type: N, unite: "points", pays: UK, frequence: J, source: yahoo, code: "^FTSE", decimales: 0, zone_horaire: EU, mouvement: oui, groupe_mouvement: actions_europe}
+  - {id: G9, nom: "Nikkei 225 (Japon)", nom_court: "Nikkei 225", famille: G, type: N, unite: "points", pays: JP, frequence: J, source: yahoo, code: "^N225", priorite: E, decimales: 0, zone_horaire: AS, retard_max_jours: 10, mouvement: oui, groupe_mouvement: actions_asie}
+  - {id: G10, nom: "Shanghai Composite (Chine)", nom_court: "Shanghai Composite", famille: G, type: N, unite: "points", pays: CN, frequence: J, source: yahoo, code: "000001.SS", priorite: E, decimales: 0, zone_horaire: AS, retard_max_jours: 14, mouvement: oui, groupe_mouvement: actions_asie}
+  - {id: G11, nom: "ETF qui suit l'indice CSI 300 (Chine)", nom_court: "ETF CSI 300", famille: G, type: N, unite: "CNY", pays: CN, frequence: J, source: yahoo, code: "510300.SS", decimales: 3, zone_horaire: AS, retard_max_jours: 14, mouvement: oui, groupe_mouvement: actions_asie}
+  - {id: G12, nom: "Hang Seng (Hong Kong)", nom_court: "Hang Seng", famille: G, type: N, unite: "points", pays: HK, frequence: J, source: yahoo, code: "^HSI", priorite: E, decimales: 0, zone_horaire: AS, retard_max_jours: 10, mouvement: oui, groupe_mouvement: actions_asie}
+  - {id: G13, nom: "MSCI World, via l'ETF iShares Core MSCI World (en euros)", nom_court: "MSCI World (ETF)", famille: G, type: N, unite: "EUR", pays: MONDE, frequence: J, source: yahoo, code: "IWDA.AS", priorite: E, decimales: 2, zone_horaire: EU, mouvement: oui}
+
+  # ------------------------------------------------------------ H — Énergie, matières premières, ETF
+  - {id: H1, nom: "Pétrole Brent (prix au comptant)", nom_court: "Brent", famille: H, type: N, unite: "USD/baril", pays: MONDE, frequence: J,
+     source: fred, code: DCOILBRENTEU, organisme: "Agence américaine d'information sur l'énergie (EIA)", priorite: E, retard_max_jours: 12, mouvement: oui, groupe_mouvement: petrole,
+     rapide: {source: yahoo, code: "BZ=F"},
+     secours: {source: banque_mondiale, code: "Crude oil, Brent", mode: remplace, frequence: M, note: "moyenne mensuelle (Banque mondiale)"}}
+  - {id: H2, nom: "Pétrole WTI (West Texas Intermediate, prix au comptant)", nom_court: "WTI", famille: H, type: N, unite: "USD/baril", pays: US, frequence: J,
+     source: fred, code: DCOILWTICO, organisme: "Agence américaine d'information sur l'énergie (EIA)", retard_max_jours: 12, mouvement: oui, groupe_mouvement: petrole,
+     rapide: {source: yahoo, code: "CL=F"},
+     secours: {source: banque_mondiale, code: "Crude oil, WTI", mode: remplace, frequence: M, note: "moyenne mensuelle (Banque mondiale)"}}
+  - {id: H3, nom: "Or (contrat à terme, New York)", nom_court: "Or", famille: H, type: N, unite: "USD/once", pays: MONDE, frequence: J, source: yahoo, code: "GC=F", priorite: E, decimales: 0, mouvement: oui, groupe_mouvement: or,
+     secours: {source: banque_mondiale, code: "Gold", mode: remplace, frequence: M, note: "moyenne mensuelle (Banque mondiale)"}}
+  - {id: H4, nom: "Gaz naturel européen (TTF, contrat à terme)", nom_court: "Gaz TTF", famille: H, type: N, unite: "EUR/MWh", pays: EU, frequence: J, source: yahoo, code: "TTF=F", priorite: E, mouvement: oui,
+     secours: {source: banque_mondiale, code: "Natural gas, Europe", mode: remplace, frequence: M, unite: "USD/mmbtu", note: "moyenne mensuelle en dollars (Banque mondiale)"}}
+  - {id: H5, nom: "Gaz naturel américain (Henry Hub, contrat à terme)", nom_court: "Gaz Henry Hub", famille: H, type: N, unite: "USD/mmbtu", pays: US, frequence: J, source: yahoo, code: "NG=F", decimales: 3, mouvement: oui,
+     secours: {source: banque_mondiale, code: "Natural gas, US", mode: remplace, frequence: M, note: "moyenne mensuelle (Banque mondiale)"}}
+  - {id: H6, nom: "Cuivre (contrat à terme, New York)", nom_court: "Cuivre", famille: H, type: N, unite: "USD/livre", pays: MONDE, frequence: J, source: yahoo, code: "HG=F", decimales: 3, mouvement: oui,
+     secours: {source: banque_mondiale, code: "Copper", mode: remplace, frequence: M, unite: "USD/tonne", note: "moyenne mensuelle en dollars par tonne (Banque mondiale)"}}
+  - {id: H7, nom: "ETF matières premières diversifiées (Invesco DB Commodity, DBC)", nom_court: "ETF matières premières", famille: H, type: N, unite: "USD", pays: MONDE, frequence: J, source: yahoo, code: DBC, priorite: E, fiche: ETF_H, mouvement: oui}
+  - {id: H8_USO, nom: "ETF pétrole WTI (United States Oil Fund, USO)", nom_court: "ETF pétrole WTI", famille: H, type: N, unite: "USD", pays: US, frequence: J, source: yahoo, code: USO, fiche: H8, mouvement: oui, groupe_mouvement: petrole}
+  - {id: H8_BNO, nom: "ETF pétrole Brent (United States Brent Oil Fund, BNO)", nom_court: "ETF pétrole Brent", famille: H, type: N, unite: "USD", pays: MONDE, frequence: J, source: yahoo, code: BNO, fiche: H8, mouvement: oui, groupe_mouvement: petrole}
+  - {id: H9, nom: "ETF or (SPDR Gold Shares, GLD)", nom_court: "ETF or", famille: H, type: N, unite: "USD", pays: MONDE, frequence: J, source: yahoo, code: GLD, mouvement: oui, groupe_mouvement: or}
+  - {id: H10, nom: "ETF immobilier coté américain (Vanguard Real Estate, VNQ)", nom_court: "ETF immobilier US", famille: H, type: N, unite: "USD", pays: US, frequence: J, source: yahoo, code: VNQ, priorite: E, zone_horaire: AM, mouvement: oui}
+  - {id: H11, nom: "ETF immobilier coté européen (iShares European Property Yield, IPRP)", nom_court: "ETF immobilier européen", famille: H, type: N, unite: "EUR", pays: EU, frequence: J, source: yahoo, code: "IPRP.AS", priorite: E, zone_horaire: EU, mouvement: oui}
+  - {id: H12, nom: "ETF obligations d'État américaines à plus de 20 ans (iShares, TLT)", nom_court: "ETF obligations US 20 ans et +", famille: H, type: N, unite: "USD", pays: US, frequence: J, source: yahoo, code: TLT, priorite: E, zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: H13, nom: "ETF obligations d'État américaines à 7-10 ans (iShares, IEF)", nom_court: "ETF obligations US 7-10 ans", famille: H, type: N, unite: "USD", pays: US, frequence: J, source: yahoo, code: IEF, zone_horaire: AM, mouvement: oui, groupe_mouvement: taux_us}
+  - {id: H14, nom: "ETF obligations d'État de la zone euro (iShares Core Euro Government Bond, IEGA)", nom_court: "ETF obligations zone euro", famille: H, type: N, unite: "EUR", pays: ZE, frequence: J, source: yahoo, code: "IEGA.AS", priorite: E, zone_horaire: EU, mouvement: oui, groupe_mouvement: taux_europe}
+  - {id: H15, nom: "ETF obligations américaines indexées sur l'inflation (iShares TIPS, TIP)", nom_court: "ETF obligations indexées US", famille: H, type: N, unite: "USD", pays: US, frequence: J, source: yahoo, code: TIP, zone_horaire: AM, mouvement: oui, groupe_mouvement: inflation_us}
+
+  # ------------------------------------------------------------ I — Devises
+  - {id: I1, nom: "Euro / dollar (1 € = … $)", nom_court: "EUR/USD", famille: I, type: N, unite: "$ pour 1 €", pays: ZE, frequence: J, source: bce, code: "EXR/D.USD.EUR.SP00.A", priorite: E, decimales: 4, mouvement: oui, groupe_mouvement: dollar,
+     avant: {source: fred, code: DEXUSEU, jusqua: "1998-12-31", organisme: "Réserve fédérale américaine"},
+     secours: {source: fred, code: DEXUSEU, mode: prolonge, organisme: "Réserve fédérale américaine"}}
+  - {id: IC_EURGBP, nom: "Euro / livre sterling (1 € = … £)", nom_court: "EUR/GBP", famille: I, type: N, unite: "£ pour 1 €", pays: ZE, frequence: J, source: bce, code: "EXR/D.GBP.EUR.SP00.A", decimales: 4, fiche: IC, mouvement: oui}
+  - {id: IC_EURCHF, nom: "Euro / franc suisse (1 € = … CHF)", nom_court: "EUR/CHF", famille: I, type: N, unite: "CHF pour 1 €", pays: ZE, frequence: J, source: bce, code: "EXR/D.CHF.EUR.SP00.A", decimales: 4, fiche: IC, mouvement: oui}
+  - {id: IC_EURJPY, nom: "Euro / yen (1 € = … ¥)", nom_court: "EUR/JPY", famille: I, type: N, unite: "¥ pour 1 €", pays: ZE, frequence: J, source: bce, code: "EXR/D.JPY.EUR.SP00.A", decimales: 2, fiche: IC, mouvement: oui}
+  - {id: IC_EURCNY, nom: "Euro / yuan (1 € = … yuans)", nom_court: "EUR/CNY", famille: I, type: N, unite: "yuans pour 1 €", pays: ZE, frequence: J, source: bce, code: "EXR/D.CNY.EUR.SP00.A", decimales: 4, fiche: IC, mouvement: oui}
+  - {id: I2, nom: "Dollar / yen (1 $ = … ¥)", nom_court: "USD/JPY", famille: I, type: N, unite: "¥ pour 1 $", pays: JP, frequence: J, source: calcul, transformation: croise, entrees: [IC_EURJPY, I1], priorite: E, decimales: 2, mouvement: oui,
+     avant: {source: fred, code: DEXJPUS, jusqua: "1998-12-31", organisme: "Réserve fédérale américaine"}}
+  - {id: I3, nom: "Dollar / yuan (1 $ = … yuans)", nom_court: "USD/CNY", famille: I, type: N, unite: "yuans pour 1 $", pays: CN, frequence: J, source: calcul, transformation: croise, entrees: [IC_EURCNY, I1], priorite: E, decimales: 4, mouvement: oui,
+     avant: {source: fred, code: DEXCHUS, jusqua: "2000-01-12", organisme: "Réserve fédérale américaine"}}
+  - {id: I4, nom: "Livre sterling / dollar (1 £ = … $)", nom_court: "GBP/USD", famille: I, type: N, unite: "$ pour 1 £", pays: UK, frequence: J, source: calcul, transformation: croise, entrees: [I1, IC_EURGBP], priorite: E, decimales: 4, mouvement: oui,
+     avant: {source: fred, code: DEXUSUK, jusqua: "1998-12-31", organisme: "Réserve fédérale américaine"}}
+  - {id: I5, nom: "Dollar / franc suisse (1 $ = … CHF)", nom_court: "USD/CHF", famille: I, type: N, unite: "CHF pour 1 $", pays: CH, frequence: J, source: calcul, transformation: croise, entrees: [IC_EURCHF, I1], decimales: 4, mouvement: oui,
+     avant: {source: fred, code: DEXSZUS, jusqua: "1998-12-31", organisme: "Réserve fédérale américaine"}}
+  - {id: I6, nom: "Indice du dollar américain (DXY, face à six devises)", nom_court: "Indice du dollar (DXY)", famille: I, type: N, unite: "points", pays: US, frequence: J, source: yahoo, code: "DX-Y.NYB", priorite: E, mouvement: oui, groupe_mouvement: dollar,
+     secours: {source: fred, code: DTWEXBGS, mode: remplace, frequence: J, organisme: "Réserve fédérale américaine", note: "indice large du dollar (Fed), depuis 2006 : autre indice"}}
+
+  # ------------------------------------------------------------ J — Risques
+  - {id: J1, nom: "VIX — « indice de la peur » du marché américain", nom_court: "VIX", famille: J, type: "N*", unite: "points", pays: US, frequence: J,
+     source: fred, code: VIXCLS, organisme: "Chicago Board Options Exchange (Cboe), indice VIX", priorite: E, zone_horaire: AM, mouvement: oui,
+     rapide: {source: yahoo, code: "^VIX"}}
+  - {id: J2, nom: "VSTOXX — « indice de la peur » européen", nom_court: "VSTOXX", famille: J, type: "N*", unite: "points", pays: ZE, frequence: J,
+     source: fichiers, code: vstoxx, mention_source: stoxx, priorite: E, zone_horaire: EU, mouvement: oui}
+  - {id: J3, nom: "Indice de risque géopolitique (GPR, Caldara et Iacoviello), mensuel", nom_court: "Risque géopolitique (GPR)", famille: J, type: "N*", unite: "indice", pays: MONDE, frequence: M,
+     source: fichiers, code: gpr_mensuel, options: {colonne: GPR}, organisme: "Caldara et Iacoviello (2022), « Measuring Geopolitical Risk », American Economic Review 112(4)", priorite: E, decimales: 0, fiche: J3}
+  - {id: J3_Q, nom: "Indice de risque géopolitique (GPR), quotidien", nom_court: "Risque géopolitique (quotidien)", famille: J, type: "N*", unite: "indice", pays: MONDE, frequence: J,
+     source: fichiers, code: gpr_quotidien, options: {colonne: GPRD}, organisme: "Caldara et Iacoviello (2022), « Measuring Geopolitical Risk », American Economic Review 112(4)", decimales: 0, retard_max_jours: 12, fiche: J3}
+  - {id: J4, nom: "Indice de stress financier de la Fed de Saint-Louis (0 = normal)", nom_court: "Stress financier US", famille: J, type: "N*", unite: "indice", pays: US, frequence: S,
+     source: fred, code: STLFSI4, organisme: "Banque fédérale de réserve de Saint-Louis", priorite: E, retard_max_jours: 21}
+  - {id: J5, nom: "Indicateur composite de stress systémique de la BCE (CISS)", nom_court: "Stress systémique zone euro (CISS)", famille: J, type: "N*", unite: "indice", pays: ZE, frequence: J,
+     source: bce, code: "CISS/D.U2.Z0Z.4F.EC.SS_CIN.IDX", priorite: E, decimales: 3, decimales_stockage: 6, retard_max_jours: 10, zone_horaire: EU, mouvement: oui}
+  - {id: J6, nom: "Écart de crédit des entreprises américaines (Gilchrist et Zakrajšek, Fed)", nom_court: "Écart de crédit US", famille: J, type: T, unite: "pt", pays: US, frequence: M,
+     source: fichiers, code: ebp, options: {colonne: gz_spread}, organisme: "Réserve fédérale américaine (Favara, Gilchrist, Lewis et Zakrajšek)", retard_max_jours: 100,
+     secours: {source: fred, code: NFCICREDIT, mode: remplace, frequence: S, type: "N*", unite: "indice", organisme: "Banque fédérale de réserve de Chicago", note: "sous-indice « crédit » des conditions financières (Fed de Chicago)"}}
+  - {id: J6_EBP, nom: "Prime de crédit excédentaire américaine (EBP, Fed)", nom_court: "Prime de crédit excédentaire US", famille: J, type: "N*", unite: "pt", pays: US, frequence: M,
+     source: fichiers, code: ebp, options: {colonne: ebp}, organisme: "Réserve fédérale américaine (Favara, Gilchrist, Lewis et Zakrajšek)", retard_max_jours: 100, fiche: J6}
+  - {id: J7, nom: "Tensions sur le marché obligataire de la zone euro (composante du CISS)", nom_court: "Tensions obligataires zone euro", famille: J, type: "N*", unite: "indice", pays: ZE, frequence: J,
+     source: bce, code: "CISS/D.U2.Z0Z.4F.EC.SS_BMN.CON", decimales: 3, decimales_stockage: 6, retard_max_jours: 10, zone_horaire: EU, mouvement: oui}
+
+  # ------------------------------------------------------------ K — Valeurs suivies (modifiable)
+  - {id: K1, nom: "Aedifica (action, Euronext Bruxelles)", nom_court: "Aedifica", famille: K, code: "AED.BR"}
+
+# Jeux particuliers (non sélectionnables dans le comparateur) → data/previsions.js
+jeux:
+  spf_bce: {nom: "Probabilités d'inflation des prévisionnistes de la zone euro (SPF de la BCE)", source: bce, fiche: D5, cadence_jours: 7, retard_max_jours: 135, priorite: E}
+  spf_us: {nom: "Probabilités d'inflation des prévisionnistes américains (SPF de la Fed de Philadelphie)", source: fichiers, organisme: "Banque fédérale de réserve de Philadelphie", fiche: D6, cadence_jours: 7, retard_max_jours: 135, priorite: S}
+  fmi: {nom: "Prévisions du FMI (Perspectives de l'économie mondiale)", source: fmi, fiche: D7, cadence_jours: 7, retard_max_jours: 230, priorite: E}
+  courbe_petrole: {nom: "Courbe à terme du pétrole Brent", source: yahoo, fiche: D15, cadence_jours: 1, priorite: S}

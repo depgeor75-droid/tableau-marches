@@ -1,0 +1,102 @@
+# Sources de données : libellé, mention affichée (pied de fiche, sous les graphiques,
+# « État des données »), lien, publication sur le site public, attente entre deux essais
+# (secondes) et cadence (jours entre deux appels pour les jeux lents).
+# Décisions de Georgy du 22/11/2026 : toutes les sources sont publiées avec leur mention.
+
+fred:
+  libelle: FRED (Banque fédérale de réserve de Saint-Louis)
+  mention: "Source : {organisme}, via FRED®, Banque fédérale de réserve de Saint-Louis."
+  lien: https://fred.stlouisfed.org/
+  publier: oui
+  attente: 4
+bce:
+  libelle: Banque centrale européenne (BCE)
+  mention: "Source : BCE, portail de données (ECB Data Portal)."
+  lien: https://data.ecb.europa.eu/
+  publier: oui
+  attente: 6
+eurostat:
+  libelle: Eurostat
+  mention: "Source : Eurostat (licence CC BY 4.0)."
+  lien: https://ec.europa.eu/eurostat
+  publier: oui
+  attente: 6
+bis:
+  libelle: Banque des règlements internationaux (BRI)
+  mention: "Source : Banque des règlements internationaux (BIS), BIS Data Portal."
+  lien: https://data.bis.org/
+  publier: oui
+  attente: 10
+ocde:
+  libelle: OCDE
+  mention: "Source : OCDE (Organisation de coopération et de développement économiques), OECD Data Explorer."
+  lien: https://data-explorer.oecd.org/
+  publier: oui
+  attente: 10
+fmi:
+  libelle: Fonds monétaire international (FMI)
+  mention: "Source : Fonds monétaire international (FMI), {base}. Calculs de l'auteur le cas échéant."
+  lien: https://data.imf.org/
+  publier: oui
+  attente: 20
+  cadence_jours: 7
+boe:
+  libelle: Banque d'Angleterre
+  mention: "Source : Bank of England, base de données statistique (Open Government Licence)."
+  lien: https://www.bankofengland.co.uk/boeapps/database/
+  publier: oui
+  attente: 8
+bundesbank:
+  libelle: Deutsche Bundesbank
+  mention: "Source : Deutsche Bundesbank, statistiques."
+  lien: https://www.bundesbank.de/en/statistics
+  publier: oui
+  attente: 6
+mof_japon:
+  libelle: Ministère des Finances du Japon
+  mention: "Source : Ministère des Finances du Japon (taux des emprunts d'État)."
+  lien: https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/
+  publier: oui
+  attente: 6
+boj:
+  libelle: Banque du Japon
+  mention: "Source : Banque du Japon."
+  lien: https://www.stat-search.boj.or.jp/
+  publier: oui
+  attente: 6
+ons:
+  libelle: Office national de statistique du Royaume-Uni (ONS)
+  mention: "Source : Office for National Statistics (Open Government Licence v3.0)."
+  lien: https://www.ons.gov.uk/
+  publier: oui
+  attente: 30
+banque_mondiale:
+  libelle: Banque mondiale
+  mention: "Source : Banque mondiale, Commodity Price Data (The Pink Sheet)."
+  lien: https://www.worldbank.org/en/research/commodity-markets
+  publier: oui
+  attente: 6
+fichiers:
+  libelle: Fichiers publiés par les institutions
+  mention: "Source : {organisme}."
+  lien: null
+  publier: oui
+  attente: 8
+yahoo:
+  libelle: Yahoo Finance
+  mention: "Source : Yahoo Finance — cours de clôture, hors dividendes. Usage personnel, non commercial."
+  lien: https://finance.yahoo.com/
+  publier: oui
+  attente: 20
+stoxx:
+  libelle: STOXX
+  mention: "Source : STOXX Ltd. (indice VSTOXX). Usage personnel, non commercial."
+  lien: https://www.stoxx.com/
+  publier: oui
+  attente: 8
+calcul:
+  libelle: Calcul à partir d'autres séries
+  mention: "Calcul de l'auteur à partir de : {entrees}."
+  lien: null
+  publier: oui
+  attente: 0

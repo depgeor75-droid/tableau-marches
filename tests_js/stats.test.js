@@ -171,3 +171,46 @@ test("tableau des corrélations : symétrique, diagonale à 1", () => {
   proche(m[1][2].r, m[2][1].r);
   assert.equal(m[1][1].r, 1);
 });
+
+test("grille régulière (C1) : un mois absent de toutes les séries reste dans la grille", () => {
+  const dates = moisDepuis(2024, 30).filter((d) => d !== "2025-10-01");
+  const a = { dates, valeurs: dates.map((_, i) => 100 + i) };
+  const b = { dates, valeurs: dates.map((_, i) => 50 + 2 * i) };
+  const al = S.aligner([a, b], "M");
+  assert.equal(al.dates.length, 30);
+  const iOct = al.dates.indexOf("2025-10-31");
+  assert.ok(iOct > 0);
+  assert.equal(al.valeurs[0][iOct], null);
+  const mvt = S.transformer(al.dates, al.valeurs[0], "N", "mouvements");
+  assert.equal(mvt[iOct], null);
+  assert.equal(mvt[iOct + 1], null); // la variation ne saute pas deux mois
+  // un décalage de +3 mois est toujours retrouvé malgré le trou
+  const r = aleatoire(5);
+  const base = Array.from({ length: 63 }, r);
+  const ref = { dates: moisDepuis(2020, 60), valeurs: base.slice(0, 60) };
+  const ind = { dates: moisDepuis(2020, 60), valeurs: base.slice(3, 63) };
+  ref.valeurs[30] = null; ind.valeurs[30] = null;
+  const g = S.aligner([ref, ind], "M");
+  const res = S.meilleurDecalage(g.valeurs[0], g.valeurs[1], -6, 6, 6, 59);
+  assert.equal(res.meilleur.k, 3);
+});
+
+test("corrélation glissante (C2) : fenêtre trop peu remplie → null", () => {
+  const x = Array.from({ length: 40 }, (_, i) => Math.sin(i));
+  const y = x.map((v, i) => (i >= 10 && i < 30 && i % 2 ? null : v));
+  const g = S.correlationGlissante(x, y, 24);
+  assert.equal(g[29], null); // 14 paires sur 24 < 80 %
+  assert.ok(g[39] === null || g[39].n >= 20);
+});
+
+test("fenêtres, décalage maximal et prolongement de grille (C3)", () => {
+  assert.equal(S.fenetreGlissante("S", 52), 26);
+  assert.equal(S.fenetreGlissante("M", 60), 24);
+  assert.equal(S.fenetreGlissante("M", 120), 36);
+  assert.equal(S.fenetreGlissante("J", 22), null);
+  assert.equal(S.decalageMax("M", 120), 24);
+  assert.equal(S.decalageMax("M", 60), 20);
+  assert.equal(S.decalageMax("S", 52), 17);
+  assert.deepEqual(S.prolongerGrille(["2026-09-30", "2026-10-31"], "M", 2), ["2026-09-30", "2026-10-31", "2026-11-30", "2026-12-31"]);
+  assert.deepEqual(S.prolongerGrille(["2026-11-20"], "J", 1), ["2026-11-20", "2026-11-23"]);
+});

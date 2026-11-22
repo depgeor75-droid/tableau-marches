@@ -149,10 +149,17 @@ def ecrire_si_change(chemin: Path, contenu: str) -> bool:
 
 
 def ecrire_js(chemin: Path, nom: str, objet) -> bool:
-    """Fichier de données chargé par <script> : window.DONNEES["nom"] = {...};"""
+    """Fichier de données chargé par <script> : window.DONNEES["nom"] = {...};
+    Une ligne par clé de premier niveau (clés triées) : une mise à jour ne réécrit que les
+    lignes des séries qui changent, l'historique git reste léger."""
+    if isinstance(objet, dict):
+        lignes = [f"{json.dumps(cle, ensure_ascii=False)}:{json_deterministe(objet[cle])}" for cle in sorted(objet)]
+        corps = "{\n" + ",\n".join(lignes) + "\n}"
+    else:
+        corps = json_deterministe(objet)
     contenu = (
         "window.DONNEES = window.DONNEES || {};\n"
-        f"window.DONNEES[{json.dumps(nom)}] = {json_deterministe(objet)};\n"
+        f"window.DONNEES[{json.dumps(nom)}] = {corps};\n"
     )
     return ecrire_si_change(chemin, contenu)
 

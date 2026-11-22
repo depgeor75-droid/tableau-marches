@@ -23,6 +23,9 @@
     fiabilite_plancher: 0.2,       // seuil de fiabilité = max(0,2 ; 2 ÷ √n)
     points_min: 12,
     ecart_meilleur_decalage: 0.10,
+    couverture_min: 0.8,
+    fenetres: { S: 26, M_5A: 24, M_long: 36, T: 12 },
+    decalage_max_mois: 24,
   };
 
   function estNombre(v) {
@@ -105,8 +108,37 @@
     return { dates: cles, valeurs: valeurs };
   }
 
+  /** Clé de la période suivante (fin de période) : S +7 jours, M/T/A fin de la période suivante. */
+  function periodeSuivante(cle, frequence) {
+    var a = +cle.slice(0, 4), m = +cle.slice(5, 7) - 1;
+    switch (frequence) {
+      case "J": return versIso(versTemps(cle) + JOUR);
+      case "S": return versIso(versTemps(cle) + 7 * JOUR);
+      case "M": return versIso(Date.UTC(a, m + 2, 0));
+      case "T": return versIso(Date.UTC(a, m + 4, 0));
+      case "A": return versIso(Date.UTC(a + 1, 12, 0));
+      default: throw new Error("Fréquence inconnue : " + frequence);
+    }
+  }
+
+  /** Prolonge une grille de k périodes futures (pour dessiner une courbe décalée vers l'avant). */
+  function prolongerGrille(dates, frequence, k) {
+    var sortie = dates.slice();
+    for (var i = 0; i < k && sortie.length; i++) {
+      var derniere = sortie[sortie.length - 1];
+      var suivante = periodeSuivante(derniere, frequence);
+      if (frequence === "J") { // jours ouvrables seulement
+        while ([0, 6].indexOf(new Date(versTemps(suivante)).getUTCDay()) >= 0) suivante = periodeSuivante(suivante, "J");
+      }
+      sortie.push(suivante);
+    }
+    return sortie;
+  }
+
   /**
-   * Aligne plusieurs séries sur une grille commune de périodes (union des périodes).
+   * Aligne plusieurs séries sur une grille commune de périodes.
+   * J : union des jours présents ; S, M, T, A : grille RÉGULIÈRE de la première à la dernière
+   * période (une période absente de toutes les séries reste dans la grille, avec null).
    * Retourne { dates: [clés], valeurs: [[…série 1], [… série 2], …] } ; null là où une série n'a rien.
    */
   function aligner(series, frequence) {
@@ -114,6 +146,12 @@
     var ensemble = {};
     reech.forEach(function (s) { s.dates.forEach(function (d) { ensemble[d] = true; }); });
     var dates = Object.keys(ensemble).sort();
+    if (frequence !== "J" && dates.length) {
+      var reguliere = [dates[0]];
+      var fin = dates[dates.length - 1];
+      while (reguliere[reguliere.length - 1] < fin) reguliere.push(periodeSuivante(reguliere[reguliere.length - 1], frequence));
+      dates = reguliere;
+    }
     var position = {};
     dates.forEach(function (d, i) { position[d] = i; });
     var valeurs = reech.map(function (s) {
@@ -244,13 +282,16 @@
     };
   }
 
-  /** Corrélation glissante sur une fenêtre de w points (les w dernières périodes). */
+  /**
+   * Corrélation glissante sur une fenêtre de w périodes (les w dernières).
+   * Fenêtre ignorée (null) si moins de couverture_min (80 %) de paires valides.
+   */
   function correlationGlissante(x, y, w, options) {
     var o = reglages(options);
     var sortie = new Array(Math.min(x.length, y.length)).fill(null);
     for (var i = w - 1; i < sortie.length; i++) {
       var res = pearson(x.slice(i - w + 1, i + 1), y.slice(i - w + 1, i + 1), o);
-      if (res.r === null) continue;
+      if (res.r === null || res.n < Math.ceil(o.couverture_min * w)) continue;
       sortie[i] = { r: res.r, n: res.n, classe: classer(res.r, res.n, o) };
     }
     return sortie;
@@ -318,6 +359,25 @@
     return m;
   }
 
+  /**
+   * Taille de la fenêtre de corrélation glissante : S → 26 ; M → 24 si la période fait
+   * 7 ans au plus (≤ 84 points), 36 au-delà ; T → 12 ; J (vue 1 M) → null (pas de glissante).
+   */
+  function fenetreGlissante(frequence, nbPoints, options) {
+    var f = reglages(options).fenetres;
+    if (frequence === "S") return f.S;
+    if (frequence === "M") return nbPoints <= 84 ? f.M_5A : f.M_long;
+    if (frequence === "T") return f.T;
+    return null;
+  }
+
+  /** Décalage maximal (en périodes) : 24 mois dans l'unité de la fréquence, et au plus un tiers des points. */
+  function decalageMax(frequence, nbPoints, options) {
+    var mois = reglages(options).decalage_max_mois;
+    var parUnite = { J: Math.round(mois * 21), S: Math.round(mois * 52 / 12), M: mois, T: Math.round(mois / 3), A: Math.round(mois / 12) }[frequence];
+    return Math.max(0, Math.min(parUnite, Math.floor(nbPoints / 3)));
+  }
+
   // ------------------------------------------------------------- périodes
   var RECULS = { "1M": [0, 1], "1A": [1, 0], "5A": [5, 0], "10A": [10, 0], "30A": [30, 0] };
 
@@ -350,7 +410,11 @@
     frequencePourPeriode: frequencePourPeriode,
     periodesParAn: periodesParAn,
     reechantillonner: reechantillonner,
+    periodeSuivante: periodeSuivante,
+    prolongerGrille: prolongerGrille,
     aligner: aligner,
+    fenetreGlissante: fenetreGlissante,
+    decalageMax: decalageMax,
     base100: base100,
     variationsSuccessives: variationsSuccessives,
     variationsAnnuelles: variationsAnnuelles,

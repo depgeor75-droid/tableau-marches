@@ -1,0 +1,61 @@
+# Comparaisons prêtes à l'emploi du comparateur (§9.1). Chaque bouton applique une
+# configuration complète : indicateurs, référence, période, mode, affichage, décalage initial.
+# affichage : valeurs | base100 | calcul (courbes transformées par le mode, ex. Brent en variation sur 12 mois)
+
+comparaisons:
+  - libelle: "Pétrole → inflation zone euro"
+    reference: C5
+    autres: [H1]
+    mode: rythmes
+    periode: 10A
+    affichage: calcul
+    decalages: {}
+  - libelle: "Inflation vs taux BCE vs Bund"
+    reference: C5
+    autres: [A2, B4]
+    mode: rythmes
+    periode: 30A
+    affichage: valeurs
+    decalages: {}
+  - libelle: "Bund vs immobilier coté européen"
+    reference: B4
+    autres: [H11]
+    mode: mouvements
+    periode: 10A
+    affichage: valeurs
+    decalages: {}
+  - libelle: "VIX vs S&P 500"
+    reference: G2
+    autres: [J1]
+    mode: mouvements
+    periode: 5A
+    affichage: valeurs
+    decalages: {}
+  - libelle: "Dette et taux : Italie vs Allemagne"
+    reference: B8
+    autres: [B4, E3T_IT, E3T_DE]
+    mode: rythmes
+    periode: Max
+    affichage: valeurs
+    decalages: {}
+  - libelle: "Bilan de la Fed vs Nasdaq"
+    reference: G4
+    autres: [F1]
+    mode: rythmes
+    periode: Max
+    affichage: calcul
+    decalages: {}
+  - libelle: "Dollar vs or"
+    reference: H3
+    autres: [I6]
+    mode: mouvements
+    periode: 10A
+    affichage: base100
+    decalages: {}
+  - libelle: "Gaz TTF vs inflation Belgique"
+    reference: C7
+    autres: [H4]
+    mode: rythmes
+    periode: 10A
+    affichage: calcul
+    decalages: {}
