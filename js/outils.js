@@ -84,7 +84,7 @@
     var unite = ind.unite || "";
     if (unite === "%") return nombre(v, d) + INSECABLE + "%";
     if (unite === "pt" || unite === "points") return signe(v, d) + INSECABLE + "pt";
-    if (!unite) return nombre(v, d);
+    if (!unite || unite === "indice") return nombre(v, d);
     return nombre(v, d) + INSECABLE + unite;
   }
 
@@ -100,7 +100,8 @@
   function fleche(v, seuil) {
     if (!estNombre(v)) return "";
     var s = seuil || 0;
-    return v > s ? "▲" : v < -s ? "▼" : "▶";
+    var r = Math.round(v * 100) / 100; // une variation affichée « 0,00 » est stable
+    return r > s ? "▲" : r < -s ? "▼" : "▶";
   }
 
   function rangOrdinal(p) { return p + (p === 1 ? "ᵉʳ" : "ᵉ"); }

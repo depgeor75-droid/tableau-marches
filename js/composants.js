@@ -67,8 +67,8 @@
     if (!note) return "";
     var morceaux = note.split(":");
     if (morceaux[0] === "ga_base_manquante") {
-      return "Dernier glissement calculable. Le chiffre de " + O.moisLong(morceaux[1] + "-01") +
-        " n'a pas de base un an plus tôt (mois non publié aux États-Unis en octobre 2025, fermeture des services fédéraux).";
+      return "Dernier glissement calculable. Pour " + O.moisLong(morceaux[1] + "-01") +
+        ", il n'existe pas de chiffre un an plus tôt (mois non publié aux États-Unis en octobre 2025, fermeture des services fédéraux).";
     }
     if (morceaux[0] === "ga_valeur_manquante") return "Mois de " + O.moisLong(morceaux[1] + "-01") + " non publié.";
     return "";
@@ -311,7 +311,7 @@
           } }), "Afficher les grands événements"),
           h("button", { class: "bouton bouton--petit", type: "button", disabled: !series.length,
             onclick: function () { window.App.comparer(series.map(function (x) { return x.id; }), { periode: periode }); } }, "Ouvrir dans le comparateur"));
-        sources.textContent = series.length ? "Sources : " + Array.from(new Set(series.map(function (x) { return D.ind(x.id).mention; }))).join(" ") : "";
+        sources.textContent = series.length ? "Sources : " + Array.from(new Set(series.map(function (x) { return D.ind(x.id).mention.replace(/^Source : /, ""); }))).join(" ") : "";
       });
     }
 

@@ -382,7 +382,7 @@
     if (!c.w) notes.append(h("p", { class: "mode-aide" }, "Vue quotidienne : pas de corrélation glissante (trop peu de points) ; seul le r global de la période est calculé."));
     if (c.ids.length >= 3) notes.append(matrice(c));
     notes.append(h("p", { class: "rappel" }, "Corrélation ne veut pas dire causalité. ", K.boutonInfo("t:causalite", "corrélation et causalité")),
-      h("p", { class: "rappel" }, "Sources : " + Array.from(new Set(c.ids.map(function (id) { return D.ind(id).mention; }))).join(" ")));
+      h("p", { class: "rappel" }, "Sources : " + Array.from(new Set(c.ids.map(function (id) { return D.ind(id).mention.replace(/^Source : /, ""); }))).join(" ")));
     notes.append(h("div", { class: "actions section" }, h("button", { class: "bouton", type: "button", onclick: function () { exporter(c); } }, "Exporter cette comparaison")));
     bloc.append(notes);
     return bloc;
