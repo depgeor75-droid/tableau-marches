@@ -293,7 +293,7 @@ class Collecte:
         code_pays = ind["options"]["pays"]
         court = {"USA": "US", "G163": "ZE", "DEU": "DE", "FRA": "FR", "ITA": "IT", "BEL": "BE", "JPN": "JP", "CHN": "CN", "GBR": "UK"}[code_pays]
         valeurs = (self.weo["valeurs"].get(indicateur) or {}).get(court) or {}
-        derniere = self.weo["derniere_annee_observee"]
+        derniere = (self.weo.get("derniere_annee_par_pays") or {}).get(court, self.weo["derniere_annee_observee"])
         serie = {f"{int(a)}-01-01": float(v) for a, v in valeurs.items()
                  if v is not None and int(a) <= derniere and int(a) >= 1990}
         if not serie:

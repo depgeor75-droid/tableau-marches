@@ -151,7 +151,7 @@ indicateurs:
   - {id: D8, nom: "Prix à la production aux États-Unis, glissement annuel", nom_court: "Prix à la production US", famille: D, type: T, unite: "%", pays: US, frequence: M,
      source: fred, code: PPIACO, organisme: "Bureau des statistiques du travail américain (BLS)", transformation: glissement_annuel, debut: "1989-01-01", decimales: 1}
   - {id: D9, nom: "Prix à la production industrielle dans la zone euro, glissement annuel", nom_court: "Prix à la production zone euro", famille: D, type: T, unite: "%", pays: ZE, frequence: M,
-     source: eurostat, code: sts_inppd_m, options: {cle: "M.PRC_PRR_DOM.B-E36.NSA.PCH_SM.EA20"}, decimales: 1, retard_max_jours: 90}
+     source: eurostat, code: sts_inppd_m, options: {filtres: {indic_bt: PRC_PRR_DOM, nace_r2: B-E36, s_adj: NSA, unit: PCH_SM, geo: EA20}}, decimales: 1, retard_max_jours: 90}
   - {id: D10, nom: "Indice des tensions sur les chaînes d'approvisionnement mondiales (GSCPI, Fed de New York)", nom_court: "Tensions d'approvisionnement (GSCPI)", famille: D, type: "N*", unite: "écarts-types", pays: MONDE, frequence: M,
      source: fichiers, code: gscpi, organisme: "Banque fédérale de réserve de New York", priorite: E}
   - {id: D11, nom: "Salaire horaire moyen aux États-Unis, glissement annuel", nom_court: "Salaire horaire US", famille: D, type: T, unite: "%", pays: US, frequence: M,
@@ -159,19 +159,19 @@ indicateurs:
   - {id: D12, nom: "Salaires négociés dans la zone euro, glissement annuel", nom_court: "Salaires négociés zone euro", famille: D, type: T, unite: "%", pays: ZE, frequence: T,
      source: bce, code: "INW/Q.U2.N.INWR.000000.4F0.GY.IX", decimales: 1, retard_max_jours: 160}
   - {id: D13_US, nom: "Indicateur avancé de l'OCDE (CLI) — États-Unis", nom_court: "Indicateur avancé OCDE — US", famille: D, type: "N*", unite: "indice", pays: US, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/USA.M.LI...AA...H", fiche: D13,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/USA.M.LI...AA...H", fiche: D13,
      secours: {source: fred, code: USALOLITOAASTSAM, mode: prolonge, organisme: "OCDE"}}
   - {id: D13_CN, nom: "Indicateur avancé de l'OCDE (CLI) — Chine", nom_court: "Indicateur avancé OCDE — Chine", famille: D, type: "N*", unite: "indice", pays: CN, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/CHN.M.LI...AA...H", fiche: D13,
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/CHN.M.LI...AA...H", fiche: D13,
      secours: {source: fred, code: CHNLOLITOAASTSAM, mode: prolonge, organisme: "OCDE"}}
   - {id: D13_JP, nom: "Indicateur avancé de l'OCDE (CLI) — Japon", nom_court: "Indicateur avancé OCDE — Japon", famille: D, type: "N*", unite: "indice", pays: JP, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/JPN.M.LI...AA...H", fiche: D13}
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/JPN.M.LI...AA...H", fiche: D13}
   - {id: D13_UK, nom: "Indicateur avancé de l'OCDE (CLI) — Royaume-Uni", nom_court: "Indicateur avancé OCDE — R.-U.", famille: D, type: "N*", unite: "indice", pays: UK, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/GBR.M.LI...AA...H", fiche: D13}
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/GBR.M.LI...AA...H", fiche: D13}
   - {id: D13_DE, nom: "Indicateur avancé de l'OCDE (CLI) — Allemagne", nom_court: "Indicateur avancé OCDE — Allemagne", famille: D, type: "N*", unite: "indice", pays: DE, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/DEU.M.LI...AA...H", fiche: D13}
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/DEU.M.LI...AA...H", fiche: D13}
   - {id: D13_G4E, nom: "Indicateur avancé de l'OCDE (CLI) — 4 grandes économies européennes", nom_court: "Indicateur avancé OCDE — 4 grands européens", famille: D, type: "N*", unite: "indice", pays: EU4, frequence: M,
-     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI,4.1/G4E.M.LI...AA...H", fiche: D13}
+     source: ocde, code: "OECD.SDD.STES,DSD_STES@DF_CLI/G4E.M.LI...AA...H", fiche: D13}
   - {id: D13_ZE, nom: "Indicateur avancé de l'OCDE (CLI) — zone euro", nom_court: "Indicateur avancé OCDE — zone euro", famille: D, type: "N*", unite: "indice", pays: ZE, frequence: M,
      source: aucune, fiche: D13, raison: "L'OCDE ne publie plus cet indicateur pour la zone euro ; voir l'Allemagne et les 4 grandes économies européennes."}
   - {id: D14, nom: "Probabilité de récession aux États-Unis dans 12 mois (modèle de la Fed de New York)", nom_court: "Probabilité de récession US", famille: D, type: T, unite: "%", pays: US, frequence: M,
@@ -187,11 +187,11 @@ indicateurs:
   - {id: E1_ZE, nom: "Croissance du PIB réel de la zone euro, glissement annuel", nom_court: "Croissance zone euro", famille: E, type: T, unite: "%", pays: ZE, frequence: T,
      source: eurostat, code: namq_10_gdp, options: {filtres: {geo: EA21, unit: CLV_PCH_SM, s_adj: SCA, na_item: B1GQ}}, priorite: E, decimales: 1, retard_max_jours: 135, fiche: E1}
   - {id: E1_JP, nom: "Croissance du PIB réel du Japon, glissement annuel", nom_court: "Croissance Japon", famille: E, type: T, unite: "%", pays: JP, frequence: T,
-     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q..JPN.S1..B1GQ._Z...PC.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
+     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q.Y.JPN.S1.S1.B1GQ._Z._Z._Z.PC.L.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
   - {id: E1_UK, nom: "Croissance du PIB réel du Royaume-Uni, glissement annuel", nom_court: "Croissance Royaume-Uni", famille: E, type: T, unite: "%", pays: UK, frequence: T,
      source: ons, code: "abmi/pn2", transformation: glissement_annuel, debut: "1989-01-01", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
   - {id: E1_CN, nom: "Croissance du PIB réel de la Chine, glissement annuel", nom_court: "Croissance Chine", famille: E, type: T, unite: "%", pays: CN, frequence: T,
-     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q..CHN.S1..B1GQ._Z...PC.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
+     source: ocde, code: "OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA_EXPENDITURE_GROWTH_G20,1.1/Q.Y.CHN.S1.S1.B1GQ._Z._Z._Z.PC.L.GY.T0102", priorite: E, decimales: 1, retard_max_jours: 150, fiche: E1}
   # Dette publique (FMI, toutes administrations publiques), annuelle
   - {id: E3_US, nom: "Dette publique des États-Unis, % du PIB (FMI)", nom_court: "Dette US (% PIB)", famille: E, type: T, unite: "% du PIB", pays: US, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: USA}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
   - {id: E3_ZE, nom: "Dette publique de la zone euro, % du PIB (FMI)", nom_court: "Dette zone euro (% PIB)", famille: E, type: T, unite: "% du PIB", pays: ZE, frequence: A, source: fmi, code: "WEO/GGXWDG_NGDP", options: {pays: G163}, priorite: E, decimales: 1, retard_max_jours: 600, fiche: E3}
@@ -251,7 +251,7 @@ indicateurs:
   - {id: F3, nom: "Bilan de la Banque du Japon (total de l'actif)", nom_court: "Bilan de la Banque du Japon", famille: F, type: N, unite: "Md ¥", pays: JP, frequence: M,
      source: fred, code: JPNASSETS, organisme: "Banque du Japon", facteur: 0.1, priorite: E, decimales: 0}
   - {id: F4, nom: "Bilan de la Banque d'Angleterre (total de l'actif)", nom_court: "Bilan de la Banque d'Angleterre", famille: F, type: N, unite: "Md £", pays: UK, frequence: M,
-     source: bis, code: "WS_CBTA/M.GB.B.XDC", decimales: 0, retard_max_jours: 170}
+     source: bis, code: "WS_CBTA/M.GB.B.XDC.GBP.B", decimales: 0, retard_max_jours: 170}
   - {id: F5_FED, nom: "Bilan de la Fed en % du PIB", nom_court: "Bilan de la Fed (% PIB)", famille: F, type: T, unite: "% du PIB", pays: US, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F1, PIBN_US], priorite: E, decimales: 1, fiche: F5, retard_max_jours: 200}
   - {id: F5_BCE, nom: "Bilan de la BCE en % du PIB", nom_court: "Bilan de la BCE (% PIB)", famille: F, type: T, unite: "% du PIB", pays: ZE, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F2, PIBN_ZE], priorite: E, decimales: 1, fiche: F5, retard_max_jours: 230}
   - {id: F5_BOJ, nom: "Bilan de la Banque du Japon en % du PIB", nom_court: "Bilan de la BoJ (% PIB)", famille: F, type: T, unite: "% du PIB", pays: JP, frequence: T, source: calcul, transformation: pourcentage_pib, entrees: [F3, PIBN_JP], decimales: 1, fiche: F5, retard_max_jours: 230}
