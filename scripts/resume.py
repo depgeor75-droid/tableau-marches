@@ -383,9 +383,11 @@ def construire(cfg, col, hist, rec, etats, existant) -> dict:
             c = ancien.get(ident) or carte(cfg, ident, s, etat)
         if c:
             cartes[ident] = c
-    b = bouge(cfg, s, col)
-    if not b["liste"] and existant.get("resume", {}).get("bouge") and not col.natives:
-        b = existant["resume"]["bouge"]
+    ancien_bouge = existant.get("resume", {}).get("bouge")
+    if col.seules is not None and ancien_bouge:
+        b = ancien_bouge  # collecte partielle (--serie) : « ce qui a bougé » exige toutes les séries du jour
+    else:
+        b = bouge(cfg, s, col)
     return {
         "donnees_au": b["au"],
         "cartes": cartes,

@@ -250,7 +250,7 @@ def construire_catalogue(cfg, etats, series_hist, series_rec) -> dict:
             for k, v in cfg.jeux.items()}
     reg = cfg.reglages
     return {
-        "familles": familles, "indicateurs": indicateurs, "jeux": jeux, "accueil": cfg.accueil,
+        "familles": familles, "indicateurs": indicateurs, "ordre": cfg.publies(), "jeux": jeux, "accueil": cfg.accueil,
         "comparaisons": cfg.comparaisons,
         "evenements": [{**e, "date": str(e["date"])} for e in cfg.evenements],
         "reglages": {"comparateur": reg["comparateur"], "graphiques": reg["graphiques"], "percentile": reg["percentile"],
