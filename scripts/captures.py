@@ -36,7 +36,7 @@ def main() -> int:
         for nom_format in args.formats:
             options = {"viewport": FORMATS[nom_format], "locale": "fr-BE", "timezone_id": "Europe/Brussels"}
             if nom_format == "gsm":
-                options.update({"device_scale_factor": 2, "is_mobile": True, "has_touch": True})
+                options.update({"device_scale_factor": 1, "is_mobile": True, "has_touch": True})
             contexte = navigateur.new_context(**options)
             page = contexte.new_page()
             page.on("console", lambda m, f=nom_format: erreurs.append(f"[{f}] {page.url.split('#')[-1]} : {m.text}") if m.type == "error" else None)
